@@ -1,0 +1,25 @@
+/* Ajuste de espaciado para las secciones del menú */
+.menu-section {
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+  }
+  
+  .menu-section:first-child {
+    padding-top: 0;
+  }
+  
+  .menu-title {
+    margin: var(--spacing-sm) 0;
+  }
+  
+  .menu-description {
+    margin: calc(var(--spacing-sm) / 2) auto;
+    max-width: 80%;
+    text-align: center;
+  }
+  
+  /* Estilos para filas del menú */
+  .row.mb-1 {
+    margin: 0 var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+  }

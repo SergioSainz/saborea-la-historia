@@ -1,0 +1,179 @@
+{
+  "features": [
+    {
+      "properties": {
+        "estado": "Oaxaca",
+        "alimentos": ["Maíz", "Chile", "Frijol", "Chocolate"],
+        "platillos": ["Tlayudas", "Mole Negro", "Tamales Oaxaqueños", "Enfrijoladas"],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tlayudas",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tlayudas",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Mole Negro",
+            "peso": 2
+          },
+          {
+            "origen": "Chocolate",
+            "destino": "Mole Negro",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Enfrijoladas",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Enfrijoladas",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Puebla",
+        "alimentos": ["Chile", "Chocolate", "Maíz", "Frijol"],
+        "platillos": ["Mole Poblano", "Chalupas", "Cemitas", "Chiles en Nogada"],
+        "relaciones": [
+          {
+            "origen": "Chile",
+            "destino": "Mole Poblano",
+            "peso": 2
+          },
+          {
+            "origen": "Chocolate",
+            "destino": "Mole Poblano",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Chalupas",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Cemitas",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Chiles en Nogada",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Yucatán",
+        "alimentos": ["Coco", "Chile Habanero", "Maíz", "Frijol"],
+        "platillos": ["Cochinita Pibil", "Panuchos", "Sopa de Lima", "Papadzules"],
+        "relaciones": [
+          {
+            "origen": "Chile Habanero",
+            "destino": "Cochinita Pibil",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Panuchos",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Panuchos",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Papadzules",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Michoacán",
+        "alimentos": ["Pescado", "Chile", "Maíz", "Frijol"],
+        "platillos": ["Caldo Michi", "Pescado Blanco", "Corundas", "Uchepos"],
+        "relaciones": [
+          {
+            "origen": "Pescado",
+            "destino": "Caldo Michi",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Caldo Michi",
+            "peso": 1
+          },
+          {
+            "origen": "Pescado",
+            "destino": "Pescado Blanco",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Corundas",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Uchepos",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Veracruz",
+        "alimentos": ["Pescado", "Chile", "Maíz", "Frijol"],
+        "platillos": ["Pescado a la Veracruzana", "Gorditas", "Picadas", "Vuelve a la Vida"],
+        "relaciones": [
+          {
+            "origen": "Pescado",
+            "destino": "Pescado a la Veracruzana",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Pescado a la Veracruzana",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Gorditas",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Picadas",
+            "peso": 2
+          },
+          {
+            "origen": "Pescado",
+            "destino": "Vuelve a la Vida",
+            "peso": 2
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Querétaro",
+          "alimentos": ["Maíz", "Chile", "Frijol"],
+          "platillos": ["Tlacoyos", "Atole de maíz", "Tamales de ceniza"],
+          "descripcion": "El uso del maíz y tamales es una herencia otomí que sigue vigente en las comunidades locales."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.4, 20.6], [-100.2, 20.5], [-100.0, 20.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Guanajuato",
+          "alimentos": ["Maíz", "Chile", "Xoconostle"],
+          "platillos": ["Enchiladas mineras", "Caldo de xoconostle", "Tamales de nopal"],
+          "descripcion": "Los ingredientes como el xoconostle reflejan la relación entre el desierto y la gastronomía de la región."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-101.3, 21.0], [-101.1, 20.9], [-100.9, 21.2]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Tlaxcala",
+          "alimentos": ["Maíz", "Amaranto", "Chile"],
+          "platillos": ["Tortillas ceremoniales", "Atole de amaranto", "Tlacoyos"],
+          "descripcion": "Tlaxcala es cuna de las tortillas ceremoniales que representan su legado prehispánico."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-98.4, 19.4], [-98.2, 19.3], [-98.0, 19.5]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Nayarit",
+          "alimentos": ["Maíz", "Pescado", "Camarón"],
+          "platillos": ["Pescado zarandeado prehispánico", "Tamales de camarón", "Atole de maíz"],
+          "descripcion": "La tradición del pescado zarandeado se remonta a prácticas indígenas en las costas nayaritas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-105.2, 21.7], [-105.0, 21.6], [-104.8, 21.9]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "San Luis Potosí",
+          "alimentos": ["Maíz", "Chile", "Nopal"],
+          "platillos": ["Zacahuil", "Enchiladas potosinas", "Tostadas de nopal"],
+          "descripcion": "El zacahuil es un tamal gigante que destaca por ser una receta comunitaria de raíces prehispánicas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.9, 22.1], [-100.7, 22.0], [-100.5, 22.3]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Estado de México",
+          "alimentos": ["Maíz", "Chile", "Frijol"],
+          "platillos": ["Tlacoyos", "Atoles de maíz", "Sopes prehispánicos"],
+          "descripcion": "Los tlacoyos y los sopes son ejemplos de la rica tradición culinaria otomí y náhuatl."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-99.7, 19.4], [-99.5, 19.3], [-99.3, 19.5]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Morelos",
+          "alimentos": ["Maíz", "Chile", "Flores comestibles"],
+          "platillos": ["Tortillas de flor de calabaza", "Caldo de hongos", "Tamales de frijol"],
+          "descripcion": "El uso de flores comestibles y tamales resalta el legado de los tlahuicas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-99.2, 18.9], [-99.0, 18.8], [-98.8, 19.0]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Guerrero",
+          "alimentos": ["Maíz", "Frijol", "Chile"],
+          "platillos": ["Pozole blanco", "Tortillas ceremoniales", "Atoles tradicionales"],
+          "descripcion": "El pozole blanco es un platillo ancestral relacionado con rituales de agradecimiento."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.4, 17.6], [-100.2, 17.5], [-100.0, 17.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Jalisco",
+          "alimentos": ["Maíz", "Chile", "Tejuino"],
+          "platillos": ["Tamales de maíz", "Atoles de masa", "Tejuino"],
+          "descripcion": "El tejuino, una bebida fermentada, es una herencia de las culturas nahuas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-103.5, 20.7], [-103.3, 20.6], [-103.1, 20.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Colima",
+          "alimentos": ["Maíz", "Chile", "Coco"],
+          "platillos": ["Pozole seco", "Atole de maíz y coco", "Tamales de camarón"],
+          "descripcion": "El pozole seco es una receta única de la región, con raíces prehispánicas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-103.9, 19.1], [-103.7, 19.0], [-103.5, 19.2]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Tlaxcala",
+          "alimentos": ["Maíz", "Chile", "Amaranto"],
+          "platillos": ["Tlatlapas", "Tamales de ceniza", "Atoles de amaranto"],
+          "descripcion": "Los tamales de ceniza y el uso del amaranto son vestigios de tradiciones nahuas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-98.2, 19.3], [-98.1, 19.1], [-97.9, 19.4]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Querétaro",
+          "alimentos": ["Maíz", "Chile", "Maguey"],
+          "platillos": ["Gualumbos", "Tortillas ceremoniales", "Atole de aguamiel"],
+          "descripcion": "El uso de gualumbos y tortillas ceremoniales refuerza la conexión con la cultura otomí."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.4, 20.6], [-100.3, 20.5], [-100.1, 20.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Guanajuato",
+          "alimentos": ["Maíz", "Frijol", "Chile"],
+          "platillos": ["Gorditas de frijol", "Calabacitas con elote", "Atole agrio"],
+          "descripcion": "Las gorditas y el atole agrio son representaciones claras del uso sostenible de cultivos."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-101.2, 20.8], [-101.0, 20.7], [-100.8, 21.0]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Zacatecas",
+          "alimentos": ["Maíz", "Chile", "Nopal"],
+          "platillos": ["Nopales asados", "Tacos de nopal", "Tamales de ceniza"],
+          "descripcion": "Los tacos de nopal y los tamales de ceniza simbolizan el uso de ingredientes locales."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-103.3, 22.8], [-103.1, 22.5], [-102.9, 22.9]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "San Luis Potosí",
+          "alimentos": ["Maíz", "Chile", "Quelites"],
+          "platillos": ["Enchiladas potosinas", "Tortillas ceremoniales", "Atoles de quelites"],
+          "descripcion": "Las enchiladas potosinas y los quelites reflejan la riqueza culinaria de las huastecas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.9, 22.2], [-100.7, 22.1], [-100.5, 22.4]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Estado de México",
+          "alimentos": ["Maíz", "Chile", "Chía"],
+          "platillos": ["Tlacoyos", "Esquites", "Atole de masa"],
+          "descripcion": "Los tlacoyos y el atole de masa reflejan la conexión de esta región con su herencia prehispánica."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-99.5, 19.5], [-99.0, 19.2], [-98.9, 19.6]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Guerrero",
+          "alimentos": ["Maíz", "Chile", "Jitomate"],
+          "platillos": ["Pozole blanco", "Tamales de elote", "Atole de tamarindo"],
+          "descripcion": "El pozole blanco y los tamales de elote son parte esencial de la tradición culinaria en Guerrero."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-100.5, 17.5], [-99.8, 17.9], [-99.9, 18.2]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Michoacán",
+          "alimentos": ["Maíz", "Chile", "Frijol"],
+          "platillos": ["Corundas", "Uchepos", "Atole negro"],
+          "descripcion": "Los uchepos y las corundas destacan por su preparación basada en recetas purépechas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-101.5, 19.5], [-101.0, 19.0], [-100.9, 19.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Morelos",
+          "alimentos": ["Maíz", "Chile", "Calabaza"],
+          "platillos": ["Tlaxcales", "Tamales de frijol", "Atole de calabaza"],
+          "descripcion": "Los tlaxcales y el atole de calabaza reflejan la conexión con la agricultura ancestral."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-99.2, 18.8], [-98.9, 18.6], [-99.3, 19.1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Tabasco",
+          "alimentos": ["Cacao", "Maíz", "Chile"],
+          "platillos": ["Chocolate ceremonial", "Tamales de pejelagarto", "Pozol"],
+          "descripcion": "El chocolate ceremonial y el pozol reflejan la tradición olmeca en Tabasco."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-92.8, 18.0], [-92.5, 17.8], [-92.3, 17.5]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Chiapas",
+          "alimentos": ["Maíz", "Cacao", "Chile"],
+          "platillos": ["Pozol", "Tamales de chipilín", "Tascalate"],
+          "descripcion": "El pozol y el tascalate son bebidas icónicas que reflejan su herencia prehispánica."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-93.0, 16.8], [-91.9, 15.9], [-92.5, 16.4]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Yucatán",
+          "alimentos": ["Maíz", "Chile", "Chaya"],
+          "platillos": ["Papadzules", "Tamales colados", "Atole de maíz nuevo"],
+          "descripcion": "La chaya y el maíz son ingredientes esenciales en los papadzules y tamales de la región."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-89.2, 21.5], [-88.5, 20.7], [-89.3, 20.1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Oaxaca",
+          "alimentos": ["Maíz", "Frijol", "Calabaza"],
+          "platillos": ["Tlayudas", "Chocolate", "Tejate"],
+          "descripcion": "El tejate y las tlayudas son platillos tradicionales que datan de épocas prehispánicas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-97.5, 17.0], [-96.7, 16.5], [-96.9, 18.0]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Puebla",
+          "alimentos": ["Amaranto", "Chile", "Maíz"],
+          "platillos": ["Tlalchiquiles", "Tamales de maíz azul", "Atole blanco"],
+          "descripcion": "El amaranto y el maíz azul son pilares de la dieta prehispánica en la región."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-98.2, 18.5], [-97.8, 19.1], [-98.4, 18.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "estado": "Veracruz",
+          "alimentos": ["Cacao", "Maíz", "Frijol"],
+          "platillos": ["Tamales de frijol", "Pinole", "Chocolate ceremonial"],
+          "descripcion": "El cacao ceremonial y los tamales de frijol son herencia de las culturas totonacas y olmecas."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-96.3, 19.2], [-95.4, 18.7], [-96.8, 17.9]]]
+        }
+      }
+    ]
+  }
+  

@@ -1,0 +1,244 @@
+{
+    "estados": [
+      {
+        "nombre": "Baja California",
+        "ubicacion": "Se localiza en el extremo noroeste de México.",
+        "extension": "" ,
+        "clima": {"maxima": [1], "minima": [2]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Tijuana", "Tecate", "Valle de Guadalupe", "Ensenada", "Playas de Rosarito"]
+      },
+      {
+        "nombre": "Baja California Sur",
+        "ubicacion": "Rincón mágico enclavado en la península más grande de México, donde el mar y el desierto se funden para hacer reflejo con el cielo azul",
+        "extension": "",
+        "clima": {"maxima": [3], "minima": [4]},
+        "poblacion": "",
+        "municipios_ruta": ["La Paz", "Ciudad Constitución (Comondú)", "Loreto", "Mulegé", "Santa Rosalía", "San Ignacio", "Guerrero Negro"]
+      },
+      {
+        "nombre": "Hidalgo",
+        "ubicacion": "Se ubica en la región centro-oriental de México.",
+        "extension": "",
+        "clima": {"maxima": [5], "minima": [6]},
+        "poblacion": "",
+        "municipios_ruta": ["Tepeapulco", "Zempoala", "Pachuca", "Actopan", "Santiago de Anaya", "Ixmiquilpan", "Mineral del Monte", "Mineral El Chico", "Huasca de Ocampo", "San Miguel"]
+      },
+      {
+        "nombre": "Tamaulipas",
+        "ubicacion": "Se ubica en la región noreste de México.",
+        "extension": "",
+        "clima": {"maxima": [7], "minima": [8]},
+        "poblacion": "",
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Veracruz",
+        "ubicacion": "Se extiende de noroeste a sureste, sobre la costa del Golfo de México.",
+        "extension": "",
+        "clima": {"maxima": [41.2], "minima": [6]},
+        "poblacion": "",
+        "municipios_ruta": ["Veracruz", "Coatepec", "San Rafael", "Gutiérrez Zamora"]
+      },
+      {
+        "nombre": "Oaxaca",
+        "ubicacion": "Entre raíces y estrellas cubiertas de barro negro",
+        "extension": [],
+        "clima": {},
+        "poblacion": [],
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Puebla",
+        "ubicacion": "Se localiza en el centro oriente del territorio mexicano.",
+        "extension": "" ,
+        "clima": {"maxima": [5], "minima": [17.5]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Puebla", "Cholula", "Zacatlán de las Manzanas", "Cuetzalan"]
+      },
+      {
+        "nombre": "Chiapas",
+        "ubicacion": "Se localiza en la porción sureste de la República Mexicana",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [17.5]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Tuxtla Gutiérrez", "Chiapa de Corzo", "San Cristóbal de Las Casas", "Zincantán", "Ocosingo", "Comitán de Domínguez", "Teopisca"]
+      },
+      {
+        "nombre": "Tabasco",
+        "ubicacion": "Se localiza en el sureste de México.",
+        "extension": "" ,
+        "clima": {"maxima": [10], "minima": [18.5]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Campeche",
+        "ubicacion": "Se localiza en la Península de Yucatán, al sureste de México.",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [11]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Yucatán",
+        "ubicacion": "Se localiza en la porción sureste de México.",
+        "extension": "" ,
+        "clima": {"maxima": [10], "minima": [12]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Quintana Roo",
+        "ubicacion": "Se localiza en la porción sureste de México.",
+        "extension": "" ,
+        "clima": {"maxima": [13], "minima": [14]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Zacatecas",
+        "ubicacion": "Ubicado en el centro del país.",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [15]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Aguascalientes",
+        "ubicacion": "Ubicado en el centro del país.",
+        "extension": "" ,
+        "clima": {"maxima": [16], "minima": [17]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Aguascalientes", "Pabellón de Arteaga", "Calvillo"]
+      },
+      {
+        "nombre": "Coahuila",
+        "ubicacion": "El estado limita al norte del país.",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [6]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Saltillo", "Ramos Arizpe", "Arteaga", "Parras de la Fuente", "Torreón", "Cuatro Ciénegas"]
+      },
+      {
+        "nombre": "Nuevo León",
+        "ubicacion": "Al noreste de México.",
+        "extension": [64210.563],
+        "clima": {"maxima": [18], "minima": [19]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Santiago", "Monterrey"]
+      },
+      {
+        "nombre": "Durango",
+        "ubicacion": "Se localiza al noroeste del país.",
+        "extension": "" ,
+        "clima": {"maxima": [20], "minima": [1.7]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Nombre de Dios", "Canatlán", "Durango"]
+      },
+      {
+        "nombre": "Sonora",
+        "ubicacion": "Región llamada “El sol de México”, desierto que se desvanece en las playas",
+        "extension": [],
+        "clima": {},
+        "poblacion": [],
+        "municipios_ruta": ["Ures", "Baviácora", "Aconchi", "San Felipe de Jesús", "Huépac", "Banámichi", "Arizpe", "Bacoachi", "Cananea"]
+      },
+      {
+        "nombre": "Chihuahua",
+        "ubicacion": "Se localiza al norte de México.",
+        "extension": "" ,
+        "clima": {"maxima": [21], "minima": [14]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Sinaloa",
+        "ubicacion": "Situado al noroeste del país.",
+        "extension": "" ,
+        "clima": {"maxima": [10], "minima": [10.5]},
+        "poblacion": "" ,
+        "municipios_ruta": ["El Fuerte", "Los Mochis", "Culiacán", "Cosalá", "Mazatlán"]
+      },
+      {
+        "nombre": "Michoacán",
+        "ubicacion": "Michoacán, rico en su naturaleza y con tradiciones milenarias",
+        "extension": [],
+        "clima": {"maxima": [29.6], "minima": [22]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Morelia", "Quiroga", "Santa Fe de la Laguna", "Tzitzuntzan", "Pátzcuaro", "Santa Clara del Cobre", "Uruapan"]
+      },
+      {
+        "nombre": "Morelos",
+        "ubicacion": "Se localiza al centro de México.",
+        "extension": "" ,
+        "clima": {"maxima": [18], "minima": [21.5]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Estado de México",
+        "ubicacion": "Se encuentra en el centro-sur del país.",
+        "extension": "" ,
+        "clima": {"maxima": [23], "minima": [15]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Guerrero",
+        "ubicacion": "Colinda al norte con Michoacán.",
+        "extension": "" ,
+        "clima": {"maxima": [18], "minima": [11]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Distrito Federal",
+        "ubicacion": "Zona centro de la República Mexicana.",
+        "extension": "" ,
+        "clima": {"maxima": [23], "minima": [19]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Coyoacán", "Xochimilco", "San Ángel", "Condesa", "Polanco"]
+      },
+      {
+        "nombre": "Querétaro",
+        "ubicacion": "Se localiza en la región denominada Bajío mexicano.",
+        "extension": "" ,
+        "clima": {"maxima": [24], "minima": [25]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Querétaro", "Tequisquiapan"]
+      },
+      {
+        "nombre": "Guanajuato",
+        "ubicacion": "Bajío,  zona centro de México.",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [5.2]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Guanajuato", "San Miguel de Allende", "Dolores Hidalgo"]
+      },
+      {
+        "nombre": "Jalisco",
+        "ubicacion": "Se encuentra al occidente del país.",
+        "extension": "" ,
+        "clima": {"maxima": [7], "minima": [26]},
+        "poblacion": "" ,
+        "municipios_ruta": []
+      },
+      {
+        "nombre": "Nayarit",
+        "ubicacion": "Se encuentra al noreste del país.",
+        "extension": "" ,
+        "clima": {"maxima": [3], "minima": [2]},
+        "poblacion": "" ,
+        "municipios_ruta": ["San Blas", "Santiago", "Bucerías"]
+      },
+      {
+        "nombre": "Colima",
+        "ubicacion": "Se ubica al este del país.",
+        "extension": "" ,
+        "clima": {"maxima": [9], "minima": [11]},
+        "poblacion": "" ,
+        "municipios_ruta": ["Comala", "Colima", "Tecomán"]
+      }
+    ]
+  }

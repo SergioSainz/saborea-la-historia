@@ -1,0 +1,42 @@
+/* Estilos para contenedores principales */
+.container-fluid {
+    width: 100%;
+    padding-right: var(--spacing-sm);
+    padding-left: var(--spacing-sm);
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  /* Estilo para la sección de altura completa */
+  .fullscreen-section {
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(50%);
+  }
+  
+  /* Ajustes para el contenido interno */
+  .content-wrapper {
+    width: 100%;
+  }
+  
+  /* Contenedor de contenido */
+  .content-box {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-lg);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Ajustes para imágenes laterales */
+  .side-image-container {
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+  }
+  
+  .side-image-container img {
+    height: 100%;
+    object-fit: cover;
+  }

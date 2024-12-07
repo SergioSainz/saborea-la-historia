@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Título y favicon -->
+        <title>Saborea la Historia</title>
+        <link rel="icon" type="image/x-icon" href="img/icono/chile.ico">
+        
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        
+        <!-- Dependencias externas -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        
+        <!-- Estilos propios -->
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+<body>
+    <!-- Primera sección con TypeIt -->
+    <div class="container-fluid fullscreen-section" style="background-image: url('img/principal/inicio.png');">
+        <div class="row min-vh-100">
+            <div class="col-md-8 mx-auto d-flex align-items-center">
+                <div class="d-flex flex-column justify-content-center align-items-center content-box p-4 w-100">
+                    <img class="m-5 ps-5 pe-5" src="img/titulo-4.png"
+                    style="width: 100%;">
+
+                    
+                    <div class="dialog-container mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="dialog-image">
+                                <img src="img\Xolin\cara.png" 
+                                    class="img-fluid shake-animation" 
+                                    style="width: 100%;"
+                                    alt="Imagen Sección">
+                            </div>
+                            <div class="dialog-text">
+                                <div class="speech-bubble">
+                                    <p id="typing-text" class="typing-text cardo-regular"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="scroll-down-btn" class="scroll-button">
+                        <span class="button-text">Descubrir las historias</span>
+                        <div class="arrow-down"></div>
+                        <div class="chile-icon"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid sticky-section">
+        <div class="row">
+            <!-- Columna de contenido a la izquierda (7/12) -->
+            <div class="mt-15 col-7">
+                <div class="mt-15 mb-5 content-block">
+                    <p class="cardo-regular text-grey">En algún rincón del México profundo, donde los aromas de maíz, cacao y chiles secos aún flotan en el aire como en tiempos antiguos, vive Xolín, un xoloitzcuintle ancestral, guardián de sabores.</p>
+                    <img src="img/inicio/chile.png" 
+                        class="img-fluid mx-auto d-block"   
+                        style="max-width: 50px; transform: rotate(30deg);" 
+                        alt="Imagen Central">
+                        <p class="cardo-regular text-grey">Según las antiguas leyendas, Xolín fue guía hacia el Mictlán, el inframundo. Pero hoy su misión es diferente: llevarnos en un viaje al corazón de la gastronomía mexicana, revelando cómo cada platillo guarda <span class="underline-animation">historias y significados</span></p>
+                        <p class="cardo-regular text-grey">A través de un banquete en cinco tiempos, Xolín nos conducirá por la historia de la gastronomía mexicana.</p>
+                </div>
+                <!-- Menu -->
+                <div class="row "> <!-- mt-4 para dar espacio después del título -->
+              
+                    <div class=" content-block">
+                        <div class="d-flex">
+                            <div class="col-3 text-center"> <!-- col-6 divide en dos columnas iguales -->
+                                <img    src="img\inicio\flor_menu.png"
+                                        style=" transform: rotate(308deg);" 
+                                        class="img-fluid" 
+                                        alt="Menú Imagen 1">
+                            </div>
+                            <div class="col-6 text-center">
+        
+                            </div>
+                            <div class="col-3 text-center">
+                                <img    src="img\inicio\flor_menu.png" 
+                                        style="transform: rotate(174deg);" 
+                                        class="img-fluid" 
+                                        alt="Menú Imagen 2">
+                            </div>
+                        </div>
+                        
+                        <h2 class="text-center main-title" style=" margin-top: -4rem;">Menú del día</h2>
+                        
+                        <!-- Aperitivo -->
+                        <div class="row  align-items-center justify-content-center">
+                            <!-- Imagen izquierda -->
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);"  class="img-fluid" alt="Detalle Superior">
+                            </div>
+                            
+                            <!-- Título en el centro -->
+                            <div class="col-8 text-center">
+                                <h5 class="libre-baskerville-bold main-subtitle">Aperitivo</h5>
+                            </div>
+                            
+                            <!-- Imagen derecha -->
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">
+                            </div>
+                            
+                            <!-- Descripción debajo de las 3 columnas -->
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Comenzaremos con el <span class="underline-animation">México Prehispánico</span>, explorando las raíces de la cocina ancestral
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Primer Plato -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Primer Plato</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">
+                            </div>
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Luego, pasaremos al mestizaje culinario en <span class="underline-animation">la Conquista</span> y el <span class="underline-animation">Virreinato</span>, donde la fusión de culturas dio lugar a nuevos sabores.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Entremes -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Entremés</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">
+                            </div>
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Seguiremos con la <span class="underline-animation">influencia europea</span>, con platillos que mezclan técnicas y tradiciones.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Segundo Plato -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Segundo Plato</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">
+                            </div>
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Después, nos adentraremos en <span class="underline-animation">la Revolución Mexicana</span>, celebrando los sabores del pueblo
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Postre -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Postre</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">
+                            </div>
+                            <div class="col-9 text-center">
+                                <p class="cardo-regular">
+                                    Finalmente, el <span class="underline-animation">México Contemporáneo</span> y su creatividad gastronómica, que nos conecta con el mundo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            
+            </div>
+
+            <!-- Columna sticky con imagen a la derecha (5/12) -->
+            <div class="col-5">
+                <div class="sticky-image">
+                    <img src="img\Xolin\Xolin_Aperitivo.png" alt="Imagen Sticky">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="sticky-section">
+        <div class="row">
+            <div class="col-3 ">
+                <!-- Primer bloque con más espacio -->
+                <div class="content-block initial-block">
+                    <h3 class="libre-baskerville-bold main-subtitle mt-3 mb-15">Aperitivo: El méxico prehispánico</h3>
+                    <p class="cardo-regular">En esta etapa, estamos en el México antiguo, un tiempo donde el alimento era sagrado.</p>
+                </div>
+
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Maíz</h3>
+                    <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Chile</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Cacao</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Frijol</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Jitomate</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Pescado</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Calabaza</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Chía</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Coco</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Xoconostle</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="m-5 content-block ingredient-block">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Maguey</h3>
+                      <img src="img/inicio/flor.png" 
+                        class="img-fluid mx-auto d-block rotate-180" 
+                        style="max-width: 50px;" 
+                        alt="Imagen Central">
+                </div>
+                <div class="content-block final-block">
+                    <p class="cardo-regular"> eran mucho más que ingredientes, eran regalos de los dioses. Mira ese tlecuilli (el fuego donde todo se cocinaba), allí se preparaban tamales y pozole, no solo para comer, sino para honrar a las deidades. ¿Sabías que el chocolate era considerado una bebida divina? Este no era un simple aperitivo, era un acto de conexión con el cosmos.</p>
+                </div>
+                <!-- Más bloques de contenido -->
+            </div>
+            <div class="col-9">
+                <div class="sticky-image">
+                    <!-- Contenedores para visualizaciones -->
+                    <div class="visualization-container">
+                        <div id="network"></div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+
+    <!------------------- Scripts ------------------->
+    <!-- mapas -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <!-- scrollama -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/8.7.1/index.umd.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <!-- mis scrips -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/animations.js" ></script>
+    <script src="js/sankeyConfig.js"></script>
+    <script src="js/dataProcessor.js"></script>
+    <script src="js/aperitivo.js"></script>
+</body>
+</html>

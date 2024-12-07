@@ -1,0 +1,28 @@
+// Inicialización de TypeIt (sin cambios)
+new TypeIt("#typing-text", {
+  strings: "Soy Xolin, y te llevaré en un viaje a través de los sabores y tradiciones que han moldeado México. ¿Me acompañas?",
+  speed: 50,
+  waitUntilVisible: true
+}).go();
+
+// Inicialización de Scrollama con animaciones mejoradas
+const scroller = scrollama();
+
+scroller
+  .setup({
+      step: '.content-block',
+      offset: 0.5,
+  })
+  .onStepEnter(response => {
+      // Añadir clase active para activar la animación
+      const blocks = document.querySelectorAll('.content-block');
+      blocks[response.index].classList.add('active');
+  })
+  .onStepExit(response => {
+      // Opcional: remover la clase active cuando el bloque sale de vista
+      const blocks = document.querySelectorAll('.content-block');
+      blocks[response.index].classList.remove('active');
+  });
+
+// Asegurar que Scrollama se actualice cuando cambie el tamaño de la ventana
+window.addEventListener('resize', scroller.resize);

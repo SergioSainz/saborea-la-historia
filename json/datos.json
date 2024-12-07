@@ -1,0 +1,500 @@
+{
+    "rutas_gastronomicas_mexico": {
+      "metadata": {
+        "total_rutas": 5,
+        "total_estados": 14,
+        "regiones": ["Norte", "Pacífico", "Centro", "Golfo", "Sur"]
+      },
+      "rutas": [
+        {
+          "nombre": "La Cultura del Vino y El Acuario del Mundo",
+          "estados": [
+            {
+              "nombre": "Baja California",
+              "ubicacion": "Extremo noroeste de México",
+              "extension": 71576,
+              "clima": {
+                "maxima": 41,
+                "minima": 12
+              },
+              "poblacion": 3155070,
+              "municipios_ruta": [
+                "Tijuana",
+                "Tecate", 
+                "Valle de Guadalupe",
+                "Ensenada",
+                "Playas de Rosarito"
+              ],
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Ensalada César",
+                  "Langosta roja",
+                  "Abulón",
+                  "Atún",
+                  "Pescado al disco",
+                  "Langosta con frijoles"
+                ],
+                "bebidas": {
+                  "vinos": ["L.A. Cetto", "Santo Tomás", "Monte Xanic"],
+                  "cervezas": ["Tijuana", "Tecate"]
+                }
+              },
+              "festivales": [
+                {
+                  "nombre": "Feria del Queso",
+                  "fecha": "Abril",
+                  "lugar": "Ciudad Juárez"
+                },
+                {
+                  "nombre": "Festival de las Tres Culturas",
+                  "fecha": "Mayo",
+                  "lugar": "Ciudad Cuauhtémoc" 
+                },
+                {
+                  "nombre": "Feria de la Manzana",
+                  "fecha": "Octubre",
+                  "lugar": "Ciudad Cuauhtémoc"
+                }
+              ],
+              "actividades_gastronomicas": [
+                {
+                  "nombre": "Cervecería Tijuana",
+                  "descripcion": "Recorridos guiados por la planta cervecera",
+                  "ubicacion": "Tijuana"
+                },
+                {
+                  "nombre": "Culinary Art School",
+                  "descripcion": "Escuela de arte culinario y hospitalidad",
+                  "ubicacion": "Tijuana" 
+                },
+                {
+                  "nombre": "Viñedos Valle de Guadalupe",
+                  "descripcion": "Recorridos y catas en viñedos",
+                  "ubicacion": "Valle de Guadalupe"
+                }
+              ],
+              "sitios_turisticos": [
+                "Centro Cultural Tijuana",
+                "Casino Hipódromo Caliente", 
+                "La Bufadora",
+                "Museo de las Californias",
+                "Valle de los Viñedos"
+              ],
+              "hoteles_principales": [
+                {
+                  "nombre": "Hotel Coral & Marina",
+                  "categoria": "Premium",
+                  "ubicacion": "Ensenada"
+                },
+                {
+                  "nombre": "Real Inn Tijuana",
+                  "categoria": "Premium", 
+                  "ubicacion": "Tijuana"
+                }
+              ],
+              "restaurantes_destacados": [
+                {
+                  "nombre": "Villa Saverios",
+                  "tipo": "Premium",
+                  "ubicacion": "Tijuana"
+                },
+                {
+                  "nombre": "La Querencia",
+                  "tipo": "Premium",
+                  "ubicacion": "Tijuana" 
+                }
+              ]
+            },
+            {
+              "nombre": "Baja California Sur",
+              "ubicacion": "Noroeste de México",
+              "extension": 72465,
+              "clima": {
+                "maxima": 35,
+                "minima": 9
+              },
+              "poblacion": 637026,
+              "municipios_ruta": [
+                "La Paz",
+                "Ciudad Constitución",
+                "Loreto",
+                "Mulegé",
+                "Santa Rosalía"
+              ],
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Almeja tatemada",
+                  "Escabeche de mariscos",
+                  "Tacos de mariscos",
+                  "Tamales fajados",
+                  "Empanadas de frijol dulce"
+                ],
+                "productos_locales": [
+                  "Damiana",
+                  "Sal de mar",
+                  "Machaca"
+                ]
+              },
+              "festivales": [
+                {
+                  "nombre": "Festival de la Ballena Gris",
+                  "fecha": "Enero",
+                  "lugar": "Ensenada"
+                },
+                {
+                  "nombre": "Carnaval del Puerto de San Carlos",
+                  "fecha": "Febrero",
+                  "lugar": "San Carlos"
+                }
+              ],
+              "actividades_gastronomicas": [
+                {
+                  "nombre": "Pesca deportiva",
+                  "descripcion": "Pesca en mar abierto y preparación de pescado fresco",
+                  "ubicacion": "La Paz"
+                },
+                {
+                  "nombre": "Las Perlas del Mar de Cortés",
+                  "descripcion": "Visita a granja perlera",
+                  "ubicacion": "La Paz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,  
+          "nombre": "Los Tarahumaras Milenarios",
+          "estados": [
+            {
+              "nombre": "Chihuahua",
+              "ubicacion": "Norte de México", 
+              "extension": 247087,
+              "clima": {
+                "maxima": 20,
+                "minima": 17
+              },
+              "poblacion": 3406465,
+              "municipios_ruta": [
+                "Chihuahua",
+                "Cuauhtémoc",
+                "Creel",
+                "Divisadero",
+                "Parral"
+              ],
+              "recursos_gastronomicos": {
+                "productos_principales": [
+                  "Carne de res",
+                  "Manzana",
+                  "Nuez pecanera",
+                  "Queso menonita",
+                  "Chile verde"
+                ],
+                "platillos_tipicos": [
+                  "Caldo de oso",
+                  "Rayadas de Parral",
+                  "Discada",
+                  "Burritos",
+                  "Tortas ahogadas",
+                  "Chile con queso"
+                ],
+                "bebidas": {
+                  "alcoholicas": ["Sotol"],
+                  "tradicionales": ["Tesgüino"]
+                }
+              },
+              "actividades_gastronomicas": [
+                {
+                  "nombre": "Quesería Pampas",
+                  "descripcion": "Elaboración de queso menonita",
+                  "ubicacion": "Cuauhtémoc"
+                },
+                {
+                  "nombre": "Noche Rarámuri",
+                  "descripcion": "Gastronomía y tradiciones rarámuri",
+                  "ubicacion": "Divisadero"
+                }
+              ]
+            },
+            {
+              "nombre": "Sinaloa",
+              "ubicacion": "Noroeste de México",
+              "extension": 58328,
+              "clima": {
+                "maxima": 36,
+                "minima": 10.5
+              },
+              "poblacion": 2767761,
+              "municipios_ruta": [
+                "Culiacán",
+                "Mazatlán",
+                "Los Mochis"
+              ],
+              "recursos_gastronomicos": {
+                "mariscos": [
+                  "Camarón",
+                  "Pescado zarandeado",
+                  "Aguachile",
+                  "Pescado a la talla"
+                ],
+                "platillos_tipicos": [
+                  "Chilorio",
+                  "Machaca",
+                  "Tamales barbones"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nombre": "El Arte del Tequila y la Música Bajo el Sol",
+          "estados": [
+            {
+              "nombre": "Jalisco",
+              "ubicacion": "Occidente de México",
+              "extension": 80386,
+              "clima": {
+                "maxima": 23,
+                "minima": 7
+              },
+              "poblacion": 7350682,
+              "municipios_ruta": [
+                "Guadalajara",
+                "Tapalpa",
+                "Mazamitla",
+                "Tequila",
+                "Chapala"
+              ],
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Birria",
+                  "Tortas ahogadas",
+                  "Pozole",
+                  "Carne en su jugo",
+                  "Pescado zarandeado"
+                ],
+                "bebidas": {
+                  "tradicionales": ["Tequila", "Tejuino", "Sangrita"]
+                }
+              },
+              "actividades_gastronomicas": [
+                {
+                  "nombre": "Destiladora La Cofradía",
+                  "descripcion": "Tours por la destilería de tequila",
+                  "ubicacion": "Tequila"
+                },
+                {
+                  "nombre": "Mundo Cuervo",
+                  "descripcion": "Experiencia del tequila",
+                  "ubicacion": "Tequila"
+                }
+              ]
+            },
+            {
+              "nombre": "Nayarit",
+              "ubicacion": "Costa del Pacífico",
+              "extension": 26979,
+              "clima": {
+                "maxima": 35,
+                "minima": 12
+              },
+              "municipios_ruta": [
+                "Tecuala",
+                "Mexcaltitán",
+                "Santiago",
+                "San Blas"
+              ],
+              "recursos_gastronomicos": {
+                "mariscos": [
+                  "Pescado zarandeado",
+                  "Camarón",
+                  "Ostiones"
+                ],
+                "platillos_tipicos": [
+                  "Albóndigas de camarón",
+                  "Tlaxtihuilli",
+                  "Aguachile"
+                ]
+              }
+            },
+            {
+              "nombre": "Colima",
+              "ubicacion": "Costa del Pacífico",
+              "extension": 5191,
+              "clima": {
+                "maxima": 30,
+                "minima": 18
+              },
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Pozole seco",
+                  "Sopitos",
+                  "Tatemado"
+                ],
+                "productos_locales": [
+                  "Sal de Cuyutlán",
+                  "Café",
+                  "Limón"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nombre": "Los Mil Sabores del Mole",
+          "estados": [
+            {
+              "nombre": "Oaxaca",
+              "ubicacion": "Sureste de México",
+              "extension": 93952,
+              "clima": {
+                "maxima": 22,
+                "minima": 18
+              },
+              "poblacion": 3801962,
+              "municipios_ruta": [
+                "Oaxaca",
+                "Teotitlán del Valle",
+                "Tlacolula",
+                "Zaachila",
+                "Santa María del Tule"
+              ],
+              "recursos_gastronomicos": {
+                "moles": [
+                  "Mole negro",
+                  "Mole coloradito",
+                  "Mole amarillo",
+                  "Mole verde",
+                  "Chichilo",
+                  "Manchamanteles"
+                ],
+                "platillos_tipicos": [
+                  "Tlayudas",
+                  "Tasajo",
+                  "Chapulines",
+                  "Quesillo"
+                ],
+                "bebidas": {
+                  "tradicionales": ["Mezcal", "Tejate", "Chocolate"]
+                }
+              }
+            },
+            {
+              "nombre": "Tlaxcala",
+              "ubicacion": "Centro-oriente de México",
+              "extension": 4016,
+              "poblacion": 1169936,
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Mole prieto",
+                  "Chileatole",
+                  "Tacos placeros",
+                  "Mole de matuma"
+                ],
+                "bebidas": {
+                  "tradicionales": ["Pulque", "Agua de alegría"]
+                }
+              }
+            },
+            {
+              "nombre": "Puebla",
+              "ubicacion": "Centro-oriente de México",
+              "extension": 34251,
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Mole poblano",
+                  "Chiles en nogada",
+                  "Chalupas",
+                  "Cemitas",
+                  "Pipián"
+                ],
+                "dulces_tipicos": [
+                  "Camotes",
+                  "Tortitas de Santa Clara",
+                  "Muéganos"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nombre": "Las Bellezas Huastecas",
+          "estados": [
+            {
+              "nombre": "Hidalgo",
+              "ubicacion": "Centro-oriental de México",
+              "extension": 20846,
+              "clima": {
+                "maxima": 27,
+                "minima": 4
+              },
+              "poblacion": 2665018,
+              "municipios_ruta": [
+                "Pachuca",
+                "Real del Monte",
+                "Huasca de Ocampo",
+                "Mineral del Chico"
+              ],
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Pastes",
+                  "Barbacoa",
+                  "Mixiotes",
+                  "Zacahuil"
+                ],
+                "bebidas": {
+                  "tradicionales": ["Pulque"]
+                }
+              }
+            },
+            {
+              "nombre": "Tamaulipas",
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Carne a la tampiqueña",
+                  "Jaibas rellenas",
+                  "Huatepe de camarón"
+                ]
+              }
+            },
+            {
+              "nombre": "Veracruz",
+              "recursos_gastronomicos": {
+                "platillos_tipicos": [
+                  "Huachinango a la veracruzana",
+                  "Chilpachole",
+                  "Zacahuil"
+                ],
+                "productos_locales": [
+                  "Café",
+                  "Vainilla",
+                  "Caña de azúcar"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "general": {
+        "festivales_nacionales": [
+          {
+            "nombre": "Festival Internacional del Vino",
+            "estado": "Baja California",
+            "fecha": "Agosto"
+          },
+          {
+            "nombre": "Festival Internacional del Mole",
+            "estado": "Puebla",
+            "fecha": "Junio"
+          }
+        ],
+        "patrimonios_gastronomicos": [
+          {
+            "elemento": "Cocina tradicional mexicana",
+            "tipo": "Patrimonio Cultural Inmaterial de la Humanidad",
+            "año": 2010
+          }
+        ]
+      }
+    }
+  }

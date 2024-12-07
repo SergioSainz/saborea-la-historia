@@ -1,0 +1,65 @@
+.scroll-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  color: #013971;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.scroll-button.clicked {
+  pointer-events: none;
+}
+
+.arrow-down {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: solid #013971;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  margin: 10px auto 0;
+  animation: bounce 2s infinite;
+  transition: opacity 0.3s ease;
+}
+
+.chile-icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-image: url('../../img/inicio/chile.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.scroll-button.clicked .chile-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.scroll-button.clicked .arrow-down,
+.scroll-button.clicked .button-text {
+  opacity: 0;
+}
+
+.scroll-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

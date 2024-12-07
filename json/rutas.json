@@ -1,0 +1,485 @@
+{
+    "rutas": [
+      {
+        "nombre": "La Cultura del Vino y el Acuario del Mundo",
+        "estados": [
+          "Baja California",
+          "Baja California Sur"
+        ],
+        "descripcion": "Esta ruta recorre la península de Baja California, ofreciendo una experiencia que combina la cultura del vino con la riqueza del mar. En Baja California, se puede disfrutar de visitas a viñedos, degustaciones de vinos locales y experiencias culinarias con chefs de renombre. En Baja California Sur, la ruta se centra en la riqueza del Mar de Cortés, con visitas a industrias pesqueras, degustación de mariscos frescos y la oportunidad de observar la vida marina.",
+        "rutas_clave": [
+          {
+            "estado": "Baja California",
+            "platillos": [
+              "Ensalada César",
+              "Platillos de autor elaborados con productos regionales",
+              "Quesos artesanales"
+            ]
+          },
+          {
+            "estado": "Baja California Sur",
+            "platillos": [
+              "Calamar",
+              "Almeja empanizada",
+              "Tacos de pescado",
+              "Camarón rebosado",
+              "Tamales fajados",
+              "Filete imperial",
+              "Langosta",
+              "Marlín ahumado",
+              "Papa rellena de mariscos",
+              "Machaca de pescado o mantarraya",
+              "Tortillas de harina", 
+              "Empanadas de frijol dulce",
+              "Licor de Damiana"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "Las Bellezas Huastecas",
+        "estados": [
+          "Hidalgo",
+          "Tamaulipas",
+          "Veracruz"
+        ],
+        "descripcion": "Esta ruta explora la región Huasteca, conocida por su belleza natural y su rica cultura. En Hidalgo, se destaca la cultura del maguey, con la oportunidad de degustar barbacoa, pulque fresco y platillos a base de insectos. Tamaulipas ofrece una gastronomía que va 'del mar a la laguna', mientras que Veracruz se caracteriza por sus productos como el café y la vainilla.",
+        "rutas_clave": [
+          {
+            "estado": "Hidalgo",
+            "platillos": [
+              "Barbacoa",
+              "Pulque",
+              "Pastes",
+              "Escamoles",
+              "Chinicuiles"
+            ]
+          },
+          {
+            "estado": "Tamaulipas",
+            "platillos": []
+          },
+          {
+            "estado": "Veracruz",
+            "platillos": [
+              "Zacahuil",
+              "Púlacles",
+              "Enchiladas",
+              "Empanadas"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "Los Mil Sabores del Mole",
+        "estados": [
+          "Oaxaca",
+          "Tlaxcala",
+          "Puebla"
+        ],
+        "descripcion": "Esta ruta se centra en la diversidad del mole, un platillo icónico de la cocina mexicana. Oaxaca es famoso por sus siete moles, incluyendo el negro, el coloradito y el manchamantel. Tlaxcala y Puebla también tienen sus propias versiones de mole, con sabores y técnicas de preparación únicas.",
+        "rutas_clave": [
+          {
+            "estado": "Oaxaca",
+            "platillos": [
+              "Sopa de ejotes con chepil",
+              "Sopa de garbanzo molido",
+              "Caldillo de nopales",
+              "Moles",
+              "Manchamantel",
+              "Coloradito",
+              "Caldo de piedra",
+              "Tlayudas"
+            ]
+          },
+          {
+            "estado": "Tlaxcala",
+            "platillos": []
+          },
+          {
+            "estado": "Puebla",
+            "platillos": [
+              "Mole poblano",
+              "Chiles en nogada",
+              "Dulces regionales"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Misterio y el Origen de los Mayas",
+        "estados": [
+          "Chiapas",
+          "Tabasco",
+          "Campeche",
+          "Yucatán",
+          "Quintana Roo"
+        ],
+        "descripcion": "Esta ruta explora la región Maya, con su rica historia, cultura y gastronomía. En Chiapas y Tabasco, se destaca la ruta del cacao, con la oportunidad de conocer la historia y el proceso de producción de este ingrediente esencial de la cocina mexicana. En Campeche, Yucatán y Quintana Roo, la ruta se centra en los 'ingredientes mestizos del Mayab', con platillos que reflejan la fusión de las culturas Maya y Española.",
+        "rutas_clave": [
+          {
+            "estado": "Chiapas",
+            "platillos": [
+              "Butifarras",
+              "Shutis (caracoles de río)",
+              "Sopa de chipilín",
+              "Cochito",
+              "Picté",
+              "Tamales (juacan, chipilín, de bola, de camarón, de hoja santa)",
+              "Pepita con tasajo"
+            ]
+          },
+          {
+            "estado": "Tabasco",
+            "platillos": [
+              "Pozol",
+              "Agua de matalí",
+              "Butifarra",
+              "Pejelagarto"
+            ]
+          },
+          {
+            "estado": "Campeche",
+            "platillos": [
+              "Pan de cazón",
+              "Platillos a base de pescado y mariscos"
+            ]
+          },
+          {
+            "estado": "Yucatán",
+            "platillos": [
+              "Panuchos",
+              "Papadzules",
+              "Poc Chuc",
+              "Xtabentún (licor)"
+            ]
+          },
+          {
+            "estado": "Quintana Roo",
+            "platillos": [
+              "Pescado a la Tikin Xic",
+              "Langosta",
+              "Platillos a base de pescado y mariscos"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Sazón del Minero",
+        "estados": [
+          "Zacatecas",
+          "Aguascalientes",
+          "San Luis Potosí"
+        ],
+        "descripcion": "Esta ruta recorre la región del Altiplano Mexicano, con su rica historia minera y su gastronomía que refleja las influencias de la cultura huasteca y la cocina mestiza de las ciudades coloniales.",
+        "rutas_clave": [
+          {
+            "estado": "Zacatecas",
+            "platillos": [
+              "Raspados de fruta natural",
+              "Fiambre",
+              "Birria"
+            ]
+          },
+          {
+            "estado": "Aguascalientes",
+            "platillos": [
+              "Pacholas", 
+              "Guayeco"
+            ]
+          },
+          {
+            "estado": "San Luis Potosí",
+            "platillos": [
+              "Enchiladas Potosinas",
+              "Dulces y chocolates", 
+              "Cabuches",
+              "Biznaga",
+              "Guamishes", 
+              "Chilitos", 
+              "Nopales",
+              "Corazón de nopal",
+              "Tunas", 
+              "Xoconostles",
+              "Garambullo",
+              "Chochas",
+              "Cabrito"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Encuentro Fascinante entre la Historia y la Modernidad",
+        "estados": [
+          "Nuevo León",
+          "Coahuila",
+          "Durango",
+          "Sonora"
+        ],
+        "descripcion": "Esta ruta explora la diversidad gastronómica del norte de México, desde la cocina moderna de Monterrey hasta las tradiciones culinarias de Coahuila, Durango y Sonora. La ruta se caracteriza por la combinación de cortes de carne, vinos y productos del desierto.",
+        "rutas_clave": [
+          {
+            "estado": "Nuevo León",
+            "platillos": [
+              "Platillos de la cocina típica mexicana",
+              "Cabrito", 
+              "Tortillas de harina"
+  
+            ]
+          },
+          {
+            "estado": "Coahuila",
+            "platillos": [
+              "Dulces típicos a base de nuez, higo, leche, durazno, chabacano",
+              "Vinos"
+            ]
+          },
+          {
+            "estado": "Durango",
+            "platillos": [
+              "Caldillo durangueño",
+              "Cajeta de membrillo",
+              "Orejones de manzana",
+              "Dulces de leche",
+              "Mermeladas",
+              "Licores de frutas",
+              "Mezcal", 
+              "Licor de durazno",
+              "Tornachiles"
+            ]
+          },
+          {
+            "estado": "Sonora",
+            "platillos": [
+              "Tortilla sobaquera",
+              "Carne",
+              "Bacanora",
+              "Pozole de trigo",
+              "Dulce de frijol",
+              "Coyotas",
+              "Pinole"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "Platillos con Historia",
+        "estados": [
+          "Querétaro",
+          "Guanajuato"
+        ],
+        "descripcion": "Querétaro y Guanajuato son ciudades testigo del nacimiento de una historia, plenos de escenarios pintados con las raíces de nuestra gente, edificados con monumentos que glorifican nuestra Independencia, recetas ancestrales patrimonio de los mexicanos, cautivantes mezclas de sabores que conspiran para enamorar. La Ruta Gastronómica 'Platillos con Historia' te da la bienvenida para que recorras y disfrutes bajo un escenario en que los aromas, sabores, paisajes, historia, cultura, tradiciones y gratas experiencias de estancia en hoteles, harán de tu viaje un recuerdo memorable.",
+        "rutas_clave": [
+          {
+            "estado": "Querétaro",
+            "platillos": [
+              "Gorditas de cuajada",
+              "Chiles queretanos",
+              "Chivo tapeado"
+            ]
+          },
+          {
+            "estado": "Guanajuato",
+            "platillos": [
+              "Enchiladas mineras",
+              "Gorditas",
+              "Charamuscas",
+              "Potajes",
+              "Manitas de puerco",
+              "Chamorro",
+              "Nieves", 
+              "Envuelto de chile pasilla en salsa de nata"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Sabor de Hoy",
+        "estados": [
+          "Distrito Federal"
+        ],
+        "descripcion": "En el Distrito Federal, podrás disfrutar de la más amplia gama gastronómica; las nuevas técnicas culinarias hacen de la Ciudad de México escenario de la cocina fusión y de la más espectacular expresión de vanguardia.",
+        "rutas_clave": [
+          {
+            "estado": "Distrito Federal",
+            "platillos": [
+              "Dobladas"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "La Ruta de los Mercados",
+        "estados": [
+          "Morelos",
+          "Estado de México",
+          "Guerrero"
+        ],
+        "descripcion": "Morelos posee una rica diversidad de sabores; en Cuernavaca podremos degustar los platillos de toda la región reunidos en uno de los restaurantes que manejan productos de calidad y tradición como Gaia o Las Mañanitas. Para aprovechar la estancia en el el Centro Histórico de la capital morelense, podrás visitar los museos del Palacio de Cortés y la Fundación Robert Brady donde se puede apreciar la arquitectura histórica en contraste con la moderna. Camino hacia el Pueblo Mágico de Tepoztlán tendremos un taller de cocina tradicional con la chef Ana en la Villa Bonita, quién demuestra que la calidad de los productos se ve reflejada en el sabor del platillo; el taller inicia desde el mercado donde se elegirán los ingredientes, hasta el proceso de elaboración y degustación. Posteriormente podrás hacer un recorrido turístico al mercado de artesanías y por supuesto a la pirámide del Tepozteco. En el transcurso del día es recomendable que pruebes las deliciosas nieves artesanales que se encuentran en el mercado. En el pueblo mágico de Tlayacapan podremos observar un taller de alfarería donde conoceremos los elementos para la elaboración de estas artesanías y su historia. Más adelante, en Yecapixtla, probaremos la famosa cecina, y conoceremos el proceso de obtención del queso y la crema con que se acompaña. ",
+        "rutas_clave": [
+          {
+            "estado": "Morelos",
+            "platillos": [
+              "Cecina"
+            ]
+          },
+          {
+            "estado": "Estado de México",
+            "platillos": []
+          },
+          {
+            "estado": "Guerrero",
+            "platillos": [
+              "Jumiles",
+              "Mole con jumiles",
+              "Barbacoa de chivo",
+              "Pan de muerto"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Altar del Día de Muertos",
+        "estados": [
+          "Michoacán"
+        ],
+        "descripcion": "Michoacán, rico en su naturaleza y con tradiciones milenarias, armonioso en sus pueblos mágicos, tierra de los purépechas,  es uno de los estados con mayor éxito en conservar y trascender uno de los rituales más antiguos de México: el día de muertos, que es actualmente Patrimonio Inmaterial de la Humanidad. En cada altar para honrar a los difuntos, se revelan las esencias de los platillos y flores tradicionales como el cempasúchitl, conformando una experiencia completamente sensorial que te maravilla hasta el punto de formar parte de la tradición.",
+        "rutas_clave": [
+          {
+            "estado": "Michoacán",
+            "platillos": [
+              "Carnitas",
+              "Charales",
+              "Pescado blanco",
+              "Nieve de pasta",
+              "Corundas", 
+              "Gazpachos", 
+              "Ates de membrillo", 
+              "Camote enmielado"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "La Magia del Fuego y el Cobre",
+        "estados": [
+          "Michoacán"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Michoacán",
+            "platillos": []
+          }
+        ]
+      },
+      {
+        "nombre": "Del Tequila a la Birria",
+        "estados": [
+          "Jalisco"
+        ],
+        "descripcion": "Jalisco es otra historia, llena de música y sabor picante, pues platillos como el pozole, la birria, el menudo o las tortas ahogadas de Guadalajara se suelen acompañar con música de mariachis, alegres sombreros y caballitos para el tequila que podremos comprar en los mercados de artesanías y ver su elaboración artesanal.",
+        "rutas_clave": [
+          {
+            "estado": "Jalisco",
+            "platillos": [
+              "Pozole",
+              "Birria",
+              "Menudo",
+              "Tortas ahogadas",
+              "Dulces de leche",
+              "Cajetas de leche quemada",
+              "Rollos de guayaba",
+              "Palanquetas de nuez",
+              "Queso de tuna",
+              "Mangos y ciruelas en almíbar",
+              "Alfajores",
+              "Dulce de membrillo",
+              "Cocadas",
+              "Tamarindos",
+              "Buñuelos",
+              "Nieve de tequila con limón",
+              "Mermeladas de frutas", 
+              "Bote",
+              "Borrego al pastor",
+              "Sangrita", 
+              "Caldo michi",
+              "Hueva de carpa"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "El Arte del Buen Comer",
+        "estados": [
+          "Nayarit"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Nayarit",
+            "platillos": [
+              "Perrurí", 
+              "Langostino",
+              "Camarón"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "Tesoros Coloniales",
+        "estados": [
+          "Chihuahua"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Chihuahua",
+            "platillos": [
+              "Rayadas de Parral",
+              "Discada"
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "Manjares Sierra Tarahumara",
+        "estados": [
+          "Chihuahua"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Chihuahua",
+            "platillos": []
+          }
+        ]
+      },
+      {
+        "nombre": "Paraísos Indígenas",
+        "estados": [
+          "Sinaloa"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Sinaloa",
+            "platillos": []
+          }
+        ]
+      },
+      {
+        "nombre": "Sabor a Mar",
+        "estados": [
+          "Sinaloa"
+        ],
+        "descripcion": "Información no disponible en las fuentes.",
+        "rutas_clave": [
+          {
+            "estado": "Sinaloa",
+            "platillos": []
+          }
+        ]
+      }
+    ]
+  }

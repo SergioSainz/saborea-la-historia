@@ -1,0 +1,755 @@
+{
+    "recursos_gastronomicos": [
+      {
+        "estado": "Baja California",
+        "platillos_tipicos": [
+          "Ensalada César",
+          "Langosta con frijoles",
+          "Pescado al disco"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Atún",
+          "Quesos"
+        ]
+      },
+      {
+        "estado": "Baja California Sur",
+        "platillos_tipicos": [
+          "Almeja empanizada",
+          "Tacos de pescado",
+          "Camarón rebosado",
+          "Tamales fajados",
+          "Filete imperial",
+          "Langosta",
+          "Marlín ahumado",
+          "Papa rellena de mariscos",
+          "Machaca de pescado o mantarraya",
+          "Tortillas de harina",
+          "Conservas de dátil",
+          "Papaya verde en almíbar",
+          "Dulces de guayaba",
+          "Bollitos de plátano",
+          "Empanadas de frijol dulce"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Licor de damiana"
+          ]
+        },
+        "productos_locales": [
+          "Calamar",
+          "Damiana"
+        ]
+      },
+      {
+        "estado": "Hidalgo",
+        "platillos_tipicos": [
+          "Barbacoa",
+          "Pastes",
+          "Mole xiqueño",
+          "Esquites",
+          "Elotes",
+          "Chinicuiles"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Pulque",
+            "Tunate"
+          ]
+        },
+        "productos_locales": [
+          "Miel de maguey"
+        ]
+      },
+      {
+        "estado": "Tamaulipas",
+        "platillos_tipicos": [
+          "Empipianadas",
+          "Bocoles",
+          "Jaibas rellenas",
+          "Mondongo",
+          "Carne a la tampiqueña"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Plátano"
+        ]
+      },
+      {
+        "estado": "Veracruz",
+        "platillos_tipicos": [
+          "Pescado a la veracruzana",
+          "Huatepe de mariscos",
+          "Zacahuil",
+          "Púlacles"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Café",
+          "Vainilla"
+        ]
+      },
+      {
+        "estado": "Oaxaca",
+        "platillos_tipicos": [
+          "Caldo de piedra",
+          "Estofado o almendrado",
+          "Manchamanteles",
+          "Chocolateatole",
+          "Tlayudas",
+          "Chiles en nogada"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Aguas Casilda",
+            "Mezcal"
+          ]
+        },
+        "productos_locales": [
+          "Nueces de Castilla",
+          "Manzanas",
+          "Duraznos",
+          "Peras",
+          "Granadas",
+          "Chiles poblanos"
+        ]
+      },
+      {
+        "estado": "Tlaxcala",
+        "platillos_tipicos": [
+          "Mole de matuma o de ladrillo",
+          "Chile atole"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Agua de alegría",
+            "Pulque"
+          ]
+        },
+        "productos_locales": []
+      },
+      {
+        "estado": "Puebla",
+        "platillos_tipicos": [
+          "Pipián",
+          "Mole poblano",
+          "Cemita",
+          "Tlayoyos"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Sidra",
+            "Rompope",
+            "Licor de pasa"
+          ]
+        },
+        "productos_locales": [
+          "Camote",
+          "Manzana",
+          "Café",
+          "Vainilla",
+          "Pimienta gorda",
+          "Canela",
+          "Quesos"
+        ]
+      },
+      {
+        "estado": "Chiapas",
+        "platillos_tipicos": [
+          "Butifarras",
+          "Shutis",
+          "Sopa de chipilín",
+          "Cochito",
+          "Picté",
+          "Tamales (juacan, chipilín, de bola, de camarón, de hoja santa)",
+          "Pepita con tasajo"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Pozol"
+          ]
+        },
+        "productos_locales": [
+          "Cacao criollo",
+          "Café"
+        ]
+      },
+      {
+        "estado": "Tabasco",
+        "platillos_tipicos": [
+          "Pejelagarto asado al carbón",
+          "Pejelagarto en tamales",
+          "Pejelagarto en verde",
+          "Pejelagarto en chirmol",
+          "Pejelagarto en chiltepín",
+          "Pejelagarto en ensalada",
+          "Pejelagarto en mone",
+          "Pigua en caldo",
+          "Pigua al mojo de ajo",
+          "Pigua asada",
+          "Pigua en chiltepín",
+          "Pigua en chirmol"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Pozol",
+            "Agua de matalí"
+          ]
+        },
+        "productos_locales": [
+          "Cacao",
+          "Café",
+          "Butifarra",
+          "Pejelagarto",
+          "Pigua"
+        ]
+      },
+      {
+        "estado": "Campeche",
+        "platillos_tipicos": [],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": []
+      },
+      {
+        "estado": "Yucatán",
+        "platillos_tipicos": [
+          "Panuchos",
+          "Papadzules",
+          "Poc chuc"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Xtabentún"
+          ]
+        },
+        "productos_locales": [
+          "Miel de abeja melipona",
+          "Naranja agria",
+          "Lima agria"
+        ]
+      },
+      {
+        "estado": "Quintana Roo",
+        "platillos_tipicos": [
+          "Pescado a la Tikin Xic"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Langosta",
+          "Pescados",
+          "Chicle",
+          "Chicozapote"
+        ]
+      },
+      {
+        "estado": "Zacatecas",
+        "platillos_tipicos": [
+          "Asado de boda",
+          "Tacos Aguados",
+          "Birria"
+        ],
+        "bebidas": {
+          "vinos": [
+            "Vinos zacatecanos"
+          ],
+          "tradicionales": [
+            "Mezcal"
+          ]
+        },
+        "productos_locales": []
+      },
+      {
+        "estado": "Aguascalientes",
+        "platillos_tipicos": [
+          "Fiambre",
+          "Birria",
+          "Pacholas"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Chiles (puya y bola amarillo)",
+          "Uvas",
+          "Guayaba"
+        ]
+      },
+      {
+        "estado": "Coahuila",
+        "platillos_tipicos": [
+          "Pan de pulque"
+        ],
+        "bebidas": {
+          "vinos": [
+            "Vinos de Casa Madero",
+            "Vinos de Casa Ferriño",
+            "Vinos de Casa Domecq",
+            "Vinos Vitali"
+          ],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Cabrito",
+          "Dulces de leche",
+          "Dulces de nuez",
+          "Licores"
+        ]
+      },
+      {
+        "estado": "Durango",
+        "platillos_tipicos": [
+          "Caldillo durangueño",
+          "Asado"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Mezcal",
+            "Licor de durazno"
+          ]
+        },
+        "productos_locales": [
+          "Cajeta de membrillo",
+          "Orejones de manzana",
+          "Dulces de leche",
+          "Mermeladas",
+          "Licores de frutas",
+          "Chile pasado"
+        ]
+      },
+      {
+        "estado": "Sonora",
+        "platillos_tipicos": [
+          "Carne machaca",
+          "Pozole de trigo",
+          "Tortilla sobaquera",
+          "Coyotas"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Bacanora",
+            "Café tostado"
+          ]
+        },
+        "productos_locales": [
+          "Chile",
+          "Maíz",
+          "Trigo",
+          "Carne",
+          "Quesos",
+          "Pinolillo",
+          "Bellotas"
+        ]
+      },
+      {
+        "estado": "Chihuahua",
+        "platillos_tipicos": [
+          "Enchiladas “Doña Cuca”",
+          "Pan “Rayadas”",
+          "Burritos"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Queso Chester",
+          "Queso Asadero",
+          "Chile verde",
+          "Chile colorado",
+          "Chile pasado",
+          "Cortes de carne",
+          "Nuez",
+          "Dulces de leche",
+          "Dulces de nuez",
+          "Cajeta de membrillo"
+        ]
+      },
+      {
+        "estado": "Sinaloa",
+        "platillos_tipicos": [],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Tejuino",
+            "Cerveza Pacífico"
+          ]
+        },
+        "productos_locales": [
+          "Jitomate",
+          "Marlín",
+          "Pan de mujer",
+          "Azúcar",
+          "Conservas de papaya"
+        ]
+      },
+      {
+        "estado": "Jalisco",
+        "platillos_tipicos": [
+          "Birria",
+          "Borrego al pastor",
+          "Torta ahogada",
+          "Pozole",
+          "Menudo",
+          "Pacholas",
+          "Caldo Michi",
+          "Vampiros"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Tequila",
+            "Bote",
+            "Sangrita"
+          ]
+        },
+        "productos_locales": [
+          "Dulces de leche",
+          "Cajetas de leche quemada",
+          "Rollos de guayaba",
+          "Palanquetas de nuez",
+          "Queso de tuna",
+          "Mangos en almíbar",
+          "Ciruelas en almíbar",
+          "Alfajores",
+          "Dulce de membrillo",
+          "Cocadas",
+          "Tamarindos",
+          "Buñuelos",
+          "Nieve de tequila con limón",
+          "Mermeladas de frutas",
+          "Camote enmielado"
+        ]
+      },
+      {
+        "estado": "Nayarit",
+        "platillos_tipicos": [
+          "Pescado zarandeado",
+          "Guiso de ternera",
+          "Albondigas de camarón",
+          "Ceviches",
+          "Aguachiles",
+          "Sopes de ostión"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Cocos",
+          "Cocadas",
+          "Pan de plátano"
+        ]
+      },
+      {
+        "estado": "Colima",
+        "platillos_tipicos": [
+          "Pozole",
+          "Tostada de ceviche"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": []
+        },
+        "productos_locales": []
+      },
+      {
+        "estado": "Querétaro",
+        "platillos_tipicos": [
+          "Gorditas de cuajada",
+          "Chiles queretanos",
+          "Chivo tapeado",
+          "Mole queretano",
+          "Pollo al cuñete"
+        ],
+        "bebidas": {
+          "vinos": [
+            "Vinos Freixenet"
+          ],
+          "tradicionales": []
+        },
+        "productos_locales": [
+          "Nopal",
+          "Maíz",
+          "Queso",
+          "Mantecado"
+        ]
+      },
+      {
+        "estado": "Guanajuato",
+        "platillos_tipicos": [
+          "Enchiladas mineras",
+          "Gorditas",
+          "Potajes",
+          "Manitas de puerco",
+          "Chamorro",
+          "Envuelto de chile pasilla en salsa de nata"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Cebadina"
+          ]
+        },
+        "productos_locales": [
+          "Fresas",
+          "Xoconostle",
+          "Charamuscas",
+          "Nieves"
+        ]
+      },
+      {
+        "estado": "Estado de México",
+        "platillos_tipicos": [
+          "Doraditas Preparadas", 
+          "Tamal de Charales", 
+          "Tacos Placeros",
+          "Chileajo", 
+          "Enfrijoladas Toluqueñas",
+          "Mole Rojo" 
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Mosco", 
+            "Pulque" 
+          ]
+        },
+        "productos_locales": [
+          "Tequesquite",
+          "Gusano de Maguey", 
+          "Chorizo Verde y Rojo", 
+          "Obispo", 
+          "Chía", 
+          "Nopal", 
+          "Tuna",
+          "Xoconostle", 
+          "Maguey",
+          "Cacahuazintle",
+          "Huitlacoche",
+          "Amaranto"
+        ]
+      },
+      {
+        "estado": "Guerrero",
+        "platillos_tipicos": [
+          "Mole Rosa", 
+          "Pozole Verde",
+          "Barbacoa de Chivo", 
+          "Pan de Muerto"
+        ],
+        "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+            "Chorreado", 
+            "Mezcal", 
+            "Agua de Jamaica", 
+            "Agua de Coco" 
+          ]
+        },
+        "productos_locales": [
+          "Jumiles", 
+          "Chile Guajillo", 
+          "Plata"
+        ]
+      },
+      {
+        "estado": "Querétaro",
+        "platillos_tipicos": [
+            "Enchiladas queretanas",
+            "Mole queretano",
+            "Gorditas de migajas",
+            "Nopales en penca",
+            "Atole de teja"
+        ],
+        "bebidas": {
+            "vinos": ["Vino tinto", "Vino blanco", "Vino espumoso"],
+            "tradicionales": ["Pulque", "Colonche"]
+        },
+        "productos_locales": [
+            "Queso de oveja",
+            "Queso de cabra",
+            "Cecina de Querétaro",
+            "Nopal fresco",
+            "Chile serrano",
+            "Miel de mezquite",
+            "Frutas deshidratadas",
+            "Maíz criollo",
+            "Frijoles negros",
+            "Dulces de leche",
+            "Atole de teja",
+            "Semillas de amaranto",
+            "Mermelada de tuna"
+        ]
+    },
+    {
+      "estado": "Guanajuato",
+      "platillos_tipicos": [
+          "Fiambre estilo San Miguel de Allende",
+          "Enchiladas mineras",
+          "Caldo de zorra",
+          "Capirotada",
+          "Pan de Acámbaro"
+      ],
+      "bebidas": {
+          "vinos": ["Vino tinto artesanal"],
+          "tradicionales": ["Agua de betabel", "Colonche"]
+      },
+      "productos_locales": [
+          "Fresas de Irapuato",
+          "Tequila artesanal",
+          "Cajeta de Celaya",
+          "Pan de Acámbaro",
+          "Galletas de vainilla",
+          "Chile guajillo seco",
+          "Maíz azul",
+          "Nueces",
+          "Miel de abeja",
+          "Frijoles vaqueros",
+          "Jícama fresca",
+          "Chiles encurtidos",
+          "Biznaga cristalizada"
+      ]
+    },
+    {
+      "estado": "Jalisco",
+      "platillos_tipicos": [
+          "Birria",
+          "Torta ahogada",
+          "Pozole",
+          "Menudo",
+          "Carne en su jugo",
+          "Pacholas",
+          "Borrego al pastor",
+          "Caldo michi"
+      ],
+      "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+              "Tequila",
+              "Sangrita",
+              "Tejuino",
+              "Raicilla",
+              "Tuba"
+          ]
+      },
+      "productos_locales": [
+          "Dulces de leche",
+          "Cajetas de leche quemada",
+          "Rollos de guayaba",
+          "Palanquetas de nuez",
+          "Queso de tuna",
+          "Charales",
+          "Mangos en almíbar",
+          "Ciruelas en almíbar",
+          "Nieve de tequila con limón",
+          "Camote enmielado",
+          "Chongos zamoranos",
+          "Maíz",
+          "Chiles de árbol",
+          "Pescado",
+          "Mariscos",
+          "Agave",
+          "Frutas tropicales",
+          "Piloncillo",
+          "Nopal",
+          "Frijoles",
+          "Calabaza"
+      ]
+    },
+    {
+      "estado": "Nayarit",
+      "platillos_tipicos": [
+          "Pescado zarandeado",
+          "Camarones cucaracha",
+          "Sopes de ostión",
+          "Tamales de camarón",
+          "Ceviche de pescado"
+      ],
+      "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+              "Tejuino",
+              "Tepache",
+              "Agua de coco"
+          ]
+      },
+      "productos_locales": [
+          "Camarones frescos",
+          "Ostiones",
+          "Cocadas",
+          "Pan de plátano",
+          "Sal de mar",
+          "Chiles secos",
+          "Plátano macho",
+          "Pescado",
+          "Maíz",
+          "Caña de azúcar",
+          "Café",
+          "Coco",
+          "Tamarindo",
+          "Frutas tropicales"
+      ]
+    },
+    {
+      "estado": "Colima",
+      "platillos_tipicos": [
+          "Sopitos",
+          "Tatemado de cerdo",
+          "Pozole seco",
+          "Tamales de ceniza",
+          "Caldo de chacales"
+      ],
+      "bebidas": {
+          "vinos": [],
+          "tradicionales": [
+              "Tejuino",
+              "Tuba",
+              "Bate",
+              "Ponche de Comala"
+          ]
+      },
+      "productos_locales": [
+          "Coco",
+          "Sal de Colima",
+          "Plátano",
+          "Tamarindo",
+          "Chiles secos",
+          "Dulces de tamarindo",
+          "Limones frescos",
+          "Maíz",
+          "Pescado",
+          "Mariscos",
+          "Frutas tropicales",
+          "Caña de azúcar"
+      ]
+    }
+  
+    ]
+  }

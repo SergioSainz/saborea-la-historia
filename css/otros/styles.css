@@ -1,0 +1,361 @@
+
+
+/* Tipografía Libre Baskerville */
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+.titulo{
+
+width: 80%;  
+}
+/* Tipografía Cardo */
+.cardo-regular {
+  font-family: "Cardo", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cardo-bold {
+  font-family: "Cardo", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cardo-regular-italic {
+  font-family: "Cardo", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+.text-grey {
+  color: #555454; /* Marrón oscuro */
+}
+
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+}
+
+
+.dialog-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.dialog-image {
+  width: 270px;
+  margin-right: -20px;
+  z-index: 2;
+}
+
+.dialog-text {
+  flex: 1;
+}
+
+.speech-bubble {
+  margin-left: 0;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/*----------------------------------------------*/
+
+/* Para la sección principal */
+.sticky-section {
+  padding: 0 2rem;
+}
+
+/*----------------------------------------------*/
+/* Estilo para el botón con bordes redondeados */
+.btn-primary {
+  border-radius: 100px; /* Ajusta este valor para más o menos redondeo */
+  padding: 10px 25px; /* Opcional: para dar más padding al botón */
+  transition: all 0.3s ease; /* Opcional: para suavizar efectos hover */
+}
+
+/* Opcional: efectos hover para el botón */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos para los bloques de contenido */
+.content-block h2 {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.content-block p {
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+
+/* Estilo para la sección de altura completa */
+.fullscreen-section {
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(50%);
+}
+
+/* Ajustes para el contenido interno */
+.content-wrapper {
+  width: 100%;
+}
+
+/* Ajuste para las imágenes laterales */
+.side-image-container {
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+}
+
+.side-image-container img {
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* Aplicar al título principal */
+.main-title {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;  /* Para usar la versión bold */
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.main-subtitle {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;  /* Para usar la versión bold */
+  font-size: 1.5rem;
+  color: #013971;
+  margin-bottom: 1rem;
+}
+
+
+/* Radio al boton*/
+.btn-circle {
+  width: 200px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  padding: 0; /* Sin relleno interno */
+  border-radius: 50%; /* Borde redondeado completo para forma circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px; /* Tamaño del ícono */
+  background: #2B65AC
+}
+
+/* Estilos para el speech bubble */
+.speech-bubble {
+  position: relative;
+  background: rgba(181, 67, 34, 0.82);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+  min-height: 80px;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-right-color: rgba(181, 67, 34, 0.82); 
+  border-left: 0;
+  margin-top: -15px;
+}
+
+.typing-text {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* Estilos actualizados para la sección sticky */
+.sticky-section {
+  min-height: 100vh;
+  padding: 40px 0;
+  position: relative;
+}
+
+.sticky-image {
+  position: sticky;
+  top: 20px;
+  height: 100vh;
+  padding: 0 1rem;;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Para evitar scroll dentro del contenedor sticky */
+}
+
+.content-block {
+  margin-bottom:  2rem;
+  margin: 0 1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+
+/* Para cada fila del menú */
+.row.mb-1 {
+  margin: 0 1rem;
+  padding: 1rem 0;
+}
+
+
+.content-block.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-block:last-child {
+  margin-bottom: 40vh;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* Clase para aplicar la animación */
+.shake-animation {
+  animation: shake .5s ease-in-out;
+  animation-delay: 5s; /* Espera medio segundo antes de empezar */
+}
+
+/* Aplicaciones específicas */
+.main-title {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #013971;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para el texto del globo de diálogo */
+.typing-text {
+  margin: 0;
+  padding: 0;
+  font-family: "Cardo", serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: white; /* Cambiado a blanco */
+}
+
+/* Clase para palabras con subrayado animado */
+.underline-animation {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s ease-out;
+  animation: underlineAppear 1s ease-out forwards;
+  animation-delay: 2s; /* Aparecerá después de 2 segundos */
+}
+
+@keyframes underlineAppear {
+  from {
+      transform: scaleX(0);
+  }
+  to {
+      transform: scaleX(1);
+  }
+}
+
+/* Ajuste de espaciado para las secciones del menú */
+.menu-section {
+  margin-bottom: 2rem; /* Reducido de 5rem o lo que tuviera antes */
+  padding-top: 1rem;   /* Reducido el padding superior */
+}
+
+/* Si necesitas un espaciado específico para la primera sección */
+.menu-section:first-child {
+  padding-top: 0;
+}
+
+/* Para el título de cada platillo */
+.menu-title {
+  margin: 1rem 0; /* Reducido el margen vertical */
+}
+
+/* Para la descripción */
+.menu-description {
+  margin: 0.5rem auto; /* Reducido el margen vertical */
+  max-width: 80%;
+  text-align: center;
+}
+
+
+.visualization-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#network, #map {
+  flex: 1;
+  min-height: 40%; /* Cada visualización toma aproximadamente la mitad del contenedor */
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  margin: 0;
+}

@@ -1,0 +1,43 @@
+.sticky-section {
+    min-height: 100vh;
+    padding: 40px 0;
+    position: relative;
+  }
+  
+  .sticky-image {
+    position: sticky;
+    top: 20px;
+    height: 100vh;
+    padding: 0 var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .content-block {
+    margin: 0 var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+  }
+  
+  .content-block.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Ajustes específicos para el primer y último bloque */
+  .content-block:first-child {
+    min-height: 100vh;
+    margin-bottom: 40vh;
+  }
+  
+  .content-block:last-child {
+    min-height: 100vh;
+    margin-top: 40vh;
+    margin-bottom: 40vh;
+  }

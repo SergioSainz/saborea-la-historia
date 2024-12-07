@@ -1,0 +1,49 @@
+.content-block {
+  margin-bottom: var(--spacing-md);
+  margin: 0 var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+
+/* Estilo específico para el primer bloque de contenido con la introducción */
+.mt-15.mb-5.content-block {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  gap: var(--spacing-md);
+}
+
+.mt-15.mb-5.content-block p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-block h2 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.content-block p {
+  font-family: "Cardo", serif;
+  font-weight: 400;
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+}
+
+.content-block.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-block:last-child {
+  margin-bottom: 40vh;
+}

@@ -1,0 +1,40 @@
+.speech-bubble {
+    position: relative;
+    background: var(--color-accent);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+    min-height: 80px;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+  
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-right-color: var(--color-accent);
+    border-left: 0;
+    margin-top: -15px;
+  }
+  
+  .dialog-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .dialog-image {
+    width: 40%;
+    margin-right: -20px;
+    z-index: 2;
+  }
+  
+  .dialog-text {
+    flex: 1;
+  }

@@ -1,0 +1,62 @@
+/* Tipografía Libre Baskerville */
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  /* Tipografía Cardo */
+  .cardo-regular {
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .cardo-bold {
+    font-family: "Cardo", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .cardo-regular-italic {
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  /* Títulos y texto */
+  .main-title {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: var(--font-size-xxl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .main-subtitle {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .typing-text {
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-size: var(--font-size-lg);
+    line-height: 1.5;
+    color: var(--color-white);
+  }

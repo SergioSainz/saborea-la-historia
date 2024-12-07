@@ -1,0 +1,510 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "BC",
+          "nombre": "Baja California",
+          "ubicacion": "Se localiza en el extremo noroeste de México.",
+          "municipios_ruta": ["Tijuana", "Tecate", "Valle de Guadalupe", "Ensenada", "Playas de Rosarito"],
+          "clima": {
+            "maxima": 1,
+            "minima": 2
+          },
+          "centroide": [-115.0194, 30.8406]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-114.7212, 32.7186],
+            [-115.9912, 32.2123],
+            [-116.0825, 30.9534],
+            [-114.8648, 28.9658],
+            [-113.7524, 29.3456],
+            [-113.9234, 31.2456],
+            [-114.7212, 32.7186]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "BCS",
+          "nombre": "Baja California Sur",
+          "ubicacion": "Rincón mágico enclavado en la península más grande de México.",
+          "municipios_ruta": ["La Paz", "Ciudad Constitución", "Loreto", "Mulegé", "Santa Rosalía", "San Ignacio", "Guerrero Negro"],
+          "clima": {
+            "maxima": 3,
+            "minima": 4
+          },
+          "centroide": [-111.5654, 25.5807]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-114.8648, 28.9658],
+            [-112.5825, 26.5534],
+            [-109.7524, 22.8856],
+            [-110.9234, 24.7456],
+            [-114.8648, 28.9658]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "BC",
+          "nombre": "Baja California",
+          "ubicacion": "Se localiza en el extremo noroeste de México.",
+          "municipios_ruta": ["Tijuana", "Tecate", "Valle de Guadalupe", "Ensenada", "Playas de Rosarito"],
+          "clima": {
+            "maxima": 1,
+            "minima": 2
+          },
+          "centroide": [-115.0194, 30.8406]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-114.7212, 32.7186],
+            [-115.9912, 32.2123],
+            [-116.0825, 30.9534],
+            [-114.8648, 28.9658],
+            [-113.7524, 29.3456],
+            [-113.9234, 31.2456],
+            [-114.7212, 32.7186]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "BCS",
+          "nombre": "Baja California Sur",
+          "ubicacion": "Rincón mágico enclavado en la península más grande de México.",
+          "municipios_ruta": ["La Paz", "Ciudad Constitución", "Loreto", "Mulegé", "Santa Rosalía", "San Ignacio", "Guerrero Negro"],
+          "clima": {
+            "maxima": 3,
+            "minima": 4
+          },
+          "centroide": [-111.5654, 25.5807]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-114.8648, 28.9658],
+            [-112.5825, 26.5534],
+            [-109.7524, 22.8856],
+            [-110.9234, 24.7456],
+            [-114.8648, 28.9658]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "SON",
+          "nombre": "Sonora",
+          "ubicacion": "Región llamada El sol de México, desierto que se desvanece en las playas",
+          "municipios_ruta": ["Ures", "Baviácora", "Aconchi", "San Felipe de Jesús", "Huépac", "Banámichi", "Arizpe", "Bacoachi", "Cananea"],
+          "clima": {},
+          "centroide": [-110.9265, 29.6433]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-112.3524, 32.4867],
+            [-109.0648, 31.3324],
+            [-108.9524, 27.8856],
+            [-111.4234, 26.7456],
+            [-112.3524, 32.4867]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "CHIH",
+          "nombre": "Chihuahua",
+          "ubicacion": "Se localiza al norte de México.",
+          "municipios_ruta": [],
+          "clima": {
+            "maxima": 21,
+            "minima": 14
+          },
+          "centroide": [-106.0691, 28.6353]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-108.9524, 31.3324],
+            [-104.5648, 31.7658],
+            [-104.7524, 28.3456],
+            [-106.9234, 26.7456],
+            [-108.9524, 31.3324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "COAH",
+          "nombre": "Coahuila",
+          "ubicacion": "El estado limita al norte del país.",
+          "municipios_ruta": ["Saltillo", "Ramos Arizpe", "Arteaga", "Parras de la Fuente", "Torreón", "Cuatro Ciénegas"],
+          "clima": {
+            "maxima": 9,
+            "minima": 6
+          },
+          "centroide": [-102.0446, 27.0587]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-104.5648, 31.7658],
+            [-101.5648, 31.3324],
+            [-101.7524, 27.8856],
+            [-103.4234, 26.7456],
+            [-104.5648, 31.7658]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "MICH",
+          "nombre": "Michoacán",
+          "ubicacion": "Michoacán, rico en su naturaleza y con tradiciones milenarias",
+          "municipios_ruta": ["Morelia", "Quiroga", "Santa Fe de la Laguna", "Tzitzuntzan", "Pátzcuaro", "Santa Clara del Cobre", "Uruapan"],
+          "clima": {
+            "maxima": 29.6,
+            "minima": 22
+          },
+          "centroide": [-102.3116, 19.1951],
+          "ruta": {
+            "nombre": "Ruta Don Vasco",
+            "tipo": "cultural",
+            "orden_visita": [
+              {"punto": "Morelia", "coords": [-101.1950, 19.7059]},
+              {"punto": "Quiroga", "coords": [-101.5284, 19.6648]},
+              {"punto": "Santa Fe de la Laguna", "coords": [-101.6086, 19.6414]},
+              {"punto": "Tzitzuntzan", "coords": [-101.5778, 19.6242]},
+              {"punto": "Pátzcuaro", "coords": [-101.6089, 19.5215]},
+              {"punto": "Santa Clara del Cobre", "coords": [-101.6417, 19.4056]},
+              {"punto": "Uruapan", "coords": [-102.0678, 19.4208]}
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-103.5648, 20.1324],
+            [-100.5648, 20.3324],
+            [-100.7524, 18.8856],
+            [-103.4234, 18.7456],
+            [-103.5648, 20.1324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "GTO",
+          "nombre": "Guanajuato",
+          "ubicacion": "Bajío, zona centro de México.",
+          "municipios_ruta": ["Guanajuato", "San Miguel de Allende", "Dolores Hidalgo"],
+          "clima": {
+            "maxima": 9,
+            "minima": 5.2
+          },
+          "centroide": [-101.2574, 20.9169],
+          "ruta": {
+            "nombre": "Ruta Histórica",
+            "tipo": "cultural",
+            "orden_visita": [
+              {"punto": "Guanajuato", "coords": [-101.2574, 21.0190]},
+              {"punto": "San Miguel de Allende", "coords": [-100.7457, 20.9144]},
+              {"punto": "Dolores Hidalgo", "coords": [-100.9343, 21.1558]}
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-102.1648, 21.7324],
+            [-100.1648, 21.3324],
+            [-100.3524, 20.2856],
+            [-102.0234, 20.1456],
+            [-102.1648, 21.7324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "HGO",
+          "nombre": "Hidalgo",
+          "ubicacion": "Se ubica en la región centro-oriental de México.",
+          "municipios_ruta": ["Tepeapulco", "Zempoala", "Pachuca", "Actopan", "Santiago de Anaya", "Ixmiquilpan", "Mineral del Monte", "Mineral El Chico", "Huasca de Ocampo", "San Miguel"],
+          "clima": {
+            "maxima": 5,
+            "minima": 6
+          },
+          "centroide": [-98.8592, 20.4869],
+          "ruta": {
+            "nombre": "Ruta de los Pueblos con Sabor",
+            "tipo": "gastronómica",
+            "orden_visita": [
+              {"punto": "Pachuca", "coords": [-98.7594, 20.1170]},
+              {"punto": "Mineral del Monte", "coords": [-98.6731, 20.1383]},
+              {"punto": "Huasca de Ocampo", "coords": [-98.5778, 20.2036]},
+              {"punto": "Mineral El Chico", "coords": [-98.7273, 20.2167]},
+              {"punto": "Ixmiquilpan", "coords": [-99.2167, 20.4833]}
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-99.5648, 20.9324],
+            [-98.1648, 20.8324],
+            [-98.3524, 19.8856],
+            [-99.4234, 19.7456],
+            [-99.5648, 20.9324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "COAH",
+          "nombre": "Coahuila",
+          "ubicacion": "El estado limita al norte del país.",
+          "municipios_ruta": ["Saltillo", "Ramos Arizpe", "Arteaga", "Parras de la Fuente", "Torreón", "Cuatro Ciénegas"],
+          "clima": {
+            "maxima": 9,
+            "minima": 6
+          },
+          "centroide": [-102.0446, 27.0587],
+          "ruta": {
+            "nombre": "Ruta del Vino y Desierto",
+            "tipo": "enoturismo",
+            "orden_visita": [
+              {"punto": "Saltillo", "coords": [-100.9867, 25.4267]},
+              {"punto": "Parras de la Fuente", "coords": [-102.1833, 25.4333]},
+              {"punto": "Cuatro Ciénegas", "coords": [-102.0833, 26.9833]},
+              {"punto": "Torreón", "coords": [-103.4333, 25.5333]}
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-104.5648, 31.7658],
+            [-101.5648, 31.3324],
+            [-101.7524, 27.8856],
+            [-103.4234, 26.7456],
+            [-104.5648, 31.7658]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "SIN",
+          "nombre": "Sinaloa",
+          "ubicacion": "Situado al noroeste del país.",
+          "municipios_ruta": ["El Fuerte", "Los Mochis", "Culiacán", "Cosalá", "Mazatlán"],
+          "clima": {
+            "maxima": 10,
+            "minima": 10.5
+          },
+          "centroide": [-107.3940, 25.0000],
+          "ruta": {
+            "nombre": "Ruta Colonial y de las Playas",
+            "tipo": "mixta",
+            "orden_visita": [
+              {"punto": "El Fuerte", "coords": [-108.6167, 26.4167]},
+              {"punto": "Los Mochis", "coords": [-108.9667, 25.7833]},
+              {"punto": "Culiacán", "coords": [-107.3889, 24.8047]},
+              {"punto": "Cosalá", "coords": [-106.6889, 24.4125]},
+              {"punto": "Mazatlán", "coords": [-106.4111, 23.2333]}
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-109.5648, 26.7324],
+            [-107.1648, 26.3324],
+            [-105.7524, 22.8856],
+            [-108.4234, 22.7456],
+            [-109.5648, 26.7324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "CHIS",
+          "nombre": "Chiapas",
+          "ubicacion": "Se localiza en la porción sureste de la República Mexicana",
+          "municipios_ruta": ["Tuxtla Gutiérrez", "Chiapa de Corzo", "San Cristóbal de Las Casas", "Zincantán", "Ocosingo", "Comitán de Domínguez", "Teopisca"],
+          "clima": {
+            "maxima": 9,
+            "minima": 17.5
+          },
+          "centroide": [-92.2714, 16.7569],
+          "ruta": {
+            "nombre": "Ruta Maya",
+            "tipo": "cultural-arqueológica",
+            "orden_visita": [
+              {
+                "punto": "Tuxtla Gutiérrez",
+                "coords": [-93.1167, 16.7500],
+                "tiempo_estancia": "2 días",
+                "destacados": ["Cañón del Sumidero", "Museo Regional"]
+              },
+              {
+                "punto": "Chiapa de Corzo",
+                "coords": [-93.0167, 16.7000],
+                "tiempo_estancia": "1 día",
+                "destacados": ["Plaza Central", "Fuente Colonial"]
+              },
+              {
+                "punto": "San Cristóbal de Las Casas",
+                "coords": [-92.6333, 16.7333],
+                "tiempo_estancia": "3 días",
+                "destacados": ["Centro Histórico", "Mercados Indígenas"]
+              },
+              {
+                "punto": "Zinacantán",
+                "coords": [-92.7167, 16.7667],
+                "tiempo_estancia": "1 día",
+                "destacados": ["Textiles tradicionales", "Iglesia local"]
+              }
+            ],
+            "distancia_total": 180,
+            "tiempo_total": "7 días"
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-94.0648, 17.7324],
+            [-91.1648, 17.3324],
+            [-91.3524, 14.8856],
+            [-94.4234, 14.7456],
+            [-94.0648, 17.7324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "PUE",
+          "nombre": "Puebla",
+          "ubicacion": "Se localiza en el centro oriente del territorio mexicano.",
+          "municipios_ruta": ["Puebla", "Cholula", "Zacatlán de las Manzanas", "Cuetzalan"],
+          "clima": {
+            "maxima": 5,
+            "minima": 17.5
+          },
+          "centroide": [-97.8833, 19.0414],
+          "ruta": {
+            "nombre": "Ruta Colonial y de Montaña",
+            "tipo": "mixta",
+            "orden_visita": [
+              {
+                "punto": "Puebla",
+                "coords": [-98.2063, 19.0414],
+                "tiempo_estancia": "3 días",
+                "destacados": ["Centro Histórico", "Barrio del Artista"]
+              },
+              {
+                "punto": "Cholula",
+                "coords": [-98.3069, 19.0636],
+                "tiempo_estancia": "2 días",
+                "destacados": ["Gran Pirámide", "Iglesias coloniales"]
+              },
+              {
+                "punto": "Zacatlán",
+                "coords": [-97.9667, 19.9333],
+                "tiempo_estancia": "2 días",
+                "destacados": ["Relojes", "Sidra artesanal"]
+              },
+              {
+                "punto": "Cuetzalan",
+                "coords": [-97.5167, 20.0167],
+                "tiempo_estancia": "2 días",
+                "destacados": ["Café de altura", "Danzas tradicionales"]
+              }
+            ],
+            "distancia_total": 245,
+            "tiempo_total": "9 días"
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-98.5648, 20.1324],
+            [-96.8648, 20.3324],
+            [-96.9524, 17.8856],
+            [-98.4234, 17.7456],
+            [-98.5648, 20.1324]
+          ]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "VER",
+          "nombre": "Veracruz",
+          "ubicacion": "Se extiende de noroeste a sureste, sobre la costa del Golfo de México.",
+          "municipios_ruta": ["Veracruz", "Coatepec", "San Rafael", "Gutiérrez Zamora"],
+          "clima": {
+            "maxima": 41.2,
+            "minima": 6
+          },
+          "centroide": [-96.9216, 19.2738],
+          "ruta": {
+            "nombre": "Ruta del Café y Vainilla",
+            "tipo": "gastronómica",
+            "orden_visita": [
+              {
+                "punto": "Veracruz",
+                "coords": [-96.1333, 19.2000],
+                "tiempo_estancia": "2 días",
+                "destacados": ["San Juan de Ulúa", "Malecón"]
+              },
+              {
+                "punto": "Coatepec",
+                "coords": [-96.9500, 19.4500],
+                "tiempo_estancia": "2 días",
+                "destacados": ["Fincas cafetaleras", "Museo del Café"]
+              },
+              {
+                "punto": "San Rafael",
+                "coords": [-96.8667, 20.1833],
+                "tiempo_estancia": "1 día",
+                "destacados": ["Gastronomía francesa", "Río Nautla"]
+              }
+            ],
+            "distancia_total": 190,
+            "tiempo_total": "5 días"
+          }
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-98.1648, 22.1324],
+            [-95.8648, 22.3324],
+            [-95.9524, 17.8856],
+            [-97.4234, 17.7456],
+            [-98.1648, 22.1324]
+          ]]
+        }
+      }
+    ]
+  }

@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Determinar qué imagen mostrar según el índice
                 const imageUrls = {
                     0: 'img/Xolin/cara.png',
-                    1: 'img/Xolin/Xolin_Aperitivo.png',
+                    1: 'img/inicio/plato-2.png',
                     
                 };
 

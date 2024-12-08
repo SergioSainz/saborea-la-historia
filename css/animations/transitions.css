@@ -50,6 +50,30 @@
   .animated-number {
     color: #013971;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 2rem;
     transition: color 0.5s ease-in-out;
+}
+
+.ingredient-block .card {
+  transition: transform 0.3s ease;
+}
+
+.ingredient-block .card:hover {
+  transform: translateY(-5px);
+}
+
+.ingredient-block .card-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #013971;
+}
+
+.ingredient-block .card-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.ingredient-block .cardo-regular {
+  line-height: 1.6;
+  text-align: left;
 }

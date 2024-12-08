@@ -76,30 +76,30 @@ const SankeyConfig = {
     },
 
     createSankeyOption: function(sankeyData) {
-        // Calcular el total de conexiones para cada nodo (entrada + salida)
+        // Calcular el total de conexiones para cada nodo
         const connectionCount = {};
         sankeyData.links.forEach(link => {
             connectionCount[link.source] = (connectionCount[link.source] || 0) + link.value;
             connectionCount[link.target] = (connectionCount[link.target] || 0) + link.value;
         });
     
-        // Ordenar los nodos por categoría y número de conexiones
-        const sortedNodes = sankeyData.nodes.map(node => ({
+        // Preparar los nodos con sus valores ajustados
+        const nodes = sankeyData.nodes.map(node => ({
             ...node,
             value: connectionCount[node.name] || 0
         }));
     
-        // Ordenar de forma descendente por número de conexiones dentro de cada categoría
-        const orderedNodes = sortedNodes.sort((a, b) => {
-            // Primero ordenar por categoría
+        // Ordenar los nodos por categoría y conexiones
+        nodes.sort((a, b) => {
+            // Primero por categoría
             if (a.category !== b.category) {
                 const categoryOrder = { ingrediente: 0, platillo: 1, estado: 2 };
                 return categoryOrder[a.category] - categoryOrder[b.category];
             }
-            // Dentro de la misma categoría, ordenar por número de conexiones (descendente)
+            // Dentro de cada categoría, por número de conexiones (descendente)
             return b.value - a.value;
         });
-    
+        sankeyData.links.sort((a, b) => b.value - a.value);
         return {
             tooltip: {
                 trigger: 'item',
@@ -111,20 +111,32 @@ const SankeyConfig = {
             },
             series: [{
                 type: 'sankey',
-                left: '10%',
-                right: '10%',
+                left: '5%',
+                right: '15%',  // Aumentado para dar más espacio a las etiquetas
                 top: '5%',
                 bottom: '5%',
+                nodeWidth: 20,
+                nodeAlign: 'justify',  // Alinea los nodos de manera uniforme
+                nodeSort: 'desc',      // Ordena los nodos de forma descendente
+                layoutIterations: 100, // Mayor número de iteraciones para mejor ordenamiento
+                nodePadding: 40,   // Aumentado el espacio entre nodos
+                // Configuración adicional que puede afectar el ordenamiento visual
+                orient: 'horizontal', // Dirección del diagrama
+                scaling: 0.95,        // Factor de escala para el tamaño de los nodos
                 emphasis: {
                     focus: 'adjacency'
                 },
-                data: orderedNodes,
+                data: nodes,
                 links: sankeyData.links,
                 orient: 'horizontal',
                 label: {
                     position: 'right',
-                    fontSize: 10,
-                    color: '#333'
+                    fontSize: 12,    // Aumentado el tamaño de fuente
+                    color: '#333',
+                    distance: 10,    // Distancia de la etiqueta al nodo
+                    align: 'left',   // Alineación del texto
+                    verticalAlign: 'middle',
+                    formatter: '{b}' // Muestra solo el nombre
                 },
                 lineStyle: {
                     color: 'source',
@@ -132,8 +144,9 @@ const SankeyConfig = {
                     opacity: 0.7
                 },
                 layoutIterations: 100,
-                nodeAlign: 'left',
-                nodeSort: 'desc' // Esto asegura que los nodos se ordenen de mayor a menor
+                nodeAlign: 'justify',
+                nodeSort: 'desc',
+                scaling: 0.95
             }]
         };
     }

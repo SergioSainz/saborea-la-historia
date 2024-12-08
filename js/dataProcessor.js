@@ -98,7 +98,7 @@ const DataProcessor = {
         const estadosRelacionados = new Set();
         const filteredLinks = [];
     
-        // Primero encontrar platillos relacionados con el ingrediente
+        // Encontrar platillos relacionados
         sankeyData.links.forEach(link => {
             if (link.source === ingrediente) {
                 relevantNodes.add(link.target);
@@ -107,7 +107,7 @@ const DataProcessor = {
             }
         });
     
-        // Luego encontrar estados relacionados con esos platillos
+        // Encontrar estados relacionados
         sankeyData.links.forEach(link => {
             if (platillosRelacionados.has(link.source)) {
                 relevantNodes.add(link.target);
@@ -116,36 +116,43 @@ const DataProcessor = {
             }
         });
     
-        const filteredNodes = sankeyData.nodes.map(node => ({
-            ...node,
-            itemStyle: {
-                color: node.name === ingrediente 
-                    ? SankeyConfig.getIngredientColor(node.name)
-                    : platillosRelacionados.has(node.name)
-                        ? SankeyConfig.defaultColors.platillos
-                        : estadosRelacionados.has(node.name)
-                            ? SankeyConfig.defaultColors.estados
-                            : SankeyConfig.defaultColors.inactive,
-                opacity: relevantNodes.has(node.name) ? 1 : 0.1
-            },
-            // Añadir configuración de etiqueta
-            label: {
-                show: relevantNodes.has(node.name),  // Solo mostrar etiquetas de nodos relevantes
-                position: 'right',
-                fontSize: 10,
-                color: '#333'
+        // Filtrar y ajustar los nodos
+        const filteredNodes = sankeyData.nodes
+            .filter(node => relevantNodes.has(node.name))
+            .map(node => ({
+                ...node,
+                itemStyle: {
+                    color: node.name === ingrediente 
+                        ? SankeyConfig.getIngredientColor(node.name)
+                        : platillosRelacionados.has(node.name)
+                            ? SankeyConfig.defaultColors.platillos
+                            : SankeyConfig.defaultColors.estados,
+                    opacity: 1
+                },
+                label: {
+                    show: true,
+                    position: 'right',
+                    fontSize: 10,
+                    color: '#333'
+                },
+                // Aumentar el valor para que ocupen más espacio
+                value: 1000 // Un valor alto para que todos los nodos sean grandes
+            }));
+    
+        // Ajustar los enlaces
+        const adjustedLinks = filteredLinks.map(link => ({
+            ...link,
+            value: 100, // Aumentar el valor de los enlaces
+            lineStyle: {
+                color: link.lineStyle.color,
+                opacity: 0.7,
+                width: 5 // Aumentar el ancho de las líneas
             }
         }));
     
         return {
             nodes: filteredNodes,
-            links: filteredLinks.map(link => ({
-                ...link,
-                lineStyle: {
-                    color: link.lineStyle.color,
-                    opacity: 0.7
-                }
-            }))
+            links: adjustedLinks
         };
     },
 

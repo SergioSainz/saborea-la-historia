@@ -38,30 +38,36 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .onStepEnter(response => {
                 const { element } = response;
-                const ingrediente = element.querySelector('h3')?.textContent;
+                let ingrediente = element.querySelector('h3')?.textContent;
                 
-                if (sankeyData && ingrediente) {
-                    const hasFlowerImage = element.querySelector('img.rotate-180');
-                    if (!hasFlowerImage) {
-                        // Texto descriptivo: mostrar todo
-                        const resetData = DataProcessor.resetVisualization(sankeyData);
-                        currentIngredient = null;
-                        sankeyChart.setOption({
-                            series: [{
-                                data: resetData.nodes,
-                                links: resetData.links
-                            }]
-                        });
-                    } else if (ingredientesPermitidos.has(ingrediente)) {
-                        // Solo filtrar por ingredientes permitidos
-                        currentIngredient = ingrediente;
-                        const filteredData = DataProcessor.filterByIngredient(sankeyData, ingrediente);
-                        sankeyChart.setOption({
-                            series: [{
-                                data: filteredData.nodes,
-                                links: filteredData.links
-                            }]
-                        });
+                // Normalizar el texto del ingrediente para la comparación
+                if (ingrediente) {
+                    ingrediente = ingrediente.trim();
+                    console.log('Ingrediente detectado:', ingrediente); // Para debugging
+                    
+                    if (sankeyData && ingrediente) {
+                        const hasFlowerImage = element.querySelector('img.rotate-180');
+                        if (!hasFlowerImage) {
+                            // Texto descriptivo: mostrar todo
+                            const resetData = DataProcessor.resetVisualization(sankeyData);
+                            currentIngredient = null;
+                            sankeyChart.setOption({
+                                series: [{
+                                    data: resetData.nodes,
+                                    links: resetData.links
+                                }]
+                            });
+                        } else if (ingredientesPermitidos.has(ingrediente)) {
+                            // Solo filtrar por ingredientes permitidos
+                            currentIngredient = ingrediente;
+                            const filteredData = DataProcessor.filterByIngredient(sankeyData, ingrediente);
+                            sankeyChart.setOption({
+                                series: [{
+                                    data: filteredData.nodes,
+                                    links: filteredData.links
+                                }]
+                            });
+                        }
                     }
                 }
             });

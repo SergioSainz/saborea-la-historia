@@ -46,3 +46,10 @@
     animation: underlineAppear 1s ease-out forwards;
     animation-delay: 2s;
   }
+
+  .animated-number {
+    color: #013971;
+    font-weight: bold;
+    font-size: 1.8rem;
+    transition: color 0.5s ease-in-out;
+}

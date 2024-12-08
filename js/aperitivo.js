@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar Scrollama
     function setupScrollama() {
         const scroller = scrollama();
-
+        const ingredientesPermitidos = new Set(['Maíz', 'Frijol', 'Chile', 'Calabaza', 'Cacao']);
+    
         scroller
             .setup({
                 step: '.content-block',
@@ -51,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 links: resetData.links
                             }]
                         });
-                    } else {
-                        // Ingrediente: filtrar
+                    } else if (ingredientesPermitidos.has(ingrediente)) {
+                        // Solo filtrar por ingredientes permitidos
                         currentIngredient = ingrediente;
                         const filteredData = DataProcessor.filterByIngredient(sankeyData, ingrediente);
                         sankeyChart.setOption({
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-
+    
         return scroller;
     }
 
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVisualizations();
 
     // Cargar datos y configurar visualizaciones
-    fetch('json/aperitivo.json')
+    fetch('./json/aperitivo.json')  // Ruta relativa
         .then(response => response.json())
         .then(data => {
             sankeyData = DataProcessor.processDataForSankey(data);

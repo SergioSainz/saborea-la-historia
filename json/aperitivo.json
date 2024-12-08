@@ -2,77 +2,43 @@
   "features": [
     {
       "properties": {
-        "estado": "Oaxaca",
-        "alimentos": ["Maíz", "Chile", "Frijol", "Chocolate"],
-        "platillos": ["Tlayudas", "Mole Negro", "Tamales Oaxaqueños", "Enfrijoladas"],
-        "relaciones": [
-          {
-            "origen": "Maíz",
-            "destino": "Tlayudas",
-            "peso": 2
-          },
-          {
-            "origen": "Frijol",
-            "destino": "Tlayudas",
-            "peso": 1
-          },
-          {
-            "origen": "Chile",
-            "destino": "Mole Negro",
-            "peso": 2
-          },
-          {
-            "origen": "Chocolate",
-            "destino": "Mole Negro",
-            "peso": 2
-          },
-          {
-            "origen": "Maíz",
-            "destino": "Tamales Oaxaqueños",
-            "peso": 2
-          },
-          {
-            "origen": "Frijol",
-            "destino": "Enfrijoladas",
-            "peso": 2
-          },
-          {
-            "origen": "Maíz",
-            "destino": "Enfrijoladas",
-            "peso": 1
-          }
-        ]
-      }
-    },
-    {
-      "properties": {
         "estado": "Puebla",
-        "alimentos": ["Chile", "Chocolate", "Maíz", "Frijol"],
-        "platillos": ["Mole Poblano", "Chalupas", "Cemitas", "Chiles en Nogada"],
+        "alimentos": ["Maíz", "Chile", "Frijol", "Amaranto", "Cacao"],
+        "platillos": ["Tortillas de Maíz", "Atole", "Tamales", "Tlayoyos"],
         "relaciones": [
           {
-            "origen": "Chile",
-            "destino": "Mole Poblano",
-            "peso": 2
-          },
-          {
-            "origen": "Chocolate",
-            "destino": "Mole Poblano",
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
             "peso": 2
           },
           {
             "origen": "Maíz",
-            "destino": "Chalupas",
+            "destino": "Tamales",
             "peso": 2
           },
           {
-            "origen": "Maíz",
-            "destino": "Cemitas",
+            "origen": "Frijol",
+            "destino": "Tlayoyos",
             "peso": 2
           },
           {
             "origen": "Chile",
-            "destino": "Chiles en Nogada",
+            "destino": "Tlayoyos",
+            "peso": 1
+          },
+          {
+            "origen": "Amaranto",
+            "destino": "Atole",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole",
+            "peso": 1
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atole",
             "peso": 2
           }
         ]
@@ -81,27 +47,140 @@
     {
       "properties": {
         "estado": "Yucatán",
-        "alimentos": ["Coco", "Chile Habanero", "Maíz", "Frijol"],
-        "platillos": ["Cochinita Pibil", "Panuchos", "Sopa de Lima", "Papadzules"],
+        "alimentos": ["Maíz", "Chile", "Achiote", "Jitomate", "Pepitas", "Frijol", "Chaya"],
+        "platillos": ["Papadzules", "Sikil Pak", "Dzotobichay", "Polcanes"],
         "relaciones": [
           {
-            "origen": "Chile Habanero",
-            "destino": "Cochinita Pibil",
+            "origen": "Maíz",
+            "destino": "Papadzules",
+            "peso": 2
+          },
+          {
+            "origen": "Pepitas",
+            "destino": "Papadzules",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Papadzules",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Papadzules",
             "peso": 1
           },
           {
             "origen": "Maíz",
-            "destino": "Panuchos",
+            "destino": "Dzotobichay",
             "peso": 2
           },
           {
+            "origen": "Chaya",
+            "destino": "Dzotobichay",
+            "peso": 2
+          },
+          {
+            "origen": "Achiote",
+            "destino": "Dzotobichay",
+            "peso": 1
+          },
+          {
+            "origen": "Pepitas",
+            "destino": "Sikil Pak",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Sikil Pak",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Sikil Pak",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Polcanes",
+            "peso": 2
+          },
+          {
+            "origen": "Pepitas",
+            "destino": "Polcanes",
+            "peso": 1
+          },
+          {
             "origen": "Frijol",
-            "destino": "Panuchos",
+            "destino": "Polcanes",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Polcanes",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Veracruz",
+        "alimentos": [
+          "Vainilla",
+          "Cacao",
+          "Chayote",
+          "Papaya",
+          "Jicama",
+          "Nanche",
+          "Guanábana",
+          "Mamey",
+          "Guayaba",
+          "Chile",
+          "Epazote",
+          "Calabaza",
+          "Flor de Calabaza"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Flor de Calabaza",
+          "Atole de Cacao",
+          "Tamales de Calabaza y Chile",
+          "Popo (bebida de cacao y maíz)"
+        ],
+        "relaciones": [
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Tamales de Calabaza y Chile",
+            "peso": 1
+          },
+          {
+            "origen": "Flor de Calabaza",
+            "destino": "Tortillas de Maíz con Flor de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atole de Cacao",
             "peso": 2
           },
           {
             "origen": "Maíz",
-            "destino": "Papadzules",
+            "destino": "Atole de Cacao",
+            "peso": 1
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Popo (bebida de cacao y maíz)",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Popo (bebida de cacao y maíz)",
             "peso": 2
           }
         ]
@@ -109,25 +188,227 @@
     },
     {
       "properties": {
-        "estado": "Michoacán",
-        "alimentos": ["Pescado", "Chile", "Maíz", "Frijol"],
-        "platillos": ["Caldo Michi", "Pescado Blanco", "Corundas", "Uchepos"],
+        "estado": "Estado de México",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Quintoniles",
+          "Huauzontle",
+          "Verdolagas",
+          "Romeritos",
+          "Papaloquelite",
+          "Flor de Colorín",
+          "Epazote",
+          "Elote"
+        ],
+        "platillos": [
+          "Tlacoyos",
+          "Tortillas de Maíz con Quintoniles",
+          "Atole de Maíz con Cacao",
+          "Tamales de Verdolagas"
+        ],
         "relaciones": [
           {
-            "origen": "Pescado",
-            "destino": "Caldo Michi",
+            "origen": "Maíz",
+            "destino": "Tlacoyos",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tlacoyos",
+            "peso": 2
+          },
+          {
+            "origen": "Quintoniles",
+            "destino": "Tortillas de Maíz con Quintoniles",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Quintoniles",
+            "peso": 1
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atole de Maíz con Cacao",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Cacao",
+            "peso": 1
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Tamales de Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Verdolagas",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Chiapas",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Chía",
+          "Cacao",
+          "Achiote",
+          "Jitomate",
+          "Aguacate",
+          "Camote",
+          "Papaya",
+          "Anona",
+          "Chicozapote",
+          "Guanábana",
+          "Zapote Negro",
+          "Zapote Blanco",
+          "Pitahaya"
+        ],
+        "platillos": [
+          "Pozol (bebida de maíz y cacao)",
+          "Tascalate",
+          "Tamales de Camote",
+          "Salsa de Aguacate y Chile"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Pozol (bebida de maíz y cacao)",
+            "peso": 2
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Pozol (bebida de maíz y cacao)",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tascalate",
+            "peso": 1
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Tascalate",
+            "peso": 1
+          },
+          {
+            "origen": "Achiote",
+            "destino": "Tascalate",
+            "peso": 1
+          },
+          {
+            "origen": "Camote",
+            "destino": "Tamales de Camote",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Camote",
+            "peso": 2
+          },
+          {
+            "origen": "Aguacate",
+            "destino": "Salsa de Aguacate y Chile",
             "peso": 2
           },
           {
             "origen": "Chile",
-            "destino": "Caldo Michi",
+            "destino": "Salsa de Aguacate y Chile",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Guerrero",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chilacayote",
+          "Papaloquelite",
+          "Hoja Santa",
+          "Epazote"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Hoja Santa",
+          "Caldo de Chilacayote",
+          "Tamales de Nopal y Papaloquelite",
+          "Salsa de Chile y Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Hoja Santa",
+            "peso": 2
+          },
+          {
+            "origen": "Hoja Santa",
+            "destino": "Tortillas de Maíz con Hoja Santa",
             "peso": 1
           },
           {
-            "origen": "Pescado",
-            "destino": "Pescado Blanco",
+            "origen": "Chilacayote",
+            "destino": "Caldo de Chilacayote",
             "peso": 2
           },
+          {
+            "origen": "Nopal",
+            "destino": "Tamales de Nopal y Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Papaloquelite",
+            "destino": "Tamales de Nopal y Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Nopal y Papaloquelite",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Michoacán",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Huauzontle",
+          "Verdolagas",
+          "Chía"
+        ],
+        "platillos": [
+          "Corundas",
+          "Uchepos",
+          "Atápakua",
+          "Atole de Chía"
+        ],
+        "relaciones": [
           {
             "origen": "Maíz",
             "destino": "Corundas",
@@ -137,40 +418,1576 @@
             "origen": "Maíz",
             "destino": "Uchepos",
             "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Atápakua",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Atápakua",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Atápakua",
+            "peso": 1
+          },
+          {
+            "origen": "Huauzontle",
+            "destino": "Atápakua",
+            "peso": 1
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Atápakua",
+            "peso": 1
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Chía",
+            "peso": 1
           }
         ]
       }
     },
     {
       "properties": {
-        "estado": "Veracruz",
-        "alimentos": ["Pescado", "Chile", "Maíz", "Frijol"],
-        "platillos": ["Pescado a la Veracruzana", "Gorditas", "Picadas", "Vuelve a la Vida"],
+        "estado": "Tabasco",
+        "alimentos": [
+          "Maíz",
+          "Cacao",
+          "Achiote",
+          "Frijol",
+          "Epazote",
+          "Jitomate",
+          "Chile"
+        ],
+        "platillos": [
+          "Tortillas de Maíz",
+          "Atole de Cacao",
+          "Tamales de Achiote",
+          "Salsa de Epazote"
+        ],
         "relaciones": [
           {
-            "origen": "Pescado",
-            "destino": "Pescado a la Veracruzana",
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atole de Cacao",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Cacao",
+            "peso": 1
+          },
+          {
+            "origen": "Achiote",
+            "destino": "Tamales de Achiote",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Achiote",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Hidalgo",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Quintoniles",
+          "Epazote",
+          "Verdolagas",
+          "Aguacate",
+          "Jitomate"
+        ],
+        "platillos": [
+          "Itacates de Quintoniles",
+          "Tamales de Verdolagas",
+          "Salsa de Aguacate y Chile",
+          "Atole de Maíz con Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Itacates de Quintoniles",
+            "peso": 2
+          },
+          {
+            "origen": "Quintoniles",
+            "destino": "Itacates de Quintoniles",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Tamales de Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Aguacate",
+            "destino": "Salsa de Aguacate y Chile",
             "peso": 2
           },
           {
             "origen": "Chile",
-            "destino": "Pescado a la Veracruzana",
+            "destino": "Salsa de Aguacate y Chile",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Atole de Maíz con Epazote",
             "peso": 1
           },
           {
             "origen": "Maíz",
-            "destino": "Gorditas",
+            "destino": "Atole de Maíz con Epazote",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Morelos",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Papaloquelite",
+          "Calabaza",
+          "Flor de Colorín"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Flor de Colorín",
+          "Tamales de Calabaza",
+          "Salsa de Papaloquelite y Chile",
+          "Atole de Maíz"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Flor de Colorín",
+            "peso": 2
+          },
+          {
+            "origen": "Flor de Colorín",
+            "destino": "Tortillas de Maíz con Flor de Colorín",
+            "peso": 2
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza",
             "peso": 2
           },
           {
             "origen": "Maíz",
-            "destino": "Picadas",
+            "destino": "Tamales de Calabaza",
             "peso": 2
           },
           {
-            "origen": "Pescado",
-            "destino": "Vuelve a la Vida",
+            "origen": "Papaloquelite",
+            "destino": "Salsa de Papaloquelite y Chile",
             "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Papaloquelite y Chile",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Tlaxcala",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Huauzontle",
+          "Chía",
+          "Nopal",
+          "Flor de Calabaza",
+          "Epazote"
+        ],
+        "platillos": [
+          "Tortillas de Maíz",
+          "Tlacoyos de Frijol",
+          "Atole de Chía",
+          "Sopa de Huauzontle y Flor de Calabaza"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tlacoyos de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tlacoyos de Frijol",
+            "peso": 1
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Huauzontle",
+            "destino": "Sopa de Huauzontle y Flor de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Flor de Calabaza",
+            "destino": "Sopa de Huauzontle y Flor de Calabaza",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Sopa de Huauzontle y Flor de Calabaza",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Jalisco",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Nopal",
+          "Aguacate",
+          "Epazote",
+          "Pitahaya"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Atole de Maíz",
+          "Salsa de Jitomate, Chile y Epazote",
+          "Agua de Pitahaya"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Pitahaya",
+            "destino": "Agua de Pitahaya",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Colima",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Calabaza",
+          "Epazote",
+          "Jicama",
+          "Papaya",
+          "Guanábana"
+        ],
+        "platillos": [
+          "Tamales de Calabaza",
+          "Atole de Maíz con Jicama",
+          "Salsa de Chile y Epazote",
+          "Tortillas de Maíz con Papaya"
+        ],
+        "relaciones": [
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Jicama",
+            "peso": 2
+          },
+          {
+            "origen": "Jicama",
+            "destino": "Atole de Maíz con Jicama",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaya",
+            "peso": 2
+          },
+          {
+            "origen": "Papaya",
+            "destino": "Tortillas de Maíz con Papaya",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Nayarit",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Chía",
+          "Nanche",
+          "Huitlacoche",
+          "Papaya",
+          "Guanábana"
+        ],
+        "platillos": [
+          "Tamales de Nanche",
+          "Atole de Chía",
+          "Tortillas de Maíz con Huitlacoche",
+          "Salsa de Jitomate y Chile"
+        ],
+        "relaciones": [
+          {
+            "origen": "Nanche",
+            "destino": "Tamales de Nanche",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Nanche",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Huitlacoche",
+            "destino": "Tortillas de Maíz con Huitlacoche",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Huitlacoche",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Querétaro",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Epazote",
+          "Nopal",
+          "Papaloquelite",
+          "Calabaza"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Frijol y Calabaza",
+          "Atole de Maíz con Epazote",
+          "Salsa de Papaloquelite y Chile"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol y Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Frijol y Calabaza",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol y Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Atole de Maíz con Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Papaloquelite",
+            "destino": "Salsa de Papaloquelite y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Papaloquelite y Chile",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "San Luis Potosí",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Jitomate",
+          "Verdolagas"
+        ],
+        "platillos": [
+          "Tortillas de Nopal",
+          "Tamales de Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate, Chile y Verdolagas"
+        ],
+        "relaciones": [
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 1
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Campeche",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Achiote",
+          "Cacao",
+          "Jitomate",
+          "Chaya",
+          "Nopal",
+          "Pepitas"
+        ],
+        "platillos": [
+          "Dzotobichay (tamales de Chaya)",
+          "Atoles de Maíz con Cacao",
+          "Sikil Pak (salsa de pepitas y jitomate)",
+          "Tortillas de Maíz con Nopal"
+        ],
+        "relaciones": [
+          {
+            "origen": "Chaya",
+            "destino": "Dzotobichay (tamales de Chaya)",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Dzotobichay (tamales de Chaya)",
+            "peso": 2
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atoles de Maíz con Cacao",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atoles de Maíz con Cacao",
+            "peso": 1
+          },
+          {
+            "origen": "Pepitas",
+            "destino": "Sikil Pak (salsa de pepitas y jitomate)",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Sikil Pak (salsa de pepitas y jitomate)",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Guanajuato",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Nopal",
+          "Verdolagas",
+          "Epazote"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Frijol y Verdolagas",
+          "Atole de Maíz con Epazote",
+          "Salsa de Jitomate y Chile"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol y Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Tamales de Frijol y Verdolagas",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol y Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Atole de Maíz con Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Zacatecas",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Chía",
+          "Jitomate",
+          "Nopal",
+          "Huauzontle"
+        ],
+        "platillos": [
+          "Tortillas de Maíz",
+          "Tamales de Nopal y Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate, Chile y Huauzontle"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tamales de Nopal y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Nopal y Frijol",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Nopal y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 1
+          },
+          {
+            "origen": "Huauzontle",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Aguascalientes",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Epazote",
+          "Papaloquelite",
+          "Chía",
+          "Nopal"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Papaloquelite",
+          "Tamales de Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate y Chile con Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Papaloquelite",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Chihuahua",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Epazote",
+          "Chía",
+          "Calabaza"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Frijol y Chile",
+          "Atole de Maíz con Chía",
+          "Salsa de Chile y Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Tamales de Frijol y Chile",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Sonora",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Pitahaya",
+          "Chía",
+          "Jitomate"
+        ],
+        "platillos": [
+          "Tortillas de Maíz",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate y Chile",
+          "Agua de Pitahaya"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 1
+          },
+          {
+            "origen": "Pitahaya",
+            "destino": "Agua de Pitahaya",
+            "peso": 2
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Sinaloa",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Jitomate",
+          "Calabaza",
+          "Epazote",
+          "Papaloquelite"
+        ],
+        "platillos": [
+          "Tamales de Calabaza",
+          "Tortillas de Maíz con Papaloquelite",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate y Chile"
+        ],
+        "relaciones": [
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Papaloquelite",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 1
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Coahuila",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Calabaza",
+          "Jitomate",
+          "Epazote"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Calabaza y Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate y Chile con Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Jitomate y Chile con Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Nuevo León",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Jitomate",
+          "Verdolagas"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate, Chile y Verdolagas"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 1
+          },
+          {
+            "origen": "Verdolagas",
+            "destino": "Salsa de Jitomate, Chile y Verdolagas",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Tamaulipas",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Calabaza",
+          "Epazote",
+          "Papaloquelite"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Papaloquelite",
+          "Tamales de Calabaza y Frijol",
+          "Atole de Maíz",
+          "Salsa de Chile y Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Papaloquelite",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 1
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chile y Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Baja California",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Jitomate",
+          "Epazote"
+        ],
+        "platillos": [
+          "Tortillas de Maíz",
+          "Tamales de Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate, Chile y Epazote"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Jitomate, Chile y Epazote",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Baja California Sur",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Calabaza",
+          "Papaloquelite"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Papaloquelite",
+          "Tamales de Calabaza y Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Chile y Calabaza"
+        ],
+        "relaciones": [
+          {
+            "origen": "Papaloquelite",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaloquelite",
+            "peso": 1
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Calabaza y Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Chile y Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Calabaza",
+            "destino": "Salsa de Chile y Calabaza",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Durango",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Chía",
+          "Jitomate",
+          "Huauzontle"
+        ],
+        "platillos": [
+          "Tortillas de Maíz con Nopal",
+          "Tamales de Frijol",
+          "Atole de Maíz con Chía",
+          "Salsa de Jitomate, Chile y Huauzontle"
+        ],
+        "relaciones": [
+          {
+            "origen": "Nopal",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Nopal",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Chía",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz con Chía",
+            "peso": 1
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 2
+          },
+          {
+            "origen": "Chile",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 1
+          },
+          {
+            "origen": "Huauzontle",
+            "destino": "Salsa de Jitomate, Chile y Huauzontle",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Quintana Roo",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Achiote",
+          "Cacao",
+          "Chaya",
+          "Papaya",
+          "Jitomate",
+          "Pepitas"
+        ],
+        "platillos": [
+          "Dzotobichay (tamales de Chaya)",
+          "Atoles de Maíz con Cacao",
+          "Sikil Pak (salsa de pepitas y jitomate)",
+          "Tortillas de Maíz con Papaya"
+        ],
+        "relaciones": [
+          {
+            "origen": "Chaya",
+            "destino": "Dzotobichay (tamales de Chaya)",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Dzotobichay (tamales de Chaya)",
+            "peso": 2
+          },
+          {
+            "origen": "Cacao",
+            "destino": "Atoles de Maíz con Cacao",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atoles de Maíz con Cacao",
+            "peso": 1
+          },
+          {
+            "origen": "Pepitas",
+            "destino": "Sikil Pak (salsa de pepitas y jitomate)",
+            "peso": 2
+          },
+          {
+            "origen": "Jitomate",
+            "destino": "Sikil Pak (salsa de pepitas y jitomate)",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Papaya",
+            "peso": 2
+          },
+          {
+            "origen": "Papaya",
+            "destino": "Tortillas de Maíz con Papaya",
+            "peso": 1
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "estado": "Ciudad de México (CDMX)",
+        "alimentos": [
+          "Maíz",
+          "Chile",
+          "Frijol",
+          "Nopal",
+          "Aguacate",
+          "Epazote",
+          "Quintoniles",
+          "Huitlacoche",
+          "Flor de Calabaza"
+        ],
+        "platillos": [
+          "Tlacoyos de Frijol",
+          "Tortillas de Maíz con Huitlacoche",
+          "Atole de Maíz",
+          "Sopa de Quintoniles y Flor de Calabaza"
+        ],
+        "relaciones": [
+          {
+            "origen": "Frijol",
+            "destino": "Tlacoyos de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tlacoyos de Frijol",
+            "peso": 1
+          },
+          {
+            "origen": "Huitlacoche",
+            "destino": "Tortillas de Maíz con Huitlacoche",
+            "peso": 2
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tortillas de Maíz con Huitlacoche",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Atole de Maíz",
+            "peso": 2
+          },
+          {
+            "origen": "Quintoniles",
+            "destino": "Sopa de Quintoniles y Flor de Calabaza",
+            "peso": 2
+          },
+          {
+            "origen": "Flor de Calabaza",
+            "destino": "Sopa de Quintoniles y Flor de Calabaza",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Sopa de Quintoniles y Flor de Calabaza",
+            "peso": 1
           }
         ]
       }

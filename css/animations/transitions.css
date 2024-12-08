@@ -24,27 +24,11 @@
     transform: scale(1.05);
   }
   
-  /* Transiciones de underline */
   .underline-animation {
-    position: relative;
-    color: #013971;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  .underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.6s ease-out;
-    animation: underlineAppear 1s ease-out forwards;
-    animation-delay: 2s;
+    color: #013971; /* Color inicial */
+    text-decoration: none; /* Elimina subrayado por defecto */
+    transition: color 0.3s ease-in-out; /* Animación suave */
+    font-weight: bold;
   }
 
   .animated-number {
@@ -71,9 +55,15 @@
 .ingredient-block .card-text {
   font-size: 0.9rem;
   color: #666;
+  text-align: center;
 }
 
 .ingredient-block .cardo-regular {
   line-height: 1.6;
   text-align: left;
+}
+
+.tarjeta{
+  line-height: 1.6;
+  text-align: center;
 }

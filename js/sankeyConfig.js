@@ -74,65 +74,78 @@ const SankeyConfig = {
         }
         return this.defaultColors.platillos;
     },
-
     createSankeyOption: function(sankeyData) {
-        // Calcular el total de conexiones para cada nodo
+        // Asignar niveles explícitos a los nodos
+        sankeyData.nodes = sankeyData.nodes.map(node => ({
+            ...node,
+            depth: node.category === 'ingrediente' ? 0 : 
+                   node.category === 'platillo' ? 1 : 2
+        }));
+    
+        // Calcular conexiones
         const connectionCount = {};
         sankeyData.links.forEach(link => {
             connectionCount[link.source] = (connectionCount[link.source] || 0) + link.value;
             connectionCount[link.target] = (connectionCount[link.target] || 0) + link.value;
         });
     
-        // Preparar los nodos con sus valores ajustados
-        const nodes = sankeyData.nodes.map(node => ({
+        // Ordenar nodos por categoría y conexiones
+        const nodes = sankeyData.nodes.sort((a, b) => {
+            // Primero ordenar por profundidad (categoría)
+            if (a.depth !== b.depth) return a.depth - b.depth;
+            
+            // Si son estados (depth 2), ordenar alfabéticamente
+            if (a.depth === 2) {
+                return a.name.localeCompare(b.name);
+            }
+            
+            // Para ingredientes y platillos, mantener el orden por número de conexiones
+            return (connectionCount[b.name] || 0) - (connectionCount[a.name] || 0);
+        }).map(node => ({
             ...node,
             value: connectionCount[node.name] || 0
         }));
     
-        // Ordenar los nodos por categoría y conexiones
-        nodes.sort((a, b) => {
-            // Primero por categoría
-            if (a.category !== b.category) {
-                const categoryOrder = { ingrediente: 0, platillo: 1, estado: 2 };
-                return categoryOrder[a.category] - categoryOrder[b.category];
-            }
-            // Dentro de cada categoría, por número de conexiones (descendente)
-            return b.value - a.value;
-        });
-        sankeyData.links.sort((a, b) => b.value - a.value);
+        // Validar y limpiar enlaces
+        const links = sankeyData.links.filter(link => {
+            const sourceNode = nodes.find(n => n.name === link.source);
+            const targetNode = nodes.find(n => n.name === link.target);
+            return sourceNode && targetNode && sourceNode.depth < targetNode.depth;
+        }).sort((a, b) => b.value - a.value);
+    
         return {
-                title: [
-                    {
-                        text: 'Ingredientes',
-                        left: '4.5%',
-                        top: '1%',
-                        textStyle: {
-                            fontSize: 16,
-                            fontFamily: 'Libre Baskerville',
-                            color: '#013971'
-                        }
-                    },
-                    {
-                        text: 'Platillos',
-                        left: '43.5%',
-                        top: '1%',
-                        textStyle: {
-                            fontSize: 16,
-                            fontFamily: 'Libre Baskerville',
-                            color: '#013971'
-                        }
-                    },
-                    {
-                        text: 'Estados',
-                        left: '83%',
-                        top: '1%',
-                        textStyle: {
-                            fontSize: 16,
-                            fontFamily: 'Libre Baskerville',
-                            color: '#013971'
-                        }
+            title: [
+                {
+                    text: 'Ingredientes',
+                    left: '4.5%',
+                    top: '1%',
+                    textStyle: {
+                        fontSize: 16,
+                        fontFamily: 'Libre Baskerville',
+                        color: '#013971'
                     }
-                ],
+                },
+                {
+                    text: 'Platillos',
+                    left: '43.5%',
+                    top: '1%',
+                    textStyle: {
+                        fontSize: 16,
+                        fontFamily: 'Libre Baskerville',
+                        color: '#013971'
+                    }
+                },
+                {
+                    text: 'Estados',
+                    left: '83%',
+                    top: '1%',
+                    textStyle: {
+                        fontSize: 16,
+                        fontFamily: 'Libre Baskerville',
+                        color: '#013971'
+                    }
+                }
+            ],
             tooltip: {
                 trigger: 'item',
                 triggerOn: 'mousemove',
@@ -144,41 +157,52 @@ const SankeyConfig = {
             series: [{
                 type: 'sankey',
                 left: '5%',
-                right: '15%',  // Aumentado para dar más espacio a las etiquetas
+                right: '15%',
                 top: '5%',
                 bottom: '5%',
                 nodeWidth: 20,
-                nodeAlign: 'justify',  // Alinea los nodos de manera uniforme
-                nodeSort: 'desc',      // Ordena los nodos de forma descendente
-                layoutIterations: 100, // Mayor número de iteraciones para mejor ordenamiento
-                nodePadding: 40,   // Aumentado el espacio entre nodos
-                // Configuración adicional que puede afectar el ordenamiento visual
-                orient: 'horizontal', // Dirección del diagrama
-                scaling: 0.95,        // Factor de escala para el tamaño de los nodos
+                nodePadding: 40,
+                layoutIterations: 100,
                 emphasis: {
                     focus: 'adjacency'
                 },
                 data: nodes,
-                links: sankeyData.links,
+                links: links,
                 orient: 'horizontal',
                 label: {
                     position: 'right',
-                    fontSize: 10,    // Aumentado el tamaño de fuente
+                    fontSize: 10,
                     color: '#013971',
-                    distance: 10,    // Distancia de la etiqueta al nodo
-                    align: 'left',   // Alineación del texto
+                    distance: 10,
+                    align: 'left',
                     verticalAlign: 'middle',
-                    formatter: '{b}' // Muestra solo el nombre
+                    formatter: '{b}'
                 },
+                levels: [
+                    {
+                        depth: 0,
+                        itemStyle: {
+                            color: d => SankeyConfig.getIngredientColor(d.name)
+                        }
+                    },
+                    {
+                        depth: 1,
+                        itemStyle: {
+                            color: SankeyConfig.defaultColors.platillos
+                        }
+                    },
+                    {
+                        depth: 2,
+                        itemStyle: {
+                            color: SankeyConfig.defaultColors.estados
+                        }
+                    }
+                ],
                 lineStyle: {
                     color: 'source',
                     curveness: 0.5,
                     opacity: 0.7
-                },
-                layoutIterations: 100,
-                nodeAlign: 'justify',
-                nodeSort: 'desc',
-                scaling: 0.95
+                }
             }]
         };
     }

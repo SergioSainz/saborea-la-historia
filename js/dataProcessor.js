@@ -158,25 +158,46 @@ const DataProcessor = {
 
     resetVisualization: function(sankeyData) {
         this.currentFilter = null;
+    
+        // Calcular conexiones para mantener el ordenamiento
+        const connectionCount = {};
+        sankeyData.links.forEach(link => {
+            connectionCount[link.source] = (connectionCount[link.source] || 0) + link.value;
+            connectionCount[link.target] = (connectionCount[link.target] || 0) + link.value;
+        });
+    
+        // Ordenar los nodos manteniendo la lógica de ordenamiento
+        const orderedNodes = sankeyData.nodes.sort((a, b) => {
+            // Primero por profundidad/categoría
+            if (a.depth !== b.depth) return a.depth - b.depth;
+            
+            // Si son estados (depth 2), ordenar alfabéticamente
+            if (a.depth === 2) {
+                return a.name.localeCompare(b.name);
+            }
+            
+            // Para ingredientes y platillos, ordenar por conexiones
+            return (connectionCount[b.name] || 0) - (connectionCount[a.name] || 0);
+        }).map(node => ({
+            ...node,
+            itemStyle: {
+                color: node.category === 'ingrediente'
+                    ? SankeyConfig.getIngredientColor(node.name)
+                    : node.category === 'estado'
+                        ? SankeyConfig.defaultColors.estados
+                        : SankeyConfig.defaultColors.platillos,
+                opacity: 1
+            },
+            label: {
+                show: true,
+                position: 'right',
+                fontSize: 10,
+                color: '#333'
+            }
+        }));
+    
         return {
-            nodes: sankeyData.nodes.map(node => ({
-                ...node,
-                itemStyle: {
-                    color: node.category === 'ingrediente'
-                        ? SankeyConfig.getIngredientColor(node.name)
-                        : node.category === 'estado'
-                            ? SankeyConfig.defaultColors.estados
-                            : SankeyConfig.defaultColors.platillos,
-                    opacity: 1
-                },
-                // Restablecer configuración de etiqueta
-                label: {
-                    show: true,
-                    position: 'right',
-                    fontSize: 10,
-                    color: '#333'
-                }
-            })),
+            nodes: orderedNodes,
             links: sankeyData.links.map(link => ({
                 ...link,
                 lineStyle: {

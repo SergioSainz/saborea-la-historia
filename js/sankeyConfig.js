@@ -101,6 +101,38 @@ const SankeyConfig = {
         });
         sankeyData.links.sort((a, b) => b.value - a.value);
         return {
+                title: [
+                    {
+                        text: 'Ingredientes',
+                        left: '4.5%',
+                        top: '1%',
+                        textStyle: {
+                            fontSize: 16,
+                            fontFamily: 'Libre Baskerville',
+                            color: '#013971'
+                        }
+                    },
+                    {
+                        text: 'Platillos',
+                        left: '43.5%',
+                        top: '1%',
+                        textStyle: {
+                            fontSize: 16,
+                            fontFamily: 'Libre Baskerville',
+                            color: '#013971'
+                        }
+                    },
+                    {
+                        text: 'Estados',
+                        left: '83%',
+                        top: '1%',
+                        textStyle: {
+                            fontSize: 16,
+                            fontFamily: 'Libre Baskerville',
+                            color: '#013971'
+                        }
+                    }
+                ],
             tooltip: {
                 trigger: 'item',
                 triggerOn: 'mousemove',
@@ -131,8 +163,8 @@ const SankeyConfig = {
                 orient: 'horizontal',
                 label: {
                     position: 'right',
-                    fontSize: 12,    // Aumentado el tamaño de fuente
-                    color: '#333',
+                    fontSize: 10,    // Aumentado el tamaño de fuente
+                    color: '#013971',
                     distance: 10,    // Distancia de la etiqueta al nodo
                     align: 'left',   // Alineación del texto
                     verticalAlign: 'middle',

@@ -1,0 +1,88 @@
+/* Añade estos estilos a tu sticky.css */
+.visualization-container {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    
+}
+
+#primer-plato-map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+/* Estilos para los marcadores */
+.marker-ingrediente {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.marker-icon-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.marker-icon-container:hover {
+    transform: scale(1.1);
+}
+
+.marker-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.marker-icon-container.hover {
+    transform: scale(1.2);
+}
+
+.maplibregl-popup {
+    z-index: 2;
+}
+/* Estilos para los popups */
+.marker-popup {
+    background: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    max-width: 250px;
+    padding: 10px;
+}
+
+.marker-popup h3 {
+    margin: 0 0 8px 0;
+    color: #013971;
+    font-family: 'Cardo', serif;
+}
+
+.marker-popup p {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.map-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}

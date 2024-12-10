@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let sankeyData = null;
     let currentState = 'all';
     let currentIngredient = null;
+    let primerPlatoMap = null;
 
     // Inicializar visualizaciones
     function initializeVisualizations() {
@@ -14,7 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('resize', () => sankeyChart.resize());
         }
 
-        // Inicializar mapa
+        // Inicializar el nuevo mapa si estamos en la sección correcta
+        if (document.getElementById('primer-plato-map')) {
+            primerPlatoMap = new PrimerPlatoMap();
+            primerPlatoMap.initialize('primer-plato-map');
+        }
+
+        // Mantener el mapa existente
         if (!map && document.getElementById('map')) {
             map = L.map('map', {
                 zoomControl: false,
@@ -38,9 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .onStepEnter(response => {
                 const { element } = response;
-                const ingrediente = element.querySelector('h3')?.textContent;
                 
+                // Actualizar visualizaciones existentes
                 if (sankeyData) {
+                    const ingrediente = element.querySelector('h3')?.textContent;
                     const hasFlowerImage = element.querySelector('img.rotate-180');
                     
                     // Si no hay ingrediente o no tiene la imagen rotate-180, mostrar todo
@@ -64,6 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             }]
                         });
                     }
+                }
+                // Actualizar nuevo mapa si existe
+                if (primerPlatoMap) {
+                    primerPlatoMap.updateVisualization(element);
                 }
             });
     
@@ -137,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVisualizations();
 
     // Cargar datos y configurar visualizaciones
-    fetch('./json/aperitivo.json')  // Ruta relativa
+    fetch('./json/aperitivo.json')
         .then(response => response.json())
         .then(data => {
             sankeyData = DataProcessor.processDataForSankey(data);
@@ -167,6 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (sankeyChart) {
             sankeyChart.dispose();
             sankeyChart = null;
+        }
+        if (primerPlatoMap) {
+            primerPlatoMap.dispose();
+            primerPlatoMap = null;
         }
     });
 });

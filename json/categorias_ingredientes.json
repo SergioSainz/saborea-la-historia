@@ -1,0 +1,38 @@
+{
+    "classified_ingredients": [
+      {"ingredient": "Mamey", "category": "Frutas tropicales"},
+      {"ingredient": "Flor de Colorín", "category": "Flores comestibles"},
+      {"ingredient": "Maíz", "category": "Base de la cocina mexicana"},
+      {"ingredient": "Jitomate", "category": "Ingredientes básicos"},
+      {"ingredient": "Hoja Santa", "category": "Hierbas tradicionales"},
+      {"ingredient": "Chaya", "category": "Hierbas y hojas regionales"},
+      {"ingredient": "Frijol", "category": "Base de la cocina mexicana"},
+      {"ingredient": "Piloncillo", "category": "Endulzantes tradicionales"},
+      {"ingredient": "Chilacayote", "category": "Calabazas y derivados"},
+      {"ingredient": "Zapote Blanco", "category": "Frutas tropicales"},
+      {"ingredient": "Nopal", "category": "Ingredientes tradicionales"},
+      {"ingredient": "Papaya", "category": "Frutas tropicales"},
+      {"ingredient": "Zapote Negro", "category": "Frutas tropicales"},
+      {"ingredient": "Guayaba", "category": "Frutas tropicales"},
+      {"ingredient": "Quintoniles", "category": "Verduras tradicionales"},
+      {"ingredient": "Calabaza", "category": "Calabazas y derivados"},
+      {"ingredient": "Epazote", "category": "Hierbas tradicionales"},
+      {"ingredient": "Guanábana", "category": "Frutas tropicales"},
+      {"ingredient": "Chía", "category": "Semillas ancestrales"},
+      {"ingredient": "Amaranto", "category": "Semillas ancestrales"},
+      {"ingredient": "Chile", "category": "Chiles y especias"},
+      {"ingredient": "Huauzontle", "category": "Verduras tradicionales"},
+      {"ingredient": "Achiote", "category": "Chiles y especias"},
+      {"ingredient": "Chapulines", "category": "Proteínas tradicionales"},
+      {"ingredient": "Pitahaya", "category": "Frutas tropicales"},
+      {"ingredient": "Nanche", "category": "Frutas tradicionales"},
+      {"ingredient": "Romeritos", "category": "Verduras tradicionales"},
+      {"ingredient": "Papaloquelite", "category": "Hierbas tradicionales"},
+      {"ingredient": "Jicama", "category": "Verduras tradicionales"},
+      {"ingredient": "Pepitas", "category": "Semillas ancestrales"},
+      {"ingredient": "Cacao", "category": "Semillas ancestrales"},
+      {"ingredient": "Flor de Calabaza", "category": "Flores comestibles"},
+      {"ingredient": "Verdolagas", "category": "Verduras tradicionales"}
+    ]
+  }
+  

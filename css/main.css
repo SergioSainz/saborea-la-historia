@@ -7,6 +7,8 @@
 @import './components/speech-bubble.css';
 @import './components/menu.css';
 @import './components/content-block.css';
+@import './components/footer.css';  /* Añadido */
+@import './components/mapa.css';  /* Añadido */
 
 /* Layouts */
 @import './layouts/grid.css';

@@ -53,3 +53,61 @@
   margin-top: 40vh;
   margin-bottom: 40vh;
 }
+
+/* Agregar al sticky.css */
+
+/* Contenedor del mapa dentro del sticky */
+.visualization-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-grow: 1; /* Para que ocupe todo el espacio disponible en el flex container */
+}
+
+#primer-plato-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para los marcadores del mapa */
+.marker-ingrediente {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.marker-icon-container {
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease-out;
+}
+
+.marker-icon-container:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para los popups */
+.maplibregl-popup {
+  z-index: 1;
+}
+
+.marker-popup {
+  background: var(--color-white);
+  padding: 1rem;
+  max-width: 250px;
+}
+
+.marker-popup h3 {
+  margin: 0 0 0.5rem 0;
+  font-family: 'Cardo', serif;
+}
+
+.marker-popup p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}

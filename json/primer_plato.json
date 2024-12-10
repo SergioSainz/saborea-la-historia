@@ -1,0 +1,54 @@
+{
+    "ingredientes": [
+      {
+        "id": "maiz",
+        "nombre": "Maíz",
+        "iconoTemp": "grain", 
+        "estado": "Oaxaca",
+        "coordinates": [-96.7216, 17.0732],
+        "origen": "Prehispánico",
+        "uso": "Base de la alimentación prehispánica",
+        "descripcion": "Elemento fundamental en la gastronomía mexicana, presente en tortillas y tamales"
+      },
+      {
+        "id": "trigo",
+        "nombre": "Trigo",
+        "iconoTemp": "wheat",
+        "estado": "Puebla",
+        "coordinates": [-98.2063, 19.0413],
+        "origen": "Europeo",
+        "uso": "Introducido por los españoles",
+        "descripcion": "Transformó la panadería y repostería colonial"
+      },
+      {
+        "id": "cacao",
+        "nombre": "Cacao",
+        "iconoTemp": "coffee",
+        "estado": "Tabasco",
+        "coordinates": [-92.9475, 18.4067],
+        "origen": "Prehispánico",
+        "uso": "Bebida ceremonial y moneda de cambio",
+        "descripcion": "Se fusionó con el azúcar española creando nuevas bebidas"
+      },
+      {
+        "id": "canela",
+        "nombre": "Canela",
+        "iconoTemp": "leaf",
+        "estado": "Veracruz",
+        "coordinates": [-96.9216, 19.5438],
+        "origen": "Asiático",
+        "uso": "Introducida a través del comercio español",
+        "descripcion": "Especia que revolucionó la dulcería mexicana"
+      },
+      {
+        "id": "caña",
+        "nombre": "Caña de Azúcar",
+        "iconoTemp": "tree",
+        "estado": "Morelos",
+        "coordinates": [-99.1013, 18.6813],
+        "origen": "Asiático",
+        "uso": "Introducida por los españoles",
+        "descripcion": "Transformó la dulcería y las bebidas tradicionales"
+      }
+    ]
+  }

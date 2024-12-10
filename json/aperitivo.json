@@ -1991,6 +1991,231 @@
           }
         ]
       }
-    }
+    },
+    {
+      "properties": {
+        "estado": "Oaxaca",
+        "alimentos": [
+          "Maíz",
+          "Chapulines",
+          "Quesillo",
+          "Chile Pasilla Oaxaqueño",
+          "Frijol",
+          "Tomate",
+          "Epazote",
+          "Cacao",
+          "Piloncillo",
+          "Chile Amarillo"
+        ],
+        "platillos": [
+          "Tlayudas",
+          "Mole Negro",
+          "Memelas de Frijol",
+          "Salsa de Chapulines",
+          "Enmoladas",
+          "Tamales Oaxaqueños",
+          "Tetelas",
+          "Mole Amarillo",
+          "Salsa de Chile Amarillo"
+        ],
+        "relaciones": [
+          {
+            "origen": "Maíz",
+            "destino": "Tlayudas",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tlayudas",
+            "peso": 2
+          },
+          {
+            "origen": "Quesillo",
+            "destino": "Tlayudas",
+            "peso": 2
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Tlayudas",
+            "peso": 1
+          },
+          {
+            "origen": "Chile Pasilla Oaxaqueño",
+            "destino": "Tlayudas",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Tlayudas",
+            "peso": 1
+          },
+          {
+            "origen": "Chile Pasilla Oaxaqueño",
+            "destino": "Mole Negro",
+            "peso": 2
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Mole Negro",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Mole Negro",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Mole Negro",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Memelas de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Memelas de Frijol",
+            "peso": 2
+          },
+          {
+            "origen": "Quesillo",
+            "destino": "Memelas de Frijol",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Memelas de Frijol",
+            "peso": 1
+          },
+          {
+            "origen": "Chapulines",
+            "destino": "Salsa de Chapulines",
+            "peso": 2
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Salsa de Chapulines",
+            "peso": 1
+          },
+          {
+            "origen": "Chile Pasilla Oaxaqueño",
+            "destino": "Salsa de Chapulines",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chapulines",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Enmoladas",
+            "peso": 2
+          },
+          {
+            "origen": "Mole Negro",
+            "destino": "Enmoladas",
+            "peso": 2
+          },
+          {
+            "origen": "Quesillo",
+            "destino": "Enmoladas",
+            "peso": 1
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Enmoladas",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Enmoladas",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 2
+          },
+          {
+            "origen": "Chile Pasilla Oaxaqueño",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 1
+          },
+          {
+            "origen": "Quesillo",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 1
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tamales Oaxaqueños",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Tetelas",
+            "peso": 2
+          },
+          {
+            "origen": "Frijol",
+            "destino": "Tetelas",
+            "peso": 2
+          },
+          {
+            "origen": "Quesillo",
+            "destino": "Tetelas",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Tetelas",
+            "peso": 1
+          },
+          {
+            "origen": "Chile Amarillo",
+            "destino": "Mole Amarillo",
+            "peso": 2
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Mole Amarillo",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Mole Amarillo",
+            "peso": 1
+          },
+          {
+            "origen": "Maíz",
+            "destino": "Mole Amarillo",
+            "peso": 1
+          },
+          {
+            "origen": "Chile Amarillo",
+            "destino": "Salsa de Chile Amarillo",
+            "peso": 2
+          },
+          {
+            "origen": "Tomate",
+            "destino": "Salsa de Chile Amarillo",
+            "peso": 1
+          },
+          {
+            "origen": "Epazote",
+            "destino": "Salsa de Chile Amarillo",
+            "peso": 1
+          }
+        ]
+      }
+    }    
   ]
 }

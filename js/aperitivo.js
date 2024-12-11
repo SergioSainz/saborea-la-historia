@@ -6,22 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentState = 'all';
     let currentIngredient = null;
     let primerPlatoMap = null;
+    let ingredientCategories = null;
+    let tooltipData = null;
 
     // Inicializar visualizaciones
     function initializeVisualizations() {
-        // Inicializar Sankey
         if (!sankeyChart && document.getElementById('network')) {
             sankeyChart = echarts.init(document.getElementById('network'));
-            window.addEventListener('resize', () => sankeyChart.resize());
+            window.addEventListener('resize', () => {
+                sankeyChart.resize();
+            });
         }
 
-        // Inicializar el nuevo mapa si estamos en la sección correcta
         if (document.getElementById('primer-plato-map')) {
             primerPlatoMap = new PrimerPlatoMap();
             primerPlatoMap.initialize('primer-plato-map');
         }
 
-        // Mantener el mapa existente
         if (!map && document.getElementById('map')) {
             map = L.map('map', {
                 zoomControl: false,
@@ -32,7 +33,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Configurar Scrollama
+    function createCategoryControls(categories) {
+        const container = document.createElement('div');
+        container.className = 'category-controls';
+        
+        const allButton = document.createElement('button');
+        allButton.className = 'category-button active';
+        allButton.textContent = 'Todos';
+        allButton.onclick = () => filterByCategory('all');
+        container.appendChild(allButton);
+
+        const uniqueCategories = [...new Set(categories.classified_ingredients.map(item => item.category))];
+        uniqueCategories.forEach(category => {
+            const button = document.createElement('button');
+            button.className = 'category-button';
+            button.textContent = category;
+            button.style.backgroundColor = SankeyConfig.defaultColors.categoryColors[category] || '#FFF';
+            button.style.color = '#013971';
+            button.onclick = () => filterByCategory(category);
+            container.appendChild(button);
+        });
+
+        const networkDiv = document.getElementById('network');
+        networkDiv.parentNode.insertBefore(container, networkDiv);
+    }
+
+    function filterByCategory(category) {
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.classList.toggle('active', button.textContent === (category === 'all' ? 'Todos' : category));
+        });
+
+        const filteredData = DataProcessor.filterByCategory(sankeyData, category, ingredientCategories);
+        updateSankeyChart(filteredData);
+    }
+
     function setupScrollama() {
         const scroller = scrollama();
         const ingredientesPermitidos = new Set(['Maíz', 'Frijol', 'Chile', 'Calabaza', 'Cacao']);
@@ -46,12 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .onStepEnter(response => {
                 const { element } = response;
                 
-                // Actualizar visualizaciones existentes
                 if (sankeyData) {
                     const ingrediente = element.querySelector('h3')?.textContent;
                     const hasFlowerImage = element.querySelector('img.rotate-180');
                     
-                    // Si no hay ingrediente o no tiene la imagen rotate-180, mostrar todo
                     if (!ingrediente || !hasFlowerImage || !ingredientesPermitidos.has(ingrediente)) {
                         const resetData = DataProcessor.resetVisualization(sankeyData);
                         currentIngredient = null;
@@ -62,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             }]
                         });
                     } else {
-                        // Solo filtrar si es un ingrediente permitido y tiene la imagen
                         currentIngredient = ingrediente;
                         const filteredData = DataProcessor.filterByIngredient(sankeyData, ingrediente);
                         sankeyChart.setOption({
@@ -73,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     }
                 }
-                // Actualizar nuevo mapa si existe
+
                 if (primerPlatoMap) {
                     primerPlatoMap.updateVisualization(element);
                 }
@@ -82,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return scroller;
     }
 
-    // Configurar interacciones del mapa
     function setupMapInteractions(mexicoStates) {
         L.geoJSON(mexicoStates, {
             style: {
@@ -102,14 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
 
                     if (currentIngredient) {
-                        // Si hay un ingrediente seleccionado, filtrar por estado e ingrediente
                         const filteredData = DataProcessor.filterByState(
                             DataProcessor.filterByIngredient(sankeyData, currentIngredient),
                             feature.properties.name
                         );
                         updateSankeyChart(filteredData);
                     } else {
-                        // Si no hay ingrediente, solo filtrar por estado
                         const filteredData = DataProcessor.filterByState(sankeyData, feature.properties.name);
                         updateSankeyChart(filteredData);
                     }
@@ -122,11 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
 
                     if (currentIngredient) {
-                        // Volver al filtro del ingrediente actual
                         const filteredData = DataProcessor.filterByIngredient(sankeyData, currentIngredient);
                         updateSankeyChart(filteredData);
                     } else {
-                        // Volver a mostrar todos los datos
                         const resetData = DataProcessor.resetVisualization(sankeyData);
                         updateSankeyChart(resetData);
                     }
@@ -135,42 +161,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }).addTo(map);
     }
 
-    // Actualizar el gráfico Sankey
     function updateSankeyChart(data) {
-        sankeyChart.setOption({
-            series: [{
-                data: data.nodes,
-                links: data.links
-            }]
-        });
+        const option = SankeyConfig.createSankeyOption(data, tooltipData);
+        sankeyChart.setOption(option);
     }
 
     // Inicialización
     initializeVisualizations();
 
     // Cargar datos y configurar visualizaciones
-    fetch('./json/aperitivo.json')
-        .then(response => response.json())
-        .then(data => {
-            sankeyData = DataProcessor.processDataForSankey(data);
-            const option = SankeyConfig.createSankeyOption(sankeyData);
-            sankeyChart.setOption(option);
+    Promise.all([
+        fetch('./json/aperitivo.json'),
+        fetch('./json/categorias_ingredientes.json'),
+        fetch('./json/tooltip.json')
+    ])
+    .then(responses => Promise.all(responses.map(response => response.json())))
+    .then(([sankeyJson, categoriesJson, tooltipsJson]) => {
+        sankeyData = DataProcessor.processDataForSankey(sankeyJson);
+        ingredientCategories = categoriesJson;
+        tooltipData = tooltipsJson;
+        
+        const option = SankeyConfig.createSankeyOption(sankeyData, tooltipData);
+        sankeyChart.setOption(option);
 
-            setupScrollama();
+        createCategoryControls(categoriesJson);
+        setupScrollama();
 
-            // Cargar y configurar mapa
-            fetch('json/cordenadas.geojson')
-                .then(response => response.json())
-                .then(mexicoStates => {
-                    if (map) {
-                        setupMapInteractions(mexicoStates);
-                        map.fitBounds(L.geoJSON(mexicoStates).getBounds());
-                    }
-                });
-        })
-        .catch(error => console.error('Error:', error));
+        fetch('json/cordenadas.geojson')
+            .then(response => response.json())
+            .then(mexicoStates => {
+                if (map) {
+                    setupMapInteractions(mexicoStates);
+                    map.fitBounds(L.geoJSON(mexicoStates).getBounds());
+                }
+            });
+    })
+    .catch(error => console.error('Error:', error));
 
-    // Limpieza
     window.addEventListener('beforeunload', () => {
         if (map) {
             map.remove();

@@ -1,0 +1,167 @@
+[
+    {
+      "ingredient": "Mamey",
+      "info": "Fruta dulce consumida en Mesoamérica, empleada para preparar atoles y postres energéticos.",
+      "preparation": "Se molía su pulpa en metate y se mezclaba con agua."
+    },
+    {
+      "ingredient": "Flor de Colorín",
+      "info": "Flor comestible valorada en la cocina prehispánica, utilizada junto con otros quelites en guisos.",
+      "preparation": "Se escaldaba en agua y se agregaba a guisos."
+    },
+    {
+      "ingredient": "Maíz",
+      "info": "Base de la dieta mesoamericana, transformado en tortillas, atoles y otros alimentos fundamentales.",
+      "preparation": "Se nixtamalizaba y molía para formar masa."
+    },
+    {
+      "ingredient": "Jitomate",
+      "info": "Fruto originario de Mesoamérica, empleado en salsas y guisos para aportar sabor y acidez.",
+      "preparation": "Se asaba en comal y se molía en molcajete."
+    },
+    {
+      "ingredient": "Hoja Santa",
+      "info": "Hierba aromática empleada en la cocina prehispánica para perfumar tamales y platillos ceremoniales.",
+      "preparation": "Se usaba fresca, machacándola ligeramente para aromatizar."
+    },
+    {
+      "ingredient": "Chaya",
+      "info": "Planta verde utilizada por culturas mayas, agregada a caldos y guisos nutritivos.",
+      "preparation": "Se hervía la hoja para suavizar su sabor."
+    },
+    {
+      "ingredient": "Frijol",
+      "info": "Leguminosa esencial en la alimentación prehispánica, base de numerosos guisos y preparaciones.",
+      "preparation": "Se hervían en olla de barro y se molían para formar pastas."
+    },
+    {
+      "ingredient": "Piloncillo",
+      "info": "Endulzante natural obtenido de la caña, utilizado en bebidas y postres prehispánicos.",
+      "preparation": "Se disolvía en agua caliente para endulzar."
+    },
+    {
+      "ingredient": "Chilacayote",
+      "info": "Calabaza nativa empleada en preparaciones dulces y saladas, consumida en rituales y celebraciones.",
+      "preparation": "Se cocía en agua y se endulzaba con miel."
+    },
+    {
+      "ingredient": "Zapote Blanco",
+      "info": "Fruta dulce apreciada en Mesoamérica, empleada para atoles y bebidas energéticas.",
+      "preparation": "Se molía la pulpa y se mezclaba con agua o masa."
+    },
+    {
+      "ingredient": "Nopal",
+      "info": "Cacto fundamental en la cocina mesoamericana, consumido fresco o asado y presente en diversos platillos.",
+      "preparation": "Se asaba y cortaba en tiras para añadir a guisos."
+    },
+    {
+      "ingredient": "Papaya",
+      "info": "Fruta tropical utilizada en bebidas refrescantes y preparaciones dulces en la época prehispánica.",
+      "preparation": "Se maceraba la pulpa con agua para bebidas."
+    },
+    {
+      "ingredient": "Zapote Negro",
+      "info": "Fruta dulce y oscura, empleada en atoles y bebidas por su sabor suave y nutritivo.",
+      "preparation": "Se molía la pulpa y se mezclaba con masa o agua."
+    },
+    {
+      "ingredient": "Guayaba",
+      "info": "Fruta aromática usada en atoles, bebidas y postres prehispánicos.",
+      "preparation": "Se machacaba su pulpa y se colaba para bebidas."
+    },
+    {
+      "ingredient": "Quintoniles",
+      "info": "Quelites mesoamericanos, cocidos y salteados, parte de la dieta vegetal prehispánica.",
+      "preparation": "Se hervían y salteaban con especias y chiles."
+    },
+    {
+      "ingredient": "Calabaza",
+      "info": "Cultivo imprescindible en Mesoamérica, usado en tamales, sopas y dulces ceremoniales.",
+      "preparation": "Se cocinaba al vapor y se molía para formar rellenos."
+    },
+    {
+      "ingredient": "Epazote",
+      "info": "Hierba aromática prehispánica que daba sabor a guisos, salsas y caldos.",
+      "preparation": "Se añadía fresco al final de la cocción para dar sabor."
+    },
+    {
+      "ingredient": "Guanábana",
+      "info": "Fruta tropical apreciada por su sabor fresco, empleada en bebidas y postres prehispánicos.",
+      "preparation": "Se machacaba la pulpa y se mezclaba con agua."
+    },
+    {
+      "ingredient": "Chía",
+      "info": "Semilla mesoamericana empleada en bebidas nutritivas, al remojarse generaba una textura gelatinosa.",
+      "preparation": "Se remojaban las semillas en agua para bebidas."
+    },
+    {
+      "ingredient": "Amaranto",
+      "info": "Semilla altamente valorada en las culturas prehispánicas, usada en atoles, tortillas y dulces.",
+      "preparation": "Se tostaban las semillas y se mezclaban con miel."
+    },
+    {
+      "ingredient": "Chile",
+      "info": "Condimento esencial en la cocina mesoamericana, presente en salsas, guisos y rituales culinarios.",
+      "preparation": "Se tostaba y se molía en molcajete con especias."
+    },
+    {
+      "ingredient": "Huauzontle",
+      "info": "Planta emparentada con el amaranto, hervida y agregada a guisos por su valor nutricional.",
+      "preparation": "Se escaldaban y se añadían a guisos."
+    },
+    {
+      "ingredient": "Achiote",
+      "info": "Semilla roja empleada como condimento y colorante natural, base de salsas y adobos.",
+      "preparation": "Se molían las semillas con especias para salsas."
+    },
+    {
+      "ingredient": "Chapulines",
+      "info": "Insectos comestibles ricos en proteínas, tostados y sazonados, parte de la dieta prehispánica.",
+      "preparation": "Se tostaban en comal con sal y chile."
+    },
+    {
+      "ingredient": "Pitahaya",
+      "info": "Fruta de cactus apreciada en Mesoamérica, empleada en bebidas dulces y postres.",
+      "preparation": "Se machacaba la pulpa con agua para bebidas."
+    },
+    {
+      "ingredient": "Nanche",
+      "info": "Pequeña fruta amarilla, endulzada con miel o piloncillo, usada en bebidas y dulces prehispánicos.",
+      "preparation": "Se maceraban con miel o piloncillo."
+    },
+    {
+      "ingredient": "Romeritos",
+      "info": "Planta silvestre comestible, cocida y mezclada con salsas, parte de la herencia culinaria mesoamericana.",
+      "preparation": "Se limpiaban, cocían y agregaban a guisos con chile."
+    },
+    {
+      "ingredient": "Papaloquelite",
+      "info": "Hierba aromática utilizada cruda o ligeramente machacada, aportando sabor a guisos y ensaladas.",
+      "preparation": "Se usaba crudo o ligeramente machacado como hierba aromática."
+    },
+    {
+      "ingredient": "Jicama",
+      "info": "Raíz crujiente y dulce consumida fresca en la época prehispánica, valorada por su frescura.",
+      "preparation": "Se consumía cruda, pelada y rebanada."
+    },
+    {
+      "ingredient": "Pepitas",
+      "info": "Semillas de calabaza tostadas y molidas para preparar salsas y moles prehispánicos.",
+      "preparation": "Se tostaban y molían para preparar salsas."
+    },
+    {
+      "ingredient": "Cacao",
+      "info": "Semilla sagrada en Mesoamérica, base de bebidas espumosas y símbolo de estatus social.",
+      "preparation": "Se tostaba, pelaba y molía para bebidas espumosas."
+    },
+    {
+      "ingredient": "Flor de Calabaza",
+      "info": "Flor comestible muy apreciada, añadida a sopas y guisos por su sabor delicado.",
+      "preparation": "Se añadía fresca a caldos y sopas."
+    },
+    {
+      "ingredient": "Verdolagas",
+      "info": "Planta silvestre nutritiva, hervida y agregada a caldos y guisos mesoamericanos.",
+      "preparation": "Se hervían y mezclaban con salsas o caldos."
+    }
+]

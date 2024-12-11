@@ -1,0 +1,140 @@
+.timeline-container {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.timeline {
+    width: 80%;
+    height: 4px;
+    background: #e0e0e0;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.timeline-point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulsePoint 2s infinite;
+}
+
+@keyframes pulsePoint {
+    0% {
+        box-shadow: 0 0 0 0 rgba(1, 57, 113, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(1, 57, 113, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(1, 57, 113, 0);
+    }
+}
+
+.timeline-point.active {
+    background: var(--color-accent);
+    animation: activePoint 2s infinite;
+}
+
+@keyframes activePoint {
+    0% {
+        box-shadow: 0 0 0 0 rgba(181, 67, 34, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(181, 67, 34, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(181, 67, 34, 0);
+    }
+}
+
+.timeline-point.completed {
+    background: var(--color-secondary);
+    animation: none;
+}
+
+.timeline-point::before {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.timeline-point:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.timeline-message {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: "Libre Baskerville", serif;
+    color: var(--color-primary);
+}
+
+.timeline-preview {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.preview-card {
+    width: 200px;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    opacity: 1;
+}
+
+.preview-card img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1rem;
+}
+
+.preview-card h4 {
+    font-family: "Libre Baskerville", serif;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.preview-card p {
+    font-family: "Cardo", serif;
+    color: var(--color-grey);
+    font-size: 0.9rem;
+}

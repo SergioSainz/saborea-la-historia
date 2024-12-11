@@ -1,18 +1,17 @@
 const DataProcessor = {
     currentFilter: null,
+    currentCategory: null,
 
     processDataForSankey: function(data) {
         const nodes = [];
         const links = [];
         const addedNodes = new Set();
 
-        // Primero agregamos todos los nodos en el orden deseado
         data.features.forEach(feature => {
             const alimentos = feature.properties.alimentos;
             const platillos = feature.properties.platillos;
             const estado = feature.properties.estado;
 
-            // 1. Agregar nodos de ingredientes (primera columna)
             alimentos.forEach(alimento => {
                 if (!addedNodes.has(alimento)) {
                     nodes.push({
@@ -26,7 +25,6 @@ const DataProcessor = {
                 }
             });
 
-            // 2. Agregar nodos de platillos (segunda columna)
             platillos.forEach(platillo => {
                 if (!addedNodes.has(platillo)) {
                     nodes.push({
@@ -40,7 +38,6 @@ const DataProcessor = {
                 }
             });
 
-            // 3. Agregar nodo del estado (tercera columna)
             if (!addedNodes.has(estado)) {
                 nodes.push({
                     name: estado,
@@ -53,12 +50,10 @@ const DataProcessor = {
             }
         });
 
-        // Crear los enlaces en el nuevo orden
         data.features.forEach(feature => {
             const estado = feature.properties.estado;
             const platillos = feature.properties.platillos;
 
-            // Enlaces de ingredientes a platillos
             if (feature.properties.relaciones) {
                 feature.properties.relaciones.forEach(relacion => {
                     links.push({
@@ -73,7 +68,6 @@ const DataProcessor = {
                 });
             }
 
-            // Enlaces de platillos a estados
             platillos.forEach(platillo => {
                 links.push({
                     source: platillo,
@@ -90,6 +84,67 @@ const DataProcessor = {
         return { nodes, links };
     },
 
+    filterByCategory: function(sankeyData, category, ingredientCategories) {
+        if (!category || category === 'all') {
+            return this.resetVisualization(sankeyData);
+        }
+
+        this.currentCategory = category;
+        
+        const categoryIngredients = new Set(
+            ingredientCategories.classified_ingredients
+                .filter(item => item.category === category)
+                .map(item => item.ingredient)
+        );
+
+        const relevantNodes = new Set();
+        const platillosRelacionados = new Set();
+        const estadosRelacionados = new Set();
+        const filteredLinks = [];
+
+        sankeyData.links.forEach(link => {
+            if (categoryIngredients.has(link.source)) {
+                relevantNodes.add(link.source);
+                relevantNodes.add(link.target);
+                platillosRelacionados.add(link.target);
+                filteredLinks.push({
+                    ...link,
+                    lineStyle: {
+                        ...link.lineStyle,
+                        color: SankeyConfig.defaultColors.categoryColors[category]
+                    }
+                });
+            }
+        });
+
+        sankeyData.links.forEach(link => {
+            if (platillosRelacionados.has(link.source)) {
+                relevantNodes.add(link.target);
+                estadosRelacionados.add(link.target);
+                filteredLinks.push(link);
+            }
+        });
+
+        const filteredNodes = sankeyData.nodes
+            .filter(node => relevantNodes.has(node.name))
+            .map(node => ({
+                ...node,
+                itemStyle: {
+                    color: categoryIngredients.has(node.name)
+                        ? SankeyConfig.defaultColors.categoryColors[category]
+                        : platillosRelacionados.has(node.name)
+                            ? SankeyConfig.defaultColors.platillos
+                            : SankeyConfig.defaultColors.estados,
+                    opacity: 1
+                }
+            }));
+
+        return {
+            nodes: filteredNodes,
+            links: filteredLinks
+        };
+    },
+
     filterByIngredient: function(sankeyData, ingrediente) {
         this.currentFilter = ingrediente;
         
@@ -98,7 +153,6 @@ const DataProcessor = {
         const estadosRelacionados = new Set();
         const filteredLinks = [];
     
-        // Encontrar platillos relacionados
         sankeyData.links.forEach(link => {
             if (link.source === ingrediente) {
                 relevantNodes.add(link.target);
@@ -107,7 +161,6 @@ const DataProcessor = {
             }
         });
     
-        // Encontrar estados relacionados
         sankeyData.links.forEach(link => {
             if (platillosRelacionados.has(link.source)) {
                 relevantNodes.add(link.target);
@@ -116,7 +169,6 @@ const DataProcessor = {
             }
         });
     
-        // Filtrar y ajustar los nodos
         const filteredNodes = sankeyData.nodes
             .filter(node => relevantNodes.has(node.name))
             .map(node => ({
@@ -135,18 +187,16 @@ const DataProcessor = {
                     fontSize: 10,
                     color: '#333'
                 },
-                // Aumentar el valor para que ocupen más espacio
-                value: 1000 // Un valor alto para que todos los nodos sean grandes
+                value: 1000
             }));
     
-        // Ajustar los enlaces
         const adjustedLinks = filteredLinks.map(link => ({
             ...link,
-            value: 100, // Aumentar el valor de los enlaces
+            value: 100,
             lineStyle: {
                 color: link.lineStyle.color,
                 opacity: 0.7,
-                width: 5 // Aumentar el ancho de las líneas
+                width: 5
             }
         }));
     
@@ -158,25 +208,19 @@ const DataProcessor = {
 
     resetVisualization: function(sankeyData) {
         this.currentFilter = null;
+        this.currentCategory = null;
     
-        // Calcular conexiones para mantener el ordenamiento
         const connectionCount = {};
         sankeyData.links.forEach(link => {
             connectionCount[link.source] = (connectionCount[link.source] || 0) + link.value;
             connectionCount[link.target] = (connectionCount[link.target] || 0) + link.value;
         });
     
-        // Ordenar los nodos manteniendo la lógica de ordenamiento
         const orderedNodes = sankeyData.nodes.sort((a, b) => {
-            // Primero por profundidad/categoría
             if (a.depth !== b.depth) return a.depth - b.depth;
-            
-            // Si son estados (depth 2), ordenar alfabéticamente
             if (a.depth === 2) {
                 return a.name.localeCompare(b.name);
             }
-            
-            // Para ingredientes y platillos, ordenar por conexiones
             return (connectionCount[b.name] || 0) - (connectionCount[a.name] || 0);
         }).map(node => ({
             ...node,
@@ -209,6 +253,9 @@ const DataProcessor = {
     },
 
     reapplyFilter: function(sankeyData) {
+        if (this.currentCategory) {
+            return this.filterByCategory(sankeyData, this.currentCategory);
+        }
         if (this.currentFilter) {
             return this.filterByIngredient(sankeyData, this.currentFilter);
         }

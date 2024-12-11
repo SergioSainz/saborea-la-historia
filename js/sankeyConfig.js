@@ -1,112 +1,51 @@
 const SankeyConfig = {
     defaultColors: {
-        // Granos y semillas (tonos amarillos y cafés claros)
-        'maíz': '#FFE5B4',     // Amarillo pastel
-        'amaranto': '#FFE4C4',  // Beige claro
-        'chía': '#F5DEB3',     // Beige
+        // Category colors (pastel)
+        categoryColors: {
+            'Frutas': '#F5D2A6',          // Rosa mexicano suave
+            'Base de la cocina mexicana': '#F49A3F',  // Verde-azul mexicano
+            'Hierbas y especias': '#F58789',         // Azul mexicano profundo
+            'Endulzantes y semillas': '#71C2F5',     // Terracota suave
+            'Verduras': '#F5A6CE',        // Verde jade mexicano
+            'Insectos': '#F5584A'         // Púrpura mexicano suave
+        },
 
-        // Chiles y pimientos (tonos rojos y naranjas suaves)
-        'chile': '#FFB3B3',    // Rojo pastel
-        'chile habanero': '#FFCCCC', // Rosa claro
-
-        // Hierbas y verduras (tonos verdes suaves)
-        'epazote': '#B3E6B3',  // Verde menta claro
-        'papaloquelite': '#98FB98', // Verde pastel
-        'hoja santa': '#C1FFC1', // Verde agua
-        'chaya': '#E0FFE0',    // Verde muy claro
-        'huauzontle': '#CCFFCC', // Verde pastel claro
-        'verdolagas': '#D1FFD1', // Verde suave
-        'romeritos': '#B4EEB4', // Verde salvia
-        'quintoniles': '#C1FFC1', // Verde claro
-
-        // Flores (tonos pastel vibrantes)
-        'flor de calabaza': '#FFE5CC', // Naranja pastel
-        'flor de colorín': '#FFB3E6', // Rosa pastel
-
-        // Cactáceas y agaves (verdes azulados)
-        'nopal': '#B3E6CC',    // Verde azulado claro
-        'maguey': '#B3E6D9',   // Verde menta
-
-        // Frutas y vegetales (varios tonos pastel)
-        'jitomate': '#FFB3B3', // Rojo suave
-        'calabaza': '#FFE5CC', // Naranja claro
-        'aguacate': '#C1E6C1', // Verde suave
-        'camote': '#FFD9CC',   // Naranja rosado
-        'jicama': '#F0FFF0',   // Blanco verdoso
-        'chilacayote': '#E6FFE6', // Verde muy claro
-        
-        // Frutos exóticos (tonos cálidos suaves)
-        'tejocote': '#FFD9B3', // Durazno claro
-        'capulín': '#FFB3D9',  // Rosa claro
-        'nanche': '#FFE5B3',   // Amarillo durazno
-
-        // Frutos tropicales (tonos vibrantes suaves)
-        'guanábana': '#E6FFE6', // Verde blanquecino
-        'papaya': '#FFE5CC',   // Naranja suave
-        'anona': '#FFE5D9',    // Rosa durazno
-        'pitahaya': '#FFB3D9', // Rosa claro
-        'zapote': '#FFD9CC',   // Rosa naranja
-        'frijol': 'rgba(181, 67, 34, 0.52)',
-        'pepitas': '#F5DEB3',
-        'huitlacoche':'#a5a5a5',
-        // Otros ingredientes
-        'cacao': '#E6CCCC',    // Café rosado claro
-        'vainilla': '#FFF0E6', // Crema
-        'achiote': '#FFD9B3',  // Naranja claro
-
-        // Colores por defecto para categorías
-        'estados': 'rgba(181, 67, 34, 0.52)',  // Lavanda muy claro
-        'platillos': '#629adf', // Azul muy claro
-        'inactive': '#F5F5F5'  // Gris muy claro
+        // Colores para elementos principales
+            'estados': '#2B6867',      // Verde jade profundo
+            'platillos': '#2e83bf',    // Rosa mexicano oscuro
+            'inactive': '#D92344'      // Gris medio suave
     },
 
-    getIngredientColor: function(ingrediente) {
-        const nombre = ingrediente.toLowerCase();
-        // Buscar coincidencia exacta primero
-        if (this.defaultColors[nombre]) {
-            return this.defaultColors[nombre];
-        }
-        // Si no hay coincidencia exacta, buscar coincidencia parcial
-        for (let key in this.defaultColors) {
-            if (nombre.includes(key)) {
-                return this.defaultColors[key];
-            }
+    getIngredientColor: function(ingrediente, category = null) {
+        if (category && this.defaultColors.categoryColors[category]) {
+            return this.defaultColors.categoryColors[category];
         }
         return this.defaultColors.platillos;
     },
-    createSankeyOption: function(sankeyData) {
-        // Asignar niveles explícitos a los nodos
+
+    createSankeyOption: function(sankeyData, tooltipData = []) {
         sankeyData.nodes = sankeyData.nodes.map(node => ({
             ...node,
             depth: node.category === 'ingrediente' ? 0 : 
-                   node.category === 'platillo' ? 1 : 2
+                   node.category === 'platillo' ? 1 : 2,
+            tooltip: tooltipData.find(t => t.ingredient === node.name)
         }));
     
-        // Calcular conexiones
         const connectionCount = {};
         sankeyData.links.forEach(link => {
             connectionCount[link.source] = (connectionCount[link.source] || 0) + link.value;
             connectionCount[link.target] = (connectionCount[link.target] || 0) + link.value;
         });
     
-        // Ordenar nodos por categoría y conexiones
         const nodes = sankeyData.nodes.sort((a, b) => {
-            // Primero ordenar por profundidad (categoría)
             if (a.depth !== b.depth) return a.depth - b.depth;
-            
-            // Si son estados (depth 2), ordenar alfabéticamente
-            if (a.depth === 2) {
-                return a.name.localeCompare(b.name);
-            }
-            
-            // Para ingredientes y platillos, mantener el orden por número de conexiones
+            if (a.depth === 2) return a.name.localeCompare(b.name);
             return (connectionCount[b.name] || 0) - (connectionCount[a.name] || 0);
         }).map(node => ({
             ...node,
             value: connectionCount[node.name] || 0
         }));
     
-        // Validar y limpiar enlaces
         const links = sankeyData.links.filter(link => {
             const sourceNode = nodes.find(n => n.name === link.source);
             const targetNode = nodes.find(n => n.name === link.target);
@@ -114,94 +53,219 @@ const SankeyConfig = {
         }).sort((a, b) => b.value - a.value);
     
         return {
+            animation: true,
+            animationDuration: 1000,
+            animationEasing: 'cubicOut',
+            animationDelay: function(idx) {
+                return idx * 50;
+            },
+            animationDurationUpdate: 750,
+            animationEasingUpdate: 'cubicInOut',
+        
+            // Ajuste del grid para mejor uso del espacio
+            grid: {
+                left: '5%',
+                right: '5%',    // Aumentado para dar más espacio a etiquetas de estados
+                top: '2%',      // Subido para evitar corte inferior
+                bottom: '20%',   // Aumentado para evitar corte inferior
+                containLabel: false
+            },
+        
             title: [
                 {
                     text: 'Ingredientes',
                     left: '4.5%',
-                    top: '1%',
+                    top: '2%',    // Ajustado para alinearse con el nuevo espacio superior
                     textStyle: {
                         fontSize: 16,
                         fontFamily: 'Libre Baskerville',
-                        color: '#013971'
+                        color: '#013971',
+                        textShadowBlur: 2,
+                        textShadowColor: 'rgba(0, 0, 0, 0.2)',
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1
                     }
                 },
                 {
                     text: 'Platillos',
                     left: '43.5%',
-                    top: '1%',
+                    top: '2%',
                     textStyle: {
                         fontSize: 16,
                         fontFamily: 'Libre Baskerville',
-                        color: '#013971'
+                        color: '#013971',
+                        textShadowBlur: 2,
+                        textShadowColor: 'rgba(0, 0, 0, 0.2)',
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1
                     }
                 },
                 {
                     text: 'Estados',
                     left: '83%',
-                    top: '1%',
+                    top: '2%',
                     textStyle: {
                         fontSize: 16,
                         fontFamily: 'Libre Baskerville',
-                        color: '#013971'
+                        color: '#013971',
+                        textShadowBlur: 2,
+                        textShadowColor: 'rgba(0, 0, 0, 0.2)',
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1
                     }
                 }
             ],
+        
+            // Tooltip mejorado
             tooltip: {
                 trigger: 'item',
                 triggerOn: 'mousemove',
-                formatter: params => {
-                    const value = connectionCount[params.data.name] || 0;
-                    return `${params.data.name}: ${value} conexiones`;
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderColor: '#013971',
+                borderWidth: 1,
+                padding: 15,
+                formatter: function(params) {
+                    if (params.dataType === 'node' && params.data.tooltip) {
+                        return `<div style="
+                            padding: 12px;
+                            background: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(240,240,255,0.98));
+                            border-radius: 4px;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        ">
+                            <h4 style="
+                                margin: 0 0 8px;
+                                color: #013971;
+                                border-bottom: 1px solid #eee;
+                                padding-bottom: 5px;
+                                font-family: 'Libre Baskerville';
+                            ">${params.data.name}</h4>
+                            <p style="
+                                margin: 4px 0;
+                                color: #333;
+                            ">${params.data.tooltip.info}</p>
+                            <p style="
+                                margin: 4px 0;
+                                font-style: italic;
+                                color: #666;
+                            ">${params.data.tooltip.preparation}</p>
+                        </div>`;
+                    }
+                    return params.dataType === 'node' ? params.data.name : '';
                 }
             },
+        
+            // Series principal con mejoras visuales
             series: [{
                 type: 'sankey',
-                left: '5%',
-                right: '15%',
-                top: '5%',
-                bottom: '5%',
-                nodeWidth: 20,
-                nodePadding: 40,
-                layoutIterations: 100,
+                left: '5%',      // Alineado con el grid
+                right: '15%',    // Aumentado para etiquetas de estados
+                top: '6%',      // Ajustado para dar más espacio arriba
+                bottom: '25%',    // Ajustado para evitar corte inferior
                 emphasis: {
-                    focus: 'adjacency'
+                    focus: 'adjacency',
+                    label: {
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        padding: [4, 8],
+                        borderRadius: 3
+                    },
+                    itemStyle: {
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0,0,0,0.2)'
+                    }
                 },
+                layoutIterations: 64,
+                nodeWidth: 20,
+                nodePadding: 20,  // Reducido para mejor distribución vertical
                 data: nodes,
                 links: links,
                 orient: 'horizontal',
+                
                 label: {
-                    position: 'right',
-                    fontSize: 10,
+                    position: function(params) {
+                        // Ajuste de posición para cada columna
+                        if (params.dataType === 'node') {
+                            if (params.data.depth === 0) return 'left';
+                            if (params.data.depth === 2) return { position: 'right', distance: 15 }; // Más espacio para estados
+                            return 'right';
+                        }
+                    },
+                    fontSize: 12,
                     color: '#013971',
-                    distance: 10,
-                    align: 'left',
+                    distance: 20,
+                    align: function(params) {
+                        // Alineación específica para cada columna
+                        if (params.dataType === 'node') {
+                            if (params.data.depth === 0) return 'right';
+                            return 'left';
+                        }
+                    },
                     verticalAlign: 'middle',
-                    formatter: '{b}'
+                    formatter: '{b}',
+                    backgroundColor: 'rgba(255,255,255,0.5)',
+                    padding: [3, 6],
+                    borderRadius: 2
                 },
+        
                 levels: [
                     {
                         depth: 0,
                         itemStyle: {
-                            color: d => SankeyConfig.getIngredientColor(d.name)
+                            color: d => this.getIngredientColor(d.name, d.category),
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.3)',
+                            shadowBlur: 5,
+                            shadowColor: 'rgba(0,0,0,0.2)'
                         }
                     },
                     {
                         depth: 1,
                         itemStyle: {
-                            color: SankeyConfig.defaultColors.platillos
+                            color: this.defaultColors.platillos,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.3)',
+                            shadowBlur: 5,
+                            shadowColor: 'rgba(0,0,0,0.2)'
                         }
                     },
                     {
                         depth: 2,
                         itemStyle: {
-                            color: SankeyConfig.defaultColors.estados
+                            color: this.defaultColors.estados,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.3)',
+                            shadowBlur: 5,
+                            shadowColor: 'rgba(0,0,0,0.2)'
+                        },
+                        label: {
+                            distance: 20  // Más espacio para etiquetas de estados
                         }
                     }
                 ],
+        
                 lineStyle: {
                     color: 'source',
-                    curveness: 0.5,
-                    opacity: 0.7
+                    curveness: 0.7,
+                    opacity: 0.5,
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0,0,0,0.2)',
+                    gradientColor: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 1,
+                        y2: 0,
+                        colorStops: [{
+                            offset: 0,
+                            color: 'source'
+                        }, {
+                            offset: 1,
+                            color: 'target'
+                        }]
+                    }
                 }
             }]
         };

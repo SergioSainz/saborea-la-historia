@@ -20,3 +20,5 @@
 
 /* Visualizations */
 @import './visualizations/sankey.css';
+
+@import './components/timeline.css';

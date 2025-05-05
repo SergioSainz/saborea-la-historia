@@ -1,0 +1,18 @@
+/* Contenedores para la visualización */
+.sticky-image-sankey {
+    background-color: transparent !important;
+    min-height: 800px !important;
+    display: block !important;
+}
+
+.visualization-container {
+    min-height: 800px !important;
+    display: block !important;
+}
+
+#network {
+    display: block !important;
+    background-color: white !important;
+    min-height: 800px !important;
+    z-index: 1000;
+}

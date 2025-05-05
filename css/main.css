@@ -19,6 +19,10 @@
 @import './animations/transitions.css';
 
 /* Visualizations */
-@import './visualizations/sankey.css';
+@import './visualizations/circularGraph.css';
+@import './visualizations/d3Sankey.css';
+@import './visualizations/ingredientCharts.css';
 
 @import './components/timeline.css';
+
+

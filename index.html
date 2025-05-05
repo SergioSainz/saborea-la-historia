@@ -23,6 +23,7 @@
         
         <!-- Estilos propios -->
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/debug.css">
     </head>
 <body>
     <!-- Primera sección con TypeIt -->
@@ -214,23 +215,30 @@
 
     <h2 class="text-center main-title" style="margin-top:-1rem;">Aperitivo:</h2>
     <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">Los Sabores del Origen</h3>
+    <div class="content-block initial-block">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="p-4">
+                    <p class="cardo-regular">Bienvenido al 'Aperitivo', un primer bocado de historia servido con los ingredientes que dieron forma al México prehispánico. Este platillo está preparado con maíz, el alma de nuestra tierra; cacao, el regalo divino de los dioses; chile, el fuego que enciende nuestra cultura; frijol, el eterno compañero, y calabaza, la joya versátil de la cocina ancestral. Cada ingrediente, como un sabor único en el plato, te invita a explorar la conexión sagrada entre el hombre y la tierra. ¡Disfruta este viaje al origen!</p>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="img\Xolin\Xolin_Aperitivo.png" 
+                        class="img-fluid" 
+                        alt="Xolin Aperitivo"
+                        style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+        
+    </div>
     <div class="sticky-section">
         <div class="row">
             <div class="col-4 ">
-                <!-- Primer bloque con más espacio -->
-                <div class="content-block initial-block">
-                    <!-- Contenedor para la imagen -->
-                    <div class="image-content">
-                        <img src="img\Xolin\Xolin_Aperitivo.png" 
-                             class="img-fluid" 
-                             alt="Imagen descriptiva">
-                    </div>
-                    <div class="text-content">
-                        <p class="cardo-regular">Bienvenido al 'Aperitivo', un primer bocado de historia servido con los ingredientes que dieron forma al México prehispánico. Este platillo está preparado con maíz, el alma de nuestra tierra; cacao, el regalo divino de los dioses; chile, el fuego que enciende nuestra cultura; frijol, el eterno compañero, y calabaza, la joya versátil de la cocina ancestral. Cada ingrediente, como un sabor único en el plato, te invita a explorar la conexión sagrada entre el hombre y la tierra. ¡Disfruta este viaje al origen!</p>
-                    </div>
-                </div>
-
-                <div class="m-5 content-block ingredient-block">
+                
+                <!-- Bloque del Maíz -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Maíz</h3>
                     <div class="mt-3">
                         <p class="text-justify">
@@ -239,15 +247,41 @@
                             
                             En cifras, <span class="underline-animation">el maíz representaba</span> <span class="animated-number" data-value="70">0</span>% 
                             de la dieta diaria y tenía más de <span class="animated-number" data-value="600">0</span> variedades diferentes.
-                            Era tan valioso que su cultivo seguía ciclos sagrados dictados por el calendario agrícola.
                         </p>
+                        
+                        <!-- Separador decorativo -->
+                        <div class="my-4 text-center">
+                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                            <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        </div>
+                        
+                        <!-- Hallazgos del grafo -->
+                        
+                        <div class="row mt-4">
+                            <!-- Columna izquierda: Top estados -->
+                            <div class="col-md-6">
+                                <div id="maiz-estados-chart" class="chart-container"></div>
+                            </div>
+                            
+                            <!-- Columna derecha: Culturas -->
+                            <div class="col-md-6">
+                                <div id="maiz-culturas-chart" class="chart-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Nota cultural -->
+                        <div id="maiz-nota"></div>
                     </div>
+                    
                     <img src="img/aperitivo/maiz.png" 
-                         class="img-fluid mx-auto d-block rotate-180" 
+                         class="img-fluid mx-auto d-block rotate-180 mt-4" 
                          style="max-width: 40%;" 
                          alt="Imagen Central">
                 </div>
-                <div class="m-5 content-block ingredient-block">
+
+                <!-- Bloque del FRIJOL -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Frijol</h3>
                 
                     <!-- Primer bloque de texto -->
@@ -282,26 +316,46 @@
                             </div>
                         </div>
                     </div>
-                
-                    <!-- Segundo bloque de texto -->
-                    <div class="mb-4">
-                        <p class="cardo-regular">Su importancia en la dieta prehispánica fue fundamental, no solo por su sabor sino por su alto valor nutricional.</p>
+            
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
                     </div>
+                    
+                    <!-- Hallazgos del grafo -->
+                    
+                    <div class="row mt-4">
+                        <!-- Columna izquierda: Top estados -->
+                        <div class="col-md-6">
+                            <div id="frijol-estados-chart" class="chart-container"></div>
+                        </div>
+                        
+                        <!-- Columna derecha: Culturas -->
+                        <div class="col-md-6">
+                            <div id="frijol-culturas-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="frijol-nota"></div>
+                    
                     <!-- Contenedor de imagen - Movido arriba y añadida la clase rotate-180 -->
-                    <div class="text-center mb-4">
+                    <div class="text-center mt-4">
                         <img src="img/aperitivo/frijoles.png"
                              class="img-fluid mx-auto d-block rotate-180"
                              style="max-width: 40%;"
                              alt="Imagen Frijol">
                     </div>
                 </div>
+                
 
-                <div class="m-5 content-block ingredient-block">
+                <!-- Bloque del CHILE -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Chile</h3>
                     
-                    <!-- Imagen con rotate-180 -->
-                    
-                
                     <!-- Primer bloque de texto -->
                     <div class="mb-4">
                         <p class="cardo-regular">Ah, el chile, un fuego que alimenta el alma. Este tesoro ardiente más que un condimento: era medicina, era ritual, era vida.</p>
@@ -334,19 +388,41 @@
                             </div>
                         </div>
                     </div>
-                
-                    <!-- Segundo bloque de texto -->
-                    <div class="mb-4">
-                        <p class="cardo-regular">Siempre presente en salsas y guisos, aliviaba resfriados y dolores. Comer sin chile era como vivir sin corazón, ¿puedes imaginarlo?</p>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
                     </div>
-                    <div class="text-center mb-4">
+                    
+                    <!-- Hallazgos del grafo -->
+                    
+                    <div class="row mt-4">
+                        <!-- Columna izquierda: Top estados -->
+                        <div class="col-md-6">
+                            <div id="chile-estados-chart" class="chart-container"></div>
+                        </div>
+                        
+                        <!-- Columna derecha: Culturas -->
+                        <div class="col-md-6">
+                            <div id="chile-culturas-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="chile-nota"></div>
+                    
+                    <div class="text-center mt-4">
                         <img src="img/aperitivo/chile.png"
                              class="img-fluid mx-auto d-block rotate-180"
                              style="max-width: 40%;"
                              alt="Imagen Chile">
                     </div>
                 </div>
-                <div class="m-5 content-block ingredient-block">
+
+                <!-- Bloque del CALABAZA -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Calabaza</h3>
                     <!-- Métricas en cards -->
                     <div class="row g-3 mb-4">
@@ -366,15 +442,42 @@
                     <div class="mb-4">
                         <p class="cardo-regular">¿Sabías que la calabaza era como un baúl de sorpresas prehispánico? Su pulpa alimentaba a las familias, sus semillas eran trituradas en salsas, y sus flores adornaban tamales y caldos. </p>
                     </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Hallazgos del grafo -->
+                    
+                    <div class="row mt-4">
+                        <!-- Columna izquierda: Top estados -->
+                        <div class="col-md-6">
+                            <div id="calabaza-estados-chart" class="chart-container"></div>
+                        </div>
+                        
+                        <!-- Columna derecha: Culturas -->
+                        <div class="col-md-6">
+                            <div id="calabaza-culturas-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="calabaza-nota"></div>
+                    
                     <!-- Imagen con rotate-180 -->
-                    <div class="text-center mb-4">
+                    <div class="text-center mt-4">
                         <img src="img/aperitivo/calabaza.png"
                                 class="img-fluid mx-auto d-block rotate-180"
                                 style="max-width: 40%;"
                                 alt="Imagen Calabaza">
                     </div>
                 </div>
-                <div class="m-5 content-block ingredient-block">
+
+                <!-- Bloque del CACAO -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Cacao</h3>
                       
                         <div class="mb-4">
@@ -416,21 +519,52 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Separador decorativo -->
+                        <div class="my-4 text-center">
+                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                            <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        </div>
+                        
+                        <!-- Hallazgos del grafo -->
+                        
+                        <div class="row mt-4">
+                            <!-- Columna izquierda: Top estados -->
+                            <div class="col-md-6">
+                                <div id="cacao-estados-chart" class="chart-container"></div>
+                            </div>
+                            
+                            <!-- Columna derecha: Culturas -->
+                            <div class="col-md-6">
+                                <div id="cacao-culturas-chart" class="chart-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Nota cultural -->
+                        <div id="cacao-nota"></div>
+                        
                         <img src="img/aperitivo/cacao.png" 
                         class="img-fluid mx-auto d-block rotate-180" 
                         style="max-width: 40%;" 
                         alt="Imagen Central">
                 </div>
-                <!-- Más bloques de contenido -->
+                
             </div>
+
+            <!-- Bloque VISUALIZACIÓN INTERACTIVA-->
             <div class="col-8">
                 <div class="sticky-image sticky-image-sankey">
                     <!-- Contenedores para visualizaciones -->
                     <div class="visualization-container">
-                        <div id="network"></div>
+                        <h3 style="text-align: center; margin-bottom: 20px; color: #243360; font-family: 'Libre Baskerville', serif;">
+                            Conexiones entre ingredientes, platillos y culturas
+                        </h3>
+                        <div id="network" style="width: 100%; height: 700px; background-color: white;"></div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -556,17 +690,18 @@
     <!------------------- Scripts ------------------->
     <!-- mapas -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <!-- scrollama -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/8.7.1/index.umd.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- mis scrips -->
     <!-- <script src="js/script.js"></script> -->
     <script src="js/animations.js" ></script>
-    <script src="js/sankeyConfig.js"></script>
-    <script src="js/dataProcessor.js"></script>
     <script src="js/aperitivo.js"></script>
     <script src="js/animacion-num.js" ></script>
     <script src="js/primerPlatoMap.js"></script>
+    <script src="js/circularGraph.js"></script>
+    <script src="js/ingredientCharts.js"></script>
 </body>
 </html>

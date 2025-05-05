@@ -1,0 +1,2095 @@
+{
+  "nombre_proyecto": "Proyecto FINAL",
+  "fecha_escaneo": "2025-04-12 23:09:16",
+  "estructura_archivos": {
+    "": [
+      {
+        "nombre": "index.html",
+        "tamaño": 33005,
+        "fecha_modificacion": "2025-04-12 22:56:15"
+      },
+      {
+        "nombre": "escaner.ipynb",
+        "tamaño": 0,
+        "fecha_modificacion": "2025-04-12 23:08:57"
+      }
+    ],
+    "pdfs": [
+      {
+        "nombre": "Ruta_2_3.pdf",
+        "tamaño": 22016496,
+        "fecha_modificacion": "2024-10-14 19:35:52"
+      },
+      {
+        "nombre": "Ruta_4_5_6.pdf",
+        "tamaño": 27844507,
+        "fecha_modificacion": "2024-10-14 19:34:28"
+      },
+      {
+        "nombre": "Ruta_8_9.pdf",
+        "tamaño": 26890291,
+        "fecha_modificacion": "2024-10-14 19:38:38"
+      },
+      {
+        "nombre": "Ruta_1.pdf",
+        "tamaño": 21333362,
+        "fecha_modificacion": "2024-10-14 19:44:28"
+      },
+      {
+        "nombre": "Ruta_7_PlatillosConHistoria.pdf",
+        "tamaño": 14655014,
+        "fecha_modificacion": "2024-10-14 19:29:54"
+      },
+      {
+        "nombre": "Resumen_2.pdf",
+        "tamaño": 15181126,
+        "fecha_modificacion": "2024-10-14 20:00:19"
+      },
+      {
+        "nombre": "Resumen_1.pdf",
+        "tamaño": 6083855,
+        "fecha_modificacion": "2024-10-14 19:57:36"
+      },
+      {
+        "nombre": "Ruta_15_16.pdf",
+        "tamaño": 29034615,
+        "fecha_modificacion": "2024-10-14 19:48:49"
+      },
+      {
+        "nombre": "Ruta_17_ElSazonMinero.pdf",
+        "tamaño": 21224284,
+        "fecha_modificacion": "2024-10-14 19:28:33"
+      },
+      {
+        "nombre": "Ruta_18_EntreCortesYVilledos.pdf",
+        "tamaño": 26444011,
+        "fecha_modificacion": "2024-10-14 19:32:29"
+      },
+      {
+        "nombre": "Ruta_10_11_12.pdf",
+        "tamaño": 20857490,
+        "fecha_modificacion": "2024-10-14 19:37:28"
+      },
+      {
+        "nombre": "Ruta_13_14.pdf",
+        "tamaño": 18235730,
+        "fecha_modificacion": "2024-10-14 19:31:15"
+      }
+    ],
+    "css": [
+      {
+        "nombre": "main.css",
+        "tamaño": 641,
+        "fecha_modificacion": "2024-12-10 16:20:52"
+      }
+    ],
+    "css\\base": [
+      {
+        "nombre": "typography.css",
+        "tamaño": 1418,
+        "fecha_modificacion": "2024-12-07 03:20:26"
+      },
+      {
+        "nombre": "variables.css",
+        "tamaño": 812,
+        "fecha_modificacion": "2024-12-07 03:20:18"
+      }
+    ],
+    "css\\components": [
+      {
+        "nombre": "buttons.css",
+        "tamaño": 1435,
+        "fecha_modificacion": "2024-12-07 03:41:17"
+      },
+      {
+        "nombre": "speech-bubble.css",
+        "tamaño": 779,
+        "fecha_modificacion": "2024-12-07 03:54:52"
+      },
+      {
+        "nombre": "menu.css",
+        "tamaño": 529,
+        "fecha_modificacion": "2024-12-07 03:23:03"
+      },
+      {
+        "nombre": "content-block.css",
+        "tamaño": 1064,
+        "fecha_modificacion": "2024-12-07 04:13:11"
+      },
+      {
+        "nombre": "footer.css",
+        "tamaño": 1630,
+        "fecha_modificacion": "2024-12-08 20:33:38"
+      },
+      {
+        "nombre": "mapa.css",
+        "tamaño": 1703,
+        "fecha_modificacion": "2024-12-09 21:17:39"
+      },
+      {
+        "nombre": "timeline.css",
+        "tamaño": 2977,
+        "fecha_modificacion": "2024-12-10 17:24:02"
+      }
+    ],
+    "css\\layouts": [
+      {
+        "nombre": "grid.css",
+        "tamaño": 980,
+        "fecha_modificacion": "2024-12-07 03:23:28"
+      },
+      {
+        "nombre": "sticky.css",
+        "tamaño": 2198,
+        "fecha_modificacion": "2024-12-09 01:06:22"
+      }
+    ],
+    "css\\animations": [
+      {
+        "nombre": "keyframes.css",
+        "tamaño": 761,
+        "fecha_modificacion": "2024-12-07 03:34:04"
+      },
+      {
+        "nombre": "transitions.css",
+        "tamaño": 1331,
+        "fecha_modificacion": "2024-12-08 17:19:57"
+      }
+    ],
+    "css\\visualizations": [
+      {
+        "nombre": "sankey.css",
+        "tamaño": 1096,
+        "fecha_modificacion": "2024-12-10 03:10:52"
+      }
+    ],
+    "css\\otros": [
+      {
+        "nombre": "styles.css",
+        "tamaño": 7325,
+        "fecha_modificacion": "2024-12-07 00:42:39"
+      },
+      {
+        "nombre": "animations.css",
+        "tamaño": 1930,
+        "fecha_modificacion": "2024-12-07 01:23:48"
+      },
+      {
+        "nombre": "visualization-styles.css",
+        "tamaño": 256,
+        "fecha_modificacion": "2024-12-07 03:00:47"
+      }
+    ],
+    "js": [
+      {
+        "nombre": "script.txt",
+        "tamaño": 1015,
+        "fecha_modificacion": "2024-12-01 23:41:30"
+      },
+      {
+        "nombre": "aperitivo.js",
+        "tamaño": 8171,
+        "fecha_modificacion": "2024-12-10 01:17:20"
+      },
+      {
+        "nombre": "animations.js",
+        "tamaño": 2923,
+        "fecha_modificacion": "2024-12-07 19:05:41"
+      },
+      {
+        "nombre": "sankeyConfig.js",
+        "tamaño": 11495,
+        "fecha_modificacion": "2024-12-10 03:18:57"
+      },
+      {
+        "nombre": "dataProcessor.js",
+        "tamaño": 9164,
+        "fecha_modificacion": "2024-12-10 00:46:12"
+      },
+      {
+        "nombre": "animacion-num.js",
+        "tamaño": 1340,
+        "fecha_modificacion": "2024-12-07 20:29:08"
+      },
+      {
+        "nombre": "primerPlatoMap.js",
+        "tamaño": 10694,
+        "fecha_modificacion": "2024-12-09 01:44:04"
+      }
+    ],
+    "img": [
+      {
+        "nombre": "titulo.png",
+        "tamaño": 142739,
+        "fecha_modificacion": "2024-12-06 22:46:58"
+      },
+      {
+        "nombre": "titulo-2.png",
+        "tamaño": 44552,
+        "fecha_modificacion": "2024-12-06 23:05:57"
+      },
+      {
+        "nombre": "titulo-3.png",
+        "tamaño": 184101,
+        "fecha_modificacion": "2024-12-06 23:11:09"
+      },
+      {
+        "nombre": "titulo-4.png",
+        "tamaño": 159545,
+        "fecha_modificacion": "2024-12-07 01:04:01"
+      }
+    ],
+    "img\\Xolin": [
+      {
+        "nombre": "cara.png",
+        "tamaño": 102521,
+        "fecha_modificacion": "2024-11-24 15:34:15"
+      },
+      {
+        "nombre": "Xolin_Primer Plato .png",
+        "tamaño": 310201,
+        "fecha_modificacion": "2024-11-24 16:45:52"
+      },
+      {
+        "nombre": "Xolin_Aperitivo.png",
+        "tamaño": 241516,
+        "fecha_modificacion": "2024-12-01 21:13:49"
+      },
+      {
+        "nombre": "Xolin_Entremes.png",
+        "tamaño": 241832,
+        "fecha_modificacion": "2024-11-24 17:18:05"
+      },
+      {
+        "nombre": "Xolin_Segundo_Plato.png",
+        "tamaño": 302309,
+        "fecha_modificacion": "2024-11-24 17:28:31"
+      },
+      {
+        "nombre": "Xolin_Postre.png",
+        "tamaño": 315622,
+        "fecha_modificacion": "2024-11-24 17:38:45"
+      }
+    ],
+    "img\\Xolin\\Con Fondo": [
+      {
+        "nombre": "Xoin_con_fondo.png",
+        "tamaño": 1711719,
+        "fecha_modificacion": "2024-11-24 15:32:44"
+      },
+      {
+        "nombre": "Xolin_Primer Plato_fondo.png",
+        "tamaño": 1291376,
+        "fecha_modificacion": "2024-11-24 16:42:41"
+      },
+      {
+        "nombre": "Xolin_prehispanico.png",
+        "tamaño": 1359850,
+        "fecha_modificacion": "2024-11-24 17:01:44"
+      }
+    ],
+    "img\\inicio": [
+      {
+        "nombre": "col_izq.png",
+        "tamaño": 1368829,
+        "fecha_modificacion": "2024-11-30 19:54:15"
+      },
+      {
+        "nombre": "col_der.png",
+        "tamaño": 1586091,
+        "fecha_modificacion": "2024-11-30 19:53:27"
+      },
+      {
+        "nombre": "flor.png",
+        "tamaño": 38411,
+        "fecha_modificacion": "2024-11-21 21:12:01"
+      },
+      {
+        "nombre": "chile.png",
+        "tamaño": 411269,
+        "fecha_modificacion": "2024-11-21 21:10:06"
+      },
+      {
+        "nombre": "flor_menu.png",
+        "tamaño": 9428,
+        "fecha_modificacion": "2024-12-01 01:30:12"
+      },
+      {
+        "nombre": "linea.png",
+        "tamaño": 3145,
+        "fecha_modificacion": "2024-12-01 13:18:11"
+      },
+      {
+        "nombre": "menu_detalle.png",
+        "tamaño": 33682,
+        "fecha_modificacion": "2024-12-01 13:28:19"
+      },
+      {
+        "nombre": "menu_detalle_der.png",
+        "tamaño": 29738,
+        "fecha_modificacion": "2024-12-01 13:35:48"
+      },
+      {
+        "nombre": "menu_detalle_der_tal.png",
+        "tamaño": 50130,
+        "fecha_modificacion": "2024-12-01 13:44:25"
+      },
+      {
+        "nombre": "menu_detalle_izq_tal.png",
+        "tamaño": 51570,
+        "fecha_modificacion": "2024-12-01 14:02:08"
+      },
+      {
+        "nombre": "plato.png",
+        "tamaño": 242573,
+        "fecha_modificacion": "2024-12-07 16:22:37"
+      },
+      {
+        "nombre": "plato-2.png",
+        "tamaño": 684514,
+        "fecha_modificacion": "2024-12-07 16:39:31"
+      }
+    ],
+    "img\\inicio\\1x": [
+      {
+        "nombre": "Recurso 1.png",
+        "tamaño": 13675,
+        "fecha_modificacion": "2024-12-01 01:12:39"
+      },
+      {
+        "nombre": "Recurso 11.png",
+        "tamaño": 316758,
+        "fecha_modificacion": "2024-12-01 15:32:21"
+      }
+    ],
+    "img\\inicio\\PNG": [
+      {
+        "nombre": "Recurso 12grande.png",
+        "tamaño": 316758,
+        "fecha_modificacion": "2024-12-01 15:33:15"
+      },
+      {
+        "nombre": "Recurso 1grande.png",
+        "tamaño": 9859,
+        "fecha_modificacion": "2024-12-06 22:32:17"
+      },
+      {
+        "nombre": "Recurso 2grande.png",
+        "tamaño": 9859,
+        "fecha_modificacion": "2024-12-06 22:32:59"
+      }
+    ],
+    "img\\aperitivo": [
+      {
+        "nombre": "tlecuilli.png",
+        "tamaño": 444171,
+        "fecha_modificacion": "2024-12-01 22:07:09"
+      },
+      {
+        "nombre": "maiz.png",
+        "tamaño": 174721,
+        "fecha_modificacion": "2024-12-08 00:14:50"
+      },
+      {
+        "nombre": "chile.png",
+        "tamaño": 78889,
+        "fecha_modificacion": "2024-12-08 00:21:54"
+      },
+      {
+        "nombre": "frijoles.png",
+        "tamaño": 190604,
+        "fecha_modificacion": "2024-12-08 00:23:53"
+      },
+      {
+        "nombre": "calabaza.png",
+        "tamaño": 252370,
+        "fecha_modificacion": "2024-12-08 00:27:35"
+      },
+      {
+        "nombre": "cacao.png",
+        "tamaño": 177903,
+        "fecha_modificacion": "2024-12-08 00:35:30"
+      }
+    ],
+    "img\\icono": [
+      {
+        "nombre": "chile.ico",
+        "tamaño": 49833,
+        "fecha_modificacion": "2024-12-07 01:34:16"
+      }
+    ],
+    "img\\principal": [
+      {
+        "nombre": "inicio.png",
+        "tamaño": 2517166,
+        "fecha_modificacion": "2024-12-03 16:05:06"
+      }
+    ],
+    "json": [
+      {
+        "nombre": "datos.json",
+        "tamaño": 15978,
+        "fecha_modificacion": "2024-11-06 02:26:43"
+      },
+      {
+        "nombre": "rutas.json",
+        "tamaño": 17398,
+        "fecha_modificacion": "2024-11-26 00:12:41"
+      },
+      {
+        "nombre": "estados.json",
+        "tamaño": 9086,
+        "fecha_modificacion": "2024-11-26 01:05:09"
+      },
+      {
+        "nombre": "recursos_gastronomicos.json",
+        "tamaño": 18217,
+        "fecha_modificacion": "2024-12-05 02:23:31"
+      },
+      {
+        "nombre": "mexico-geojson-routes-complete.json",
+        "tamaño": 17460,
+        "fecha_modificacion": "2024-11-26 01:05:05"
+      },
+      {
+        "nombre": "aperitivo.json",
+        "tamaño": 56699,
+        "fecha_modificacion": "2024-12-09 21:19:13"
+      },
+      {
+        "nombre": "cordenadas.geojson",
+        "tamaño": 361640,
+        "fecha_modificacion": "2024-12-02 01:30:52"
+      },
+      {
+        "nombre": "aperitivo-1.json",
+        "tamaño": 12894,
+        "fecha_modificacion": "2024-12-01 23:34:52"
+      },
+      {
+        "nombre": "aperitivo-2.json",
+        "tamaño": 55043,
+        "fecha_modificacion": "2024-12-07 18:33:58"
+      },
+      {
+        "nombre": "primer_plato.json",
+        "tamaño": 1795,
+        "fecha_modificacion": "2024-12-09 00:34:18"
+      },
+      {
+        "nombre": "categorias_ingredientes.json",
+        "tamaño": 2822,
+        "fecha_modificacion": "2024-12-10 18:05:44"
+      },
+      {
+        "nombre": "tooltip.json",
+        "tamaño": 7578,
+        "fecha_modificacion": "2024-12-10 18:08:45"
+      }
+    ],
+    "fonts": []
+  },
+  "archivos_html": [
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\index.html",
+      "titulo": "Saborea la Historia",
+      "scripts_vinculados": [
+        "//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js",
+        "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js",
+        "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/typeit/8.7.1/index.umd.min.js",
+        "https://unpkg.com/scrollama",
+        "js/script.js",
+        "js/animations.js",
+        "js/sankeyConfig.js",
+        "js/dataProcessor.js",
+        "js/aperitivo.js",
+        "js/animacion-num.js",
+        "js/primerPlatoMap.js"
+      ],
+      "css_vinculados": [
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
+        "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css",
+        "css/main.css"
+      ],
+      "componentes_principales": [
+        "dialog-image",
+        "container-fluid sticky-section",
+        "col-5 ",
+        "row   pt-3",
+        "sticky-image sticky-image-sankey",
+        "network",
+        "dialog-container mt-3",
+        "d-flex flex-column justify-content-center align-items-center content-box p-4 w-100",
+        "card h-100 border-0 bg-transparent",
+        "speech-bubble",
+        "sticky-image sticky-image-xolin",
+        "arrow-down",
+        "col-9 text-center",
+        "col-md-4 mt-3  flex-column",
+        "card-body text-center",
+        "visualization-container",
+        "mt-15 col-7",
+        "row  align-items-center justify-content-center",
+        "row mt-1 row-eq-height",
+        "dialog-text",
+        "col-8 text-center",
+        "preview-card",
+        "timeline-container",
+        "col-9 text-center ",
+        "mt-3",
+        "text-content",
+        "sticky-section",
+        "chile-icon",
+        " content-block",
+        "content-block initial-block",
+        "col-md-4 mt-3 d-flex flex-column",
+        "social-links",
+        "image-content",
+        "row g-3 mb-4",
+        "d-flex",
+        "mt-15 mb-5 content-block",
+        "timeline-point active",
+        "timeline-point",
+        "row",
+        "col-md-8 mx-auto d-flex align-items-center",
+        "d-flex align-items-center",
+        "timeline",
+        "mb-4",
+        "col-3 text-center",
+        "text-center mb-4",
+        "timeline-point completed",
+        "container-fluid fullscreen-section",
+        "container mt-1",
+        "row ",
+        "m-5 content-block ingredient-block",
+        "col-8",
+        "timeline-preview",
+        "col-12 mb-2 text-center",
+        "timeline-message",
+        "col-6 text-center",
+        "row min-vh-100",
+        "col-2 text-center",
+        "col-4 ",
+        "col-12"
+      ]
+    }
+  ],
+  "archivos_css": [
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\main.css",
+      "clases_principales": [],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\base\\typography.css",
+      "clases_principales": [
+        "main-subtitle",
+        "libre-baskerville-regular",
+        "libre-baskerville-regular-italic",
+        "libre-baskerville-bold",
+        "typing-text",
+        "cardo-regular-italic",
+        "cardo-regular",
+        "cardo-bold",
+        "main-title"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\base\\variables.css",
+      "clases_principales": [],
+      "ids_principales": [],
+      "variables_css": [
+        "border-radius-sm",
+        "spacing-md",
+        "border-radius-lg",
+        "spacing-xs",
+        "color-grey",
+        "color-secondary",
+        "color-background",
+        "shadow-sm",
+        "font-size-xxl",
+        "shadow-md",
+        "color-accent",
+        "color-white",
+        "spacing-sm",
+        "border-radius-full",
+        "spacing-lg",
+        "font-size-sm",
+        "font-size-xl",
+        "font-size-lg",
+        "color-primary",
+        "font-size-md",
+        "color-text"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\buttons.css",
+      "clases_principales": [
+        "clicked",
+        "chile-icon",
+        "scroll-button",
+        "arrow-down",
+        "button-text"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\speech-bubble.css",
+      "clases_principales": [
+        "dialog-image",
+        "speech-bubble",
+        "dialog-container",
+        "dialog-text"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\menu.css",
+      "clases_principales": [
+        "mb-1",
+        "menu-description",
+        "menu-section",
+        "menu-title"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\content-block.css",
+      "clases_principales": [
+        "content-block",
+        "active"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\footer.css",
+      "clases_principales": [
+        "row-eq-height",
+        "bi-github",
+        "footer-logo",
+        "social-links",
+        "footer"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\mapa.css",
+      "clases_principales": [
+        "visualization-container",
+        "marker-ingrediente",
+        "hover",
+        "marker-icon",
+        "marker-popup",
+        "maplibregl-popup",
+        "marker-icon-container",
+        "map-loading"
+      ],
+      "ids_principales": [
+        "primer-plato-map"
+      ],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\components\\timeline.css",
+      "clases_principales": [
+        "timeline-preview",
+        "timeline-message",
+        "preview-card",
+        "active",
+        "timeline-container",
+        "timeline",
+        "completed",
+        "timeline-point"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\layouts\\grid.css",
+      "clases_principales": [
+        "fullscreen-section",
+        "content-box",
+        "side-image-container",
+        "container-fluid",
+        "content-wrapper"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\layouts\\sticky.css",
+      "clases_principales": [
+        "visualization-container",
+        "marker-ingrediente",
+        "maplibregl-popup",
+        "sticky-image-xolin",
+        "sticky-image-sankey",
+        "active",
+        "marker-popup",
+        "sticky-section",
+        "sticky-image",
+        "content-block",
+        "marker-icon-container"
+      ],
+      "ids_principales": [
+        "primer-plato-map"
+      ],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\animations\\keyframes.css",
+      "clases_principales": [],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\animations\\transitions.css",
+      "clases_principales": [
+        "fade-enter",
+        "hover-scale",
+        "underline-animation",
+        "card",
+        "card-text",
+        "transition-all",
+        "card-title",
+        "animated-number",
+        "tarjeta",
+        "cardo-regular",
+        "fade-enter-active"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\visualizations\\sankey.css",
+      "clases_principales": [
+        "visualization-container",
+        "category-button",
+        "active",
+        "category-controls"
+      ],
+      "ids_principales": [
+        "network"
+      ],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\otros\\styles.css",
+      "clases_principales": [
+        "dialog-image",
+        "dialog-container",
+        "shake-animation",
+        "underline-animation",
+        "active",
+        "text-grey",
+        "btn-circle",
+        "speech-bubble",
+        "fullscreen-section",
+        "cardo-regular",
+        "content-block",
+        "side-image-container",
+        "mb-1",
+        "visualization-container",
+        "rotate-180",
+        "dialog-text",
+        "titulo",
+        "sticky-section",
+        "menu-description",
+        "main-title",
+        "menu-section",
+        "btn-primary",
+        "libre-baskerville-regular",
+        "sticky-image",
+        "typing-text",
+        "cardo-regular-italic",
+        "main-subtitle",
+        "content-box",
+        "menu-title",
+        "content-wrapper",
+        "libre-baskerville-regular-italic",
+        "libre-baskerville-bold",
+        "cardo-bold"
+      ],
+      "ids_principales": [
+        "map"
+      ],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\otros\\animations.css",
+      "clases_principales": [
+        "clicked",
+        "chile-icon",
+        "scroll-button",
+        "arrow-down",
+        "button-text"
+      ],
+      "ids_principales": [],
+      "variables_css": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\otros\\visualization-styles.css",
+      "clases_principales": [
+        "visualization-container"
+      ],
+      "ids_principales": [
+        "network"
+      ],
+      "variables_css": []
+    }
+  ],
+  "archivos_js": [
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\aperitivo.js",
+      "funciones": [
+        "createCategoryControls",
+        "updateSankeyChart",
+        "setupMapInteractions",
+        "initializeVisualizations",
+        "setupScrollama",
+        "filterByCategory"
+      ],
+      "variables_globales": [
+        "container",
+        "button",
+        "option",
+        "networkDiv",
+        "sankeyData",
+        "primerPlatoMap",
+        "resetData",
+        "sankeyChart",
+        "currentState",
+        "allButton",
+        "ingredientesPermitidos",
+        "uniqueCategories",
+        "scroller",
+        "tooltipData",
+        "ingredientCategories",
+        "map",
+        "filteredData",
+        "currentIngredient",
+        "ingrediente",
+        "hasFlowerImage"
+      ],
+      "importaciones": [],
+      "eventos_dom": [
+        "DOMContentLoaded",
+        "resize",
+        "beforeunload"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\animations.js",
+      "funciones": [],
+      "variables_globales": [
+        "targetSection",
+        "blocks",
+        "scrollButton",
+        "imageUrls",
+        "xolinImage",
+        "scroller"
+      ],
+      "importaciones": [],
+      "eventos_dom": [
+        "DOMContentLoaded",
+        "resize",
+        "click"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\sankeyConfig.js",
+      "funciones": [],
+      "variables_globales": [
+        "targetNode",
+        "sourceNode",
+        "nodes",
+        "SankeyConfig",
+        "links",
+        "connectionCount"
+      ],
+      "importaciones": [],
+      "eventos_dom": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\dataProcessor.js",
+      "funciones": [],
+      "variables_globales": [
+        "relevantNodes",
+        "filteredLinks",
+        "categoryIngredients",
+        "estadosRelacionados",
+        "filteredNodes",
+        "nodes",
+        "addedNodes",
+        "adjustedLinks",
+        "alimentos",
+        "DataProcessor",
+        "links",
+        "platillos",
+        "estado",
+        "platillosRelacionados",
+        "orderedNodes",
+        "connectionCount"
+      ],
+      "importaciones": [],
+      "eventos_dom": []
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\animacion-num.js",
+      "funciones": [
+        "animateNumbers"
+      ],
+      "variables_globales": [
+        "observer",
+        "number",
+        "increment",
+        "animatedNumbers",
+        "current",
+        "value",
+        "interval"
+      ],
+      "importaciones": [],
+      "eventos_dom": [
+        "DOMContentLoaded"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\primerPlatoMap.js",
+      "funciones": [],
+      "variables_globales": [
+        "el",
+        "primerPlatoMap",
+        "iconContainer",
+        "response",
+        "element",
+        "ingrediente",
+        "step",
+        "mexicoStates",
+        "iconDiv",
+        "marker",
+        "estado",
+        "popup",
+        "tileUrl",
+        "scroller",
+        "ingredienteData",
+        "coordinates"
+      ],
+      "importaciones": [],
+      "eventos_dom": [
+        "DOMContentLoaded",
+        "mouseenter",
+        "resize",
+        "click",
+        "mouseleave"
+      ]
+    }
+  ],
+  "archivos_python": [],
+  "archivos_json": [
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\datos.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "rutas_gastronomicas_mexico"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\rutas.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "rutas"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\estados.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "contenido": {
+        "estados": [
+          {
+            "nombre": "Baja California",
+            "ubicacion": "Se localiza en el extremo noroeste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                1
+              ],
+              "minima": [
+                2
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Tijuana",
+              "Tecate",
+              "Valle de Guadalupe",
+              "Ensenada",
+              "Playas de Rosarito"
+            ]
+          },
+          {
+            "nombre": "Baja California Sur",
+            "ubicacion": "Rincón mágico enclavado en la península más grande de México, donde el mar y el desierto se funden para hacer reflejo con el cielo azul",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                3
+              ],
+              "minima": [
+                4
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "La Paz",
+              "Ciudad Constitución (Comondú)",
+              "Loreto",
+              "Mulegé",
+              "Santa Rosalía",
+              "San Ignacio",
+              "Guerrero Negro"
+            ]
+          },
+          {
+            "nombre": "Hidalgo",
+            "ubicacion": "Se ubica en la región centro-oriental de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                5
+              ],
+              "minima": [
+                6
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Tepeapulco",
+              "Zempoala",
+              "Pachuca",
+              "Actopan",
+              "Santiago de Anaya",
+              "Ixmiquilpan",
+              "Mineral del Monte",
+              "Mineral El Chico",
+              "Huasca de Ocampo",
+              "San Miguel"
+            ]
+          },
+          {
+            "nombre": "Tamaulipas",
+            "ubicacion": "Se ubica en la región noreste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                7
+              ],
+              "minima": [
+                8
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Veracruz",
+            "ubicacion": "Se extiende de noroeste a sureste, sobre la costa del Golfo de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                41.2
+              ],
+              "minima": [
+                6
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Veracruz",
+              "Coatepec",
+              "San Rafael",
+              "Gutiérrez Zamora"
+            ]
+          },
+          {
+            "nombre": "Oaxaca",
+            "ubicacion": "Entre raíces y estrellas cubiertas de barro negro",
+            "extension": [],
+            "clima": {},
+            "poblacion": [],
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Puebla",
+            "ubicacion": "Se localiza en el centro oriente del territorio mexicano.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                5
+              ],
+              "minima": [
+                17.5
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Puebla",
+              "Cholula",
+              "Zacatlán de las Manzanas",
+              "Cuetzalan"
+            ]
+          },
+          {
+            "nombre": "Chiapas",
+            "ubicacion": "Se localiza en la porción sureste de la República Mexicana",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                17.5
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Tuxtla Gutiérrez",
+              "Chiapa de Corzo",
+              "San Cristóbal de Las Casas",
+              "Zincantán",
+              "Ocosingo",
+              "Comitán de Domínguez",
+              "Teopisca"
+            ]
+          },
+          {
+            "nombre": "Tabasco",
+            "ubicacion": "Se localiza en el sureste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                10
+              ],
+              "minima": [
+                18.5
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Campeche",
+            "ubicacion": "Se localiza en la Península de Yucatán, al sureste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                11
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Yucatán",
+            "ubicacion": "Se localiza en la porción sureste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                10
+              ],
+              "minima": [
+                12
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Quintana Roo",
+            "ubicacion": "Se localiza en la porción sureste de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                13
+              ],
+              "minima": [
+                14
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Zacatecas",
+            "ubicacion": "Ubicado en el centro del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                15
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Aguascalientes",
+            "ubicacion": "Ubicado en el centro del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                16
+              ],
+              "minima": [
+                17
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Aguascalientes",
+              "Pabellón de Arteaga",
+              "Calvillo"
+            ]
+          },
+          {
+            "nombre": "Coahuila",
+            "ubicacion": "El estado limita al norte del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                6
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Saltillo",
+              "Ramos Arizpe",
+              "Arteaga",
+              "Parras de la Fuente",
+              "Torreón",
+              "Cuatro Ciénegas"
+            ]
+          },
+          {
+            "nombre": "Nuevo León",
+            "ubicacion": "Al noreste de México.",
+            "extension": [
+              64210.563
+            ],
+            "clima": {
+              "maxima": [
+                18
+              ],
+              "minima": [
+                19
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Santiago",
+              "Monterrey"
+            ]
+          },
+          {
+            "nombre": "Durango",
+            "ubicacion": "Se localiza al noroeste del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                20
+              ],
+              "minima": [
+                1.7
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Nombre de Dios",
+              "Canatlán",
+              "Durango"
+            ]
+          },
+          {
+            "nombre": "Sonora",
+            "ubicacion": "Región llamada “El sol de México”, desierto que se desvanece en las playas",
+            "extension": [],
+            "clima": {},
+            "poblacion": [],
+            "municipios_ruta": [
+              "Ures",
+              "Baviácora",
+              "Aconchi",
+              "San Felipe de Jesús",
+              "Huépac",
+              "Banámichi",
+              "Arizpe",
+              "Bacoachi",
+              "Cananea"
+            ]
+          },
+          {
+            "nombre": "Chihuahua",
+            "ubicacion": "Se localiza al norte de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                21
+              ],
+              "minima": [
+                14
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Sinaloa",
+            "ubicacion": "Situado al noroeste del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                10
+              ],
+              "minima": [
+                10.5
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "El Fuerte",
+              "Los Mochis",
+              "Culiacán",
+              "Cosalá",
+              "Mazatlán"
+            ]
+          },
+          {
+            "nombre": "Michoacán",
+            "ubicacion": "Michoacán, rico en su naturaleza y con tradiciones milenarias",
+            "extension": [],
+            "clima": {
+              "maxima": [
+                29.6
+              ],
+              "minima": [
+                22
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Morelia",
+              "Quiroga",
+              "Santa Fe de la Laguna",
+              "Tzitzuntzan",
+              "Pátzcuaro",
+              "Santa Clara del Cobre",
+              "Uruapan"
+            ]
+          },
+          {
+            "nombre": "Morelos",
+            "ubicacion": "Se localiza al centro de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                18
+              ],
+              "minima": [
+                21.5
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Estado de México",
+            "ubicacion": "Se encuentra en el centro-sur del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                23
+              ],
+              "minima": [
+                15
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Guerrero",
+            "ubicacion": "Colinda al norte con Michoacán.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                18
+              ],
+              "minima": [
+                11
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Distrito Federal",
+            "ubicacion": "Zona centro de la República Mexicana.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                23
+              ],
+              "minima": [
+                19
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Coyoacán",
+              "Xochimilco",
+              "San Ángel",
+              "Condesa",
+              "Polanco"
+            ]
+          },
+          {
+            "nombre": "Querétaro",
+            "ubicacion": "Se localiza en la región denominada Bajío mexicano.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                24
+              ],
+              "minima": [
+                25
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Querétaro",
+              "Tequisquiapan"
+            ]
+          },
+          {
+            "nombre": "Guanajuato",
+            "ubicacion": "Bajío,  zona centro de México.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                5.2
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Guanajuato",
+              "San Miguel de Allende",
+              "Dolores Hidalgo"
+            ]
+          },
+          {
+            "nombre": "Jalisco",
+            "ubicacion": "Se encuentra al occidente del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                7
+              ],
+              "minima": [
+                26
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": []
+          },
+          {
+            "nombre": "Nayarit",
+            "ubicacion": "Se encuentra al noreste del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                3
+              ],
+              "minima": [
+                2
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "San Blas",
+              "Santiago",
+              "Bucerías"
+            ]
+          },
+          {
+            "nombre": "Colima",
+            "ubicacion": "Se ubica al este del país.",
+            "extension": "",
+            "clima": {
+              "maxima": [
+                9
+              ],
+              "minima": [
+                11
+              ]
+            },
+            "poblacion": "",
+            "municipios_ruta": [
+              "Comala",
+              "Colima",
+              "Tecomán"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\recursos_gastronomicos.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "recursos_gastronomicos"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\mexico-geojson-routes-complete.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "type",
+        "features"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\aperitivo.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "features"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\aperitivo-1.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "type",
+        "features"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\aperitivo-2.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "claves_principales": [
+        "features"
+      ]
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\primer_plato.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "contenido": {
+        "ingredientes": [
+          {
+            "id": "maiz",
+            "nombre": "Maíz",
+            "iconoTemp": "grain",
+            "estado": "Oaxaca",
+            "coordinates": [
+              -96.7216,
+              17.0732
+            ],
+            "origen": "Prehispánico",
+            "uso": "Base de la alimentación prehispánica",
+            "descripcion": "Elemento fundamental en la gastronomía mexicana, presente en tortillas y tamales"
+          },
+          {
+            "id": "trigo",
+            "nombre": "Trigo",
+            "iconoTemp": "wheat",
+            "estado": "Puebla",
+            "coordinates": [
+              -98.2063,
+              19.0413
+            ],
+            "origen": "Europeo",
+            "uso": "Introducido por los españoles",
+            "descripcion": "Transformó la panadería y repostería colonial"
+          },
+          {
+            "id": "cacao",
+            "nombre": "Cacao",
+            "iconoTemp": "coffee",
+            "estado": "Tabasco",
+            "coordinates": [
+              -92.9475,
+              18.4067
+            ],
+            "origen": "Prehispánico",
+            "uso": "Bebida ceremonial y moneda de cambio",
+            "descripcion": "Se fusionó con el azúcar española creando nuevas bebidas"
+          },
+          {
+            "id": "canela",
+            "nombre": "Canela",
+            "iconoTemp": "leaf",
+            "estado": "Veracruz",
+            "coordinates": [
+              -96.9216,
+              19.5438
+            ],
+            "origen": "Asiático",
+            "uso": "Introducida a través del comercio español",
+            "descripcion": "Especia que revolucionó la dulcería mexicana"
+          },
+          {
+            "id": "caña",
+            "nombre": "Caña de Azúcar",
+            "iconoTemp": "tree",
+            "estado": "Morelos",
+            "coordinates": [
+              -99.1013,
+              18.6813
+            ],
+            "origen": "Asiático",
+            "uso": "Introducida por los españoles",
+            "descripcion": "Transformó la dulcería y las bebidas tradicionales"
+          }
+        ]
+      }
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\categorias_ingredientes.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "contenido": {
+        "classified_ingredients": [
+          {
+            "ingredient": "Mamey",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Flor de Colorín",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Maíz",
+            "category": "Base de la cocina mexicana",
+            "color": "#FFE5CC"
+          },
+          {
+            "ingredient": "Jitomate",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Hoja Santa",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Chaya",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Frijol",
+            "category": "Base de la cocina mexicana",
+            "color": "#FFE5CC"
+          },
+          {
+            "ingredient": "Piloncillo",
+            "category": "Endulzantes y semillas",
+            "color": "#FFE6CC"
+          },
+          {
+            "ingredient": "Chilacayote",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Zapote Blanco",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Nopal",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Papaya",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Zapote Negro",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Guayaba",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Quintoniles",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Calabaza",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Epazote",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Guanábana",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Chía",
+            "category": "Endulzantes y semillas",
+            "color": "#FFE6CC"
+          },
+          {
+            "ingredient": "Amaranto",
+            "category": "Endulzantes y semillas",
+            "color": "#FFE6CC"
+          },
+          {
+            "ingredient": "Chile",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Huauzontle",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Achiote",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Chapulines",
+            "category": "Insectos",
+            "color": "#E6D6FF"
+          },
+          {
+            "ingredient": "Pitahaya",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Nanche",
+            "category": "Frutas",
+            "color": "#FFD6E6"
+          },
+          {
+            "ingredient": "Romeritos",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Papaloquelite",
+            "category": "Hierbas y especias",
+            "color": "#D6FFD6"
+          },
+          {
+            "ingredient": "Jicama",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Pepitas",
+            "category": "Endulzantes y semillas",
+            "color": "#FFE6CC"
+          },
+          {
+            "ingredient": "Cacao",
+            "category": "Endulzantes y semillas",
+            "color": "#FFE6CC"
+          },
+          {
+            "ingredient": "Flor de Calabaza",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          },
+          {
+            "ingredient": "Verdolagas",
+            "category": "Verduras",
+            "color": "#FFE6D6"
+          }
+        ]
+      }
+    },
+    {
+      "ruta": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\tooltip.json",
+      "tipo": "Desconocido",
+      "estructura": {},
+      "contenido": [
+        {
+          "ingredient": "Mamey",
+          "info": "Fruta dulce consumida en Mesoamérica, empleada para preparar atoles y postres energéticos.",
+          "preparation": "Se molía su pulpa en metate y se mezclaba con agua."
+        },
+        {
+          "ingredient": "Flor de Colorín",
+          "info": "Flor comestible valorada en la cocina prehispánica, utilizada junto con otros quelites en guisos.",
+          "preparation": "Se escaldaba en agua y se agregaba a guisos."
+        },
+        {
+          "ingredient": "Maíz",
+          "info": "Base de la dieta mesoamericana, transformado en tortillas, atoles y otros alimentos fundamentales.",
+          "preparation": "Se nixtamalizaba y molía para formar masa."
+        },
+        {
+          "ingredient": "Jitomate",
+          "info": "Fruto originario de Mesoamérica, empleado en salsas y guisos para aportar sabor y acidez.",
+          "preparation": "Se asaba en comal y se molía en molcajete."
+        },
+        {
+          "ingredient": "Hoja Santa",
+          "info": "Hierba aromática empleada en la cocina prehispánica para perfumar tamales y platillos ceremoniales.",
+          "preparation": "Se usaba fresca, machacándola ligeramente para aromatizar."
+        },
+        {
+          "ingredient": "Chaya",
+          "info": "Planta verde utilizada por culturas mayas, agregada a caldos y guisos nutritivos.",
+          "preparation": "Se hervía la hoja para suavizar su sabor."
+        },
+        {
+          "ingredient": "Frijol",
+          "info": "Leguminosa esencial en la alimentación prehispánica, base de numerosos guisos y preparaciones.",
+          "preparation": "Se hervían en olla de barro y se molían para formar pastas."
+        },
+        {
+          "ingredient": "Piloncillo",
+          "info": "Endulzante natural obtenido de la caña, utilizado en bebidas y postres prehispánicos.",
+          "preparation": "Se disolvía en agua caliente para endulzar."
+        },
+        {
+          "ingredient": "Chilacayote",
+          "info": "Calabaza nativa empleada en preparaciones dulces y saladas, consumida en rituales y celebraciones.",
+          "preparation": "Se cocía en agua y se endulzaba con miel."
+        },
+        {
+          "ingredient": "Zapote Blanco",
+          "info": "Fruta dulce apreciada en Mesoamérica, empleada para atoles y bebidas energéticas.",
+          "preparation": "Se molía la pulpa y se mezclaba con agua o masa."
+        },
+        {
+          "ingredient": "Nopal",
+          "info": "Cacto fundamental en la cocina mesoamericana, consumido fresco o asado y presente en diversos platillos.",
+          "preparation": "Se asaba y cortaba en tiras para añadir a guisos."
+        },
+        {
+          "ingredient": "Papaya",
+          "info": "Fruta tropical utilizada en bebidas refrescantes y preparaciones dulces en la época prehispánica.",
+          "preparation": "Se maceraba la pulpa con agua para bebidas."
+        },
+        {
+          "ingredient": "Zapote Negro",
+          "info": "Fruta dulce y oscura, empleada en atoles y bebidas por su sabor suave y nutritivo.",
+          "preparation": "Se molía la pulpa y se mezclaba con masa o agua."
+        },
+        {
+          "ingredient": "Guayaba",
+          "info": "Fruta aromática usada en atoles, bebidas y postres prehispánicos.",
+          "preparation": "Se machacaba su pulpa y se colaba para bebidas."
+        },
+        {
+          "ingredient": "Quintoniles",
+          "info": "Quelites mesoamericanos, cocidos y salteados, parte de la dieta vegetal prehispánica.",
+          "preparation": "Se hervían y salteaban con especias y chiles."
+        },
+        {
+          "ingredient": "Calabaza",
+          "info": "Cultivo imprescindible en Mesoamérica, usado en tamales, sopas y dulces ceremoniales.",
+          "preparation": "Se cocinaba al vapor y se molía para formar rellenos."
+        },
+        {
+          "ingredient": "Epazote",
+          "info": "Hierba aromática prehispánica que daba sabor a guisos, salsas y caldos.",
+          "preparation": "Se añadía fresco al final de la cocción para dar sabor."
+        },
+        {
+          "ingredient": "Guanábana",
+          "info": "Fruta tropical apreciada por su sabor fresco, empleada en bebidas y postres prehispánicos.",
+          "preparation": "Se machacaba la pulpa y se mezclaba con agua."
+        },
+        {
+          "ingredient": "Chía",
+          "info": "Semilla mesoamericana empleada en bebidas nutritivas, al remojarse generaba una textura gelatinosa.",
+          "preparation": "Se remojaban las semillas en agua para bebidas."
+        },
+        {
+          "ingredient": "Amaranto",
+          "info": "Semilla altamente valorada en las culturas prehispánicas, usada en atoles, tortillas y dulces.",
+          "preparation": "Se tostaban las semillas y se mezclaban con miel."
+        },
+        {
+          "ingredient": "Chile",
+          "info": "Condimento esencial en la cocina mesoamericana, presente en salsas, guisos y rituales culinarios.",
+          "preparation": "Se tostaba y se molía en molcajete con especias."
+        },
+        {
+          "ingredient": "Huauzontle",
+          "info": "Planta emparentada con el amaranto, hervida y agregada a guisos por su valor nutricional.",
+          "preparation": "Se escaldaban y se añadían a guisos."
+        },
+        {
+          "ingredient": "Achiote",
+          "info": "Semilla roja empleada como condimento y colorante natural, base de salsas y adobos.",
+          "preparation": "Se molían las semillas con especias para salsas."
+        },
+        {
+          "ingredient": "Chapulines",
+          "info": "Insectos comestibles ricos en proteínas, tostados y sazonados, parte de la dieta prehispánica.",
+          "preparation": "Se tostaban en comal con sal y chile."
+        },
+        {
+          "ingredient": "Pitahaya",
+          "info": "Fruta de cactus apreciada en Mesoamérica, empleada en bebidas dulces y postres.",
+          "preparation": "Se machacaba la pulpa con agua para bebidas."
+        },
+        {
+          "ingredient": "Nanche",
+          "info": "Pequeña fruta amarilla, endulzada con miel o piloncillo, usada en bebidas y dulces prehispánicos.",
+          "preparation": "Se maceraban con miel o piloncillo."
+        },
+        {
+          "ingredient": "Romeritos",
+          "info": "Planta silvestre comestible, cocida y mezclada con salsas, parte de la herencia culinaria mesoamericana.",
+          "preparation": "Se limpiaban, cocían y agregaban a guisos con chile."
+        },
+        {
+          "ingredient": "Papaloquelite",
+          "info": "Hierba aromática utilizada cruda o ligeramente machacada, aportando sabor a guisos y ensaladas.",
+          "preparation": "Se usaba crudo o ligeramente machacado como hierba aromática."
+        },
+        {
+          "ingredient": "Jicama",
+          "info": "Raíz crujiente y dulce consumida fresca en la época prehispánica, valorada por su frescura.",
+          "preparation": "Se consumía cruda, pelada y rebanada."
+        },
+        {
+          "ingredient": "Pepitas",
+          "info": "Semillas de calabaza tostadas y molidas para preparar salsas y moles prehispánicos.",
+          "preparation": "Se tostaban y molían para preparar salsas."
+        },
+        {
+          "ingredient": "Cacao",
+          "info": "Semilla sagrada en Mesoamérica, base de bebidas espumosas y símbolo de estatus social.",
+          "preparation": "Se tostaba, pelaba y molía para bebidas espumosas."
+        },
+        {
+          "ingredient": "Flor de Calabaza",
+          "info": "Flor comestible muy apreciada, añadida a sopas y guisos por su sabor delicado.",
+          "preparation": "Se añadía fresca a caldos y sopas."
+        },
+        {
+          "ingredient": "Verdolagas",
+          "info": "Planta silvestre nutritiva, hervida y agregada a caldos y guisos mesoamericanos.",
+          "preparation": "Se hervían y mezclaban con salsas o caldos."
+        }
+      ]
+    }
+  ],
+  "archivos_img": [
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\titulo.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\titulo-2.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\titulo-3.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\titulo-4.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\cara.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Xolin_Primer Plato .png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Xolin_Aperitivo.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Xolin_Entremes.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Xolin_Segundo_Plato.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Xolin_Postre.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Con Fondo\\Xoin_con_fondo.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Con Fondo\\Xolin_Primer Plato_fondo.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\Xolin\\Con Fondo\\Xolin_prehispanico.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\col_izq.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\col_der.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\flor.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\chile.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\flor_menu.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\linea.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\menu_detalle.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\menu_detalle_der.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\menu_detalle_der_tal.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\menu_detalle_izq_tal.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\plato.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\plato-2.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\1x\\Recurso 1.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\1x\\Recurso 11.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\PNG\\Recurso 12grande.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\PNG\\Recurso 1grande.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\inicio\\PNG\\Recurso 2grande.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\tlecuilli.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\maiz.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\chile.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\frijoles.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\calabaza.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\aperitivo\\cacao.png",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\principal\\inicio.png"
+  ],
+  "otros_archivos": [
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\escaner.ipynb",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_2_3.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_4_5_6.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_8_9.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_1.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_7_PlatillosConHistoria.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Resumen_2.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Resumen_1.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_15_16.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_17_ElSazonMinero.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_18_EntreCortesYVilledos.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_10_11_12.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\pdfs\\Ruta_13_14.pdf",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\js\\script.txt",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\img\\icono\\chile.ico",
+    "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\json\\cordenadas.geojson"
+  ],
+  "dependencias_detectadas": [],
+  "endpoints_api": [],
+  "comentarios_importantes": [
+    {
+      "archivo": "g:\\Mi unidad\\01 - Especialidad\\Cuatrimestre 2\\Proyecto FINAL\\css\\layouts\\sticky.css",
+      "comentario": "Para que ocupe todo el espacio disponible en el flex container"
+    }
+  ]
+}

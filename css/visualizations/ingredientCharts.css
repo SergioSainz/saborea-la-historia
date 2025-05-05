@@ -1,0 +1,23 @@
+/* Estilos para los gráficos de ingredientes */
+
+.chart-container {
+    margin-bottom: 20px;
+    min-height: 200px;
+    background-color: transparent;
+    padding: 10px;
+}
+
+/* Estilos para las barras del gráfico */
+.bar {
+    transition: all 0.3s ease;
+}
+
+.bar:hover {
+    opacity: 1 !important;
+}
+
+/* Estilos para las notas culturales */
+#maiz-nota, #frijol-nota, #chile-nota, #calabaza-nota, #cacao-nota {
+    margin-top: 15px;
+    font-style: italic;
+}

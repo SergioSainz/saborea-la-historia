@@ -1,0 +1,479 @@
+Ingrediente|Platillos|Categoría|Epoca|Origen|Destino|Estado|Cultura prehispánica|Nota cultural|Cult
+SAL|356|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Colima|Colima|Colima|Mexica|La sal era tan valiosa que se usaba como tributo y moneda entre culturas mesoamericanas.|
+CEBOLLA|238|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Irán|Puebla|Puebla|Irán|Se usaba como medicina en Egipto; llegó a México en la Colonia.|
+AJO|195|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Kazajistán|Puebla|Puebla|Kazajistán|Muy valorado por su aroma y poder antibiótico natural.|
+JITOMATE|157|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Europa lo creyó venenoso por siglos. Hoy es base de cocina mundial gracias a Mesoamérica.|
+PIMIENTA|145|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|En la Edad Media valía más que el oro; llegó por vía marítima.|
+CERDO|119|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Hernán Cortés trajo los primeros cerdos; transformaron la dieta mesoamericana.|
+ACEITE|106|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|El aceite de oliva fue esencial en la comida conventual.|
+AZUCAR|103|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Cultivo traído por los españoles; el azúcar impulsó el desarrollo de haciendas.|
+HUEVO|76|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|China|CDMX|CDMX|China|El huevo de gallina no existía en América antes de la Conquista.|
+MAIZ|66|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Olmeca|Según el Popol Vuh, los dioses crearon al hombre del maíz. Sin maíz no hay país.|
+CILANTRO|65|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Grecia|Veracruz|Veracruz|Grecia|Los mexicas no lo conocieron; se popularizó mucho después.|
+OREGANO|63|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|Puebla|Puebla|Italia|En México se usa una variedad local más fuerte que la europea.|
+CANELA|62|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Sri Lanka|Veracruz|Veracruz|Sri Lanka|En la Colonia se usaba en casi todos los postres conventuales.|
+EPAZOTE|60|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Edomex|Edomex|Edomex|Mexica|Se usaba para protegerse de males espirituales y evitar gases estomacales.|
+CALDO DE POLLO|60|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|El caldo se preparaba con aves nativas como el guajolote, no con pollo.|
+LIMON|58|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Colima|Colima|India|El limón persa fue traído por los españoles y crece mejor en la costa.|
+MANTEQUILLA|57|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Era producto de lujo; en el siglo XX se popularizó con los refrigeradores.|
+ACEITE DE OLIVA|55|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Se cultiva en México desde el siglo XVI, pero con restricción colonial.|
+CHILE ANCHO|55|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Es el chile poblano seco; su nombre refiere al grosor de su carne.|
+CHILE SERRANO|52|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Se llama “serrano” porque crece en la sierra. Su picor varía con la altitud.|
+CALABAZA|47|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Se usaban la pulpa, las semillas y hasta las cáscaras como utensilios.|
+NARANJA|43|Frutas|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Las primeras naranjas dulces llegaron vía Cuba y se adaptaron muy bien.|
+LECHE|43|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Turquía|Jalisco|Jalisco|Turquía|Las vacas fueron traídas por Cortés; antes no había leche animal en América.|
+AGUACATE|41|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Su nombre significa “testículo” en náhuatl por su forma. Afrodisiaco desde tiempos antiguos.|
+COMINO|40|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Egipto|Puebla|Puebla|Egipto|Se usaba en embalsamamientos; hoy da sabor a adobos y chorizos.|
+TOMATE VERDE|40|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Mexica|Más ácido que el jitomate; base prehispánica de las salsas verdes.|
+TOMILLO|38|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Grecia|CDMX|CDMX|Grecia|Planta asociada a rituales de fuerza y valor en la antigüedad.|
+POLLO|37|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|China|CDMX|CDMX|China|No existía en Mesoamérica; se masificó su consumo en el siglo XX.|
+CLAVO|36|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Indonesia|Veracruz|Veracruz|Indonesia|En la Edad Media, valía su peso en oro; da aroma a moles y dulces.|
+ALMENDRA|36|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|Irán|Zacatecas|Zacatecas|Irán|Usada en la nogada, el mazapán original y postres virreinales.|
+FRIJOL|33|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Junto al maíz y el chile forma la “tríada mesoamericana” alimentaria.|
+LAUREL|32|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Símbolo de victoria en Roma; en México se usa en caldos y salsas.|
+HARINA DE TRIGO|31|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Hernán Cortés mandó sembrar trigo en Texcoco por necesidad de pan.|
+MASA DE MAIZ|30|Harinas y Masas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|El secreto está en la cal. La nixtamalización transforma el maíz en nutrición.|
+PASA|30|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Turquía|Zacatecas|Zacatecas|Turquía|Uva seca que aparece en moles, panes y arroz navideño.|
+ZANAHORIA|28|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Irán|Zacatecas|Zacatecas|Irán|Era originalmente morada; la naranja se desarrolló en Países Bajos.|
+MEJORANA|28|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Más dulce que el orégano; se cultiva en huertos urbanos.|
+CHILE GUAJILLO|27|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Zacatecas|Zacatecas|Zacatecas|Mexica|Muy usado en adobos; su piel es tersa y su sabor suave.|
+PEREJIL|26|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Grecia|CDMX|CDMX|Grecia|Se usa desde la antigüedad como planta de funeral y cocina.|
+PAPA|26|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Perú|Veracruz|Veracruz|Perú|Se domesticó en los Andes; llegó a Europa y luego a México.|
+ELOTE|25|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Edomex|Edomex|Edomex|Mexica|Se usaba como ofrenda. Las mazorcas se asociaban al ciclo agrícola del sol.|
+CHILE PASILLA|24|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Su nombre viene del parecido con una “pasa” por su color y textura.|
+RES|23|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Los mexicas no conocían res; llegó con los caballos y carretas.|
+CREMA|22|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Se separa por decantación de la leche; se industrializó hasta los años 60.|
+LECHUGA|22|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Italia|Puebla|Puebla|Italia|Cultivada en conventos; símbolo de frescura y limpieza espiritual.|
+CHILE POBLANO|22|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Esencial en el chile en nogada; también se sirve capeado o en rajas.|
+ANIS|22|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Siria|Puebla|Puebla|Siria|Base del anís mexicano; se usa en dulces y atoles.|
+AJONJOLI|21|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Traído en la Colonia. Hoy se espolvorea sobre moles y panes dulces.|
+TORTILLA DE MAIZ|21|Harinas y Masas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Más que alimento: símbolo cultural. En cada pliegue hay historia.|
+CHILE CHIPOTLE|21|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Jalapeño seco y ahumado; su sabor recuerda a la leña y tierra.|
+QUESO|20|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Suiza|Chihuahua|Chihuahua|Suiza|Los menonitas lo introdujeron al norte del país en el siglo XX.|
+POLVO PARA HORNEAR|19|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Alemania|Veracruz|Veracruz|Alemania|Inventado en el siglo XIX; revolucionó la repostería sin levadura.|
+PILONCILLO|19|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Se obtiene del jugo de caña sin refinar; se usaba como medicina popular.|
+VINAGRE BLANCO|18|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Alemania|CDMX|CDMX|Alemania|Su origen es medieval; útil en escabeches y limpieza doméstica.|
+ARROZ|18|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|China|Veracruz|Veracruz|China|Llegó por Filipinas; México es el mayor consumidor de arroz en América.|
+BOLILLO|18|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|Puebla|Puebla|Francia|Adaptación mexicana de la baguette; base de la torta.|
+CHILE JALAPEÑO|18|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|De Xalapa; fresco, picante y base de salsas encurtidas.|
+PLATANO|17|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Filipinas|Veracruz|Veracruz|Filipinas|Llegó por el Galeón de Manila; ahora parte del desayuno mexicano.|
+VINAGRE DE MANZANA|17|Frutas|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Hipócrates lo usaba como medicina; ahora va en aderezos y dietas.|
+ACEITE DE MAIZ|16|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|EE.UU.|CDMX|CDMX|EE.UU.|Industrializado en el siglo XX como alternativa vegetal económica.|
+HIERBABUENA|16|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Se adaptó tan bien que se volvió ingrediente esencial en moles verdes.|
+XOCONOSTLE|16|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Tuna ácida del nopal; símbolo de resistencia y acidez ancestral.|
+NUEZ|16|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|Irán|Zacatecas|Zacatecas|Irán|Base de la nogada; se pela a mano para evitar amargor.|
+VAINILLA|16|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Los totonacas fueron los primeros en cultivarla. Se poliniza manualmente.|
+HOJA SANTA|14|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Se le atribuyen propiedades místicas; envuelve pescados como si los bendijera.|
+CHILE HABANERO|14|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Uno de los más picantes del mundo. Su picor llega sin avisar.|
+CHILE VERDE|13|Verduras y Hierbas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Genérico para chiles frescos; el color de la esperanza también pica.|
+ACEITUNA|13|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Llegó con las monjas; base de la salsa veracruzana.|
+MANTECA|13|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Fue esencial para sustituir el aceite en la cocina virreinal por ser más barata.|
+CHOCOLATE|12|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Era moneda, medicina y bebida de dioses. No llevaba azúcar.|
+ALCAPARRAs|12|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Italia|CDMX|CDMX|Italia|Botón floral encurtido; da sabor a salsas como la veracruzana.|
+TORTILLA|12|Harinas y Masas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Se usaban como platos comestibles. Se hacían incluso de colores.|
+CAMARON|12|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Sinaloa|Sinaloa|Sinaloa|Maya|En el Pacífico se usa crudo como ceviche; en el Golfo se guisa.|
+ACHIOTE|12|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Se usaba como tinte corporal, repelente y condimento. Sagrado y rojo.|
+MIEL|11|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Campeche|Campeche|Campeche|Maya|La abeja melipona, sin aguijón, da una miel considerada medicinal.|
+CHILE GÜERO|11|Verduras y Hierbas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|De color amarillo pálido; ideal para rellenar o escabechar.|
+LEVADURA|11|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Egipto|CDMX|CDMX|Egipto|Se usaba para inflar panes en el antiguo Egipto hace 4,000 años.|
+HARINA|11|Harinas y Masas|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Fue impuesta para sustituir al maíz en panaderías de elite.|
+CHILE MULATO|11|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Da sabor a mole poblano. Tiene notas de cacao y pasas.|
+CHORIZO|10|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|En México se volvió más rojo y picante, con chile y vinagre.|
+EJOTE|10|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mexica|Es la vaina tierna del frijol; se consume hervido o salteado.|
+TRIGO|9|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|España|Tlaxcala|Tlaxcala|España|Se sembró por orden de Cortés, convirtiéndose en cultivo religioso.|
+PIÑON|9|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Hidalgo|Hidalgo|Hidalgo|Mexica|Se cosecha de pinos silvestres; ingrediente caro en moles y nogadas.|
+NOPAL|9|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Planta nacional. Sus pencas se usan para comer, curar y hasta limpiar.|
+PIÑA|8|Frutas|Conquista y Virreinato (1521 – 1821)|Brasil|Veracruz|Veracruz|Brasil|Fue uno de los primeros frutos tropicales exportados a Europa.|
+BICARBONATO DE SODIO|8|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|EE.UU.|CDMX|CDMX|EE.UU.|Usado en panadería y también como antiácido casero desde el siglo XX.|
+JEREZ|8|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|España|Puebla|Puebla|España|Vino fortificado usado en moles coloniales y salsas dulces.|
+CHICHARRON|8|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Herencia ibérica; hoy base de tacos, salsas y guisados.|
+VINO BLANCO|8|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Guanajuato|Guanajuato|España|Monjes lo elaboraban para misas; se produce en viñedos mexicanos.|
+RABANO|8|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Grecia|Puebla|Puebla|Grecia|Se cultiva en climas fríos; en Oaxaca se tallan figuras con él.|
+CHICHARO|8|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|Puebla|Puebla|Italia|Fue uno de los primeros vegetales europeos adaptados a huertos conventuales.|
+CHILE DE ARBOL|8|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Jalisco|Jalisco|Jalisco|Mexica|Muy picante. En infusiones combate la gripe y en salsas, la apatía.|
+QUESO AÑEJO|8|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Mestiza|Su sabor fuerte realza moles y antojitos; se ralla finamente.|
+CACAHUATE|8|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Perú|Oaxaca|Oaxaca|Perú|Se volvió parte esencial del mole. En América se domesticó antes que en Asia.|
+TOMATE|8|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|El jitomate rojo dio la vuelta al mundo desde Mesoamérica.|
+HARINA DE MAIZ|7|Harinas y Masas|México Prehispánico (Antes de 1521)|Edomex|Edomex|Edomex|Mexica|Industrializa la masa ancestral. Base de tamales, atoles y totopos.|
+PLATANO MACHO|7|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Filipinas|Veracruz|Veracruz|Filipinas|Se fríe o cuece; fue alimento de barcos del Galeón de Manila.|
+ALBAHACA|7|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Puebla|Puebla|India|Considerada planta sagrada en Asia; en México aromatiza salsas verdes.|
+NUEZ MOSCADA|7|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|Indonesia|Veracruz|Veracruz|Indonesia|Fue codiciada por portugueses; hoy da aroma a atoles y nogada.|
+AZAFRAN|7|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Irán|Puebla|Puebla|Irán|Una de las especias más caras del mundo; se usa en arroz y dulces.|
+GUAYABA|7|Frutas|México Prehispánico (Antes de 1521)|Michoacán|Michoacán|Michoacán|Purépecha|Fruta del ponche navideño. Rica en vitamina C y nostalgia.|
+CHILE CASCABEL|7|Verduras y Hierbas|México Prehispánico (Antes de 1521)|SLP|SLP|SLP|Mexica|Suena al moverse seco. Su sabor es suave y con notas ahumadas.|
+CHILE PIQUIN|7|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Tamaulipas|Tamaulipas|Tamaulipas|Mexica|Silvestre, minúsculo y poderoso. Ideal para dar picor intenso.|
+HONGO|7|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|Se recolectan en temporada. Algunos se consideran espirituales.|
+CALDO DE PESCADO|7|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Se elabora con cabeza y espinas; reconfortante y lleno de mar.|
+JAIBA|7|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Se prepara en empanadas, sopas y chilpacholes costeños.|
+PICO DE GALLO|6|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|CDMX|CDMX|CDMX|Mestiza|Su nombre viene de cómo se toma con los dedos, como si picotearas.|
+HARINA DE ARROZ|6|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|China|CDMX|CDMX|China|Base de atoles y postres; no contiene gluten.|
+PAN|6|Harinas y Masas|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|El pan blanco fue símbolo de poder colonial; se distribuía en conventos.|
+COCO|6|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Filipinas|Guerrero|Guerrero|Filipinas|Introducido vía Acapulco; se adaptó en dulces y bebidas del Pacífico.|
+TEQUILA|6|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mexica|Sólo puede producirse legalmente en cinco estados por denominación.|
+CHILE CUARESMEÑO|6|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Jalapeño llamado así por ser estrella de platillos sin carne.|
+SALSA|6|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|El molcajete era el primer procesador de alimentos. Salsa es cultura.|
+PIMIENTO MORRON|6|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mexica|Originalmente picante; se volvió dulce tras adaptación europea.|
+YOGUR|6|Lácteos y Huevos|México Contemporáneo (1940 - Actualidad)|Turquía|CDMX|CDMX|Turquía|Introducido por migrantes árabes y turcos en el siglo XX.|
+CALDO DE RES|5|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|CDMX|CDMX|CDMX|Mestiza|Platillo de fonda con hueso, verduras y limón.|
+CEBOLLIN|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|China|CDMX|CDMX|China|Su sabor suave es ideal para decorar sopas y pastas.|
+CIRUELA|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|Zacatecas|Zacatecas|Francia|En la Colonia se cocía en vino tinto y se añadía a carnes.|
+PATO|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Llegó con migrantes europeos; aparece en recetas de elite y manchamanteles.|
+VINAGRE|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|Puebla|Puebla|Francia|Fermentación que preserva alimentos; base de escabeches y curtidos.|
+CHILE SECO|5|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Guerrero|Guerrero|Guerrero|Mexica|Generalización para chiles deshidratados. El alma de la salsa.|
+JENGIBRE|5|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|India|Veracruz|Veracruz|India|Llegó por el Galeón de Manila; usado en dulces conventuales.|
+LIMA|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Colima|Colima|India|Más aromática que el limón; se usa en aguas y dulces cristalizados.|
+APIO|5|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|Puebla|Puebla|Italia|Se cultiva desde Roma antigua; en México se usa en caldos y ensaladas.|
+CHILE MORITA|5|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Es chipotle pequeño, más oscuro y aromático. Adobos profundos.|
+PESCADO|5|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Sinaloa|Sinaloa|Sinaloa|Maya|En zonas costeras, los mexicas lo secaban y salaban para conservarlo.|
+TORTILLA DE HARINA|5|Harinas y Masas|Conquista y Virreinato (1521 – 1821)|Sonora|Sonora|Sonora|Mestiza|Nació por falta de maíz; símbolo del norte mexicano.|
+BAGRE|5|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Pez de río, ideal para empanizar o cocinar en chirmol.|
+CUITLACOCHE|5|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|Conocido como “trufa mexicana”; es un hongo del maíz apreciado por chefs de alta cocina.|
+OSTION|5|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|En la época prehispánica se usaban como ofrenda marina y se comían crudos.|
+ALMEJA|4|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Baja California|Baja California|Baja California|Seri|La almeja generosa se cocina enterrada bajo la arena en fuego.|
+TORONJA|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Barbados|Veracruz|Veracruz|Barbados|Surge de cruce accidental entre naranja y pomelo en el Caribe.|
+AMARANTO|4|Granos y Cereales|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Prohibido durante la Colonia por usarse en rituales aztecas. Hoy es superalimento.|
+MASA CERNIDA|4|Harinas y Masas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Se tamizaba con manta para lograr tamales más finos en ceremonias.|
+CODORNIZ|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Ave de caza; aparece en recetas coloniales como escabeches.|
+GALLINA|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Preferida en la Colonia por su grasa y sabor más fuerte.|
+GARBANZO|4|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Se usaba en sopas conventuales y potajes junto con arroz.|
+TOCINO|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Panceta curada; se usa en frijoles y desayunos.|
+MAYONESA|4|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Se popularizó en México a partir de los años 50.|
+PULQUE BLANCO|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Se creía que era la bebida de la luna. Sólo lo bebían adultos mayores.|
+COLIFLOR|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Se popularizó como verdura blanca en escabeches y tortitas.|
+QUESO RANCHERO|4|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mestiza|Salado y firme; se usa rallado en tacos dorados.|
+MANZANA|4|Frutas|Conquista y Virreinato (1521 – 1821)|Kazajistán|Chihuahua|Chihuahua|Kazajistán|El árbol silvestre del que derivan todas las manzanas aún existe.|
+JICAMA|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Su nombre viene del náhuatl xīcamatl, y se usaba en ritos de fertilidad.|
+GUAJE|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Sus vainas eran usadas como alimento y como instrumentos musicales.|
+QUESO DE HEBRA|4|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|También llamado quesillo; se hila a mano como trenza.|
+GUACAMOLE|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|En náhuatl se decía ahuacamolli; salsa de aguacate para los nobles.|
+CALDO DE CERDO|4|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Base de pozole y muchos guisos de cocción lenta.|
+MACHACA|4|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Sonora|Sonora|Sonora|Rarámuri|Carne seca golpeada; símbolo del desayuno norteño.|
+CHAYA|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Planta sagrada que se hierve antes de comer; cruda puede ser tóxica.|
+ROBALO|4|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Tabasco|Tabasco|Tabasco|Maya|Pescado blanco de río; suave y versátil en la cocina.|
+CHAYOTE|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Su piel espinosa protegía el fruto que era hervido con sal.|
+PULPO|4|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Veracruz|Veracruz|Veracruz|Maya|Se prepara con su tinta, a la gallega o asado.|
+RECAUDO COLORADO|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Pasta de achiote con especias; se usa en cochinita y recados rojos.|
+PINOLE|4|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Zacatecas|Zacatecas|Zacatecas|Mexica|Maíz molido con cacao; energizante prehispánico ideal para viajes largos.|
+CAZON|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Campeche|Campeche|Campeche|Maya|Tiburón pequeño que se sirve en panuchos y empanadas costeñas.|
+QUELITE|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|“Comida verde” en náhuatl; base humilde y nutritiva de los pueblos.|
+TOSTADA DE MAIZ|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Nace de aprovechar tortillas duras. Su crocancia es símbolo de sabiduría popular.|
+CHOCOLATE DE METATE|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Cacao molido a mano en piedra caliente; base de la bebida de los dioses.|
+LANGOSTINO|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Marisco de río; se guisa con hoja santa y achiote.|
+COCOA|3|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Chiapas|Chiapas|Chiapas|Maya|En la Colonia se mezclaba con canela y almendra; prohibido por clérigos.|
+QUESO CHIHUAHUA|3|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Chihuahua|Chihuahua|Chihuahua|Mestiza|Creado por menonitas; se derrite perfectamente en quesadillas.|
+CHILE CHILACA|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Durango|Durango|Durango|Mexica|Largo y verde; seco se vuelve pasilla. Su sabor es suave y terroso.|
+TEQUESQUITE|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Edomex|Edomex|Edomex|Mexica|Sal mineral natural usada para cocer nopales y dar esponjosidad.|
+HABA|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Egipto|Puebla|Puebla|Egipto|Era símbolo de fertilidad; en México se sirve con nopales o chorizo.|
+QUESO MANCHEGO|3|Lácteos y Huevos|Influencia europea / Porfiriato (1821 - 1910)|España|CDMX|CDMX|España|En México se llama manchego al queso tipo gouda, no al original.|
+NATA|3|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Capa grasa de leche hervida; base del rompope conventual.|
+MARGARINA|3|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Francia|CDMX|CDMX|Francia|Inventada por Napoleón III para alimentar al ejército con grasa barata.|
+PORO|3|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Francia|CDMX|CDMX|Francia|Llega con la cocina conventual; base de caldos claros y cremas.|
+FRAMBUESA|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Introducida en la repostería colonial; hoy base de mermeladas gourmet.|
+FRESA|3|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Francia|Michoacán|Michoacán|Francia|Adaptada a tierras de Zamora, hoy se exporta a todo el mundo.|
+VINAGRE DE FRUTA|3|Frutas|Conquista y Virreinato (1521 – 1821)|Francia|Puebla|Puebla|Francia|Se obtiene al fermentar jugos; base de aderezos y escabeches.|
+CHILE COSTEÑO|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Guerrero|Guerrero|Guerrero|Mexica|Se usa seco en salsas con sabor a leña. Muy picante.|
+PULQUE|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Se fermentaba en tinajas de barro y se bebía sólo en fechas especiales.|
+SALSA BORRACHA|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Hidalgo|Hidalgo|Hidalgo|Mestiza|Se hace con chile, pulque y especias. Acompaña barbacoa en fiestas.|
+TAMARINDO|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Llegó por el Galeón; su sabor ácido es base de aguas frescas y dulces cristalizados.|
+ACELGA|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Introducida por misioneros; es nutritiva y muy adaptable.|
+FIDEO|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Traído por misioneros y adaptado como sopa de olla mexicana.|
+HINOJO|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Usado por romanos como digestivo; en México aromatiza caldos.|
+ROMERO|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Planta aromática usada desde la Edad Media para carnes y rituales.|
+QUESO PANELA|3|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mestiza|Fresco y blanco; base de botanas y tacos saludables.|
+ATUN|3|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Japón|Baja California|Baja California|Japón|Ensenada lo convirtió en sashimi y conserva industrial.|
+MEZCAL|3|Condimentos, Aceites y Endulzantes|Revolución Mexicana (1910 - 1940)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Su nombre viene del náhuatl mexcalli, “maguey cocido”. Se destila desde hace siglos en hornos subterráneos.|
+CHILE CHILHUACLE|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Rarísimo y caro; se usa sólo en moles negros ceremoniales.|
+CAL|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Fundamental para la nixtamalización; transforma el maíz en masa digestible.|
+CAMOTE|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Dulce que en ferias se horneaba con canela y se vendía envuelto en hoja.|
+GUAJOLOTE|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Animal domesticado en Mesoamérica. Se ofrecía en sacrificios.|
+TOMATILLO|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Cubierto por cáscara; ácido y usado desde tiempos antiguos en salsas.|
+VERDOLAGA|3|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Planta silvestre y resistente; se come con carne de cerdo en guisos.|
+CALDO DE AVE|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Mezcla de gallina y vegetales; se sirve con arroz o pasta.|
+CHILE EN VINAGRE|3|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Curtido con zanahoria, cebolla y hierbas; conserva casera popular.|
+GERMEN DE TRIGO|3|Granos y Cereales|México Contemporáneo (1940 - Actualidad)|Turquía|CDMX|CDMX|Turquía|"Se promovió como ""súper alimento"" durante la Segunda Guerra Mundial."|
+AVELLANA|3|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Turquía|CDMX|CDMX|Turquía|Base de postres europeos; en México se usa en dulces navideños.|
+MAMEY|3|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Fruta carnosa; se usaba como pigmento y postre sagrado.|
+GLUCOSA|2|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Alemania|CDMX|CDMX|Alemania|Azúcar industrial líquida usada para evitar la cristalización.|
+BETABEL|2|Verduras y Hierbas|Influencia europea / Porfiriato (1821 - 1910)|Alemania|Zacatecas|Zacatecas|Alemania|Se cultiva desde el siglo XIX; da el característico color al mole rosa.|
+COL|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Alemania|Puebla|Puebla|Alemania|Se introdujo como base de sopas y curtidos conventuales.|
+LANGOSTA|2|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Baja California|Baja California|Baja California|Seri|Marisco lujoso que antes se tiraba al mar; ahora se exporta.|
+SALICORNIA|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Baja California|Baja California|Baja California|Seri|Planta salada de mar; los chefs la llaman “espárrago marino mexicano”.|
+ROMERITOS|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Se consumían con tortitas de ahuautle, los huevos de insecto más caros de México.|
+ARRACHERA|2|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Nuevo León|Nuevo León|España|Corte económico que se volvió estrella de la parrilla norteña.|
+QUESO BLANCO|2|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|CDMX|CDMX|CDMX|Mestiza|Fresco y neutro; va en tacos, ensaladas y guisos.|
+PAPAYA|2|Frutas|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Fruta tropical que se usaba como laxante natural en medicina ancestral.|
+DURAZNO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|China|Puebla|Puebla|China|Fue fruta imperial; en México se come en almíbar o pan de feria.|
+MANDARINA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|China|Veracruz|Veracruz|China|Fruta invernal traída por misioneros; base de aguas y dulces.|
+CAPULIN|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Edomex|Edomex|Edomex|Mexica|Fruta pequeña y negra. Se usaba para hacer pulque y mermeladas.|
+ACITRON|2|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|España|Puebla|Puebla|España|Provenía de biznaga cristalizada, hoy especie protegida por ley mexicana.|
+ACEITUNA VERDE|2|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|España|Puebla|Puebla|España|Se introdujo con monjas; en México se conserva en salmuera.|
+FRUTA EN ALMIBAR|2|Frutas|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Las monjas las preparaban para conservar cosechas y ofrecer en celebraciones.|
+JAMON DE PIERNA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Se cura al estilo serrano; usado en tortas y platos festivos.|
+REQUESON|2|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Subproducto del suero de leche; muy usado en empanadas y chiles.|
+SARDINA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Enlatada desde el siglo XX; se volvió clásica en tortas y sopas.|
+VINO TINTO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Querétaro|Querétaro|España|Se elaboraba en monasterios; hoy Querétaro es zona vinícola destacada.|
+BAGUETTE|2|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Se volvió pan de torta tras la influencia francesa en el Porfiriato.|
+MASA MADRE|2|Harinas y Masas|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Su fermentación lenta está de moda; antes era pan de pueblo.|
+VINAGRE DE VINO BLANCO|2|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Se hace de uvas blancas fermentadas; más suave que el de caña.|
+NABO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Raíz blanca poco popular hoy; antes era básica en caldos y guisos.|
+PERA|2|Frutas|Conquista y Virreinato (1521 – 1821)|Francia|Puebla|Puebla|Francia|En la Colonia se usaba cocida con vino, canela y clavo.|
+CONEJO|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Guanajuato|Guanajuato|Guanajuato|Mexica|Se cazaba con trampas y su carne se ofrendaba en lunas llenas.|
+MAGUEY|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Planta sagrada. Da bebida, fibra, alimento, medicina y abrigo.|
+GRANADA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Irán|Puebla|Puebla|Irán|Fruta usada en el chile en nogada; representa la sangre nacional.|
+ALCACHOFA|2|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Italia|CDMX|CDMX|Italia|Llegó con frailes italianos; se cultiva en zonas templadas.|
+ENSALADA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Platillo frío adaptado a la cocina mexicana con frutas y crema.|
+LECHUGA ROMANA|2|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Italia|CDMX|CDMX|Italia|Usada desde el Imperio Romano; base de ensaladas crujientes.|
+QUESO DE RANCHO|2|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mestiza|Se elabora artesanalmente; fuerte y salado.|
+QUESO COTIJA|2|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Michoacán|Michoacán|Michoacán|Mestiza|Queso duro que se desmorona; conocido como “parmesano mexicano”.|
+ZARZAMORA|2|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Michoacán|Michoacán|Michoacán|Michoacán|El estado es líder mundial en producción de esta fruta.|
+IZOTE|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Flor del maguey. Se cuece y se fríe en tortitas, aunque puede ser amarga.|
+CHILE DE AGUA|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Chile fresco típico de los valles centrales; se sirve relleno.|
+MOLE NEGRO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Tiene más de 30 ingredientes; símbolo de fiestas y ofrendas.|
+VINAGRE DE YEMA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Fermentado de agave; usado en festividades tradicionales.|
+CAÑA DE MAIZ|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|El tallo jugoso se mascaba como dulce antes del azúcar refinado.|
+CHILE CHILCOSTLE|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Base de varios moles regionales; de sabor fuerte y piel rugosa.|
+MAIZ CACAHUACINTLE|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Su grano grande es usado en pozole y fermentos rituales.|
+MASA FRESCA|2|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Se obtiene tras la nixtamalización. Su aroma es símbolo de hogar.|
+SALSA PICANTE|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Los mexicas ya preparaban salsas fermentadas con chile y semillas.|
+MOLE POBLANO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Creado en conventos; mezcla lo indígena con especias coloniales.|
+PIMIENTO|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mexica|Chile domesticado en Europa hasta volverlo dulce; luego reintroducido.|
+ALMIBAR|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Siria|Puebla|Puebla|Siria|Mezcla de agua y azúcar usada en frutas de feria y dulces de convento.|
+VENADO|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Sonora|Sonora|Sonora|Yaqui|Su carne era ofrenda ritual y platillo de elite entre culturas del norte.|
+MOJARRA|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Pescado de río; se sirve entero frito o en caldo de hierbas.|
+PEJELAGARTO|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Pescado prehistórico con dientes. Se asa entero sobre brasas.|
+CALDO DE GUAJOLOTE|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|Guiso ceremonial. Se usaba en bodas, entierros y ritos de paso.|
+PASAS|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Turquía|Zacatecas|Zacatecas|Turquía|Uva seca que aparece en moles, panes y arroz navideño.|
+CHILE COMAPEÑO|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Muy pequeño y picante. Se conserva en vinagre y acompaña pescados.|
+CHIPOTLE|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Jalapeño seco y ahumado; sabor intenso que perfuma los adobos.|
+MASA DE ELOTE TIERNO|2|Harinas y Masas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|De sabor dulce, base de tamales de elote y atoles tradicionales.|
+SALSA MACHA|2|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Veracruz|Veracruz|Veracruz|Mestiza|Nació en Veracruz y fue adoptada por todo México con chile seco y ajo crujiente.|
+SALSA VERACRUZANA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Veracruz|Veracruz|Veracruz|Mestiza|Lleva jitomate, alcaparras y aceitunas; influencia española.|
+VINAGRE DE CAÑA|2|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Nueva Ginea|Veracruz|Veracruz|Caribeños|Se obtiene al fermentar jugo de caña; dulce y ácido.|
+CHILTOMATE|2|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Salsa cocida de jitomate y chile; se acompaña con huevos o frijoles.|
+RECAUDO|2|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Pasta de especias y chiles; base de casi todos los guisos yucatecos.|
+JAMAICA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|África|Guerrero|Guerrero|África|Traída por esclavos africanos; da color y acidez a aguas frescas.|
+POLVO DE HORNEAR|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Alemania|Veracruz|Veracruz|Alemania|Reemplazó la levadura natural en pan dulce del siglo XIX.|
+KIRSCH|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Alemania|CDMX|CDMX|Alemania|Destilado de cereza negra; llegó a México por pasteleros centroeuropeos.|
+CARNE MOLIDA|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Alemania|CDMX|CDMX|Alemania|Se masificó por hamburguesas; ahora base de tacos, albóndigas y empanadas.|
+ALMEJA GARRA DE LEON|1|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Baja California|Baja California|Baja California|Seri|Se pesca a mano; su carne es tan suave que se puede comer cruda.|
+YUCA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Brasil|Veracruz|Veracruz|Brasil|Raíz que puede ser venenosa si no se cuece bien; base del casabe.|
+TAPIOCA|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Brasil|Veracruz|Veracruz|Brasil|Derivada de la yuca; usada en postres fríos como “perlas de leche”.|
+HACHA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Campeche|Campeche|Campeche|Maya|Marisco parecido a callo; se extrae con cuchillo especial submarino.|
+MERO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Campeche|Campeche|Campeche|Maya|Pescado grande; se usa para filetes al mojo o empapelados.|
+ACEITE DE CHILE|1|Verduras y Hierbas|México Contemporáneo (1940 - Actualidad)|CDMX|CDMX|CDMX|Contemporánea|Adaptación moderna de salsas chinas, hoy esencial en la cocina callejera.|
+ACOCIL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Crustáceo de los lagos de Tenochtitlán; se comía asado en tacos.|
+CHILITOS ROJOS|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Picantes, frescos, típicos en tacos callejeros.|
+HARINA DE AMARANTO|1|Granos y Cereales|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Permitida por los virreyes solo si no se usaba en rituales indígenas.|
+HAZONTLE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|"Se le dice ""árbol de amaranto""; fue cultivado en chinampas."|
+HUAZONTLE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Se preparaba en época de ayuno; se parece al brócoli pero es prehispánico.|
+PENEQUES|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mestiza|Tortillas rellenas de queso en caldillo rojo; creación urbana del siglo XX.|
+PULPA DE FRUTA|1|Frutas|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|En mercados antiguos se vendía congelada como “nieve de templo”.|
+SALSA BOTANERA|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|CDMX|CDMX|CDMX|Contemporánea|Se popularizó en los 90’s como complemento de papas y botanas industriales.|
+SALSA DE TOMATE|1|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|CDMX|CDMX|CDMX|Mestiza|Adaptación mexicana al ketchup, más líquida y menos dulce.|
+TLACOYO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Antojo ovalado con frijol; vendido desde época prehispánica en tianguis.|
+TORTILLA TAQUERA|1|Harinas y Masas|México Contemporáneo (1940 - Actualidad)|CDMX|CDMX|CDMX|Contemporánea|Es más chica para que los tacos no se desarmen al morderlos.|
+TOSTADA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|CDMX|CDMX|CDMX|Mexica|Surge al reutilizar tortillas secas tostándolas al comal.|
+COBERTURA PARA CONCHAS|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Pasta dulce que se hornea encima del pan; cada panadería la reinventa.|
+CACAO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Se usaba como moneda; 100 granos equivalían a un esclavo.|
+CHIPILIN|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Quelite aromático esencial en tamales chiapanecos.|
+PACAYA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Chiapas|Chiapas|Chiapas|Maya|Flor de palma; se capea y se sirve con adobo.|
+MELON CHINO|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|China|Baja California|Baja California|China|Se cultiva en zonas cálidas de México desde los años 70.|
+SALSA DE SOYA|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|China|Sinaloa|Sinaloa|China|Introducida por migrantes chinos a zonas pesqueras del Pacífico.|
+ARROZ BLANCO|1|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|China|Morelos|Morelos|China|Traído desde Filipinas; base del arroz rojo y blanco en México.|
+CARPA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|China|Michoacán|Michoacán|China|Fue introducida en el Porfiriato como especie de crianza para lagos.|
+SALSA DE CIRUELAS|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|China|Puebla|Puebla|China|Agridulce y oscura; hoy se usa en pato, cerdo y pastas.|
+CHILE COLORADO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Durango|Durango|Durango|Mexica|Base del chile con carne típico del norte.|
+CONSERVADOR|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|EE.UU.|CDMX|CDMX|EE.UU.|Agregado para extender vida útil; su uso se popularizó en los 70s.|
+GALLETA SALADA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|EE.UU.|CDMX|CDMX|EE.UU.|Parte de lonches escolares desde los años 80; base de botanas.|
+MANZANA VERDE|1|Frutas|Conquista y Virreinato (1521 – 1821)|EE.UU.|Chihuahua|Chihuahua|EE.UU.|Se cultiva para exportación; base de postres y ensaladas ácidas.|
+NUEZ PECANA|1|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|EE.UU.|Coahuila|Coahuila|EE.UU.|Se cultiva en el norte; es más dulce que otras nueces.|
+QUESO CREMA|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|EE.UU.|CDMX|CDMX|EE.UU.|Untable e industrial; base de cheesecakes y dips desde los 80s.|
+LINAZA|1|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|Egipto|CDMX|CDMX|Egipto|Rica en fibra; muy usada en panadería saludable o aguas digestivas.|
+BIZCOCHO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Nombre antiguo para pastel seco; parte de la repostería conventual.|
+CABRITO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Nuevo León|Nuevo León|España|Carne de cría de cabra; símbolo de la gastronomía del norte.|
+CARNE DE CERDO|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Cambió por completo la dieta mesoamericana al introducir grasa animal.|
+CECINA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Guerrero|Guerrero|España|Se curaba al sol y sal desde la Edad Media; en Yecapixtla es tradición.|
+CORDERO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|En la Colonia era símbolo de nobleza; se usaba en banquetes virreinales.|
+COSTILLA DE RES|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Corte apreciado para caldos y barbacoas de larga cocción.|
+ESCABECHE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Técnica de conservación con vinagre; aplicada a carnes y pescados.|
+ESCABECHE BLANCO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Versión más clara, sin jitomate; suele ir con pollo o pescado.|
+HIGO VERDE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Variedad menos dulce; muchas veces se encurta o cristaliza.|
+JAMON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|En México se adaptó el jamón cocido como base de tortas y desayunos.|
+LONGANIZA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Más larga y delgada que el chorizo; con sabor más suave.|
+MANTECA DE CERDO|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Usada antes de la llegada del aceite vegetal; esencial en tamales.|
+MELAZA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Subproducto de la caña; endulzante popular en pan de feria.|
+MUSTE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Vino cocido con especias que dio origen al rompope y al ponche.|
+NUEZ DE CASTILLA|1|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Pelarla requiere destreza; ingrediente clave del chile en nogada.|
+OBLEA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Llegó con las monjas; se rellena con cajeta o jamoncillo.|
+OBLEAS|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Variante crujiente usada en ferias y dulces artesanales.|
+PIMENTON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Polvo rojo de chile seco, usado en embutidos y caldos.|
+PUERCO|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Veracruz|Veracruz|España|Su grasa cambió las salsas indígenas; base del pozole moderno.|
+ROMPOPE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Creado por monjas en Puebla; lleva yema, leche y canela.|
+SALPICON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Plato frío con carne deshebrada, cebolla y vinagre; de influencia hispana.|
+TERNERA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|CDMX|CDMX|España|Carne de res joven, usada en platillos de alta cocina.|
+YEMA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|España|Dulce conventual hecho con yema y azúcar; base del rompope.|
+HARINA NIXTAMALIZADA|1|Harinas y Masas|México Prehispánico (Antes de 1521)|Estado de México|Estado de México|Estado de México|Mexica|Técnica que asombra aún a científicos por su complejidad nutricional.|
+HONGO TECOMATE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Estado de México|Estado de México|Estado de México|Mexica|Hongo que crece sobre el maíz tierno; muy buscado en temporada.|
+TEJOCOTE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Estado de México|Estado de México|Estado de México|Mexica|Fruta de invierno; en la Colonia se usaba como medicina para la tos.|
+CAFE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Etiopía|Veracruz|Veracruz|Etiopía|Llegó por Cuba; Veracruz y Chiapas son líderes en producción.|
+COCADA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Filipinas|Guerrero|Guerrero|Filipinas|Dulce de coco rallado; llegó con la Manila-Acapulco y se adaptó en costas.|
+CALDO DE FAISAN|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|En la Colonia era servida solo a virreyes y nobles.|
+FAISAN|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|En la Nueva España era símbolo de estatus y refinamiento.|
+CHAMPIÑONES|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Francia|CDMX|CDMX|Francia|Cultivados en cuevas desde el siglo XVIII; en México, en San Miguel Topilejo.|
+LECHUGA SANGRIA|1|Verduras y Hierbas|México Contemporáneo (1940 - Actualidad)|Francia|CDMX|CDMX|Francia|Su color rojizo proviene de antocianinas, antioxidantes naturales.|
+CALDO CORTO|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Fondo rápido para cocción de pescados o mariscos; base de cocina francesa.|
+COÑAC|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Destilado de uva usado en flambeados y salsas de alta cocina.|
+CREPAS|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Fueron introducidas a México en restaurantes franceses del siglo XX.|
+GRENETINA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|En México se usa para postres coloridos; antes se hacía de huesos hervidos.|
+HOJALDRE|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Se volvió popular con el pastel mil hojas y empanadas dulces.|
+LECHUGA FRANCESA|1|Verduras y Hierbas|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|"Se cultivó en conventos; su nombre es ""mantecosa"" por la textura suave."|
+VINAGRE DE VINO TINTO|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Se obtiene por fermentación; da acidez a salsas y marinados.|
+VINAGRETA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Llegó como técnica básica francesa; hoy se usa en ensaladas populares.|
+VINAGRETA BASE|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Mezcla de vinagre y aceite con sal; base de aderezos modernos.|
+VINAGRETA DE HIERBAS|1|Verduras y Hierbas|Influencia europea / Porfiriato (1821 - 1910)|Francia|CDMX|CDMX|Francia|Aromatizada con perejil, tomillo o albahaca; muy usada en la nouvelle cuisine.|
+BIROTE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|Jalisco|Jalisco|Francia|Pan de corteza dura; base de la torta ahogada tapatía.|
+CEREZA ROJA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Usada para decorar pasteles desde los años 50; muchas veces es artificial.|
+CEREZA VERDE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Menos común, se usa en panadería de feria; color llama la atención.|
+CHAMPIÑON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Se cultiva en cuevas; en México se produce en Tlalpan desde los 60s.|
+CIRUELA AMARILLA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|Zacatecas|Zacatecas|Francia|Muy ácida; se hierve en almíbar o se deshidrata.|
+CREMA ACIDA|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Se popularizó como acompañante de antojitos y enchiladas.|
+HUEVO DE CODORNIZ|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Francia|Querétaro|Querétaro|Francia|Más pequeño y fino que el de gallina; usado en canapés.|
+MAJORANA|1|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Hierba aromática poco usada hoy; da un toque floral a guisos.|
+MELON VERDE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Menos dulce que el naranja; se consume como fruta fresca o en licuados.|
+PAN DULCE|1|Harinas y Masas|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Su estética es mexicana; mezcla bizcochos europeos con colores populares.|
+PERDIZ|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Se servía rellena en banquetes virreinales; carne muy fina.|
+POLLITO DE LECHE|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Francia|Querétaro|Querétaro|Francia|Cría de pollo muy tierna; se cocina en salsas cremosas.|
+TELERA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Francia|CDMX|CDMX|Francia|Pan blanco usado en tortas; más suave que el bolillo.|
+VINAGRE DE FRUTAS|1|Frutas|Conquista y Virreinato (1521 – 1821)|Francia|Puebla|Puebla|Francia|Fermentación de frutas como manzana o piña; ideal para aderezos.|
+UVA|1|Frutas|Conquista y Virreinato (1521 – 1821)|Georgia|Querétaro|Querétaro|Georgia|Base del vino; en México también va en ensaladas navideñas.|
+CAJETA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Guanajuato|Guanajuato|Guanajuato|Mestiza|Se elabora con leche de cabra y se cocina en cazos de cobre.|
+CAJETA DE LECHE|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Guanajuato|Guanajuato|Guanajuato|Mestiza|Se cocina con leche de cabra en cazo de cobre; símbolo de Celaya.|
+CHILAPITA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Guerrero|Guerrero|Guerrero|Mexica|Tostada pequeña con salsa; típica en fondas rurales.|
+JUREL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Guerrero|Guerrero|Guerrero|Mexica|Pescado firme y barato, base de tortas y escabeches costeños.|
+PULQUE DE COCO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Guerrero|Guerrero|Guerrero|Náhuatl|No contiene coco real; es un saborizante moderno del tradicional pulque.|
+CALDO DE AROMAS|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|Guerrero|Guerrero|Guerrero|Contemporánea|Usado por chefs modernos para evocar memoria olfativa en la cocina.|
+MOLE DE AROMAS GUERRERENSE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Guerrero|Guerrero|Guerrero|Náhuatl|Versión moderna con clavo, canela y frutas secas.|
+MOLE ROSA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Guerrero|Guerrero|Guerrero|Tlaxcalteca|Contiene betabel y pétalos; versión moderna y visualmente llamativa.|
+CHILE MANZANO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Mexica|Su forma es redonda y su picor engañosamente suave.|
+ESCAMOLES|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Larvas de hormiga consideradas el “caviar mexicano”.|
+GUALUMBO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Flor del maguey gigante; solo se cosecha una vez en la vida de la planta.|
+GUSANO DE MAGUEY|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Habita dentro del agave; su recolección puede costar hasta 500 pesos por kilo.|
+MIEL DE XOCONOSTLE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Xoconostle cocido en miel era ofrenda en altares de muertos.|
+MIXIOTE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|La hoja que lo envuelve es del maguey; hoy está protegida por ley.|
+PULQUE AVENA|1|Granos y Cereales|México Prehispánico (Antes de 1521)|Hidalgo|Hidalgo|Hidalgo|Otomí|Variante moderna que mezcla tradición con cereal popularizado por la publicidad.|
+COLORANTE VEGETAL|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|India|CDMX|CDMX|India|Usado para teñir dulces, panes y tamales; a veces proviene de achiote.|
+CURCUMA|1|Condimentos, Aceites y Endulzantes|México Contemporáneo (1940 - Actualidad)|India|Veracruz|Veracruz|India|"Conocida como el ""azafrán de los pobres"", tiñe de amarillo los guisos."|
+MOSTAZA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|India|Veracruz|Veracruz|India|Llegó vía Filipinas; en México se transformó en condimento industrial.|
+BERENJENA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|CDMX|CDMX|India|Su nombre viene del árabe; se cocina asada o en escabeche.|
+JENGIBRE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Llegó por el Galeón de Manila; usado en dulces conventuales.|
+MANGO|1|Frutas|Conquista y Virreinato (1521 – 1821)|India|Chiapas|Chiapas|India|Fruta tropical traída por filipinos; ahora es esencial en dulces y salsas.|
+PEPINO|1|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Traído por el Galeón; se come con chile y sal como botana fresca.|
+PIMIENTA NEGRA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|India|Veracruz|Veracruz|India|Fue moneda de cambio en Europa; da picor sin chile.|
+AVENA|1|Granos y Cereales|Conquista y Virreinato (1521 – 1821)|Inglaterra|Puebla|Puebla|Inglaterra|Se introdujo como alimento nutritivo y rápido en el siglo XX.|
+AGUA DE ROSAS|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Irán|Puebla|Puebla|Irán|En la Colonia se usaba en dulces, nieves y como perfume.|
+ALMENDRAS|1|Leguminosas, Semillas y Nueces|Conquista y Virreinato (1521 – 1821)|Irán|Zacatecas|Zacatecas|Irán|Se usaban en dulces conventuales como mazapanes y nogada.|
+CEBOLLA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Irán|Puebla|Puebla|Irán|Se usaba como medicina en Egipto; llegó a México en la Colonia.|
+MELON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Irán|Durango|Durango|Irán|Fruta de verano que se sirve con sal o chile; se cultiva en el norte.|
+PETALOS DE ROSA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Irán|Puebla|Puebla|Irán|Se usan en postres coloniales y aguas aromáticas.|
+JITOMATE CHERRY|1|Verduras y Hierbas|México Contemporáneo (1940 - Actualidad)|Italia|CDMX|CDMX|Italia|Cruz europeo del jitomate americano; hoy usado en ensaladas y pizzas.|
+ARUGULA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Italia|CDMX|CDMX|Italia|Su sabor picante recuerda al rábano; antes se consideraba planta afrodisíaca.|
+ESPAGUETI|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Italia|CDMX|CDMX|Italia|Llegó por migrantes italianos; se mexicanizó con crema y chipotle.|
+QUESO PARMESANO|1|Lácteos y Huevos|Influencia europea / Porfiriato (1821 - 1910)|Italia|CDMX|CDMX|Italia|Originalmente se envejece 2 años; en México se ralla sobre sopas y pastas.|
+CHICHAROS|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Italia|Puebla|Puebla|Italia|También llamados arvejas; en Navidad se cocinan con jamón.|
+UVA VERDE|1|Frutas|Conquista y Virreinato (1521 – 1821)|Italia|Aguascalientes|Aguascalientes|Italia|Más ácida que la morada; se cultiva para mesa y vino.|
+SANGRITA|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Jalisco|Jalisco|Jalisco|Meztiza|Nació en Guadalajara para acompañar tequila sin limón ni sal.|
+MEDULA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mestiza|Parte interna de huesos de res; se sirve en tacos o con tuétano.|
+QUESO ADOBERA|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Jalisco|Jalisco|Jalisco|Mestiza|Suave y fundente; se usa en tortas ahogadas y quesadillas.|
+ABULON|1|Carnes y Mariscos|México Contemporáneo (1940 - Actualidad)|Japón|Baja California|Baja California|Japón|Molusco caro que se cultiva en Ensenada; llegó por inmigración japonesa.|
+VINAGRE DE ARROZ|1|Granos y Cereales|México Contemporáneo (1940 - Actualidad)|Japón|Baja California|Baja California|Japón|Llegó con técnicas de sushi; se usa para arroz avinagrado y encurtidos.|
+CALAMAR|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Japón|Baja California|Baja California|Japón|Se introdujo en sushi y ceviches modernos del Pacífico mexicano.|
+JOCOQUE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Líbano|Oaxaca|Oaxaca|Líbano|Derivado lácteo fermentado; muy común en comunidades árabes del sur.|
+AGUA DE AZAHAR|1|Condimentos, Aceites y Endulzantes|Influencia europea / Porfiriato (1821 - 1910)|Marruecos|Puebla|Puebla|Marruecos|Usada en pan de muerto y roscas; tiene uso medicinal.|
+AZAHAR|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Marruecos|Puebla|Puebla|Marruecos|Se usa en rosca de reyes y pan de muerto por su aroma floral.|
+CHARAL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Michoacán|Michoacán|Michoacán|Purépecha|Pez de lago que se seca al sol y se come frito o en taco.|
+CORUNDA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Michoacán|Michoacán|Michoacán|Purépecha|Tamal triangular sin relleno; se acompaña con crema y queso.|
+MAIZ SENERI|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Michoacán|Michoacán|Michoacán|Purépecha|Maíz ancestral de grano grande y rojo; aún se cultiva en terrazas.|
+TRUCHA|1|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Michoacán|Michoacán|Michoacán|Purépecha|Criada en ríos fríos; en Pátzcuaro se prepara con almendra.|
+CHILACAYOTE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Fruta que se convierte en dulce cristalizado; su semilla también se tuesta.|
+COLORIN|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Flor venenosa si no se hierve bien; se sirve en tortitas.|
+FRUTA|1|Frutas|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|En mercados mexicas se vendían frutas organizadas por color y tamaño como ofrenda estética.|
+QUINTONIL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Morelos|Morelos|Morelos|Mexica|Se recolecta en baldíos; rica fuente de hierro y proteína vegetal.|
+CHILE CORA|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Nayarit|Nayarit|Nayarit|Cora|Se cultiva en terrazas; muy usado en la cocina ritual.|
+BACALAO|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Noruega|Puebla|Puebla|Noruega|Se salaba para conservar; llegó por conventos y se popularizó en Navidad.|
+CALABAZA CRIOLLA|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|De esta calabaza se aprovecha todo: flor, pulpa, cáscara y semilla.|
+CENIZA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Se usa para cocer tamales y nixtamal; cambia el color del maíz.|
+CHAPULIN|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Su consumo salvó cultivos durante plagas al convertirlo en proteína.|
+CHEPICHE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Su sabor mezcla menta, cilantro y ruda; muy aromático.|
+CHEPIL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Da sabor a tamales y arroces; considerado un quelite fino.|
+CHILE ROJO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Nombre genérico de los chiles secos más usados en salsas.|
+CHINTEXTLE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Pasta de chile y ajo en manteca; se guarda en penca.|
+CHOCHOYOTE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Bolita de masa con hoyito, símbolo de abundancia.|
+COYUL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Fruto del trópico seco; se cuece en miel para postre.|
+FRIJOLON|1|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Variedad grande y clara; muy usado en caldos campesinos.|
+MASA DE TAMALES|1|Harinas y Masas|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|La consistencia ideal es considerada herencia culinaria transmitida por abuelas.|
+OSTION HUARACHE|1|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Se sirve sobre una tostada grande; nombre local del Istmo.|
+PITAYA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Cactus que da fruta rosa fluorescente; rica en antioxidantes.|
+TOTOPO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Se inventó para prolongar la vida útil de la tortilla y evitar su desperdicio.|
+ZAPOTE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|"Su nombre viene del náhuatl ""tzapotl""; hay más de 10 variedades."|
+MOLE VERDE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|Lleva hierbas frescas, pepitas y chiles suaves; más ligero.|
+QUESO OAXACA|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Zapoteca|También llamado quesillo; se elabora hilando la leche cuajada.|
+VINAGRE DE PIÑA|1|Frutas|Conquista y Virreinato (1521 – 1821)|Oaxaca|Oaxaca|Oaxaca|Meztiza|Se elabora caseramente con cáscaras; usado en escabeches.|
+QUESO HOLANDES|1|Lácteos y Huevos|Influencia europea / Porfiriato (1821 - 1910)|Países Bajos|CDMX|CDMX|Países Bajos|En México se adaptó en tortas y guisos; textura firme y sabor suave.|
+AGUARDIENTE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Portugal|Oaxaca|Oaxaca|Portugal|Se destilaba de caña antes del mezcal; tradición rural aún viva.|
+CALDO DE FRIJOL|1|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|En algunas comunidades aún se sirve con epazote y bolitas de masa.|
+CHALUPA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Nació como antojito colonial en ferias religiosas.|
+CHALUPITA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Variante mini, típica del centro histórico de Puebla.|
+CHIA|1|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Se usaba como tributo; también como aceite ritual.|
+CHILE BLANCO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Raro y suave; se rellena con carne o se hace en crema.|
+CHILE CRIOLLO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Ancestro de muchas variedades modernas; se cultiva en huertos.|
+CHILE NEGRO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|También llamado mulato; base del mole poblano.|
+HIERBAS SECAS|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Mezcla variable; muchas hierbas antiguas eran consideradas sagradas.|
+MILTOMATE|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Tomatillo pequeño de sabor ácido; muy usado en salsas frescas.|
+PAPALOQUELITE|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Tiene sabor entre cilantro y ruda; se le atribuyen propiedades digestivas.|
+PAVO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Domesticado en Mesoamérica; fue el platillo central del primer Día de Gracias.|
+PERONES|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Manzana mexicana que aparece en el chile en nogada.|
+SALSA DE TOMATE CRUDA|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Solo jitomate, chile y sal molidos en molcajete; base ancestral.|
+SALSA PARA ENCHILADAS|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Náhuatl|Hay versiones rojas, verdes y amarillas; cada familia tiene su receta.|
+SALSA VERDE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Base de tomatillo, chile y ajo; siempre cruda o hervida, nunca frita.|
+TOMATILLO SILVESTRE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Puebla|Puebla|Puebla|Mexica|Pequeño, de sabor fuerte; aún se recolecta en bosques.|
+CALDO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Base líquida tradicional hecha con huesos, hierbas y paciencia.|
+CALDO DE CERDO Y POLLO|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Se mezcla en pozoles y tamales; combinación casera muy común.|
+CHILE EN ESCABECHE|1|Verduras y Hierbas|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Se curtía para conservar; hoy es acompañamiento de tortas.|
+MOLE|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Platillo complejo con decenas de ingredientes; símbolo de identidad nacional.|
+MOLE DE NOVIA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Puebla|Puebla|Puebla|Mestiza|Se sirve en bodas tradicionales; es dulce, suave y perfumado.|
+QUESO DOBLE CREMA|1|Lácteos y Huevos|Conquista y Virreinato (1521 – 1821)|España|Puebla|Puebla|Meztiza|Variante muy suave; se funde fácilmente en molletes.|
+CHILE CASCABELILLO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|San Luis Potosí|San Luis Potosí|San Luis Potosí|Mexica|Suena como cascabel; produce salsas con sabor tostado.|
+FILETE DE SIERRA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Sinaloa|Sinaloa|Sinaloa|Yaqui|Pescado azul cortado fino, ideal para empanizar o al mojo.|
+GUAMUCHIL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Sinaloa|Sinaloa|Sinaloa|Mayo|Árbol espinoso con vaina dulce; se usa como forraje y golosina rural.|
+MARISCOS|1|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Sinaloa|Sinaloa|Sinaloa|Yaqui|El Pacífico ofrece mariscos más carnosos; su cocina tiene influencia japonesa.|
+CHILE CHILTEPIN|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Sonora|Sonora|Sonora|Seri|El chile más ancestral de América; crece silvestre.|
+AGUAYON|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|España|Sonora|Sonora|Rarámuri|Corte jugoso de res; ideal para asar o preparar en jugo.|
+CARNE SECA|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|Sonora|Sonora|Sonora|Rarámuri|Se machaca y sala para conservarse sin refrigeración en climas áridos.|
+MENUDO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Sonora|Sonora|Sonora|Mestiza|Plato con tripas de res; se sirve en bodas y crudas.|
+TORTILLAS DE HARINA|1|Harinas y Masas|Conquista y Virreinato (1521 – 1821)|Sonora|Sonora|Sonora|Mestiza|Nacieron en el norte por escasez de maíz; se expandieron nacionalmente.|
+SANDIA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Sudán|Veracruz|Veracruz|Sudán|Llegó con esclavos africanos; fruta de verano muy popular.|
+QUESO GRUYERE|1|Lácteos y Huevos|Influencia europea / Porfiriato (1821 - 1910)|Suiza|CDMX|CDMX|Suiza|Su nombre está protegido por denominación; se usa en fondue y empanadas.|
+ACUYO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Hoja aromática que también se usaba para envolver cuerpos en entierros.|
+CHACAL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Camarón de río; se cocina con hojas de momo y chile.|
+HOJA DE CHAYA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tabasco|Tabasco|Tabasco|Maya|Cruda es tóxica; hervida es tan nutritiva como la espinaca.|
+MAIZ AZUL|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|Su pigmento contiene antocianinas; se usaba en rituales de fertilidad.|
+RANA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Tlaxcala|Tlaxcala|Tlaxcala|Mexica|Su carne era considerada afrodisíaca; se freía con ajo.|
+CLEMOLE CASTELLANO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Tlaxcala|Tlaxcala|Tlaxcala|Mestiza|Guiso de carne y fruta; mezcla de técnicas indígenas y españolas.|
+CHORIZO VERDE|1|Carnes y Mariscos|Conquista y Virreinato (1521 – 1821)|España|Toluca|Toluca|Meztiza|Hecho con chile, epazote y perejil; color único entre embutidos.|
+YOGURT|1|Lácteos y Huevos|México Contemporáneo (1940 - Actualidad)|Turquía|CDMX|CDMX|Turquía|En los 80s se volvió un ícono de alimentación saludable en México.|
+HIGO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Turquía|Morelos|Morelos|Turquía|Fruto bíblico que se consume seco o en conserva.|
+HIGUERA|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Turquía|Puebla|Puebla|Turquía|Árbol sagrado en muchas culturas; se adapta muy bien al clima templado.|
+CANGREJO|1|Carnes y Mariscos|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|En el Golfo se prepara en empanadas y guisos con achiote.|
+CHILE AMASHITO|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Es tan pequeño que se usa completo, sin picarlo.|
+FRIJOL NEGRO|1|Leguminosas, Semillas y Nueces|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Base de caldos, sopas, refritos y tamales negros.|
+GUANABANA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Su nombre viene del taíno, y se consideraba fruta para calmar el corazón.|
+HIERBA SANTA|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Se usaba como envoltura, medicina y protección espiritual.|
+HUACHINANGO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Su nombre significa “pez espinoso” en náhuatl.|
+PARGO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Veracruz|Veracruz|Veracruz|Totonaca|Su carne es blanca y firme; se asa entero con hierbas.|
+MOLE DE XICO|1|Condimentos, Aceites y Endulzantes|Conquista y Virreinato (1521 – 1821)|Veracruz|Veracruz|Veracruz|Mestiza|Muy espeso y oscuro; elaborado artesanalmente en fiestas patronales.|
+CHILE DULCE|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Se rellena o se sirve en escabeche; poco picante.|
+CHILE XCATIK|1|Verduras y Hierbas|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Amarillo, alargado; picoso y aromático.|
+CHILMOLE|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Base de guisos mayas, con epazote y jitomate.|
+RECAUDO BLANCO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Mezcla suave de especias claras y ajo; va en guisos de pollo.|
+RECAUDO DE ESPECIA|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Mezcla en seco que incluye canela, clavo y pimienta.|
+RECAUDO NEGRO|1|Condimentos, Aceites y Endulzantes|México Prehispánico (Antes de 1521)|Yucatán|Yucatán|Yucatán|Maya|Se elabora con chiles quemados hasta carbonizar; sabor fuerte y terroso.|

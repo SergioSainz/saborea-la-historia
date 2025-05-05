@@ -1,0 +1,135 @@
+/* Estilos para el grafo circular */
+.visualization-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Usar altura de la ventana completa */
+  max-height: 90vh; /* Limitar para evitar scroll */
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: visible;
+  border: none;
+  box-shadow: none;
+}
+
+.visualization-container #network {
+  background-color: #ffffff;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 700px; /* Altura mínima más grande */
+  overflow: visible;
+  display: flex !important; /* Usar flexbox para centrar contenido */
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: none;
+}
+
+/* Título del grafo */
+.graph-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  font-weight: bold;
+  fill: white;
+}
+
+/* Estilo para enlaces en el grafo */
+.links line {
+  transition: opacity 0.2s linear, stroke-width 0.2s linear;
+}
+
+/* Estilos para los nodos */
+.nodes circle {
+  transition: all 0.2s linear;
+}
+
+/* Estilos para etiquetas */
+.labels text {
+  transition: opacity 0.2s linear, font-size 0.2s linear;
+  font-family: 'Cardo', sans-serif;
+  paint-order: normal;
+  stroke: none;
+  stroke-width: 0;
+}
+
+/* Tooltip */
+.graph-tooltip {
+  font-family: 'Cardo', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 12px 15px !important;
+  border-radius: 6px !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  max-width: 280px;
+  line-height: 1.6;
+  font-size: 14px !important;
+}
+
+/* Contenedor de controles */
+.graph-controls {
+  z-index: 1001;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Leyenda */
+.graph-legend {
+  white-space: nowrap;
+}
+
+/* Botón de reinicio */
+.reset-button {
+  font-family: 'Cardo', sans-serif;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.reset-button:hover {
+  background-color: #364574 !important;
+}
+
+/* Mensaje de error */
+.error-message {
+  font-family: 'Cardo', sans-serif;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+/* Animaciones para transiciones suaves */
+#network svg {
+  transition: all 0.2s linear;
+}
+
+/* Info box styling */
+#filter-info {
+  transition: all 0.2s linear;
+  z-index: 10;
+  border: 1px solid rgba(131, 87, 43, 0.2);
+}
+
+/* Efectos adicionales de hover para nodos */
+.nodes circle:hover {
+  filter: brightness(1.2);
+  stroke-width: 3px !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .visualization-container #network {
+    min-height: 500px;
+  }
+  
+  .graph-title {
+    font-size: 18px;
+  }
+  
+  .labels text {
+    font-size: 8px !important;
+  }
+}

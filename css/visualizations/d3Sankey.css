@@ -1,0 +1,115 @@
+/* Estilos para el diagrama Sankey en D3.js */
+.sankey-node {
+    stroke: #fff;
+    stroke-width: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .sankey-node:hover {
+    stroke: #013971;
+    stroke-width: 2px;
+  }
+  
+  .sankey-node-ingrediente {
+    cursor: pointer;
+  }
+  
+  .sankey-link {
+    stroke-opacity: 0.3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .sankey-link:hover {
+    stroke-opacity: 0.6;
+  }
+  
+  .sankey-label {
+    font-family: "Cardo", serif;
+    font-size: 12px;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  }
+  
+  .column-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 16px;
+    font-weight: bold;
+    pointer-events: none;
+  }
+  
+  .sankey-tooltip-container {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #013971;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    max-width: 300px;
+    z-index: 1000;
+    transition: opacity 0.2s ease;
+  }
+  
+  .sankey-tooltip h3 {
+    margin: 0 0 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    font-family: 'Libre Baskerville', serif;
+    color: #013971;
+    font-size: 14px;
+  }
+  
+  .sankey-tooltip p {
+    margin: 5px 0;
+    font-family: 'Cardo', serif;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .sankey-tooltip .tooltip-preparation {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .category-controls {
+    padding: 15px;
+    background: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .category-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "Cardo", serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .category-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .category-button.active {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .category-button:not(.active) {
+    background-color: transparent !important;
+    color: #013971;
+    border: 2px solid currentColor;
+  }

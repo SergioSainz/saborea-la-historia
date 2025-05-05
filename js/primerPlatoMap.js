@@ -305,31 +305,57 @@ class PrimerPlatoMap {
 window.PrimerPlatoMap = PrimerPlatoMap;
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar el mapa
-    const primerPlatoMap = new PrimerPlatoMap();
-    primerPlatoMap.initialize('primer-plato-map');
+    // Verificar si estamos en la sección del primer plato
+    const primerPlatoSection = document.getElementById('primer-plato');
+    const primerPlatoMap = document.getElementById('primer-plato-map');
+    
+    // Si no estamos en la sección correcta, no intentar inicializar
+    if (!primerPlatoSection || !primerPlatoMap) {
+        console.log('Sección de primer plato o mapa no encontrados - esto es normal si no estás en esa sección');
+        return;
+    }
+    
+    // Inicializar el mapa solo si el contenedor existe
+    const mapInstance = new PrimerPlatoMap();
+    try {
+        mapInstance.initialize('primer-plato-map');
+    } catch (error) {
+        console.log('No se pudo inicializar el mapa del primer plato:', error.message);
+        return;
+    }
 
-    // Configurar Scrollama
+    // Verificar si hay pasos para scrollama
+    const steps = document.querySelectorAll('#primer-plato .content-block');
+    if (steps.length === 0) {
+        console.log('No se encontraron bloques de contenido para scrollama en la sección del primer plato');
+        return;
+    }
+
+    // Configurar Scrollama solo si hay elementos
     const scroller = scrollama();
-
-    scroller
-        .setup({
-            step: '#primer-plato .content-block', // Selecciona los bloques de contenido dentro de la sección
-            offset: 0.5,
-            debug: false
-        })
-        .onStepEnter(response => {
-            // Activar el bloque actual
-            response.element.classList.add('active');
-            
-            // Actualizar la visualización del mapa
-            primerPlatoMap.updateVisualization(response.element);
-        })
-        .onStepExit(response => {
-            // Desactivar el bloque cuando sale de la vista
-            response.element.classList.remove('active');
+    
+    try {
+        scroller
+            .setup({
+                step: '#primer-plato .content-block', // Selecciona los bloques de contenido dentro de la sección
+                offset: 0.5,
+                debug: false
+            })
+            .onStepEnter(response => {
+                // Activar el bloque actual
+                response.element.classList.add('active');
+                
+                // Actualizar la visualización del mapa
+                mapInstance.updateVisualization(response.element);
+            })
+            .onStepExit(response => {
+                // Desactivar el bloque cuando sale de la vista
+                response.element.classList.remove('active');
         });
 
     // Manejar redimensionamiento de ventana
     window.addEventListener('resize', scroller.resize);
+    } catch (error) {
+        console.log('Error al configurar scrollama para el primer plato:', error.message);
+    }
 });

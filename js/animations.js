@@ -46,28 +46,33 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .onStepEnter(response => {
             // Añadir clase active para activar la animación
-            const blocks = document.querySelectorAll('.content-block');
-            blocks[response.index].classList.add('active');
+            const { element, index, direction } = response;
+            element.classList.add('active');
+            console.log('Entering content block:', index, direction);
 
-            // Cambiar imagen según la sección
-            const xolinImage = document.querySelector('.sticky-image img');
-            if (xolinImage) {
-                // Determinar qué imagen mostrar según el índice
-                const imageUrls = {
-                    0: 'img/Xolin/cara.png',
-                    1: 'img/inicio/plato-2.png',
-                    
-                };
+            // Cambiar imagen según la sección con manejo de errores
+            try {
+                const xolinImage = document.querySelector('.sticky-image img');
+                if (xolinImage) {
+                    // Determinar qué imagen mostrar según el índice
+                    const imageUrls = {
+                        0: 'img/Xolin/cara.png',
+                        1: 'img/inicio/plato-2.png',
+                    };
 
-                if (imageUrls[response.index]) {
-                    xolinImage.src = imageUrls[response.index];
-                    xolinImage.classList.add('fade-in');
+                    if (imageUrls[index]) {
+                        xolinImage.src = imageUrls[index];
+                        xolinImage.classList.add('fade-in');
+                    }
                 }
+            } catch (error) {
+                console.error('Error al cambiar la imagen:', error);
             }
         })
         .onStepExit(response => {
-            const blocks = document.querySelectorAll('.content-block');
-            blocks[response.index].classList.remove('active');
+            const { element, index, direction } = response;
+            element.classList.remove('active');
+            console.log('Exiting content block:', index, direction);
         });
 
     // Asegurar que Scrollama se actualice cuando cambie el tamaño de la ventana

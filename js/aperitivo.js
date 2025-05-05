@@ -1,215 +1,161 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Variables globales
-    let map = null;
-    let sankeyChart = null;
-    let sankeyData = null;
-    let currentState = 'all';
     let currentIngredient = null;
-    let primerPlatoMap = null;
-    let ingredientCategories = null;
-    let tooltipData = null;
-
-    // Inicializar visualizaciones
-    function initializeVisualizations() {
-        if (!sankeyChart && document.getElementById('network')) {
-            sankeyChart = echarts.init(document.getElementById('network'));
-            window.addEventListener('resize', () => {
-                sankeyChart.resize();
-            });
-        }
-
-        if (document.getElementById('primer-plato-map')) {
-            primerPlatoMap = new PrimerPlatoMap();
-            primerPlatoMap.initialize('primer-plato-map');
-        }
-
-        if (!map && document.getElementById('map')) {
-            map = L.map('map', {
-                zoomControl: false,
-                dragging: false,
-                touchZoom: false,
-                scrollWheelZoom: false
-            }).setView([23.6345, -102.5528], 5);
-        }
-    }
-
-    function createCategoryControls(categories) {
-        const container = document.createElement('div');
-        container.className = 'category-controls';
-        
-        const allButton = document.createElement('button');
-        allButton.className = 'category-button active';
-        allButton.textContent = 'Todos';
-        allButton.onclick = () => filterByCategory('all');
-        container.appendChild(allButton);
-
-        const uniqueCategories = [...new Set(categories.classified_ingredients.map(item => item.category))];
-        uniqueCategories.forEach(category => {
-            const button = document.createElement('button');
-            button.className = 'category-button';
-            button.textContent = category;
-            button.style.backgroundColor = SankeyConfig.defaultColors.categoryColors[category] || '#FFF';
-            button.style.color = '#013971';
-            button.onclick = () => filterByCategory(category);
-            container.appendChild(button);
-        });
-
-        const networkDiv = document.getElementById('network');
-        networkDiv.parentNode.insertBefore(container, networkDiv);
-    }
-
-    function filterByCategory(category) {
-        document.querySelectorAll('.category-button').forEach(button => {
-            button.classList.toggle('active', button.textContent === (category === 'all' ? 'Todos' : category));
-        });
-
-        const filteredData = DataProcessor.filterByCategory(sankeyData, category, ingredientCategories);
-        updateSankeyChart(filteredData);
-    }
 
     function setupScrollama() {
-        const scroller = scrollama();
-        const ingredientesPermitidos = new Set(['Maíz', 'Frijol', 'Chile', 'Calabaza', 'Cacao']);
-    
-        scroller
+        // Seleccionar específicamente los bloques de ingredientes
+        const steps = document.querySelectorAll('.content-block.ingredient-block');
+        
+        if (steps.length === 0) {
+            console.log('No se encontraron bloques de ingredientes para scrollama - esto es esperado si no estás en la sección correcta');
+            
+            // Conectar con el grafo directamente sin scrollama
+            if (window.filtrarGrafoPorIngrediente) {
+                console.log('Intentando activar el grafo con MAIZ como ingrediente inicial');
+                setTimeout(() => {
+                    window.filtrarGrafoPorIngrediente('MAIZ');
+                }, 1500);
+            }
+            
+            return null;
+        }
+        
+        // Asegurar que los ingredientes ya tienen la clase active para que sean visibles
+        steps.forEach(step => {
+            if (!step.classList.contains('active')) {
+                step.classList.add('active');
+            }
+        });
+        
+        const ingredientScroller = scrollama();
+
+        ingredientScroller
             .setup({
-                step: '.content-block',
-                offset: 0.5,
+                step: '.content-block.ingredient-block',
+                offset: 0.5, // Activar cuando el elemento esté a la mitad de la pantalla
                 debug: false
             })
-            .onStepEnter(response => {
-                const { element } = response;
+            .onStepEnter((response) => {
+                // Evitar posibles múltiples llamadas para el mismo evento
+                if (window._lastIngredientIndex === response.index && 
+                    window._lastIngredientDir === response.direction) {
+                    // Evitar procesar el mismo evento dos veces
+                    console.log('Evento duplicado, ignorando:', response.index, response.direction);
+                    return;
+                }
                 
-                if (sankeyData) {
-                    const ingrediente = element.querySelector('h3')?.textContent;
-                    const hasFlowerImage = element.querySelector('img.rotate-180');
+                // Guardar el último evento procesado
+                window._lastIngredientIndex = response.index;
+                window._lastIngredientDir = response.direction;
+                const { element, index, direction } = response;
+                
+                // Verificar si el elemento existe antes de continuar
+                if (!element) {
+                    console.error('Error: Elemento no encontrado en onStepEnter');
+                    return;
+                }
+                
+                // Extraer nombre del ingrediente con manejo de errores
+                const h3Element = element.querySelector('h3');
+                if (!h3Element) {
+                    console.error('Error: No se encontró el elemento h3 en:', element);
+                    return;
+                }
+                
+                let ingrediente = h3Element.textContent?.trim();
+                
+                // Asegurarse de que el ingrediente esté en mayúsculas para coincidir con MAIZ, FRIJOL, etc.
+                if (ingrediente) {
+                    ingrediente = ingrediente.toUpperCase();
+                    console.log('Ingrediente normalizado:', ingrediente);
+                } else {
+                    console.warn('Advertencia: No se pudo obtener el texto del ingrediente');
+                }
+                
+                // Asegurar que este elemento está visible
+                if (!element.classList.contains('active')) {
+                    element.classList.add('active');
+                }
+                
+                console.log('Entering ingredient section:', ingrediente, 'index:', index, 'direction:', direction);
+                
+                // Resaltar visualmente este bloque
+                element.style.border = '2px solid #013971';
+                element.style.transform = 'scale(1.02)';
+                
+                // Filtrar el grafo circular por el ingrediente actual
+                if (window.filtrarGrafoPorIngrediente && ingrediente) {
+                    console.log(`Activando filtro para sección: ${ingrediente}`);
                     
-                    if (!ingrediente || !hasFlowerImage || !ingredientesPermitidos.has(ingrediente)) {
-                        const resetData = DataProcessor.resetVisualization(sankeyData);
-                        currentIngredient = null;
-                        sankeyChart.setOption({
-                            series: [{
-                                data: resetData.nodes,
-                                links: resetData.links
-                            }]
-                        });
+                    // Verificar si el grafo está inicializado
+                    if (window.grafoInicializado) {
+                        console.log(`Grafo inicializado, filtrando por: ${ingrediente}`);
+                        window.filtrarGrafoPorIngrediente(ingrediente);
+                        // Almacenar el ingrediente actual globalmente
+                        window.currentIngredient = ingrediente;
                     } else {
-                        currentIngredient = ingrediente;
-                        const filteredData = DataProcessor.filterByIngredient(sankeyData, ingrediente);
-                        sankeyChart.setOption({
-                            series: [{
-                                data: filteredData.nodes,
-                                links: filteredData.links
-                            }]
-                        });
+                        // Si no está inicializado, esperar un poco e intentar de nuevo
+                        console.log('Esperando a que el grafo se inicialice para filtrar');
+                        setTimeout(() => {
+                            if (window.filtrarGrafoPorIngrediente) {
+                                console.log(`Reintentando filtrar por: ${ingrediente}`);
+                                window.filtrarGrafoPorIngrediente(ingrediente);
+                                // Almacenar el ingrediente actual globalmente
+                                window.currentIngredient = ingrediente;
+                            }
+                        }, 800);
                     }
                 }
-
-                if (primerPlatoMap) {
-                    primerPlatoMap.updateVisualization(element);
-                }
-            });
-    
-        return scroller;
-    }
-
-    function setupMapInteractions(mexicoStates) {
-        L.geoJSON(mexicoStates, {
-            style: {
-                fillColor: '#3388ff',
-                weight: 1,
-                opacity: 1,
-                color: 'white',
-                fillOpacity: 0.7
-            },
-            onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.name);
-
-                layer.on('mouseover', function(e) {
-                    layer.setStyle({
-                        fillOpacity: 0.9,
-                        weight: 2
-                    });
-
-                    if (currentIngredient) {
-                        const filteredData = DataProcessor.filterByState(
-                            DataProcessor.filterByIngredient(sankeyData, currentIngredient),
-                            feature.properties.name
-                        );
-                        updateSankeyChart(filteredData);
-                    } else {
-                        const filteredData = DataProcessor.filterByState(sankeyData, feature.properties.name);
-                        updateSankeyChart(filteredData);
+            })
+            .onStepExit(response => {
+                const { element, direction, index } = response;
+                
+                // Quitar resaltado visual
+                element.style.border = '';
+                element.style.transform = '';
+                
+                // Extraer nombre del ingrediente que estamos dejando
+                const h3Element = element.querySelector('h3');
+                const ingredienteSaliente = h3Element ? h3Element.textContent.trim().toUpperCase() : null;
+                
+                // Si estamos saliendo del último bloque de ingredientes y la dirección es hacia abajo,
+                // mostrar el grafo completo sin filtros
+                const ingredientBlocks = document.querySelectorAll('.content-block.ingredient-block');
+                if (index === ingredientBlocks.length - 1 && direction === 'down') {
+                    console.log('Saliendo del último ingrediente, mostrando grafo completo');
+                    if (window.filtrarGrafoPorIngrediente) {
+                        window.filtrarGrafoPorIngrediente(null); // null indica mostrar todo
+                        window.currentIngredient = null;
                     }
-                });
-
-                layer.on('mouseout', function() {
-                    layer.setStyle({
-                        fillOpacity: 0.7,
-                        weight: 1
-                    });
-
-                    if (currentIngredient) {
-                        const filteredData = DataProcessor.filterByIngredient(sankeyData, currentIngredient);
-                        updateSankeyChart(filteredData);
-                    } else {
-                        const resetData = DataProcessor.resetVisualization(sankeyData);
-                        updateSankeyChart(resetData);
+                } else if (direction === 'up' && index === 0) {
+                    // Si estamos saliendo del primer ingrediente hacia arriba
+                    console.log('Saliendo del primer ingrediente hacia arriba');
+                    if (window.filtrarGrafoPorIngrediente) {
+                        window.filtrarGrafoPorIngrediente(null);
+                        window.currentIngredient = null;
                     }
-                });
-            }
-        }).addTo(map);
-    }
-
-    function updateSankeyChart(data) {
-        const option = SankeyConfig.createSankeyOption(data, tooltipData);
-        sankeyChart.setOption(option);
-    }
-
-    // Inicialización
-    initializeVisualizations();
-
-    // Cargar datos y configurar visualizaciones
-    Promise.all([
-        fetch('./json/aperitivo.json'),
-        fetch('./json/categorias_ingredientes.json'),
-        fetch('./json/tooltip.json')
-    ])
-    .then(responses => Promise.all(responses.map(response => response.json())))
-    .then(([sankeyJson, categoriesJson, tooltipsJson]) => {
-        sankeyData = DataProcessor.processDataForSankey(sankeyJson);
-        ingredientCategories = categoriesJson;
-        tooltipData = tooltipsJson;
-        
-        const option = SankeyConfig.createSankeyOption(sankeyData, tooltipData);
-        sankeyChart.setOption(option);
-
-        createCategoryControls(categoriesJson);
-        setupScrollama();
-
-        fetch('json/cordenadas.geojson')
-            .then(response => response.json())
-            .then(mexicoStates => {
-                if (map) {
-                    setupMapInteractions(mexicoStates);
-                    map.fitBounds(L.geoJSON(mexicoStates).getBounds());
+                } else {
+                    // Para cualquier otra transición, actualizamos el currentIngredient
+                    // Esto ayuda a manejar mejor las transiciones entre ingredientes
+                    console.log(`Saliendo de ingrediente: ${ingredienteSaliente}, dirección: ${direction}`);
                 }
             });
-    })
-    .catch(error => console.error('Error:', error));
 
-    window.addEventListener('beforeunload', () => {
-        if (map) {
-            map.remove();
-            map = null;
-        }
-        if (sankeyChart) {
-            sankeyChart.dispose();
-            sankeyChart = null;
-        }
-        if (primerPlatoMap) {
-            primerPlatoMap.dispose();
-            primerPlatoMap = null;
-        }
+        // Manejar el resize de la ventana
+        window.addEventListener('resize', ingredientScroller.resize);
+
+        return ingredientScroller;
+    }
+
+    // Ya no necesitamos inicializar el Sankey
+
+    // Hacemos visibles todos los bloques de ingredientes al cargar
+    document.querySelectorAll('.content-block.ingredient-block').forEach(block => {
+        block.classList.add('active');
     });
+    
+    // Ya no necesitamos cargar datos para el Sankey
+    // La visualización del grafo circular maneja sus propios datos
+    
+    // Configurar scrollytelling inmediatamente
+    setupScrollama();
 });

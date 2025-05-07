@@ -138,16 +138,51 @@ class PrimerPlatoMap {
             iconContainer.appendChild(iconDiv);
             el.appendChild(iconContainer);
     
-            // Crear popup
+            // Crear popup con estilo prehispánico
+            // Colores prehispánicos tomados de PrehispanicTooltips
+            const colorPalette = [
+                "#9B2226", // Rojo carmín
+                "#BB4D00", // Naranja rojizo
+                "#AE7C34", // Dorado ocre
+                "#5F5F41", // Verde oliva
+                "#28666E", // Azul-verde
+                "#073B4C"  // Azul oscuro
+            ];
+            
+            const mainColor = colorPalette[ingrediente.id % colorPalette.length];
+            
             const popup = new maplibregl.Popup({
                 offset: [0, -10],
-                className: 'marker-popup',
+                className: 'marker-popup prehispanic-popup',
                 closeButton: false
             }).setHTML(`
-                <h3>${ingrediente.nombre}</h3>
-                <p><strong>Origen:</strong> ${ingrediente.origen}</p>
-                <p><strong>Uso:</strong> ${ingrediente.uso}</p>
-                <p>${ingrediente.descripcion}</p>
+                <div style="position: relative;">
+                    <div style="position: absolute; top: -10px; left: -10px; right: -10px; height: 5px; 
+                         background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+                    
+                    <div style="font-weight: bold; font-size: 15px; margin: 2px 0 8px 0; color: ${mainColor}; text-transform: uppercase;">
+                        ${ingrediente.nombre}
+                    </div>
+                    
+                    <div style="color: #444; font-size: 13px; margin-bottom: 5px;">
+                        <strong style="color: ${mainColor}">Origen:</strong> ${ingrediente.origen}
+                    </div>
+                    
+                    <div style="color: #444; font-size: 13px; margin-bottom: 5px;">
+                        <strong style="color: ${mainColor}">Uso:</strong> ${ingrediente.uso}
+                    </div>
+                    
+                    <div style="color: #555; font-size: 12px; font-style: italic;">
+                        ${ingrediente.descripcion}
+                    </div>
+                    
+                    <div style="margin-top: 5px; font-size: 11px; color: #777;">
+                        Ingrediente prehispánico
+                    </div>
+                    
+                    <div style="position: absolute; bottom: -10px; left: -10px; right: -10px; height: 5px; 
+                         background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+                </div>
             `);
     
             // Crear marcador

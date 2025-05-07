@@ -166,6 +166,7 @@ function createBarChart(containerId, data, title, color, maxValue = null) {
         .enter()
         .append('g');
         
+    // Añadir rectángulos con animaciones personalizadas
     bars.append('rect')
         .attr('class', 'bar')
         .attr('x', 0)
@@ -176,6 +177,16 @@ function createBarChart(containerId, data, title, color, maxValue = null) {
         .attr('rx', 3)
         .attr('ry', 3)
         .attr('opacity', 0.9)
+        .each(function(d, i) {
+            // Asignar una duración y retardo aleatorio para la animación de pulsación
+            const duration = 2 + Math.random() * 2; // Entre 2 y 4 segundos
+            const delay = Math.random() * 1.5; // Entre 0 y 1.5 segundos
+            
+            // Aplicar el estilo de animación personalizado
+            d3.select(this)
+                .style('animation-duration', `${duration}s`)
+                .style('animation-delay', `${delay}s`);
+        })
         .transition()
         .duration(1200)
         .delay((d, i) => i * 100) // Añadir retraso escalonado
@@ -209,6 +220,45 @@ function createBarChart(containerId, data, title, color, maxValue = null) {
         .delay((d, i) => 1200 + i * 100)
         .duration(400)
         .attr('opacity', 1);
+        
+    // Añadir interactividad a las barras
+    bars.selectAll('rect.bar')
+        .on('mouseover', function(event, d) {
+            // Pausar animación (implementado vía CSS con animation-play-state)
+            
+            // Destacar la barra actual
+            d3.select(this)
+                .attr('stroke', '#333')
+                .attr('stroke-width', 1)
+                .attr('filter', `drop-shadow(0 0 3px ${color})`);
+                
+            // Destacar el texto correspondiente
+            const index = data.findIndex(item => item.name === d.name);
+            bars.selectAll('text')
+                .filter((_, i) => i === index)
+                .transition()
+                .duration(200)
+                .style('font-size', '12px')
+                .style('fill', '#333');
+        })
+        .on('mouseout', function(event, d) {
+            // La reanudación de la animación se maneja vía CSS
+            
+            // Restaurar el estilo normal
+            d3.select(this)
+                .attr('stroke', 'none')
+                .attr('stroke-width', 0)
+                .attr('filter', 'none');
+                
+            // Restaurar el texto
+            const index = data.findIndex(item => item.name === d.name);
+            bars.selectAll('text')
+                .filter((_, i) => i === index)
+                .transition()
+                .duration(200)
+                .style('font-size', '10px')
+                .style('fill', '#666');
+        });
 }
 
 // Función para mostrar la nota cultural

@@ -1,0 +1,129 @@
+/**
+ * Estilos para tooltips con diseño prehispánico
+ * Estos estilos se aplican a todos los tooltips en las visualizaciones
+ * para mantener una apariencia consistente con la temática prehispánica
+ */
+
+/* Estilo base compartido para todos los tooltips prehispánicos */
+.chart-tooltip-prehispanic,
+.graph-tooltip-prehispanic,
+.sankey-tooltip-container,
+.prehispanic-popup .maplibregl-popup-content {
+    position: absolute;
+    background-color: #F0EBCE; /* Color de papel amate */
+    border: 2px solid var(--tooltip-color, #AE7C34);
+    border-radius: 0; /* Más geométrico como arte prehispánico */
+    padding: 12px 18px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    color: #5F5F41;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 4px 4px 0 rgba(155, 34, 38, 0.5); /* Sombra estilo prehispánico */
+    max-width: 300px;
+    min-width: 140px;
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: rotate(-1deg); /* Ligera rotación para efecto visual artesanal */
+}
+
+/* Colores prehispánicos */
+:root {
+    --color-carmin: #9B2226; /* Rojo carmín (similar al usado en códices) */
+    --color-ceramica: #BB4D00; /* Naranja rojizo (color de cerámica) */
+    --color-maya: #AE7C34; /* Dorado ocre (color maya) */
+    --color-jade: #5F5F41; /* Verde oliva (jade) */
+    --color-turquesa: #28666E; /* Azul-verde (color turquesa) */
+    --color-mural: #073B4C; /* Azul oscuro (color usado en murales) */
+}
+
+/* Título dentro del tooltip */
+.tooltip-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 2px 0 8px 0;
+    color: var(--tooltip-color, #AE7C34);
+    text-transform: uppercase;
+}
+
+/* Contenido dentro del tooltip */
+.tooltip-content {
+    color: #444;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* Subtítulo o texto secundario */
+.tooltip-sub {
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+/* Pie del tooltip */
+.tooltip-footer {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #777;
+}
+
+/* Líneas decorativas superior e inferior */
+.tooltip-pattern-line {
+    position: absolute;
+    height: 5px;
+    left: -10px;
+    right: -10px;
+    background: repeating-linear-gradient(90deg, var(--tooltip-color, #AE7C34), 
+                                         var(--tooltip-color, #AE7C34) 5px, 
+                                         transparent 5px, transparent 10px);
+}
+
+.tooltip-pattern-line.top {
+    top: -10px;
+}
+
+.tooltip-pattern-line.bottom {
+    bottom: -10px;
+}
+
+/* Efectos al aparecer y desaparecer */
+.chart-tooltip-prehispanic.visible,
+.graph-tooltip-prehispanic.visible,
+.sankey-tooltip-container.visible {
+    opacity: 0.98 !important;
+}
+
+/* Animaciones para las apariciones */
+@keyframes tooltipAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) rotate(-1deg);
+    }
+    100% {
+        opacity: 0.98;
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+.tooltip-appear {
+    animation: tooltipAppear 0.3s forwards;
+}
+
+/* Estilos específicos para popups del mapa */
+.prehispanic-popup .maplibregl-popup-tip {
+    border-top-color: #F0EBCE !important; /* Matching the tooltip background */
+    border-bottom-color: #F0EBCE !important;
+}
+
+.prehispanic-popup {
+    transform: rotate(-1deg);
+}
+
+.prehispanic-popup .maplibregl-popup-close-button {
+    color: var(--color-maya);
+    font-size: 16px;
+    padding: 0 5px;
+    right: 5px;
+    top: 5px;
+}

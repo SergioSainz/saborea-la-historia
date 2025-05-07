@@ -387,15 +387,58 @@ class SankeyDiagram {
         // Buscar información adicional en los datos de tooltip
         const tooltipInfo = this.tooltipData.find(item => item.ingredient === d.name);
         
-        let tooltipContent = `<div class="sankey-tooltip">
-            <h3>${d.name}</h3>`;
-            
-        if (tooltipInfo) {
-            tooltipContent += `<p>${tooltipInfo.info}</p>
-                <p class="tooltip-preparation">${tooltipInfo.preparation}</p>`;
+        // Colores prehispánicos inspirados en arte mexicano antiguo para los tooltips
+        const colorPalette = [
+            "#9B2226", // Rojo carmín (similar al usado en códices)
+            "#BB4D00", // Naranja rojizo (color de cerámica)
+            "#AE7C34", // Dorado ocre (color maya)
+            "#5F5F41", // Verde oliva (jade)
+            "#28666E", // Azul-verde (color turquesa)
+            "#073B4C"  // Azul oscuro (color usado en murales)
+        ];
+        
+        // Seleccionar un color según el tipo de nodo
+        let mainColor;
+        if (d.type === 'ingrediente') {
+            mainColor = colorPalette[1]; // Naranja para ingredientes
+        } else if (d.type === 'destino') {
+            mainColor = colorPalette[2]; // Dorado para destinos
+        } else {
+            mainColor = colorPalette[5]; // Azul para culturas
         }
         
-        tooltipContent += `</div>`;
+        // Crear tooltip con estilo prehispánico
+        let tooltipContent = `
+            <div style="position: relative;">
+                <div style="position: absolute; top: -10px; left: -10px; right: -10px; height: 5px; 
+                     background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+                <div style="font-weight: bold; font-size: 15px; margin: 2px 0 8px 0; color: ${mainColor}; text-transform: uppercase;">
+                    ${d.name}
+                </div>`;
+        
+        if (tooltipInfo) {
+            tooltipContent += `
+                <div style="color: #444; font-size: 13px; margin-bottom: 8px;">
+                    ${tooltipInfo.info}
+                </div>
+                <div style="color: #666; font-size: 12px; font-style: italic;">
+                    ${tooltipInfo.preparation}
+                </div>`;
+        }
+        
+        // Añadir el tipo de nodo
+        let tipoNodo = '';
+        if (d.type === 'ingrediente') tipoNodo = 'Ingrediente prehispánico';
+        else if (d.type === 'destino') tipoNodo = 'Platillo típico';
+        else if (d.type === 'cultura') tipoNodo = 'Cultura prehispánica';
+        
+        tooltipContent += `
+                <div style="margin-top: 5px; font-size: 11px; color: #777;">
+                    ${tipoNodo}
+                </div>
+                <div style="position: absolute; bottom: -10px; left: -10px; right: -10px; height: 5px; 
+                     background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+            </div>`;
         
         // Crear tooltip si no existe
         let tooltip = d3.select("body").select(".sankey-tooltip-container");
@@ -404,6 +447,16 @@ class SankeyDiagram {
                 .append("div")
                 .attr("class", "sankey-tooltip-container");
         }
+        
+        // Actualizar estilos para que coincidan con el diseño prehispánico
+        tooltip
+            .style("background-color", "#F0EBCE") // Color de papel amate
+            .style("border", "2px solid " + mainColor)
+            .style("border-radius", "0")
+            .style("padding", "12px 18px")
+            .style("font-family", "'Libre Baskerville', serif")
+            .style("box-shadow", "4px 4px 0 rgba(155, 34, 38, 0.5)")
+            .style("transform", `rotate(${Math.random() * 2 - 1}deg)`); // Ligera rotación aleatoria
         
         // Posicionar y mostrar tooltip
         tooltip
@@ -419,9 +472,36 @@ class SankeyDiagram {
      * @param {Object} d - Datos del enlace
      */
     showLinkTooltip(event, d) {
-        const tooltipContent = `<div class="sankey-tooltip">
-            <p><strong>${d.source}</strong> → <strong>${d.target}</strong></p>
-        </div>`;
+        // Colores prehispánicos inspirados en arte mexicano antiguo para los tooltips
+        const colorPalette = [
+            "#9B2226", // Rojo carmín (similar al usado en códices)
+            "#BB4D00", // Naranja rojizo (color de cerámica)
+            "#AE7C34", // Dorado ocre (color maya)
+            "#5F5F41", // Verde oliva (jade)
+            "#28666E", // Azul-verde (color turquesa)
+            "#073B4C"  // Azul oscuro (color usado en murales)
+        ];
+        
+        // Color aleatorio para dar variedad visual
+        const mainColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+        
+        // Tooltip con estilo prehispánico para enlaces
+        const tooltipContent = `
+            <div style="position: relative;">
+                <div style="position: absolute; top: -10px; left: -10px; right: -10px; height: 5px; 
+                     background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+                <div style="font-weight: bold; font-size: 15px; margin: 2px 0 8px 0; color: ${mainColor}; text-transform: uppercase;">
+                    CONEXIÓN
+                </div>
+                <div style="color: #444; font-size: 13px;">
+                    <strong>${d.source}</strong> → <strong>${d.target}</strong>
+                </div>
+                <div style="margin-top: 5px; font-size: 11px; color: #777;">
+                    ${d.value} platillo${d.value !== 1 ? 's' : ''}
+                </div>
+                <div style="position: absolute; bottom: -10px; left: -10px; right: -10px; height: 5px; 
+                     background: repeating-linear-gradient(90deg, ${mainColor}, ${mainColor} 5px, transparent 5px, transparent 10px);"></div>
+            </div>`;
         
         // Crear tooltip si no existe
         let tooltip = d3.select("body").select(".sankey-tooltip-container");
@@ -430,6 +510,16 @@ class SankeyDiagram {
                 .append("div")
                 .attr("class", "sankey-tooltip-container");
         }
+        
+        // Actualizar estilos para que coincidan con el diseño prehispánico
+        tooltip
+            .style("background-color", "#F0EBCE") // Color de papel amate
+            .style("border", "2px solid " + mainColor)
+            .style("border-radius", "0")
+            .style("padding", "12px 18px")
+            .style("font-family", "'Libre Baskerville', serif")
+            .style("box-shadow", "4px 4px 0 rgba(155, 34, 38, 0.5)")
+            .style("transform", `rotate(${Math.random() * 2 - 1}deg)`); // Ligera rotación aleatoria
         
         // Posicionar y mostrar tooltip
         tooltip

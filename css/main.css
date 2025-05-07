@@ -22,6 +22,7 @@
 @import './visualizations/circularGraph.css';
 @import './visualizations/d3Sankey.css';
 @import './visualizations/ingredientCharts.css';
+@import './visualizations/tooltips.css'; /* Tooltips prehispánicos */
 
 @import './components/timeline.css';
 

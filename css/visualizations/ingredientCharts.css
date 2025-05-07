@@ -8,12 +8,23 @@
 }
 
 /* Estilos para las barras del gráfico */
-.bar {
-    transition: all 0.3s ease;
+/* Animación de pulsación para las barras */
+@keyframes barPulse {
+    0% { opacity: 0.9; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.9; }
 }
 
+.bar {
+    transition: all 0.3s ease;
+    animation: barPulse 3s infinite ease-in-out;
+}
+
+/* Al pasar el cursor, pausar la animación y aumentar opacidad */
 .bar:hover {
+    animation-play-state: paused !important;
     opacity: 1 !important;
+    filter: brightness(1.1);
 }
 
 /* Estilos para las notas culturales */

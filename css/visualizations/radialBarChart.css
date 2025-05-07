@@ -1,0 +1,117 @@
+/* Estilos para los gráficos radiales de barras */
+.chart-container-radial {
+    width: 100%;
+    height: 480px; /* Aumentamos altura para acomodar la disposición en caracol */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 5px; /* Reducir padding para usar más espacio */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    min-height: 460px;
+    overflow: visible; /* Permitir que las etiquetas se extiendan fuera del contenedor */
+}
+
+/* Estilo para las líneas radiales (barras) */
+.radial-line {
+    stroke: rgba(131, 87, 43, 0.4); /* Color con opacidad */
+    stroke-width: 1.5;
+    transition: stroke-width 0.3s, opacity 0.5s;
+}
+
+.radial-line:hover {
+    stroke-width: 3px;
+}
+
+/* Estilo para las bolitas en los extremos */
+.end-circle {
+    fill: rgba(131, 87, 43, 1); /* Color dorado sólido */
+    stroke: rgba(131, 87, 43, 1);
+    transition: all 0.3s, opacity 0.5s;
+    animation: shine 2.5s infinite; /* Ligeramente más rápida */
+    animation-delay: calc(var(--index) * 0.1s); /* Menos desfase para que se note más */
+    cursor: pointer; /* Indicar que son clickeables */
+}
+
+.end-circle:hover {
+    filter: drop-shadow(0 0 4px rgba(131, 87, 43, 0.7));
+}
+
+/* Estilo para las etiquetas de estados */
+.state-label {
+    font-size: 9px; /* Ligeramente más pequeño para evitar solapamiento */
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    fill: #777777; /* Gris claro */
+    text-transform: none; /* Permitir mayúsculas y minúsculas */
+    dominant-baseline: central; /* Centrar verticalmente */
+    cursor: default;
+    transition: all 0.2s ease-in-out;
+    /* Añadir un ligero halo blanco para mejor legibilidad */
+    text-shadow: 0 0 4px rgba(255, 255, 255, 1);
+    /* Ligeramente transparente para reducir saturación visual */
+    opacity: 0.85;
+}
+
+/* Título del gráfico - justificado a la izquierda */
+h5.radial-chart-title {
+    text-align: left !important;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    color: #243360;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    padding-left: 15px;
+}
+
+/* Tooltip personalizado - mismo estilo que los gráficos principales */
+.chart-tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    color: #243360;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Animación de brillo para las bolitas - mayor contraste y más llamativa */
+@keyframes shine {
+    0% {
+        filter: brightness(1) drop-shadow(0 0 1px rgba(131, 87, 43, 0.2));
+        transform: scale(1);
+    }
+    50% {
+        filter: brightness(2.0) drop-shadow(0 0 8px rgba(131, 87, 43, 0.8));
+        transform: scale(1.3);
+    }
+    100% {
+        filter: brightness(1) drop-shadow(0 0 1px rgba(131, 87, 43, 0.2));
+        transform: scale(1);
+    }
+}
+
+/* Mensaje de carga eliminado */
+
+/* Círculo central - sin borde ni color, solo para contener la imagen */
+.chart-container-radial circle:first-child {
+    fill: transparent;
+    stroke: none;
+}
+
+/* Textos del centro */
+.chart-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    font-weight: bold;
+    fill: #243360;
+}

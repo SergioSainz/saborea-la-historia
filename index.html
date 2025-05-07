@@ -24,6 +24,8 @@
         <!-- Estilos propios -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/debug.css">
+        <link rel="stylesheet" href="css/visualizations/radialBarChart.css">
+        <link rel="stylesheet" href="css/visualizations/circularGraph.css">
     </head>
 <body>
     <!-- Primera sección con TypeIt -->
@@ -218,16 +220,35 @@
     <div class="content-block initial-block">
     <div class="container-fluid mb-5">
         <div class="row">
+            <!-- Primera columna (8): Imagen + Texto -->
             <div class="col-md-8">
-                <div class="p-4">
-                    <p class="cardo-regular">Bienvenido al 'Aperitivo', un primer bocado de historia servido con los ingredientes que dieron forma al México prehispánico. Este platillo está preparado con maíz, el alma de nuestra tierra; cacao, el regalo divino de los dioses; chile, el fuego que enciende nuestra cultura; frijol, el eterno compañero, y calabaza, la joya versátil de la cocina ancestral. Cada ingrediente, como un sabor único en el plato, te invita a explorar la conexión sagrada entre el hombre y la tierra. ¡Disfruta este viaje al origen!</p>
+                <!-- Fila superior: Imagen de Xolín -->
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <img src="img\Xolin\Xolin_Aperitivo.png" 
+                             class="img-fluid" 
+                             alt="Xolin Aperitivo"
+                             style="max-height: 350px; width: auto;">
+                    </div>
+                </div>
+                
+                <!-- Fila inferior: Texto completo centrado -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-3 text-center">
+                            <p class="cardo-regular">Bienvenido al 'Aperitivo', un primer bocado de historia servido con los ingredientes que dieron forma al México prehispánico. Este platillo está preparado con maíz, el alma de nuestra tierra; cacao, el regalo divino de los dioses; chile, el fuego que enciende nuestra cultura; frijol, el eterno compañero, y calabaza, la joya versátil de la cocina ancestral.</p>
+                            <p class="cardo-regular mt-3">Cada ingrediente, como un sabor único en el plato, te invita a explorar la conexión sagrada entre el hombre y la tierra. Las culturas prehispánicas como la Mexica, Maya y Zapoteca, desarrollaron técnicas culinarias sofisticadas que transformaron estos ingredientes en pilares de una gastronomía milenaria. ¡Disfruta este viaje al origen!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <img src="img\Xolin\Xolin_Aperitivo.png" 
-                        class="img-fluid" 
-                        alt="Xolin Aperitivo"
-                        style="max-height: 300px;">
+            
+            <!-- Segunda columna (4): Gráfico -->
+            <div class="col-md-4">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <h5 class="radial-chart-title mb-2">Culturas más representativas de la época prehispánica</h5>
+                    <div id="cultural-radial-chart" class="chart-container-radial" style="height: 100%; min-height: 600px;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -235,7 +256,7 @@
     </div>
     <div class="sticky-section">
         <div class="row">
-            <div class="col-4 ">
+            <div class="col-5 ">
                 
                 <!-- Bloque del Maíz -->
                 <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
@@ -259,14 +280,10 @@
                         <!-- Hallazgos del grafo -->
                         
                         <div class="row mt-4">
-                            <!-- Columna izquierda: Top estados -->
-                            <div class="col-md-6">
-                                <div id="maiz-estados-chart" class="chart-container"></div>
-                            </div>
-                            
-                            <!-- Columna derecha: Culturas -->
-                            <div class="col-md-6">
-                                <div id="maiz-culturas-chart" class="chart-container"></div>
+                            <!-- Gráfico radial de barras -->
+                            <div class="col-md-12">
+                                <h5 class="radial-chart-title">Platillos con Maíz por Estado</h5>
+                                <div id="maiz-estados-radial-chart" class="chart-container-radial"></div>
                             </div>
                         </div>
                         
@@ -274,10 +291,7 @@
                         <div id="maiz-nota"></div>
                     </div>
                     
-                    <img src="img/aperitivo/maiz.png" 
-                         class="img-fluid mx-auto d-block rotate-180 mt-4" 
-                         style="max-width: 40%;" 
-                         alt="Imagen Central">
+                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
 
                 <!-- Bloque del FRIJOL -->
@@ -327,15 +341,11 @@
                     
                     <!-- Hallazgos del grafo -->
                     
+                    <!-- Gráfico radial de barras -->
                     <div class="row mt-4">
-                        <!-- Columna izquierda: Top estados -->
-                        <div class="col-md-6">
-                            <div id="frijol-estados-chart" class="chart-container"></div>
-                        </div>
-                        
-                        <!-- Columna derecha: Culturas -->
-                        <div class="col-md-6">
-                            <div id="frijol-culturas-chart" class="chart-container"></div>
+                        <div class="col-md-12">
+                            <h5 class="radial-chart-title">Platillos con Frijol por Estado</h5>
+                            <div id="frijol-estados-radial-chart" class="chart-container-radial"></div>
                         </div>
                     </div>
                     
@@ -343,12 +353,7 @@
                     <div id="frijol-nota"></div>
                     
                     <!-- Contenedor de imagen - Movido arriba y añadida la clase rotate-180 -->
-                    <div class="text-center mt-4">
-                        <img src="img/aperitivo/frijoles.png"
-                             class="img-fluid mx-auto d-block rotate-180"
-                             style="max-width: 40%;"
-                             alt="Imagen Frijol">
-                    </div>
+                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
                 
 
@@ -398,27 +403,18 @@
                     
                     <!-- Hallazgos del grafo -->
                     
+                    <!-- Gráfico radial de barras -->
                     <div class="row mt-4">
-                        <!-- Columna izquierda: Top estados -->
-                        <div class="col-md-6">
-                            <div id="chile-estados-chart" class="chart-container"></div>
-                        </div>
-                        
-                        <!-- Columna derecha: Culturas -->
-                        <div class="col-md-6">
-                            <div id="chile-culturas-chart" class="chart-container"></div>
+                        <div class="col-md-12">
+                            <h5 class="radial-chart-title">Platillos con Chile por Estado</h5>
+                            <div id="chile-estados-radial-chart" class="chart-container-radial"></div>
                         </div>
                     </div>
                     
                     <!-- Nota cultural -->
                     <div id="chile-nota"></div>
                     
-                    <div class="text-center mt-4">
-                        <img src="img/aperitivo/chile.png"
-                             class="img-fluid mx-auto d-block rotate-180"
-                             style="max-width: 40%;"
-                             alt="Imagen Chile">
-                    </div>
+                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
 
                 <!-- Bloque del CALABAZA -->
@@ -452,15 +448,11 @@
                     
                     <!-- Hallazgos del grafo -->
                     
+                    <!-- Gráfico radial de barras -->
                     <div class="row mt-4">
-                        <!-- Columna izquierda: Top estados -->
-                        <div class="col-md-6">
-                            <div id="calabaza-estados-chart" class="chart-container"></div>
-                        </div>
-                        
-                        <!-- Columna derecha: Culturas -->
-                        <div class="col-md-6">
-                            <div id="calabaza-culturas-chart" class="chart-container"></div>
+                        <div class="col-md-12">
+                            <h5 class="radial-chart-title">Platillos con Calabaza por Estado</h5>
+                            <div id="calabaza-estados-radial-chart" class="chart-container-radial"></div>
                         </div>
                     </div>
                     
@@ -468,12 +460,7 @@
                     <div id="calabaza-nota"></div>
                     
                     <!-- Imagen con rotate-180 -->
-                    <div class="text-center mt-4">
-                        <img src="img/aperitivo/calabaza.png"
-                                class="img-fluid mx-auto d-block rotate-180"
-                                style="max-width: 40%;"
-                                alt="Imagen Calabaza">
-                    </div>
+                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
 
                 <!-- Bloque del CACAO -->
@@ -529,31 +516,24 @@
                         
                         <!-- Hallazgos del grafo -->
                         
+                        <!-- Gráfico radial de barras -->
                         <div class="row mt-4">
-                            <!-- Columna izquierda: Top estados -->
-                            <div class="col-md-6">
-                                <div id="cacao-estados-chart" class="chart-container"></div>
-                            </div>
-                            
-                            <!-- Columna derecha: Culturas -->
-                            <div class="col-md-6">
-                                <div id="cacao-culturas-chart" class="chart-container"></div>
+                            <div class="col-md-12">
+                                <h5 class="radial-chart-title">Platillos con Cacao por Estado</h5>
+                                <div id="cacao-estados-radial-chart" class="chart-container-radial"></div>
                             </div>
                         </div>
                         
                         <!-- Nota cultural -->
                         <div id="cacao-nota"></div>
                         
-                        <img src="img/aperitivo/cacao.png" 
-                        class="img-fluid mx-auto d-block rotate-180" 
-                        style="max-width: 40%;" 
-                        alt="Imagen Central">
+                        <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
                 
             </div>
 
             <!-- Bloque VISUALIZACIÓN INTERACTIVA-->
-            <div class="col-8">
+            <div class="col-7">
                 <div class="sticky-image sticky-image-sankey">
                     <!-- Contenedores para visualizaciones -->
                     <div class="visualization-container">
@@ -699,9 +679,12 @@
     <!-- <script src="js/script.js"></script> -->
     <script src="js/animations.js" ></script>
     <script src="js/aperitivo.js"></script>
+    <script src="js/prehispanicTooltips.js"></script>
     <script src="js/animacion-num.js" ></script>
     <script src="js/primerPlatoMap.js"></script>
     <script src="js/circularGraph.js"></script>
     <script src="js/ingredientCharts.js"></script>
+    <script src="js/radialBarChart.js"></script>
+    <script src="js/culturalRadialChart.js"></script>
 </body>
 </html>

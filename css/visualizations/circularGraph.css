@@ -43,26 +43,33 @@
 /* Estilos para los nodos */
 .nodes circle {
   transition: all 0.2s linear;
+  stroke-width: 0.5px;
+}
+
+/* Estilos para nodos de época (imágenes) */
+.nodes .node circle[fill^="url(#pattern"] {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
 }
 
 /* Estilos para etiquetas */
 .labels text {
   transition: opacity 0.2s linear, font-size 0.2s linear;
   font-family: 'Cardo', sans-serif;
-  paint-order: normal;
-  stroke: none;
-  stroke-width: 0;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 3px;
+  font-weight: bold;
 }
 
 /* Tooltip */
-.graph-tooltip {
+.graph-tooltip-custom {
   font-family: 'Cardo', sans-serif;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 1000;
   padding: 12px 15px !important;
   border-radius: 6px !important;
   background-color: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(174, 124, 52, 0.3) !important;
   max-width: 280px;
   line-height: 1.6;
   font-size: 14px !important;
@@ -111,12 +118,106 @@
   transition: all 0.2s linear;
   z-index: 10;
   border: 1px solid rgba(131, 87, 43, 0.2);
+  font-family: 'Cardo', serif !important;
+  font-size: 14px !important;
 }
 
 /* Efectos adicionales de hover para nodos */
 .nodes circle:hover {
   filter: brightness(1.2);
   stroke-width: 3px !important;
+}
+
+/* Efectos adicionales de hover para nodos de época (con imágenes) */
+.nodes .node:hover circle[fill^="url(#pattern"] {
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3)) brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* Estilos para el contenedor de gráficos radiales */
+.chart-container-radial {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end; /* Alineamos al final (abajo) */
+  justify-content: center; /* Mantenemos centrado horizontal */
+  padding-bottom: 30px; /* Aumentamos el espacio al fondo */
+  margin-top: -50px; /* Desplazamos hacia arriba ligeramente */
+}
+
+.chart-container-radial svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.radial-chart-title {
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 10px;
+  color: #243360;
+}
+
+/* Animaciones para elementos mayas */
+@keyframes rotateGlifo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Elementos mayas con opacidad fija */
+.maya-glifo {
+  stroke-width: 1.5;
+  opacity: 0.2 !important;
+  transition: none !important; /* Desactivamos cualquier transición */
+}
+
+.maya-circle {
+  animation: rotateGlifo 30s infinite linear;
+  transform-origin: center center;
+  opacity: 0.15 !important; /* Forzamos una opacidad fija */
+  transition: none !important; /* Desactivamos cualquier transición */
+}
+
+/* Coloración propia para el gráfico cultural */
+#cultural-radial-chart .end-circle {
+  opacity: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Animación de movimiento vertical aleatorio para bolitas (hacia arriba) */
+@keyframes floatUp {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  50% { transform: translateY(-8px); }
+  75% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Animación de movimiento vertical aleatorio para bolitas (hacia abajo) */
+@keyframes floatDown {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(6px); }
+  55% { transform: translateY(10px); }
+  80% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+/* La clase para pausar la animación cuando el mouse está encima */
+#cultural-radial-chart .end-circle:hover {
+  animation-play-state: paused !important;
+}
+
+#cultural-radial-chart .radial-line {
+  /* Eliminamos todas las transiciones */
+  transition: none !important;
 }
 
 /* Responsivo */
@@ -131,5 +232,9 @@
   
   .labels text {
     font-size: 8px !important;
+  }
+  
+  .chart-container-radial {
+    min-height: 400px;
   }
 }

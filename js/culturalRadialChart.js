@@ -47,8 +47,8 @@ function processCulturalData(csvData) {
         count: ingredientes.size
     }));
     
-    // Ordenar por cantidad de ingredientes (de mayor a menor)
-    return result.sort((a, b) => b.count - a.count);
+    // Ordenar por cantidad de ingredientes (de menor a mayor)
+    return result.sort((a, b) => a.count - b.count);
 }
 
 // Crear un gráfico radial para culturas
@@ -67,10 +67,10 @@ function createCulturalRadialChart(containerId, data) {
     const containerHeight = document.getElementById(containerId).clientHeight;
     
     // Calcular dimensiones óptimas para el SVG (100% del contenedor)
-    const width = containerWidth || 520; // Valor de respaldo
-    const height = containerHeight || 520; // Valor de respaldo
+    const width = containerWidth || 520; // Valor de respaldo reducido en 20px
+    const height = containerHeight || 520; // Valor de respaldo reducido en 20px
     const innerRadius = Math.min(width, height) * 0.08; // Hacemos más pequeño el círculo central
-    const outerRadius = Math.min(width, height) / 2 - Math.min(width, height) * 0.03; // Reducimos aún más el margen para extender más las raíces
+    const outerRadius = Math.min(width, height) / 2 - Math.min(width, height) * 0.02; // Reducimos aún más el margen para extender más las raíces
     
     // Crear el SVG con tamaño relativo para que se adapte al contenedor
     const svg = d3.select(`#${containerId}`)
@@ -84,22 +84,22 @@ function createCulturalRadialChart(containerId, data) {
         .append("g")
         .attr("transform", `translate(${width/2}, ${height*0.85})`);
     
-    // Escala para el radio - haciendo las barras más largas
+    // Escala para el radio - haciendo las barras más cortas
     const maxCount = d3.max(data, d => d.count);
     const radiusScale = d3.scaleLinear()
-        .domain([0, maxCount * 0.4]) // Reducimos aún más el dominio para barras extra largas
-        .range([innerRadius, outerRadius]);
+        .domain([0, maxCount * 0.5]) // Aumentamos el dominio para barras más cortas
+        .range([innerRadius, outerRadius * 0.9]); // Reducimos el rango para que las barras sean más cortas
     
-    // Escala para los ángulos
+    // Escala para los ángulos - girando 210 grados (200 + 10) desde la posición original
     const angleScale = d3.scaleBand()
         .domain(data.map(d => d.cultura))
-        .range([0, 2 * Math.PI])
+        .range([5 * Math.PI / 6 + (210 * Math.PI / 180), 5 * Math.PI / 6 + (210 * Math.PI / 180) + 2 * Math.PI]) // Posición inicial girada 210 grados
         .padding(0.65); // Ajustamos la separación para mejor distribución de las raíces
     
     // Colores personalizados para las raíces y nodos
     const rootColor = "rgba(131, 87, 43, 0.8)"; // Color base para raíces
     const rootColorLight = "rgba(131, 87, 43, 0.4)"; // Versión más clara para raíces secundarias
-    const naranjaLadrillo = "rgba(192, 62, 29, 1)"; // Color naranja ladrillo para las bolitas (color prehispánico)
+    const naranjaLadrillo = "#C03E1D"; // Color naranja ladrillo más saturado para las bolitas (color prehispánico)
     
     // Colores prehispánicos inspirados en arte mexicano antiguo para los tooltips
     const colorPalette = [
@@ -138,21 +138,21 @@ function createCulturalRadialChart(containerId, data) {
     mayaPattern.append("path")
         .attr("d", "M10,10 Q20,5 30,10 Q40,15 50,10 M10,15 Q20,20 30,15 Q40,10 50,15")
         .attr("stroke", "rgba(192, 62, 29, 0.1)")
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 5)
         .attr("fill", "none");
     
     // Glifo Maya estilizado 2 (cuadrado con diagonal)
     mayaPattern.append("path")
         .attr("d", "M10,30 H30 V50 H10 Z M10,30 L30,50")
         .attr("stroke", "rgba(192, 62, 29, 0.07)")
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 5)
         .attr("fill", "none");
     
     // Glifo Maya estilizado 3 (espiral)
     mayaPattern.append("path")
         .attr("d", "M45,30 Q55,35 50,40 Q45,45 40,40 Q35,35 40,30 Q45,25 45,30")
         .attr("stroke", "rgba(192, 62, 29, 0.1)")
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 5)
         .attr("fill", "none");
     
     // Crear círculo central con el patrón
@@ -171,7 +171,7 @@ function createCulturalRadialChart(containerId, data) {
         .attr("fill", "rgba(255, 255, 255, 0.8)")
         .attr("stroke", "rgba(192, 62, 29, 0.3)")
         .attr("stroke-width", 2)
-        .attr("stroke-dasharray", "3,3");
+        .attr("stroke-dasharray");
     
     // Círculos concéntricos decorativos (estilo maya)
     for (let i = 1; i <= 3; i++) {
@@ -181,32 +181,33 @@ function createCulturalRadialChart(containerId, data) {
             .attr("cy", 0)
             .attr("r", radius)
             .attr("fill", "none")
-            .attr("stroke", "rgba(192, 62, 29, 0.15)")
+            .attr("stroke", "rgba(192, 62, 29, 0.2)")
             .attr("stroke-width", 1)
             .attr("stroke-dasharray", i % 2 === 0 ? "3,3" : "1,1")
             .attr("class", "maya-circle")
-            .style("opacity", 0.15) // Opacidad fija desde el inicio
-            .attr("opacity", 0.15) // Asegurarnos de usar también el atributo opacity
+            .style("opacity", .5) // Opacidad fija desde el inicio
+            .attr("opacity", 1) // Asegurarnos de usar también el atributo opacity
     }
     
     // Crear elementos decorativos en forma de glifos mayas alrededor del círculo
-    // Ajustamos la posición para evitar la imagen en la esquina superior izquierda
+    // Ajustamos la posición para evitar la imagen en la esquina superior derecha
     const numGlifos = 6; // Menos glifos para evitar solapamiento con la imagen
+    const baseAngle = 5 * Math.PI / 6 + (210 * Math.PI / 180); // Ángulo base actualizado a 210 grados
     for (let i = 0; i < numGlifos; i++) {
-        // Evitamos colocar glifos en la zona superior izquierda donde está la imagen
+        // Evitamos colocar glifos en la zona superior derecha donde está la imagen
         let angle;
         if (i < numGlifos/3) {
-            // Para la parte superior derecha (evitando la izquierda donde está la imagen)
-            angle = 0.3 * Math.PI + (i / (numGlifos/3)) * 0.5 * Math.PI;
+            // Para la primera sección
+            angle = baseAngle + (i / (numGlifos/3)) * 0.5 * Math.PI;
         } else if (i < 2 * numGlifos/3) {
-            // Para la parte inferior
-            angle = 0.8 * Math.PI + ((i - numGlifos/3) / (numGlifos/3)) * 0.6 * Math.PI;
+            // Para la segunda sección
+            angle = baseAngle + 0.6 * Math.PI + ((i - numGlifos/3) / (numGlifos/3)) * 0.6 * Math.PI;
         } else {
-            // Para la parte derecha
-            angle = 1.4 * Math.PI + ((i - 2 * numGlifos/3) / (numGlifos/3)) * 0.5 * Math.PI;
+            // Para la tercera sección
+            angle = baseAngle + 1.4 * Math.PI + ((i - 2 * numGlifos/3) / (numGlifos/3)) * 0.5 * Math.PI;
         }
         
-        const radius = (innerRadius + outerRadius) / 2;
+        const radius = (innerRadius + outerRadius) / 8;
         const x = radius * Math.sin(angle);
         const y = -radius * Math.cos(angle);
         
@@ -233,13 +234,13 @@ function createCulturalRadialChart(containerId, data) {
             .attr("opacity", 0.2) // Asegurarnos de usar también el atributo opacity
     }
         
-    // Agregar imagen grande completamente en la esquina superior izquierda
+    // Agregar imagen grande completamente en la esquina superior derecha
     svg.append("image")
         .attr("xlink:href", "img/aperitivo/tlecuilli.png") // Imagen representativa de culturas
-        .attr("x", -width/2) // Completamente a la izquierda del componente
-        .attr("y", -height * 0.8) // Completamente en la parte superior
-        .attr("width", innerRadius * 10) // Aumentamos más el tamaño
-        .attr("height", innerRadius * 10) // Aumentamos más el tamaño
+        .attr("x", width/2 - innerRadius * 9) // Ajustamos posición en la derecha
+        .attr("y", -height * 0.85) // Ajustamos posición en la parte superior
+        .attr("width", innerRadius * 10) // Mantenemos el tamaño
+        .attr("height", innerRadius * 10) // Mantenemos el tamaño
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("opacity", 0.9) // Un poco más opaca para que se vea mejor
         .style("filter", "drop-shadow(3px 3px 6px rgba(0,0,0,0.25))"); // Sombra más pronunciada
@@ -248,7 +249,7 @@ function createCulturalRadialChart(containerId, data) {
     const minCount = d3.min(data, d => d.count);
     const dotScale = d3.scaleLinear()
         .domain([minCount, maxCount])
-        .range([3, 12]); // Rango de tamaños más grande
+        .range([5, 10]); // Rango de tamaños aumentado para mayor visibilidad
     
     // Grupo para contener todas las líneas tipo raíces
     const rootsGroup = svg.append("g")
@@ -302,15 +303,15 @@ function createCulturalRadialChart(containerId, data) {
             .attr("class", "radial-line main-root")
             .attr("d", createRootPath(angle))
             .attr("stroke", rootColor)
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 4) // Aumentado en 2px (de 2 a 4)
             .attr("fill", "none")
             .style("opacity", 0) // Inicialmente invisible
             .attr("data-index", i)
             .on("mouseover", function() {
-                d3.select(this).attr("stroke-width", 4);
+                d3.select(this).attr("stroke-width", 6); // Aumentado para hover (4+2)
             })
             .on("mouseout", function() {
-                d3.select(this).attr("stroke-width", 2);
+                d3.select(this).attr("stroke-width", 4); // Vuelve al ancho base
             });
         
         // Longitud total de la raíz principal para la animación
@@ -374,16 +375,16 @@ function createCulturalRadialChart(containerId, data) {
                 .attr("class", "radial-line secondary-root")
                 .attr("d", d3.line().curve(d3.curveBasis)(branchPoints))
                 .attr("stroke", rootColorLight)
-                .attr("stroke-width", 1 + Math.random() * 0.5) // Ancho variable y más fino que la raíz principal
+                .attr("stroke-width", 2 + Math.random() * 1) // Ancho variable y más fino que la raíz principal (aumentado en 1-2px)
                 .attr("fill", "none")
-                .attr("stroke-dasharray", r % 2 === 0 ? "none" : "3,2") // Algunas raíces punteadas
+                .attr("stroke-dasharray", r % 2 === 0 ? "none" : "4,3") // Algunas raíces punteadas (con separación aumentada)
                 .style("opacity", 0) // Inicialmente invisible
                 .attr("data-index", i)
                 .on("mouseover", function() {
-                    d3.select(this).attr("stroke-width", 2);
+                    d3.select(this).attr("stroke-width", 4); // Aumentado para hover
                 })
                 .on("mouseout", function() {
-                    d3.select(this).attr("stroke-width", 1 + Math.random() * 0.5);
+                    d3.select(this).attr("stroke-width", 2 + Math.random() * 1); // Vuelve al ancho base
                 });
             
             // Configurar animación tipo dibujo para la raíz secundaria
@@ -398,7 +399,7 @@ function createCulturalRadialChart(containerId, data) {
     const mainRoots = rootsGroup.selectAll(".main-root");
     const secondaryRoots = rootsGroup.selectAll(".secondary-root");
     
-    // Crear bolitas en los extremos con color dorado fuerte y animaciones aleatorias
+    // Crear bolitas en los extremos con color dorado fuerte sin animaciones
     const dots = svg.selectAll(".end-circle")
         .data(data)
         .enter()
@@ -415,42 +416,24 @@ function createCulturalRadialChart(containerId, data) {
         .attr("r", d => dotScale(d.count)) // Radio proporcional
         .attr("fill", naranjaLadrillo) // Color naranja ladrillo para las bolitas
         .attr("stroke", "#fff")
-        .attr("stroke-width", 0.8)
-        .style("opacity", 1) // Visibles desde el inicio
+        .attr("stroke-width", 1.2)
+        .style("opacity", 0) // Inicialmente ocultas, se mostrarán por completo en animateIfVisible
         .attr("data-index", (d, i) => i) // Para asociar con raíces
-        .each(function(d, i) {
-            // Asignar animación aleatoria (hacia arriba o hacia abajo)
-            const isUp = Math.random() > 0.5;
-            const animationName = isUp ? "floatUp" : "floatDown";
-            // Duración aleatoria entre 3 y 7 segundos (más variedad)
-            const duration = 3 + Math.random() * 4;
-            // Retraso aleatorio para que no se muevan todas al mismo tiempo
-            const delay = Math.random() * 3;
-            // Amplitud de movimiento aleatoria (50% a 120%)
-            const amplitude = 50 + Math.random() * 70;
-            // Aplicar animación con CSS
-            d3.select(this)
-                .style("animation", `${animationName} ${duration}s infinite ease-in-out`)
-                .style("animation-delay", `${delay}s`)
-                .style("animation-direction", Math.random() > 0.5 ? "alternate" : "normal") // Dirección aleatoria
-                .style("transform-origin", "center center"); // Punto de origen consistente
-        })
+        // Sin animación de movimiento para las bolitas
         .on("mouseover", function() {
             const index = +d3.select(this).attr("data-index");
             
-            // Pausar la animación y aumentar tamaño del círculo
+            // Aumentar tamaño del círculo
             d3.select(this)
-                .style("animation-play-state", "paused") // Pausar la animación
                 .attr("r", d => dotScale(d.count) * 1.8)
-                .attr("filter", "drop-shadow(0 0 5px rgba(192, 62, 29, 0.8))")
-                .style("transform", "translateY(0)"); // Asegurar posición estable
+                .attr("filter", "drop-shadow(0 0 5px rgba(192, 62, 29, 1))");
                 
             // Mostrar las raíces asociadas sin animación
             rootsGroup.selectAll(`.radial-line[data-index="${index}"]`)
                 .style("opacity", 1)
                 .attr("opacity", 1)
                 .attr("stroke-width", function() {
-                    return d3.select(this).classed("main-root") ? 3 : 2;
+                    return d3.select(this).classed("main-root") ? 6 : 4; // Aumentado para ser consistente
                 });
                 
             // Reducir opacidad de las otras bolitas sin pausar sus animaciones
@@ -473,7 +456,7 @@ function createCulturalRadialChart(containerId, data) {
                 .style("opacity", 0)
                 .attr("opacity", 0)
                 .attr("stroke-width", function() {
-                    return d3.select(this).classed("main-root") ? 2 : 1 + Math.random() * 0.5;
+                    return d3.select(this).classed("main-root") ? 4 : 2 + Math.random() * 1; // Actualizado para ser consistente
                 });
                 
             // Restaurar opacidad de todas las bolitas sin animación
@@ -593,6 +576,12 @@ function createCulturalRadialChart(containerId, data) {
     // Función para animar las raíces y bolitas cuando el elemento es visible
     function animateIfVisible() {
         if (isInViewport(document.getElementById(containerId))) {
+            // Mostrar bolitas inmediatamente sin animación
+            dots
+                .style("opacity", 1)
+                .attr("opacity", 1)
+                .attr("r", d => dotScale(d.count));
+                
             // Animar raíces principales con efecto de dibujo, sin cambiar la opacidad
             mainRoots
                 .style("opacity", 0.8) // Opacidad fija
@@ -616,8 +605,6 @@ function createCulturalRadialChart(containerId, data) {
                     .ease(d3.easeQuadOut)
                     .attr("stroke-dashoffset", 0); // Solo animamos el trazo, no la opacidad
                 });
-            
-            // Las bolitas ya tienen sus animaciones configuradas, no necesitamos hacer nada más aquí
         }
     }
     

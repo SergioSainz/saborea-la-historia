@@ -139,7 +139,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 500px; /* Reducido en 20px (de 520px a 500px) */
   margin: 0 auto;
   display: flex;
   align-items: flex-end; /* Alineamos al final (abajo) */
@@ -192,28 +192,7 @@
   transition: all 0.2s ease !important;
 }
 
-/* Animación de movimiento vertical aleatorio para bolitas (hacia arriba) */
-@keyframes floatUp {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(-5px); }
-  50% { transform: translateY(-8px); }
-  75% { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
-}
-
-/* Animación de movimiento vertical aleatorio para bolitas (hacia abajo) */
-@keyframes floatDown {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(6px); }
-  55% { transform: translateY(10px); }
-  80% { transform: translateY(3px); }
-  100% { transform: translateY(0); }
-}
-
-/* La clase para pausar la animación cuando el mouse está encima */
-#cultural-radial-chart .end-circle:hover {
-  animation-play-state: paused !important;
-}
+/* Eliminadas las animaciones de movimiento para las bolitas */
 
 #cultural-radial-chart .radial-line {
   /* Eliminamos todas las transiciones */
@@ -235,6 +214,6 @@
   }
   
   .chart-container-radial {
-    min-height: 400px;
+    min-height: 380px; /* Reducido en 20px (de 400px a 380px) */
   }
 }

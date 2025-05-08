@@ -10,10 +10,11 @@
   overflow: visible;
   border: none;
   box-shadow: none;
+  background-color: #F6F0E4;
 }
 
 .visualization-container #network {
-  background-color: #ffffff;
+  background-color: #F6F0E4;
   position: relative;
   width: 100%;
   height: 100%;
@@ -25,6 +26,8 @@
   transition: all 0.3s ease;
   z-index: 1000;
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Título del grafo */
@@ -111,6 +114,9 @@
 /* Animaciones para transiciones suaves */
 #network svg {
   transition: all 0.2s linear;
+  background-color: #F6F0E4;
+  margin: 0;
+  padding: 0;
 }
 
 /* Info box styling */
@@ -145,7 +151,7 @@
   align-items: flex-end; /* Alineamos al final (abajo) */
   justify-content: center; /* Mantenemos centrado horizontal */
   padding-bottom: 30px; /* Aumentamos el espacio al fondo */
-  margin-top: -50px; /* Desplazamos hacia arriba ligeramente */
+  margin-top: -150px; /* Desplazamos hacia arriba 100px más (-50px a -150px) */
 }
 
 .chart-container-radial svg {
@@ -159,6 +165,17 @@
   font-family: 'Libre Baskerville', serif;
   margin-bottom: 10px;
   color: #243360;
+  position: relative;
+  z-index: 10; /* Asegurar que el título esté por encima de otros elementos */
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  width: auto;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Animaciones para elementos mayas */
@@ -185,6 +202,11 @@
   transition: none !important; /* Desactivamos cualquier transición */
 }
 
+/* Solo pausar la animación de los círculos cuando el mouse está sobre una bolita específica */
+#cultural-radial-chart .end-circle:hover ~ .maya-circle {
+  animation-play-state: paused !important;
+}
+
 /* Coloración propia para el gráfico cultural */
 #cultural-radial-chart .end-circle {
   opacity: 1 !important;
@@ -192,11 +214,13 @@
   transition: all 0.2s ease !important;
 }
 
-/* Eliminadas las animaciones de movimiento para las bolitas */
+/* Solo detener la animación de la bolita sobre la que está el cursor */
+#cultural-radial-chart .end-circle:hover {
+  animation-play-state: paused !important;
+}
 
 #cultural-radial-chart .radial-line {
-  /* Eliminamos todas las transiciones */
-  transition: none !important;
+  transition: opacity 0.3s ease, stroke-width 0.3s ease !important;
 }
 
 /* Responsivo */

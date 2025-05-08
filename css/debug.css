@@ -12,7 +12,7 @@
 
 #network {
     display: block !important;
-    background-color: white !important;
+    background-color: #F6F0E4 !important;
     min-height: 800px !important;
     z-index: 1000;
 }

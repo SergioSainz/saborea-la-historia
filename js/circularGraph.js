@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 networkContainer.id = 'network';
                 networkContainer.style.width = '100%';
                 networkContainer.style.height = '700px';
-                networkContainer.style.backgroundColor = '#ffffff';
+                networkContainer.style.backgroundColor = '#F6F0E4';
                 vizContainer.innerHTML = ''; // Limpiar cualquier contenido previo
                 vizContainer.appendChild(networkContainer);
             } else {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     networkContainer.id = 'network';
                     networkContainer.style.width = '100%';
                     networkContainer.style.height = '700px';
-                    networkContainer.style.backgroundColor = '#ffffff';
+                    networkContainer.style.backgroundColor = '#F6F0E4';
                     
                     // Añadir al DOM
                     newVizContainer.appendChild(networkContainer);
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .attr('height', height)
             .attr('viewBox', `0 0 ${width} ${height}`)
             .attr('preserveAspectRatio', 'xMidYMid meet')
-            .attr('style', 'max-width: 100%; height: auto; background-color: #ffffff; border-radius: 8px;');
+            .attr('style', 'max-width: 100%; height: auto; background-color: #F6F0E4; border-radius: 8px;');
             
         // Añadir grupo principal que será afectado por el zoom
         const svg = zoomContainer.append('g')
@@ -173,14 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Establecer un zoom inicial moderado
         zoomContainer.call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1.2));
         
-        // Añadir instrucciones discretas para el zoom
-        zoomContainer.append('text')
-            .attr('x', 15)
-            .attr('y', 25)
-            .attr('fill', '#666')
-            .style('font-size', '11px')
-            .style('font-family', 'Cardo, serif')
-            .text('Usa la rueda del ratón para zoom • Arrastra para mover');
+        // Añadir instrucciones discretas para el zoom (se colocará más tarde después de crear el elemento de información)
         
         // Crear círculos guía para los niveles
         const guideCircles = svg.append('g').attr('class', 'guide-circles');
@@ -508,17 +501,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     .append('div')
                     .attr('id', 'filter-info')
                     .style('position', 'absolute')
-                    .style('top', '10px')
-                    .style('left', '50%')
-                    .style('transform', 'translateX(-50%)')
-                    .style('background-color', 'rgba(255, 255, 255, 0.85)')
-                    .style('padding', '6px 15px')
+                    .style('top', '15px')
+                    .style('left', '15px')
+                    .style('background-color', 'rgba(246, 240, 228, 0.85)')
+                    .style('padding', '8px 15px')
+                    .style('margin-bottom', '10px')
                     .style('border-radius', '20px')
                     .style('font-family', 'Cardo, serif')
                     .style('font-size', '14px')
                     .style('color', '#073B4C')
                     .style('font-weight', 'bold')
-                    .style('text-align', 'center')
+                    .style('text-align', 'left')
                     .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
                     .style('z-index', '100')
                     .style('transition', 'opacity 0.3s ease');
@@ -528,6 +521,24 @@ document.addEventListener('DOMContentLoaded', function() {
             infoElement
                 .text(infoText)
                 .style('opacity', infoText ? 1 : 0);
+                
+            // Añadir o actualizar instrucciones de zoom debajo del texto informativo
+            let zoomInstructions = d3.select('#zoom-instructions');
+            if (zoomInstructions.empty()) {
+                zoomInstructions = d3.select('#network')
+                    .append('div')
+                    .attr('id', 'zoom-instructions')
+                    .style('position', 'absolute')
+                    .style('top', '55px')  // Posición debajo del texto informativo con más espacio
+                    .style('left', '15px')
+                    .style('font-family', 'Cardo, serif')
+                    .style('font-size', '11px')
+                    .style('color', '#666')
+                    .style('padding', '4px 0')
+                    .style('text-align', 'left')
+                    .style('z-index', '100')
+                    .text('Usa la rueda del ratón para zoom • Arrastra para mover');
+            }
             
             // Limpiar visualizaciones previas
             linkGroup.selectAll('*').remove();
@@ -979,21 +990,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Añadir controles (leyenda y botón de reset)
+        // Añadir controles (leyenda y botones)
         const controlsContainer = d3.select('#network')
             .append('div')
             .attr('class', 'graph-controls')
             .style('position', 'absolute')
-            .style('bottom', '15px')
+            .style('top', '15px')
             .style('right', '15px')
             .style('display', 'flex')
             .style('align-items', 'center')
             .style('gap', '15px')
-            .style('background-color', 'rgba(255, 255, 255, 0.8)')
+            .style('background-color', 'rgba(246, 240, 228, 0.8)')
             .style('padding', '6px 12px')
             .style('border-radius', '6px')
             .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
-            .style('border', '1px solid rgba(174, 124, 52, 0.3)');
+            .style('border', '1px solid rgba(174, 124, 52, 0.3)')
+            .style('z-index', '100');
         
         // Añadir leyenda
         const legendContainer = controlsContainer
@@ -1035,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .style('font-family', 'Cardo, serif');
         });
         
-        // Añadir botón de reset
+        // Añadir botón para reiniciar filtros
         const resetButton = controlsContainer
             .append('button')
             .attr('class', 'reset-button')
@@ -1045,6 +1057,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('border', 'none')
             .style('border-radius', '4px')
             .style('padding', '6px 10px')
+            .style('margin-right', '6px')
             .style('cursor', 'pointer')
             .style('font-family', 'Cardo, serif')
             .style('font-size', '12px')
@@ -1067,6 +1080,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 actualizarVisualizacion(true); // Con recentrado
                 
                 simulation.alpha(1).restart();
+            });
+            
+        // Añadir botón para reiniciar el zoom
+        const resetZoomButton = controlsContainer
+            .append('button')
+            .attr('class', 'reset-zoom-button')
+            .text('Zoom inicial')
+            .style('background-color', '#9B2226')
+            .style('color', 'white')
+            .style('border', 'none')
+            .style('border-radius', '4px')
+            .style('padding', '6px 10px')
+            .style('cursor', 'pointer')
+            .style('font-family', 'Cardo, serif')
+            .style('font-size', '12px')
+            .style('transition', 'background-color 0.2s')
+            .on('mouseover', function() {
+                d3.select(this).style('background-color', '#B42B30');
+            })
+            .on('mouseout', function() {
+                d3.select(this).style('background-color', '#9B2226');
+            })
+            .on('click', function() {
+                // Reiniciar el zoom a la escala inicial
+                zoomContainer.transition()
+                    .duration(400)
+                    .call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1.2));
             });
         
         // Cargar y procesar los datos
@@ -1328,7 +1368,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .style('top', '50%')
                     .style('left', '50%')
                     .style('transform', 'translate(-50%, -50%)')
-                    .style('background-color', 'rgba(255, 255, 255, 0.9)')
+                    .style('background-color', 'rgba(246, 240, 228, 0.9)')
                     .style('padding', '15px 20px')
                     .style('border-radius', '8px')
                     .style('border-left', '4px solid #9B2226')

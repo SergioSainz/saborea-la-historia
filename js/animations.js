@@ -1,14 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicialización de TypeIt
+    // Asegurarse de que la burbuja de diálogo tenga altura adecuada desde el principio
+    const speechBubble = document.querySelector('.speech-bubble');
+    if (speechBubble) {
+        speechBubble.style.minHeight = '120px';
+    }
+    
+    // Inicialización de TypeIt con una pausa ligeramente más natural
     new TypeIt("#typing-text", {
-        strings: "¡Hola! Soy Xolin, tu guía en un viaje por los sabores que han dado vida a México.¿Te imaginas qué historias guarda cada platillo?",
-        speed: 30,
+        strings: "¡Hola! Soy Xolin, tu guía en un viaje por los sabores que han dado vida a México. ¿Te imaginas qué historias guarda cada platillo?",
+        speed: 40, // Velocidad ligeramente más lenta para mejor legibilidad
         waitUntilVisible: true,
+        startDelay: 800, // Pequeña pausa antes de empezar a escribir
+        cursor: true,
+        cursorChar: "|",
         afterComplete: function() {
             // Mostrar el botón después de que termine la animación de texto
             const scrollButton = document.getElementById('scroll-down-btn');
             if (scrollButton) {
                 scrollButton.style.opacity = '1';
+                scrollButton.style.transform = 'translateY(0)';
             }
         }
     }).go();

@@ -238,11 +238,11 @@ function createCulturalRadialChart(containerId, data) {
     svg.append("image")
         .attr("xlink:href", "img/aperitivo/tlecuilli.png") // Imagen representativa de culturas
         .attr("x", width/2 - innerRadius * 9) // Ajustamos posición en la derecha
-        .attr("y", -height * 0.85) // Ajustamos posición en la parte superior
+        .attr("y", -height * 0.75) // Bajamos la imagen 100px (modificamos de 0.85 a 0.75)
         .attr("width", innerRadius * 10) // Mantenemos el tamaño
         .attr("height", innerRadius * 10) // Mantenemos el tamaño
         .attr("preserveAspectRatio", "xMidYMid meet")
-        .style("opacity", 0.9) // Un poco más opaca para que se vea mejor
+        .style("opacity", 0.7) // Reducimos la opacidad para que interfiera menos
         .style("filter", "drop-shadow(3px 3px 6px rgba(0,0,0,0.25))"); // Sombra más pronunciada
     
     // Escala para el tamaño de las bolitas
@@ -399,7 +399,11 @@ function createCulturalRadialChart(containerId, data) {
     const mainRoots = rootsGroup.selectAll(".main-root");
     const secondaryRoots = rootsGroup.selectAll(".secondary-root");
     
-    // Crear bolitas en los extremos con color dorado fuerte sin animaciones
+    // Reordenar los datos de mayor a menor para la animación secuencial
+    const sortedData = [...data].sort((a, b) => b.count - a.count);
+    const sortedIndices = sortedData.map(item => data.findIndex(d => d.cultura === item.cultura));
+    
+    // Crear bolitas en los extremos con color dorado fuerte
     const dots = svg.selectAll(".end-circle")
         .data(data)
         .enter()
@@ -417,11 +421,19 @@ function createCulturalRadialChart(containerId, data) {
         .attr("fill", naranjaLadrillo) // Color naranja ladrillo para las bolitas
         .attr("stroke", "#fff")
         .attr("stroke-width", 1.2)
-        .style("opacity", 0) // Inicialmente ocultas, se mostrarán por completo en animateIfVisible
+        .style("opacity", 0) // Inicialmente ocultas, se mostrarán secuencialmente
         .attr("data-index", (d, i) => i) // Para asociar con raíces
-        // Sin animación de movimiento para las bolitas
+        .attr("data-size-rank", (d, i) => {
+            // Encontrar el índice de este elemento en los datos ordenados
+            return sortedIndices.indexOf(i);
+        }) // Para animar en orden de tamaño
+        // Interacción al pasar el ratón
         .on("mouseover", function() {
             const index = +d3.select(this).attr("data-index");
+            
+            // Solo detenemos la animación de esta bolita específica y sus raíces
+            d3.select(this).interrupt();
+            rootsGroup.selectAll(`.radial-line[data-index="${index}"]`).interrupt();
             
             // Aumentar tamaño del círculo
             d3.select(this)
@@ -433,10 +445,11 @@ function createCulturalRadialChart(containerId, data) {
                 .style("opacity", 1)
                 .attr("opacity", 1)
                 .attr("stroke-width", function() {
-                    return d3.select(this).classed("main-root") ? 6 : 4; // Aumentado para ser consistente
-                });
+                    return d3.select(this).classed("main-root") ? 6 : 4;
+                })
+                .attr("stroke-dashoffset", 0); // Mostrar completamente dibujadas
                 
-            // Reducir opacidad de las otras bolitas sin pausar sus animaciones
+            // Reducir opacidad de las otras bolitas
             dots.filter(function() { return +d3.select(this).attr("data-index") !== index; })
                 .style("opacity", 0.3)
                 .attr("opacity", 0.3);
@@ -444,24 +457,24 @@ function createCulturalRadialChart(containerId, data) {
         .on("mouseout", function() {
             const index = +d3.select(this).attr("data-index");
             
-            // Reanudar la animación y restaurar tamaño
+            // Restaurar tamaño
             d3.select(this)
-                .style("animation-play-state", "running") // Reanudar la animación
                 .attr("r", d => dotScale(d.count))
-                .attr("filter", "none")
-                .style("transform", ""); // Remover el transform fijo
+                .attr("filter", "none");
                 
-            // Ocultar las raíces sin animación
+            // Ocultar las raíces
             rootsGroup.selectAll(`.radial-line[data-index="${index}"]`)
                 .style("opacity", 0)
                 .attr("opacity", 0)
                 .attr("stroke-width", function() {
-                    return d3.select(this).classed("main-root") ? 4 : 2 + Math.random() * 1; // Actualizado para ser consistente
+                    return d3.select(this).classed("main-root") ? 4 : 2 + Math.random() * 1;
                 });
                 
-            // Restaurar opacidad de todas las bolitas sin animación
+            // Restaurar opacidad de todas las bolitas
             dots.style("opacity", 1)
                 .attr("opacity", 1);
+                
+            // No reiniciamos las animaciones al hacer mouseout para mantener el efecto caracol completado
         });
         
     // Crear tooltips para mostrar la información de la cultura
@@ -576,35 +589,60 @@ function createCulturalRadialChart(containerId, data) {
     // Función para animar las raíces y bolitas cuando el elemento es visible
     function animateIfVisible() {
         if (isInViewport(document.getElementById(containerId))) {
-            // Mostrar bolitas inmediatamente sin animación
+            // Mantener las bolitas ocultas al inicio, se mostrarán secuencialmente
             dots
-                .style("opacity", 1)
-                .attr("opacity", 1)
+                .style("opacity", 0)
+                .attr("opacity", 0)
                 .attr("r", d => dotScale(d.count));
+            
+            // Animamos en orden de mayor a menor tamaño (usando el atributo data-size-rank)
+            // El número total de elementos
+            const totalItems = sortedIndices.length;
+            
+            // Para cada posición en el ranking de tamaño (0 = más grande)
+            for (let rankPos = 0; rankPos < totalItems; rankPos++) {
+                // Calculamos un retraso secuencial basado en el ranking de tamaño
+                const delay = rankPos * 400; // 400ms entre cada animación
                 
-            // Animar raíces principales con efecto de dibujo, sin cambiar la opacidad
-            mainRoots
-                .style("opacity", 0.8) // Opacidad fija
-                .attr("opacity", 0.8) // Asegurar opacidad con atributo también
-                .transition()
-                .duration(1500)
-                .delay((d, i) => i * 150) // Retraso escalonado
-                .ease(d3.easeQuadOut)
-                .attr("stroke-dashoffset", 0) // Dibujar desde el inicio hasta el final
-                .on("end", function(d, i) {
-                    // Al terminar la animación de la raíz principal, animar sus ramificaciones
-                    const index = d3.select(this).attr("data-index");
+                // Encontramos la bolita y raíces con este ranking
+                dots.filter(function() {
+                    return +d3.select(this).attr("data-size-rank") === rankPos;
+                }).each(function() {
+                    // Obtenemos el índice original de esta bolita
+                    const dotIndex = +d3.select(this).attr("data-index");
                     
-                    secondaryRoots.filter(function() {
-                        return d3.select(this).attr("data-index") === index;
+                    // Animamos la raíz principal correspondiente
+                    mainRoots.filter(function() {
+                        return +d3.select(this).attr("data-index") === dotIndex;
                     })
-                    .style("opacity", 0.4) // Opacidad fija
-                    .attr("opacity", 0.4) // Asegurar opacidad con atributo también
+                    .style("opacity", 0.8)
+                    .attr("opacity", 0.8)
                     .transition()
                     .duration(1000)
+                    .delay(delay)
                     .ease(d3.easeQuadOut)
-                    .attr("stroke-dashoffset", 0); // Solo animamos el trazo, no la opacidad
+                    .attr("stroke-dashoffset", 0)
+                    .on("end", function() {
+                        // Al terminar la raíz, animamos la bolita
+                        d3.select(`circle.end-circle[data-index="${dotIndex}"]`)
+                            .transition()
+                            .duration(400)
+                            .style("opacity", 1)
+                            .attr("opacity", 1);
+                            
+                        // Y las raíces secundarias
+                        secondaryRoots.filter(function() {
+                            return +d3.select(this).attr("data-index") === dotIndex;
+                        })
+                        .style("opacity", 0.4)
+                        .attr("opacity", 0.4)
+                        .transition()
+                        .duration(600)
+                        .ease(d3.easeQuadOut)
+                        .attr("stroke-dashoffset", 0);
+                    });
                 });
+            }
         }
     }
     
@@ -650,8 +688,15 @@ function createCulturalChart() {
                 // Añadir título con instrucción
                 const titleContainer = document.querySelector(`#${containerId}`).previousElementSibling;
                 if (titleContainer && titleContainer.classList.contains('radial-chart-title')) {
-                    // Añadir la instrucción al título existente
-                    titleContainer.innerHTML = `Culturas más representativas de la época prehispánica <span style="color: #777; font-size: 0.8em; font-weight: normal; font-style: italic;">(Toca las bolitas para ver detalles)</span>`;
+                    // Añadir la instrucción al título existente con el texto instructivo más pequeño y gris claro
+                    titleContainer.innerHTML = `Culturas más representativas de la época prehispánica <span style="display: block; color: #999; font-size: 0.7em; font-weight: normal; font-style: italic; margin-top: 3px;">(Toca las bolitas para ver detalles)</span>`;
+                    // Asegurar que el título sea visible sin fondo
+                    titleContainer.style.opacity = "1";
+                    titleContainer.style.position = "relative";
+                    titleContainer.style.zIndex = "5";
+                    titleContainer.style.backgroundColor = "transparent";
+                    titleContainer.style.padding = "3px 10px";
+                    titleContainer.style.boxShadow = "none";
                 }
                 
                 createCulturalRadialChart(containerId, data);

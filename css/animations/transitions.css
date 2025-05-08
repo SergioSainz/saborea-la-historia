@@ -58,6 +58,18 @@
   text-align: center;
 }
 
+/* Animación para el botón de scroll down */
+.scroll-button {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+/* Transición suave para la burbuja de diálogo */
+.speech-bubble {
+  transition: min-height 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
 .ingredient-block .cardo-regular {
   line-height: 1.6;
   text-align: left;
@@ -66,4 +78,24 @@
 .tarjeta{
   line-height: 1.6;
   text-align: center;
+}
+
+/* Animación de difuminado para la sección principal */
+@keyframes blurIn {
+  0% { filter: blur(8px); opacity: 0.7; }
+  100% { filter: blur(0px); opacity: 1; }
+}
+
+.fullscreen-section {
+  animation: blurIn 1.5s ease-out forwards;
+}
+
+/* Animación de difuminado para la sección principal */
+@keyframes blurIn {
+  0% { filter: blur(8px); opacity: 0.7; }
+  100% { filter: blur(0px); opacity: 1; }
+}
+
+.fullscreen-section {
+  animation: blurIn 1.5s ease-out forwards;
 }

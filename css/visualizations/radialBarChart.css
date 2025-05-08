@@ -1,17 +1,17 @@
 /* Estilos para los gráficos radiales de barras */
 .chart-container-radial {
     width: 100%;
-    height: 480px; /* Aumentamos altura para acomodar la disposición en caracol */
+    height: 800px; /* Aumentamos altura para acomodar la disposición en caracol */
     margin: 0 auto;
+    margin-top: 500px; /* Aumentamos espacio a 350px para bajar más la gráfica */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255,255,255,0.5);
     border-radius: 10px;
     padding: 5px; /* Reducir padding para usar más espacio */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     position: relative;
-    min-height: 460px;
+    min-height: 600px;
     overflow: visible; /* Permitir que las etiquetas se extiendan fuera del contenedor */
 }
 
@@ -38,6 +38,7 @@
 
 .end-circle:hover {
     filter: drop-shadow(0 0 4px rgba(131, 87, 43, 0.7));
+    animation-play-state: paused !important; /* Detener la animación al pasar el mouse */
 }
 
 /* Estilo para las etiquetas de estados */
@@ -51,7 +52,7 @@
     cursor: default;
     transition: all 0.2s ease-in-out;
     /* Añadir un ligero halo blanco para mejor legibilidad */
-    text-shadow: 0 0 4px rgba(255, 255, 255, 1);
+    text-shadow: 0 0 4px rgba(255,255,255,0.5);
     /* Ligeramente transparente para reducir saturación visual */
     opacity: 0.85;
 }
@@ -62,15 +63,26 @@ h5.radial-chart-title {
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     color: #243360;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    padding-left: 15px;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    position: absolute;
+    top: -80px; /* Posicionado muy por encima para 300px de espaciado */
+    left: 0;
+    z-index: 20; /* Asegurar que está por encima de todo */
+    background-color: rgba(255,255,255,0.5); /* Fondo más opaco */
+    border-radius: 4px;
+    display: inline-block;
+    width: auto;
+    max-width: 90%;
+    box-shadow: none; /* Quitamos la sombra */
+    border: none; /* Quitamos el borde */
+    margin-left: 15px; /* Margen izquierdo para alinear */
 }
 
 /* Tooltip personalizado - mismo estilo que los gráficos principales */
 .chart-tooltip {
     position: absolute;
-    background: white;
+    background: rgba(255,255,255,0.5);
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 8px 12px;
@@ -81,7 +93,7 @@ h5.radial-chart-title {
     opacity: 0;
     transition: opacity 0.3s;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   
 }
 
 /* Animación de brillo para las bolitas - mayor contraste y más llamativa */
@@ -91,8 +103,8 @@ h5.radial-chart-title {
         transform: scale(1);
     }
     50% {
-        filter: brightness(2.0) drop-shadow(0 0 8px rgba(131, 87, 43, 0.8));
-        transform: scale(1.3);
+        filter: brightness(1.8) drop-shadow(0 0 6px rgba(131, 87, 43, 0.8));
+        transform: scale(1.2);
     }
     100% {
         filter: brightness(1) drop-shadow(0 0 1px rgba(131, 87, 43, 0.2));

@@ -476,7 +476,7 @@ function displayNote(containerId, note, color) {
     const noteDiv = document.createElement('div');
     noteDiv.style.position = 'relative';
     noteDiv.style.zIndex = '1';
-    noteDiv.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    noteDiv.style.backgroundColor = 'transparent';
     noteDiv.style.borderLeft = `3px solid ${color}`;
     noteDiv.style.padding = '12px';
     noteDiv.style.fontStyle = 'italic';

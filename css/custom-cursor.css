@@ -1,0 +1,53 @@
+/**
+ * Estilos para cursor personalizado
+ * Este archivo debe cargarse al final para asegurarse de que prevalezca
+ */
+
+/* Elemento personalizado del cursor */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/Xolin/cara.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    will-change: transform, left, top;
+}
+
+/* Ocultar el cursor del sistema en absolutamente todo */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+button, input, select, textarea, [role="button"],
+.culture-dot, .scroll-button, .interactive, .clickable,
+svg, path, circle, rect, g, line, polyline, polygon, text,
+iframe, canvas {
+    cursor: none !important;
+}
+
+/* Asegurarnos de que funcione con pseudo-elementos */
+*::before, *::after {
+    cursor: none !important;
+}
+
+/* Asegurarnos de mantener el caret visible en entradas de texto */
+input, textarea, [contenteditable="true"] {
+    caret-color: auto;
+}

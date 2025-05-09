@@ -289,11 +289,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Aplicar escala según el nivel
             if (node.level === 1) {
                 // Épocas: tamaño proporcionalmente mayor
-                return Math.max(15, Math.min(35, 16 + connectionCount * 0.8));
+                return Math.max(15, Math.min(40, 16 + connectionCount * 0.9));
             }
             if (node.level === 2) {
-                // Orígenes: tamaño medio
-                return Math.max(8, Math.min(18, 8 + connectionCount * 0.4));
+                // Orígenes: tamaño medio con escala más drástica
+                if (ingredienteActivo && node.isRelevant) {
+                    // Escala mucho más pronunciada para orígenes relevantes cuando hay filtro
+                    return Math.max(8, Math.min(90, 8 + connectionCount * 1.5));
+                } else {
+                    // Escala normal para cuando no hay filtro o no son relevantes
+                    return Math.max(8, Math.min(60, 8 + connectionCount * 0.3));
+                }
             }
             
             // Platillos: tamaño uniforme pero ligeramente variable según relevancia
@@ -458,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ajustar opacidad en los enlaces filtrados
             linksFiltered.forEach(link => {
                 link.isRelevant = true;
-                link.opacity = 0.6; // Opacidad 60% para los enlaces relevantes
+                link.opacity = 0.6; // Opacidad 60% para todos los enlaces
             });
             
             console.log(`Filtrado completado: ${nodesFiltered.length} nodos y ${linksFiltered.length} enlaces relevantes`);
@@ -486,8 +492,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         link.isRelevant = false;
                     }
                     
-                    // Opacidad según relevancia
-                    link.opacity = link.isRelevant ? 0.6 : 0.05;
+                    // Opacidad del 60% para todas las líneas
+                    link.opacity = 0.6;
                 });
             }
         }
@@ -516,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .style('position', 'absolute')
                     .style('top', '15px')
                     .style('left', '15px')
-                    .style('background-color', 'rgba(246, 240, 228, 0.85)')
+                    .style('background-color', 'rgba(255,255,255,0.5)')
                     .style('padding', '8px 15px')
                     .style('margin-bottom', '10px')
                     .style('border-radius', '20px')
@@ -575,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .attr('opacity', d => {
                     // Opacidad según relevancia
                     if (ingredienteActivo) {
-                        return d.isRelevant ? 0.6 : 0.05;
+                        return 0.6; // Opacidad 60% para todas las líneas
                     }
                     return 0.4; // Opacidad por defecto
                 })
@@ -670,10 +676,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                 });
             
-            // Añadir etiquetas solo para nodos relevantes de nivel 2 y 3 (orígenes y platillos)
+            // Eliminamos etiquetas de orígenes cambiando el filtro para que no incluya ningún nodo
             labelElements = labelGroup.selectAll('text')
-                .data(nodesFiltered.filter(d => d.level === 2 && 
-                    (ingredienteActivo ? d.isRelevant : true))) // Solo mostrar etiquetas para orígenes (nivel 2)
+                .data(nodesFiltered.filter(d => false)) // No mostrar ninguna etiqueta
                 .enter()
                 .append('text')
                 .style('fill', d => d.level === 2 ? '#662200' : '#333')
@@ -927,7 +932,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Restaurar opacidad original de enlaces
                 linkElements.attr('opacity', d => {
                     if (ingredienteActivo) {
-                        return d.isRelevant ? 0.6 : 0.05;
+                        return 0.6; // Opacidad 60% para todas las líneas
                     }
                     return 0.4;
                 });
@@ -1013,7 +1018,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('display', 'flex')
             .style('align-items', 'center')
             .style('gap', '15px')
-            .style('background-color', 'rgba(246, 240, 228, 0.8)')
+            .style('background-color', 'rgba(255,255,255,0.5)')
             .style('padding', '6px 12px')
             .style('border-radius', '6px')
             .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
@@ -1068,7 +1073,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('background-color', '#073B4C')
             .style('color', 'white')
             .style('border', 'none')
-            .style('border-radius', '4px')
+            .style('border-radius', '6px')
             .style('padding', '6px 10px')
             .style('margin-right', '6px')
             .style('cursor', 'pointer')
@@ -1103,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('background-color', '#9B2226')
             .style('color', 'white')
             .style('border', 'none')
-            .style('border-radius', '4px')
+            .style('border-radius', '6px')
             .style('padding', '6px 10px')
             .style('cursor', 'pointer')
             .style('font-family', 'Cardo, serif')

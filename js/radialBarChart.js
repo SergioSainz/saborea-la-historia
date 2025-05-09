@@ -68,9 +68,9 @@ function createRadialBarChart(containerId, data, ingrediente) {
     
     // Dimensiones del SVG - aumentar para que ocupe todo el espacio
     const width = 1000;  // Aumento de tamaño 
-    const height = 1100; // Aumentado significativamente para mostrar más altura
-    const innerRadius = 100; // Círculo central más grande para la imagen
-    const outerRadius = Math.min(width, height) / 2 - 100; // Reducir un poco para dar más espacio a las etiquetas
+    const height = 1400; // Aumentado aún más para mostrar mayor altura
+    const innerRadius = 120; // Círculo central más grande para la imagen
+    const outerRadius = Math.min(width, height) / 2 - 120; // Reducir un poco para dar más espacio a las etiquetas
     
     // Crear el SVG con tamaño relativo para que se adapte al contenedor
     const svg = d3.select(`#${containerId}`)
@@ -80,7 +80,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
-        .attr("transform", `translate(${width/2}, ${height/2})`);
+        .attr("transform", `translate(${width/2}, ${height/2+150})`);
     
     // Escala para el radio
     const maxCount = d3.max(data, d => d.count);
@@ -117,13 +117,13 @@ function createRadialBarChart(containerId, data, ingrediente) {
         "CACAO": "img/aperitivo/cacao.png"
     };
     
-    // Agregar imagen del ingrediente en el centro (más grande)
+    // Agregar imagen del ingrediente en el centro (tamaño moderado)
     svg.append("image")
         .attr("xlink:href", ingredienteImageMap[ingrediente])
-        .attr("x", -innerRadius * 1.5)
-        .attr("y", -innerRadius * 1.5)
-        .attr("width", innerRadius * 3)
-        .attr("height", innerRadius * 3)
+        .attr("x", -innerRadius * 1.0)
+        .attr("y", -innerRadius * 1.0)
+        .attr("width", innerRadius * 2.0)
+        .attr("height", innerRadius * 2.0)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("opacity", 0.9); // Ligera transparencia para integrarse mejor
     
@@ -131,7 +131,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
     const minCount = d3.min(data, d => d.count);
     const dotScale = d3.scaleLinear()
         .domain([minCount, maxCount])
-        .range([8, 30]); // Rango de tamaños: de 2px a 8px
+        .range([10, 40]); // Rango de tamaños: aumentado para mayor visibilidad
     
     // Crear las líneas radiales (barras delgadas)
     const lines = svg.selectAll(".radial-line")
@@ -217,7 +217,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
         .attr("class", "chart-tooltip-prehispanic")
         .style("opacity", 0)
         .style("position", "absolute")
-        .style("background-color", "#F0EBCE") // Color de papel amate
+        .style("background-color", "rgba(240, 235, 206, 0.9)") // Color de papel amate con transparencia
         .style("border", "2px solid " + colorPalette[1])
         .style("border-radius", "0") // Más geométrico como arte prehispánico
         .style("padding", "12px 18px")
@@ -226,7 +226,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
         .style("color", "#5F5F41")
         .style("pointer-events", "none")
         .style("z-index", 1000)
-        .style("box-shadow", "4px 4px 0 rgba(155, 34, 38, 0.5)") // Sombra estilo prehispánico
+        .style("box-shadow", "4px 4px 0 rgba(155, 34, 38, 0.3)") // Sombra estilo prehispánico con más transparencia
         .style("max-width", "200px")
         .style("min-width", "140px")
         .style("text-align", "center")
@@ -415,7 +415,7 @@ function createAllRadialBarCharts() {
                     if (titleContainer && titleContainer.classList.contains('radial-chart-title')) {
                         // Añadir la instrucción al título existente
                         const originalText = titleContainer.textContent;
-                        titleContainer.innerHTML = `${originalText} <span style="color: #777; font-size: 0.8em; font-weight: normal; font-style: italic;">(Toca las bolitas para ver los estados)</span>`;
+                        titleContainer.innerHTML = `${originalText.split('(')[0].trim()} <span style="color: #777; font-size: 0.8em; font-weight: normal; font-style: italic; display: block;">(Toca las bolitas para ver los estados)</span>`;
                     }
                     
                     createRadialBarChart(containerId, data, ingrediente);

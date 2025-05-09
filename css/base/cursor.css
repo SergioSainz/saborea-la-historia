@@ -1,0 +1,36 @@
+/**
+ * Estilos para el cursor personalizado con la cara de Xolin
+ * 
+ * NOTA IMPORTANTE: Los navegadores tienen restricciones sobre las imágenes
+ * de cursor. Deben ser .cur, .ico o PNG pequeños (generalmente 32x32 o 64x64 px).
+ * Algunos navegadores solo admiten .cur o .ico.
+ */
+
+/* Cursor personalizado para toda la página */
+* {
+    /* Probamos diferentes formatos y rutas para mayor compatibilidad */
+    cursor: url('../../img/Xolin/cara.png') 16 16, 
+           url('../../img/icono/chile.ico') 16 16, 
+           auto !important;
+}
+
+/* Cursor personalizado para enlaces y elementos clicables */
+a, button, .btn, [role="button"], [type="button"], [type="submit"], 
+.nav-link, .culture-dot, .scroll-button, .interactive, .clickable,
+[onclick], [data-toggle], [data-target], [href]:not([href=""]) {
+    cursor: url('../../img/Xolin/cara.png') 16 16, 
+           url('../../img/icono/chile.ico') 16 16, 
+           pointer !important;
+}
+
+/* Para elementos de arrastrar */
+[draggable="true"] {
+    cursor: url('../../img/Xolin/cara.png') 16 16, 
+           url('../../img/icono/chile.ico') 16 16, 
+           move !important;
+}
+
+/* Cursor de texto para áreas de entrada */
+input, textarea, [contenteditable="true"] {
+    cursor: text;
+}

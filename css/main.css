@@ -1,6 +1,7 @@
 /* Base */
 @import './base/variables.css';
 @import './base/typography.css';
+@import './base/cursor.css'; /* Cursor personalizado */
 
 /* Components */
 @import './components/buttons.css';

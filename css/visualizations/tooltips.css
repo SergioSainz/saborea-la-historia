@@ -10,7 +10,7 @@
 .sankey-tooltip-container,
 .prehispanic-popup .maplibregl-popup-content {
     position: absolute;
-    background-color: #F0EBCE; /* Color de papel amate */
+    background-color: rgba(240, 235, 206, 0.85); /* Color de papel amate con transparencia */
     border: 2px solid var(--tooltip-color, #AE7C34);
     border-radius: 0; /* Más geométrico como arte prehispánico */
     padding: 12px 18px;
@@ -19,7 +19,7 @@
     color: #5F5F41;
     pointer-events: none;
     z-index: 1000;
-    box-shadow: 4px 4px 0 rgba(155, 34, 38, 0.5); /* Sombra estilo prehispánico */
+    box-shadow: 4px 4px 0 rgba(155, 34, 38, 0.3); /* Sombra estilo prehispánico más transparente */
     max-width: 300px;
     min-width: 140px;
     text-align: center;
@@ -112,8 +112,8 @@
 
 /* Estilos específicos para popups del mapa */
 .prehispanic-popup .maplibregl-popup-tip {
-    border-top-color: #F0EBCE !important; /* Matching the tooltip background */
-    border-bottom-color: #F0EBCE !important;
+    border-top-color: rgba(240, 235, 206, 0.85) !important; /* Matching the tooltip background */
+    border-bottom-color: rgba(240, 235, 206, 0.85) !important;
 }
 
 .prehispanic-popup {

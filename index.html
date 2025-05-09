@@ -21,20 +21,53 @@
         <script src="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
         <link href="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css" rel="stylesheet">
         
+        <!-- Estilo para cursor personalizado usando overlay -->
+        <style>
+            #custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 60px;
+                height: 60px;
+                background-image: url('img/Xolin/cara.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.1s ease;
+            }
+            
+            /* Ocultar el cursor original en toda la página y elementos */
+            *, *::before, *::after,
+            html, body, a, button, input, select, textarea,
+            div, span, p, h1, h2, h3, h4, h5, h6,
+            section, header, footer, main, nav, article, aside, 
+            ul, ol, li, table, tr, td, th {
+                cursor: none !important;
+            }
+            
+            /* Asegurarse de que los campos de entrada de texto sigan siendo utilizables */
+            input[type="text"]:focus, textarea:focus, [contenteditable="true"]:focus {
+                caret-color: auto; /* Mantener el cursor de texto visible */
+            }
+        </style>
+        
         <!-- Estilos propios -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/debug.css">
         <link rel="stylesheet" href="css/visualizations/radialBarChart.css">
         <link rel="stylesheet" href="css/visualizations/circularGraph.css">
         <link rel="stylesheet" href="css/animations/falling-ingredients.css">
+        <link rel="stylesheet" href="css/custom-cursor.css">
     </head>
-<body style="background-color: #F6F0E4;">
+<body style="background-color: #F6F0E4; cursor: none !important;">
     <!-- Primera sección con TypeIt -->
     <div class="container-fluid fullscreen-section" style="background-image: url('img/principal/inicio.png');">
         <div class="row min-vh-100">
             <div class="col-md-8 mx-auto d-flex align-items-center">
                 <div style="background-color: rgba(255, 255, 255, 0.5);" class=" d-flex flex-column justify-content-center align-items-center content-box p-4 w-100">
-                    <img class="m-5 ps-5 pe-5" src="img/titulo-4.png"
+                    <img class="m-5 ps-5 pe-5" src="img/titulo-2.png"
                     style="width: 100%;">
 
                     
@@ -127,7 +160,7 @@
                                 <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">-->
                             </div>
                             <div class="col-8 text-center">
-                                <h3 class="libre-baskerville-bold main-subtitle">Primer Plato</h3>
+                                <h3 class="libre-baskerville-bold main-subtitle">Entremés</h3>
                             </div>
                             <div class="col-2 text-center">
                                 <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
@@ -145,7 +178,7 @@
                                 <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">-->
                             </div>
                             <div class="col-8 text-center">
-                                <h3 class="libre-baskerville-bold main-subtitle">Entremés</h3>
+                                <h3 class="libre-baskerville-bold main-subtitle">Primer Plato</h3>
                             </div>
                             <div class="col-2 text-center">
                                 <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
@@ -258,76 +291,39 @@
                 <!-- Bloque del Maíz -->
                 <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Maíz</h3>
-                    <div class="mt-3">
-                        <p class="text-justify">
-                            El maíz no solo era alimento, era vida misma. Para <span class="underline-animation">los Mayas</span>, el hombre fue creado del maíz,
-                            según el <em>Popol Vuh</em> y cada mazorca era un milagro del <em>tlatoani</em> de la tierra. 
-                            
-                            En cifras, <span class="underline-animation">el maíz representaba</span> <span class="animated-number" data-value="70">0</span>% 
-                            de la dieta diaria y tenía más de <span class="animated-number" data-value="600">0</span> variedades diferentes.
-                        </p>
-                        
-                        <!-- Separador decorativo -->
-                        <div class="my-4 text-center">
-                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
-                            <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
-                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
-                        </div>
-                        
-                        <!-- Hallazgos del grafo -->
-                        
-                        <div class="row mt-5">
-                            <!-- Gráfico radial de barras -->
-                            <div class="col-md-12" style="position: relative; padding-top: 40px;">
-                                <h5 class="radial-chart-title">Platillos con Maíz por Estado <span style="display: block; font-size: 0.8em; font-style: italic; font-weight: normal; color: #777;"></span></h5>
-                                <div id="maiz-estados-radial-chart" class="chart-container-radial"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Nota cultural -->
-                        <div id="maiz-nota"></div>
-                    </div>
                     
-                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
-                </div>
-
-                <!-- Bloque del FRIJOL -->
-                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
-                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Frijol</h3>
-                
-                    <!-- Primer bloque de texto -->
-                    <div class="mb-4">
-                        <p class="cardo-regular">El frijol era el fiel compañero del maíz, juntos formaban la base nutricional perfecta conocida como la tríada mesoamericana. </p>
-                    </div>
-                
-                    <!-- Métricas en cards -->
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El maíz no solo era alimento, era vida misma. Para <span class="underline-animation">los Mayas</span>, el hombre fue creado del maíz,
+                        según el <em>Popol Vuh</em>. El secreto está en la cal. La nixtamalización transforma el maíz en nutrición.
+                    </p>
+                    
+                    <!-- KPIs en tarjetas -->
                     <div class="row g-3 mb-4">
-                        <!-- Métrica 1 -->
-                        <div class="col-12">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
                             <div class="card h-100 border-0 bg-transparent">
                                 <div class="card-body text-center">
                                     <h4 class="card-title libre-baskerville-bold">
-                                        <span class="animated-number" data-value="50">0</span>% 
-                                        <p >de las proteínas diarias</p>
+                                        +<span class="animated-number" data-value="9000">0</span>
+                                        <p>años de cultivo</p>
                                     </h4>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Métrica 2 -->
-                        <div class="col-12">
+                        <!-- KPI 2 -->
+                        <div class="col-6">
                             <div class="card h-100 border-0 bg-transparent">
                                 <div class="card-body text-center">
-                                    
                                     <h4 class="card-title libre-baskerville-bold">
-                                        +<span class="animated-number" data-value="8000">0</span> 
-                                        <p >años de cultivo</p>
+                                        <span class="animated-number" data-value="60">0</span>%
+                                        <p>de la dieta mesoamericana</p>
                                     </h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-            
                     
                     <!-- Separador decorativo -->
                     <div class="my-4 text-center">
@@ -336,21 +332,67 @@
                         <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
                     </div>
                     
-                    <!-- Hallazgos del grafo -->
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Maíz por Estado</h5>
                     
-                    <!-- Gráfico radial de barras -->
-                    <div class="row mt-5">
-                        <div class="col-md-12" style="position: relative; padding-top: 40px;">
-                            <h5 class="radial-chart-title">Platillos con Frijol por Estado <span style="display: block; font-size: 0.8em; font-style: italic; font-weight: normal; color: #777;"></span></h5>
-                            <div id="frijol-estados-radial-chart" class="chart-container-radial"></div>
+                    <!-- Gráfico radial -->
+                    <div id="maiz-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="maiz-nota"></div>
+                </div>
+
+                <!-- Bloque del FRIJOL -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Frijol</h3>
+                
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El frijol era el fiel compañero del maíz, juntos formaban la base nutricional perfecta conocida como la tríada mesoamericana. Considerado un alimento fundamental en la dieta prehispánica, aportaba las proteínas necesarias para complementar los carbohidratos del maíz.
+                    </p>
+                
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="50">0</span>% 
+                                        <p>de las proteínas diarias</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        +<span class="animated-number" data-value="8000">0</span>
+                                        <p>años de cultivo</p>
+                                    </h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
+            
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Frijol por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="frijol-estados-radial-chart" class="chart-container-radial"></div>
                     
                     <!-- Nota cultural -->
                     <div id="frijol-nota"></div>
-                    
-                    <!-- Contenedor de imagen - Movido arriba y añadida la clase rotate-180 -->
-                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
                 
 
@@ -358,33 +400,32 @@
                 <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Chile</h3>
                     
-                    <!-- Primer bloque de texto -->
-                    <div class="mb-4">
-                        <p class="cardo-regular">Ah, el chile, un fuego que alimenta el alma. Este tesoro ardiente más que un condimento: era medicina, era ritual, era vida.</p>
-                    </div>
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        Ah, el chile, un fuego que alimenta el alma. Este tesoro ardiente era más que un condimento: era medicina, era ritual, era vida. Los mexicas lo utilizaban en casi todos sus platillos, y su cultivo era tan importante como el del maíz. Su sabor distintivo marcó para siempre la identidad de la cocina mexicana.
+                    </p>
                 
-                    <!-- Métricas en cards con números animados -->
+                    <!-- KPIs en tarjetas -->
                     <div class="row g-3 mb-4">
-                        <!-- Métrica 1 -->
-                        <div class="col-12">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
                             <div class="card h-100 border-0 bg-transparent">
                                 <div class="card-body text-center">
                                     <h4 class="card-title libre-baskerville-bold">
                                         +<span class="animated-number" data-value="40">0</span>
-                                        <p >variedades de chile</p>
+                                        <p>variedades de chile</p>
                                     </h4>
-                                    
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Métrica 2 -->
-                        <div class="col-12">
+                        <!-- KPI 2 -->
+                        <div class="col-6">
                             <div class="card h-100 border-0 bg-transparent">
                                 <div class="card-body text-center">
                                     <h4 class="card-title libre-baskerville-bold">
                                         <span class="animated-number" data-value="20">0</span>g
-                                        <p >consumo diario por persona</p>
+                                        <p>consumo diario por persona</p>
                                     </h4>
                                 </div>
                             </div>
@@ -398,42 +439,51 @@
                         <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
                     </div>
                     
-                    <!-- Hallazgos del grafo -->
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Chile por Estado</h5>
                     
-                    <!-- Gráfico radial de barras -->
-                    <div class="row mt-5">
-                        <div class="col-md-12" style="position: relative; padding-top: 40px;">
-                            <h5 class="radial-chart-title">Platillos con Chile por Estado <span style="display: block; font-size: 0.8em; font-style: italic; font-weight: normal; color: #777;"></span></h5>
-                            <div id="chile-estados-radial-chart" class="chart-container-radial"></div>
-                        </div>
-                    </div>
+                    <!-- Gráfico radial -->
+                    <div id="chile-estados-radial-chart" class="chart-container-radial"></div>
                     
                     <!-- Nota cultural -->
                     <div id="chile-nota"></div>
-                    
-                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
 
                 <!-- Bloque del CALABAZA -->
                 <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Calabaza</h3>
-                    <!-- Métricas en cards -->
+                    
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        La calabaza era un ingrediente versátil y nutritivo en la dieta prehispánica. Se usaba para hacer atoles, tamales y guisos. Sus semillas tostadas (pepitas) eran un aperitivo popular y una importante fuente de grasas saludables. En la milpa, la calabaza se cultivaba junto al maíz y frijol, creando un sistema agrícola sustentable que combinaba estos tres alimentos básicos.
+                    </p>
+                  
+                    <!-- KPIs en tarjetas -->
                     <div class="row g-3 mb-4">
-                          <!-- Primer bloque de texto -->
-                        <p class="cardo-regular">La calabaza se usaba para hacer atoles y tamales, además, sus semillas tostadas eran un aperitivo popular. </p>
-                        <!-- Métrica 1 -->
-                        <div class="col-12">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
                             <div class="card h-100 border-0 bg-transparent">
                                 <div class="card-body text-center">
                                     <h4 class="card-title libre-baskerville-bold">
-                                        <span class="animated-number" data-value="30">0</span>g
-                                        <p >de los alimentos almacenados por los aztecas eran calabazas</p>
+                                        <span class="animated-number" data-value="30">0</span>%
+                                        <p>de almacenes aztecas</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="7">0</span>
+                                        <p>especies nativas</p>
                                     </h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  
                     
                     <!-- Separador decorativo -->
                     <div class="my-4 text-center">
@@ -442,65 +492,67 @@
                         <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
                     </div>
                     
-                    <!-- Hallazgos del grafo -->
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Calabaza por Estado</h5>
                     
-                    <!-- Gráfico radial de barras -->
-                    <div class="row mt-5">
-                        <div class="col-md-12" style="position: relative; padding-top: 40px;">
-                            <h5 class="radial-chart-title">Platillos con Calabaza por Estado <span style="display: block; font-size: 0.8em; font-style: italic; font-weight: normal; color: #777;"></span></h5>
-                            <div id="calabaza-estados-radial-chart" class="chart-container-radial"></div>
-                        </div>
-                    </div>
+                    <!-- Gráfico radial -->
+                    <div id="calabaza-estados-radial-chart" class="chart-container-radial"></div>
                     
                     <!-- Nota cultural -->
                     <div id="calabaza-nota"></div>
-                    
-                    <!-- Imagen con rotate-180 -->
-                    <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
                 </div>
 
                 <!-- Bloque del CACAO -->
                 <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
                     <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Cacao</h3>
                       
-                        <div class="mb-4">
-                            <p class="cardo-regular">El cacao era el alimento de los dioses, reservado para ceremonias y la élite. servían como moneda.</p>
-                        </div>
-                        <div class="row g-3 mb-4">
-                            <div class="col-12">
-                                <div class="card h-100 border-0 bg-transparent">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title libre-baskerville-bold"> <span class="animated-number"
-                                                data-value="100">0</span> semillas 
-                                                <p >podían comprar una capa o un escudo</p>
-                                        </h4>
-                                    
-                                    </div>
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El cacao era literalmente el "alimento de los dioses" (Theobroma cacao). Reservado para ceremonias y la élite, se consumía como una bebida espumosa y amarga, muy diferente del chocolate actual. Los mayas y aztecas lo consideraban sagrado, y sus semillas fungían como moneda en toda Mesoamérica. Su valor era tan alto que estaba bajo protección militar durante su comercio.
+                    </p>
+                    
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="100">0</span>
+                                        <p>semillas por capa</p>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Separador decorativo -->
-                        <div class="my-4 text-center">
-                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
-                            <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
-                            <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
-                        </div>
-                        
-                        <!-- Hallazgos del grafo -->
-                        
-                        <!-- Gráfico radial de barras -->
-                        <div class="row mt-5">
-                            <div class="col-md-12" style="position: relative; padding-top: 40px;">
-                                <h5 class="radial-chart-title">Platillos con Cacao por Estado <span style="display: block; font-size: 0.8em; font-style: italic; font-weight: normal; color: #777;"></span></h5>
-                                <div id="cacao-estados-radial-chart" class="chart-container-radial"></div>
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="200">0</span>
+                                        <p>semillas por esclavo</p>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                        
-                        <!-- Nota cultural -->
-                        <div id="cacao-nota"></div>
-                        
-                        <!-- Imagen eliminada, ahora se muestra en el centro del gráfico radial -->
+                    </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Cacao por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="cacao-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="cacao-nota"></div>
                 </div>
                 
             </div>
@@ -661,5 +713,19 @@
     <script src="js/radialBarChart.js"></script>
     <script src="js/culturalRadialChart.js"></script>
     <script src="js/ingredientAnimation.js"></script>
+<script src="js/custom-cursor.js"></script>
+            document.body.style.cursor = "url('img/Xolin/cara.png'), auto";
+            
+            // Aplicar a todos los elementos
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(el => {
+                // No cambiar el cursor de campos de entrada de texto
+                if (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' && 
+                    !el.hasAttribute('contenteditable')) {
+                    el.style.cursor = "url('img/Xolin/cara.png'), auto";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

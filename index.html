@@ -713,19 +713,6 @@
     <script src="js/radialBarChart.js"></script>
     <script src="js/culturalRadialChart.js"></script>
     <script src="js/ingredientAnimation.js"></script>
-<script src="js/custom-cursor.js"></script>
-            document.body.style.cursor = "url('img/Xolin/cara.png'), auto";
-            
-            // Aplicar a todos los elementos
-            const allElements = document.querySelectorAll('*');
-            allElements.forEach(el => {
-                // No cambiar el cursor de campos de entrada de texto
-                if (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' && 
-                    !el.hasAttribute('contenteditable')) {
-                    el.style.cursor = "url('img/Xolin/cara.png'), auto";
-                }
-            });
-        });
-    </script>
+    <script src="js/custom-cursor.js"></script>
 </body>
 </html>

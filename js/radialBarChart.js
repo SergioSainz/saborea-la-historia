@@ -293,6 +293,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
     
     // Función para comprobar si el elemento está visible en el viewport
     function isInViewport(element) {
+        if (!element) return false;
         const rect = element.getBoundingClientRect();
         return (
             rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
@@ -300,28 +301,70 @@ function createRadialBarChart(containerId, data, ingrediente) {
         );
     }
     
-    // Función para animar cuando el elemento es visible
+    // Variable para limitar la frecuencia de las comprobaciones
+    let animationFrameId = null;
+    let isAnimated = false;
+    
+    // Función para animar de forma más eficiente sin transiciones excesivas
     function animateIfVisible() {
-        if (isInViewport(chartContainer)) {
-            // Animar líneas
-            lines.transition()
-                .duration(1000)
-                .delay((d, i) => i * 100)
-                .style("opacity", 1);
-            
-            // Animar bolitas después de las líneas
-            dots.transition()
-                .duration(1000)
-                .delay((d, i) => i * 100 + 100)
-                .style("opacity", 1);
+        // Si ya está animado, no hacer nada
+        if (isAnimated) return;
+        
+        // Cancelar cualquier animación pendiente
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
         }
+        
+        // Usar requestAnimationFrame para mejorar el rendimiento
+        animationFrameId = requestAnimationFrame(() => {
+            if (isInViewport(chartContainer)) {
+                // Marcar como animado para no repetir
+                isAnimated = true;
+                
+                // Agrupar elementos para reducir el número de transiciones
+                const lineGroups = 4; // Agrupar líneas en grupos de 4
+                const numLines = data.length;
+                
+                // Mostrar líneas en grupos para reducir el número de transiciones
+                for (let i = 0; i < numLines; i += lineGroups) {
+                    const linesSubset = lines.filter((d, idx) => idx >= i && idx < i + lineGroups);
+                    const delay = i * 15; // Menos delay entre grupos
+                    
+                    linesSubset.transition()
+                        .duration(600) // Duración más corta
+                        .delay(delay)
+                        .style("opacity", 1);
+                }
+                
+                // Mostrar los puntos en grupos también
+                for (let i = 0; i < numLines; i += lineGroups) {
+                    const dotsSubset = dots.filter((d, idx) => idx >= i && idx < i + lineGroups);
+                    const delay = i * 15 + 200; // Retraso después de las líneas
+                    
+                    dotsSubset.transition()
+                        .duration(600) // Duración más corta
+                        .delay(delay)
+                        .style("opacity", 1);
+                }
+                
+                // Desregistrar el event listener para liberar recursos
+                window.removeEventListener('scroll', throttledScrollHandler);
+                animationFrameId = null;
+            }
+        });
     }
     
     // Iniciar la animación si ya es visible
     animateIfVisible();
     
-    // Añadir evento de scroll para controlar la animación
-    window.addEventListener('scroll', animateIfVisible);
+    // Añadir evento de scroll para controlar la animación con throttling
+    let scrollTimeout;
+    function throttledScrollHandler() {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(animateIfVisible, 100); // 100ms throttle
+    }
+    
+    window.addEventListener('scroll', throttledScrollHandler);
 }
 
 // Función principal para cargar los datos y crear los gráficos para cada ingrediente
@@ -394,14 +437,47 @@ function createAllRadialBarCharts() {
         });
 }
 
-// Manejar errores globales
+// Manejar errores globales - sin registrar ResizeObserver
 window.addEventListener('error', function(e) {
-    console.error('Error global:', e.message, e.filename, e.lineno);
+    // Filtrar los errores de ResizeObserver para no saturar la consola
+    if (e.message && !e.message.includes("ResizeObserver")) {
+        console.error('Error global:', e.message, e.filename, e.lineno);
+    }
 });
 
-// Iniciar cuando el DOM esté completamente listo
+// Cargar las visualizaciones de forma más eficiente
+// Inicializar una sola vez usando un flag para evitar múltiples inicializaciones
+let chartsInitialized = false;
+
+// Función para iniciar las visualizaciones con opciones para retry
+function initializeVisualizations(retry = true) {
+    if (chartsInitialized) return;
+    
+    console.log("Iniciando visualizaciones...");
+    
+    // Comprobar que los contenedores existan antes de inicializar
+    const containers = document.querySelectorAll('[id$="-estados-radial-chart"]');
+    if (containers.length === 0) {
+        console.warn("Contenedores para gráficos no encontrados en el DOM");
+        if (retry) {
+            // Reintentar una vez después de un tiempo más largo
+            console.log("Reintentando inicialización en 800ms...");
+            setTimeout(() => initializeVisualizations(false), 800);
+        }
+        return;
+    }
+    
+    // Marcar como inicializado
+    chartsInitialized = true;
+    createAllRadialBarCharts();
+}
+
+// Iniciar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM cargado, iniciando visualizaciones...");
-    // Esperar un momento para asegurar que todos los elementos estén disponibles
-    setTimeout(createAllRadialBarCharts, 500);
+    // Usar requestIdleCallback si está disponible, o setTimeout como fallback
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => initializeVisualizations());
+    } else {
+        setTimeout(initializeVisualizations, 500);
+    }
 });

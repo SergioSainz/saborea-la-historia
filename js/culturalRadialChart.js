@@ -168,7 +168,7 @@ function createCulturalRadialChart(containerId, data) {
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", innerRadius)
-        .attr("fill", "rgba(255, 255, 255, 0.8)")
+        .attr("fill", "rgba(255, 255, 255)")
         .attr("stroke", "rgba(192, 62, 29, 0.3)")
         .attr("stroke-width", 2)
         .attr("stroke-dasharray");
@@ -238,7 +238,7 @@ function createCulturalRadialChart(containerId, data) {
     svg.append("image")
         .attr("xlink:href", "img/aperitivo/tlecuilli.png") // Imagen representativa de culturas
         .attr("x", width/2 - innerRadius * 9) // Ajustamos posición en la derecha
-        .attr("y", -height * 0.75) // Bajamos la imagen 100px (modificamos de 0.85 a 0.75)
+        .attr("y", -height * 0.85) // Bajamos la imagen 100px (modificamos de 0.85 a 0.75)
         .attr("width", innerRadius * 10) // Mantenemos el tamaño
         .attr("height", innerRadius * 10) // Mantenemos el tamaño
         .attr("preserveAspectRatio", "xMidYMid meet")
@@ -249,7 +249,7 @@ function createCulturalRadialChart(containerId, data) {
     const minCount = d3.min(data, d => d.count);
     const dotScale = d3.scaleLinear()
         .domain([minCount, maxCount])
-        .range([5, 10]); // Rango de tamaños aumentado para mayor visibilidad
+        .range([5, 20]); // Rango de tamaños aumentado para mayor visibilidad
     
     // Grupo para contener todas las líneas tipo raíces
     const rootsGroup = svg.append("g")
@@ -375,7 +375,7 @@ function createCulturalRadialChart(containerId, data) {
                 .attr("class", "radial-line secondary-root")
                 .attr("d", d3.line().curve(d3.curveBasis)(branchPoints))
                 .attr("stroke", rootColorLight)
-                .attr("stroke-width", 2 + Math.random() * 1) // Ancho variable y más fino que la raíz principal (aumentado en 1-2px)
+                .attr("stroke-width", 5 + Math.random() * 1) // Ancho variable y más fino que la raíz principal (aumentado en 1-2px)
                 .attr("fill", "none")
                 .attr("stroke-dasharray", r % 2 === 0 ? "none" : "4,3") // Algunas raíces punteadas (con separación aumentada)
                 .style("opacity", 0) // Inicialmente invisible
@@ -463,12 +463,7 @@ function createCulturalRadialChart(containerId, data) {
                 .attr("filter", "none");
                 
             // Ocultar las raíces
-            rootsGroup.selectAll(`.radial-line[data-index="${index}"]`)
-                .style("opacity", 0)
-                .attr("opacity", 0)
-                .attr("stroke-width", function() {
-                    return d3.select(this).classed("main-root") ? 4 : 2 + Math.random() * 1;
-                });
+            
                 
             // Restaurar opacidad de todas las bolitas
             dots.style("opacity", 1)
@@ -695,7 +690,7 @@ function createCulturalChart() {
                     titleContainer.style.position = "relative";
                     titleContainer.style.zIndex = "5";
                     titleContainer.style.backgroundColor = "transparent";
-                    titleContainer.style.padding = "3px 10px";
+                    titleContainer.style.padding = "0px";
                     titleContainer.style.boxShadow = "none";
                 }
                 

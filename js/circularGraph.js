@@ -87,8 +87,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Llamar a regenerar el grafo cuando la página cambie de tamaño
-    window.addEventListener('resize', regenerateGraph);
+    // Variable para debounce del resize
+    let resizeTimeout;
+    
+    // Llamar a regenerar el grafo cuando la página cambie de tamaño, con debounce
+    window.addEventListener('resize', function() {
+        // Cancelar cualquier timeout existente
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        
+        // Establecer un nuevo timeout
+        resizeTimeout = setTimeout(function() {
+            regenerateGraph();
+        }, 300); // 300ms debounce
+    });
     
     // Asegurar contenedor inmediatamente
     ensureContainer();
@@ -120,12 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Dimensiones y configuración - Adaptamos al contenedor y pantalla disponible
         const container = document.getElementById('network');
-        const containerWidth = container.clientWidth || window.innerWidth * 0.75;
-        const containerHeight = container.clientHeight || window.innerHeight * 0.8;
+        // Usar getComputedStyle para evitar forzar layout con getBoundingClientRect
+        const computedStyle = window.getComputedStyle(container);
+        const containerWidth = parseInt(computedStyle.width) || window.innerWidth * 0.75;
+        const containerHeight = parseInt(computedStyle.height) || window.innerHeight * 0.8;
         
         // Utilizar todo el espacio disponible sin exceder el contenedor
-        const width = containerWidth - 40; // Margen para evitar cortes
-        const height = containerHeight - 40; // Margen para evitar cortes
+        const width = Math.floor(containerWidth - 40); // Margen para evitar cortes, usando Math.floor para evitar decimales
+        const height = Math.floor(containerHeight - 40); // Margen para evitar cortes, usando Math.floor para evitar decimales
         
         console.log(`Creando grafo con dimensiones: ${width}x${height}`);
         

@@ -34,8 +34,21 @@ class SankeyDiagram {
         this.createSvg();
         this.createSankey();
         
-        // Añadir listener para redimensionar
-        window.addEventListener('resize', this.resize.bind(this));
+        // Variable para controlar el debounce
+        this.resizeTimeout = null;
+        
+        // Añadir listener para redimensionar con debounce
+        window.addEventListener('resize', () => {
+            // Cancelar timeout anterior si existe
+            if (this.resizeTimeout) {
+                clearTimeout(this.resizeTimeout);
+            }
+            
+            // Establecer nuevo timeout para debounce
+            this.resizeTimeout = setTimeout(() => {
+                this.resize();
+            }, 250); // 250ms debounce
+        });
         
         this.isInitialized = true;
     }

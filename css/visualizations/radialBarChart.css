@@ -56,25 +56,24 @@
     opacity: 0.85;
 }
 
-/* Título del gráfico - justificado a la izquierda */
+/* Título del gráfico - centrado y por encima */
 h5.radial-chart-title {
-    text-align: left !important;
+    text-align: center !important;
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     color: #243360;
     font-size: 1.1rem;
-    padding: 0;
-    position: relative; /* Cambiado de absolute a relative */
-    margin-bottom: 20px; /* Margen inferior para separar del texto */
-    margin-top: 10px; /* Espacio superior */
+    padding: 10px;
+    position: relative;
+    margin-bottom: 0; /* Eliminamos margen inferior */
+    margin-top: 0; /* Eliminamos espacio superior */
     z-index: 20; /* Asegurar que está por encima de todo */
     background-color: transparent; /* Sin fondo */
-    display: inline-block;
-    width: auto;
-    max-width: 90%;
+    display: block; /* Cambiado a block para ocupar todo el ancho */
+    width: 100%;
+    max-width: 100%;
     box-shadow: none; /* Quitamos la sombra */
     border: none; /* Quitamos el borde */
-    margin-left: 0; /* Sin margen a la izquierda */
 }
 
 /* Tooltip personalizado - mismo estilo que los gráficos principales */

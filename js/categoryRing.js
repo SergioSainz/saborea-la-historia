@@ -246,7 +246,14 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         // Si el hover está desactivado porque hay nodos seleccionados, no hacer nada
         if (disableHover) return;
         
-        // Destacar visualmente este segmento
+        // Destacar visualmente este segmento y atenuar los demás
+        // Primero atenuar todos los segmentos
+        segments.transition().duration(200)
+            .attr('opacity', 0.3)
+            .attr('stroke-width', 0.5)
+            .attr('stroke', '#fff');
+            
+        // Luego destacar solo este segmento
         d3.select(this)
             .transition().duration(200)
             .attr('opacity', 1)
@@ -285,21 +292,74 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
                     .attr('stroke-width', 1.5);
                 
             } else {
-                // Atenuar otros nodos
-                d3.select(this).selectAll('circle')
-                    .transition().duration(200)
-                    .attr('opacity', 0.2);
+                // Atenuar otros nodos, excepto los que pertenecen a la categoría seleccionada
+                const selectedCategory = window.categoryRingSelection;
+                let keepHighlighted = false;
+                
+                // Si hay una categoría seleccionada y es diferente a la actual
+                if (selectedCategory && selectedCategory !== d.id) {
+                    // Buscar los nodos de la categoría seleccionada
+                    const selectedSegmentData = arcData.find(segment => segment.id === selectedCategory);
+                    if (selectedSegmentData && node.level === 3 && selectedSegmentData.nodes.includes(node.id)) {
+                        keepHighlighted = true;
+                    }
+                    
+                    // También mantener destacados los orígenes conectados a la categoría seleccionada
+                    if (node.level === 2) {
+                        const origenesSeleccionados = new Set();
+                        if (selectedSegmentData) {
+                            selectedSegmentData.nodes.forEach(platilloId => {
+                                links.forEach(link => {
+                                    if (link.type === 'origen-platillo' && link.target.id === platilloId) {
+                                        origenesSeleccionados.add(link.source.id);
+                                    }
+                                });
+                            });
+                            
+                            if (origenesSeleccionados.has(node.id)) {
+                                keepHighlighted = true;
+                            }
+                        }
+                    }
+                }
+                
+                if (!keepHighlighted) {
+                    d3.select(this).selectAll('circle')
+                        .transition().duration(200)
+                        .attr('opacity', 0.2);
+                }
             }
         });
         
-        // Atenuar enlaces no relacionados
+        // Atenuar enlaces no relacionados, manteniendo los enlaces relacionados con la categoría seleccionada
         d3.selectAll('.links line').each(function(link) {
             const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-            const relatedToCategory = d.nodes.includes(targetId);
+            const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+            const relatedToCurrentCategory = d.nodes.includes(targetId);
+            
+            // Verificar si el enlace está relacionado con la categoría seleccionada
+            let relatedToSelectedCategory = false;
+            const selectedCategory = window.categoryRingSelection;
+            
+            if (selectedCategory && selectedCategory !== d.id) {
+                const selectedSegmentData = arcData.find(segment => segment.id === selectedCategory);
+                if (selectedSegmentData) {
+                    relatedToSelectedCategory = selectedSegmentData.nodes.includes(targetId);
+                }
+            }
+            
+            // Determinar la opacidad final
+            let finalOpacity = 0.1; // Valor base para enlaces no relacionados
+            
+            if (relatedToCurrentCategory) {
+                finalOpacity = 0.8; // Enlaces relacionados con categoría actual
+            } else if (relatedToSelectedCategory) {
+                finalOpacity = 0.6; // Enlaces relacionados con categoría seleccionada
+            }
             
             d3.select(this)
                 .transition().duration(200)
-                .attr('opacity', relatedToCategory ? 0.8 : 0.1);
+                .attr('opacity', finalOpacity);
         });
         
         // Mostrar tooltip con información de la categoría
@@ -356,12 +416,36 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         // Comprobar si este segmento está seleccionado
         const isSelected = window.categoryRingSelection === d.id;
         
-        // Restaurar apariencia de este segmento según su estado de selección
-        d3.select(this)
-            .transition().duration(200)
-            .attr('opacity', isSelected ? 1 : 0.85)
-            .attr('stroke-width', isSelected ? 2 : 0.5)
-            .attr('stroke', isSelected ? '#333' : '#fff');
+        // Restaurar apariencia de todos los segmentos
+        if (isSelected) {
+            // Si este segmento está seleccionado, mantener otros segmentos atenuados
+            segments.transition().duration(200)
+                .attr('opacity', 0.3)
+                .attr('stroke-width', 0.5)
+                .attr('stroke', '#fff');
+                
+            // Y destacar solo este
+            d3.select(this)
+                .transition().duration(200)
+                .attr('opacity', 1)
+                .attr('stroke-width', 2)
+                .attr('stroke', '#333');
+        } else {
+            // Si no está seleccionado, restaurar todos los segmentos a su apariencia normal
+            segments.transition().duration(200)
+                .attr('opacity', 0.85)
+                .attr('stroke-width', 0.5)
+                .attr('stroke', '#fff');
+                
+            // Si hay otra categoría seleccionada, destacarla
+            if (window.categoryRingSelection) {
+                d3.select(`#segment-${window.categoryRingSelection.replace(/\s+/g, '-').toLowerCase()}`)
+                    .transition().duration(200)
+                    .attr('opacity', 1)
+                    .attr('stroke-width', 2)
+                    .attr('stroke', '#333');
+            }
+        }
         
         // Restaurar apariencia de los nodos
         d3.selectAll('.nodes .node').each(function(node) {
@@ -506,6 +590,12 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
             .attr('stroke', '#333')
             .attr('stroke-width', 2);
             
+        // Atenuar todos los segmentos excepto el correspondiente
+        segments.transition().duration(200)
+            .attr('opacity', 0.3)
+            .attr('stroke-width', 0.5)
+            .attr('stroke', '#fff');
+            
         // Resaltar el segmento correspondiente
         d3.select(`#segment-${d.id.replace(/\s+/g, '-').toLowerCase()}`)
             .transition().duration(200)
@@ -545,21 +635,74 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
                     .attr('stroke', '#663300')
                     .attr('stroke-width', 1.5);
             } else {
-                // Atenuar otros nodos
-                d3.select(this).selectAll('circle')
-                    .transition().duration(200)
-                    .attr('opacity', 0.2);
+                // Atenuar otros nodos, excepto los que pertenecen a la categoría seleccionada
+                const selectedCategory = window.categoryRingSelection;
+                let keepHighlighted = false;
+                
+                // Si hay una categoría seleccionada y es diferente a la actual
+                if (selectedCategory && selectedCategory !== d.id) {
+                    // Buscar los nodos de la categoría seleccionada
+                    const selectedSegmentData = arcData.find(segment => segment.id === selectedCategory);
+                    if (selectedSegmentData && node.level === 3 && selectedSegmentData.nodes.includes(node.id)) {
+                        keepHighlighted = true;
+                    }
+                    
+                    // También mantener destacados los orígenes conectados a la categoría seleccionada
+                    if (node.level === 2) {
+                        const origenesSeleccionados = new Set();
+                        if (selectedSegmentData) {
+                            selectedSegmentData.nodes.forEach(platilloId => {
+                                links.forEach(link => {
+                                    if (link.type === 'origen-platillo' && link.target.id === platilloId) {
+                                        origenesSeleccionados.add(link.source.id);
+                                    }
+                                });
+                            });
+                            
+                            if (origenesSeleccionados.has(node.id)) {
+                                keepHighlighted = true;
+                            }
+                        }
+                    }
+                }
+                
+                if (!keepHighlighted) {
+                    d3.select(this).selectAll('circle')
+                        .transition().duration(200)
+                        .attr('opacity', 0.2);
+                }
             }
         });
         
-        // Atenuar enlaces no relacionados
+        // Atenuar enlaces no relacionados, manteniendo los enlaces relacionados con la categoría seleccionada
         d3.selectAll('.links line').each(function(link) {
             const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-            const relatedToCategory = categoryNodes.includes(targetId);
+            const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+            const relatedToCurrentCategory = categoryNodes.includes(targetId);
+            
+            // Verificar si el enlace está relacionado con la categoría seleccionada
+            let relatedToSelectedCategory = false;
+            const selectedCategory = window.categoryRingSelection;
+            
+            if (selectedCategory && selectedCategory !== d.id) {
+                const selectedSegmentData = arcData.find(segment => segment.id === selectedCategory);
+                if (selectedSegmentData) {
+                    relatedToSelectedCategory = selectedSegmentData.nodes.includes(targetId);
+                }
+            }
+            
+            // Determinar la opacidad final
+            let finalOpacity = 0.1; // Valor base para enlaces no relacionados
+            
+            if (relatedToCurrentCategory) {
+                finalOpacity = 0.8; // Enlaces relacionados con categoría actual
+            } else if (relatedToSelectedCategory) {
+                finalOpacity = 0.6; // Enlaces relacionados con categoría seleccionada
+            }
             
             d3.select(this)
                 .transition().duration(200)
-                .attr('opacity', relatedToCategory ? 0.8 : 0.1);
+                .attr('opacity', finalOpacity);
         });
     })
     .on('mouseout.categoryLegend', function(event, d) {
@@ -582,12 +725,36 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         // Comprobar si esta es la categoría seleccionada
         const isSelected = window.categoryRingSelection === d.id;
         
-        // Restaurar apariencia del segmento correspondiente según su estado de selección
-        d3.select(`#segment-${d.id.replace(/\s+/g, '-').toLowerCase()}`)
-            .transition().duration(200)
-            .attr('opacity', isSelected ? 1 : 0.85)
-            .attr('stroke-width', isSelected ? 2 : 0.5)
-            .attr('stroke', isSelected ? '#333' : '#fff');
+        // Restaurar apariencia de todos los segmentos
+        if (isSelected) {
+            // Si este ítem de leyenda está seleccionado, mantener otros segmentos atenuados
+            segments.transition().duration(200)
+                .attr('opacity', 0.3)
+                .attr('stroke-width', 0.5)
+                .attr('stroke', '#fff');
+                
+            // Y destacar solo el segmento correspondiente
+            d3.select(`#segment-${d.id.replace(/\s+/g, '-').toLowerCase()}`)
+                .transition().duration(200)
+                .attr('opacity', 1)
+                .attr('stroke-width', 2)
+                .attr('stroke', '#333');
+        } else {
+            // Si no está seleccionado, restaurar todos los segmentos a su apariencia normal
+            segments.transition().duration(200)
+                .attr('opacity', 0.85)
+                .attr('stroke-width', 0.5)
+                .attr('stroke', '#fff');
+                
+            // Si hay otra categoría seleccionada, destacarla
+            if (window.categoryRingSelection) {
+                d3.select(`#segment-${window.categoryRingSelection.replace(/\s+/g, '-').toLowerCase()}`)
+                    .transition().duration(200)
+                    .attr('opacity', 1)
+                    .attr('stroke-width', 2)
+                    .attr('stroke', '#333');
+            }
+        }
             
         // Restaurar apariencia de los nodos
         d3.selectAll('.nodes .node').each(function(node) {

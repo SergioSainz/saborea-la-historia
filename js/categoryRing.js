@@ -35,11 +35,11 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         { id: 'Especialidades Regionales', color: '#B8860B', desc: 'Esp. Regionales' }, // Dorado oscuro
         { id: 'Desayunos y Entradas', color: '#DAA520', desc: 'Desayunos' }, // Dorado
         { id: 'Sopas', color: '#BC8F8F', desc: 'Sopas' }, // Rosado terroso
-        { id: 'Postres', color: '#DEB887', desc: 'Postres' }, // Burlywood
-        { id: 'Mariscos', color: '#F4A460', desc: 'Mariscos' }, // Arena
-        { id: 'Salsas', color: '#D2B48C', desc: 'Salsas' }, // Tan
+        { id: 'Postres', color: '#E9967A', desc: 'Postres' }, // Salmón oscuro (rosa terroso)
+        { id: 'Mariscos', color: '#87CEEB', desc: 'Mariscos' }, // Azul cielo
+        { id: 'Salsas', color: '#556B2F', desc: 'Salsas' }, // Verde oliva oscuro (verde tierra)
         { id: 'Platos Principales', color: '#A0522D', desc: 'Platos Principales' }, // Siena
-        { id: 'Pollo', color: '#B87333', desc: 'Pollo' }, // Cobre
+        { id: 'Pollo', color: '#CD9B1D', desc: 'Pollo' }, // Mostaza dorada (amarillo tierra)
         { id: 'Bebidas', color: '#E6BE8A', desc: 'Bebidas' } // Beige dorado
     ];
     

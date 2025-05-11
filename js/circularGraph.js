@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .attr('style', 'max-width: 100%; height: auto; background-color: #F6F0E4; border-radius: 8px;');
             
         // Añadir grupo principal que será afectado por el zoom
-        // Movemos todo un 15% hacia la izquierda
-        const offset = Math.floor(width * 0.15); // 15% del ancho como desplazamiento
+        // Movemos todo un 10% hacia la izquierda (15% original - 5% a la derecha)
+        const offset = Math.floor(width * 0.10); // 10% del ancho como desplazamiento
         const svg = zoomContainer.append('g')
             .attr('transform', `translate(${Math.floor(width / 2) - offset}, ${Math.floor(height / 2)})`)
             .attr('class', 'main-group');
@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const zoom = d3.zoom()
             .scaleExtent([0.5, 3])  // Limita el nivel de zoom entre 0.5x y 3x
             .on("zoom", (event) => {
-                // Mantener el desplazamiento del 15% hacia la izquierda durante el zoom
-                const offset = Math.floor(width * 0.15); // 15% del ancho como desplazamiento
+                // Mantener el desplazamiento del 10% hacia la izquierda durante el zoom
+                const offset = Math.floor(width * 0.10); // 10% del ancho como desplazamiento
                 svg.attr("transform", `translate(${width/2 - offset + event.transform.x}, ${height/2 + event.transform.y}) scale(${event.transform.k})`);
             });
             
@@ -719,14 +719,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         .attr('id', patternId)
                         .attr('width', 1)
                         .attr('height', 1)
+                        .attr('x', 0)
+                        .attr('y', 0)
+                        .attr('patternContentUnits', 'objectBoundingBox')
                         .attr('patternUnits', 'objectBoundingBox');
                     
                     // Añadir imagen al patrón
                     pattern.append('image')
                         .attr('href', imageUrl)
-                        .attr('width', radius * 2)
-                        .attr('height', radius * 2)
-                        .attr('preserveAspectRatio', 'xMidYMid slice');
+                        .attr('width', 1)
+                        .attr('height', 1)
+                        .attr('x', 0)
+                        .attr('y', 0)
+                        .attr('preserveAspectRatio', 'xMidYMid meet');
                     
                     // Añadir círculo de fondo
                     node.append('circle')
@@ -837,7 +842,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     radiusLevel4, 
                     width, 
                     height, 
-                    ingredienteActivo
+                    ingredienteActivo,
+                    false // No hay nodos seleccionados, hover activado
                 );
             }
             
@@ -1336,7 +1342,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         svg.select('.type-ring').remove();
                         svg.select('.category-legend').remove();
                         
-                        // Luego crear el nuevo anillo filtrado
+                        // Luego crear el nuevo anillo filtrado - con hover desactivado ya que hay nodos seleccionados
                         window.createCategoryRing(
                             svg, 
                             nodosParaAnillo, 
@@ -1345,7 +1351,67 @@ document.addEventListener('DOMContentLoaded', function() {
                             radiusLevel4, 
                             width, 
                             height, 
-                            ingredienteActivo
+                            ingredienteActivo,
+                            true // Deshabilitar hover cuando hay nodos seleccionados
+                        );
+                    }
+                }
+                
+                // Nueva función para recalcular el anillo cuando se seleccionan múltiples orígenes
+                function recalculateCategoryRingForMultipleOrigins(originNodes) {
+                    // Verificar que tengamos orígenes para procesar
+                    if (!originNodes || originNodes.length === 0) return;
+                    
+                    console.log(`Recalculando anillo para ${originNodes.length} orígenes seleccionados`);
+                    
+                    // 1. Identificar todos los platillos conectados a cualquiera de los orígenes seleccionados
+                    const platillosDeOrigenes = new Set();
+                    const origenesIds = originNodes.map(n => n.id);
+                    
+                    // Recopilar todos los IDs de platillos conectados a cualquiera de los orígenes
+                    linksFiltered.forEach(link => {
+                        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+                        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+                        
+                        if (link.type === 'origen-platillo' && origenesIds.includes(sourceId)) {
+                            platillosDeOrigenes.add(targetId);
+                        }
+                    });
+                    
+                    // 2. Filtrar nodos para incluir los orígenes seleccionados y sus platillos
+                    const nodosParaAnillo = nodes.filter(node => {
+                        if (origenesIds.includes(node.id)) return true; // Los orígenes seleccionados
+                        if (node.level === 3 && platillosDeOrigenes.has(node.id)) return true; // Platillos conectados
+                        return false;
+                    });
+                    
+                    // 3. Filtrar enlaces relacionados con estos nodos
+                    const enlacesParaAnillo = links.filter(link => {
+                        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+                        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+                        
+                        return (origenesIds.includes(sourceId) && platillosDeOrigenes.has(targetId));
+                    });
+                    
+                    // 4. Volver a crear el anillo de categorías con los datos filtrados
+                    if (window.createCategoryRing) {
+                        console.log(`Regenerando anillo para ${platillosDeOrigenes.size} platillos de ${originNodes.length} orígenes seleccionados`);
+                        
+                        // Primero eliminar cualquier anillo previo para evitar superposiciones
+                        svg.select('.type-ring').remove();
+                        svg.select('.category-legend').remove();
+                        
+                        // Luego crear el nuevo anillo filtrado - con hover desactivado ya que hay nodos seleccionados
+                        window.createCategoryRing(
+                            svg, 
+                            nodosParaAnillo, 
+                            enlacesParaAnillo, 
+                            radiusLevel3, 
+                            radiusLevel4, 
+                            width, 
+                            height, 
+                            ingredienteActivo,
+                            true // Deshabilitar hover cuando hay nodos seleccionados
                         );
                     }
                 }
@@ -1413,21 +1479,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Agregamos la actualización de etiquetas a la función de tick existente
                 // No creamos un nuevo tick handler
                 
+                // Todos los nodos se manejan de la misma manera para permitir selección múltiple
                 if (nodeIndex !== -1) {
                     // Si el nodo ya está seleccionado, lo quitamos de la selección
                     selectedNodes.splice(nodeIndex, 1);
                     
-                    // Si no quedan nodos seleccionados, reseteamos todo
-                    if (selectedNodes.length === 0) {
-                        resetHighlighting();
+                    // Restaurar la visualización normal sin resaltar este nodo
+                    resetHighlighting();
+                    
+                    // Si aún quedan otros nodos seleccionados, resaltarlos
+                    if (selectedNodes.length > 0) {
+                        applyMultipleHighlighting(selectedNodes);
                         
-                        // Regenerar el anillo principal de categorías
+                        // Si quedan nodos de origen seleccionados, regenerar el anillo
+                        // para mostrar todos los platillos relacionados con los orígenes seleccionados
+                        const selectedOrigins = selectedNodes.filter(n => n.level === 2);
+                        if (selectedOrigins.length > 0) {
+                            recalculateCategoryRingForMultipleOrigins(selectedOrigins);
+                        }
+                    } else {
+                        // Regenerar el anillo principal si no hay nodos seleccionados - con hover activado
                         if (window.createCategoryRing) {
-                            // Primero eliminar cualquier anillo previo para evitar superposiciones
                             svg.select('.type-ring').remove();
                             svg.select('.category-legend').remove();
                             
-                            // Luego crear el nuevo anillo
                             window.createCategoryRing(
                                 svg, 
                                 nodesFiltered, 
@@ -1436,56 +1511,28 @@ document.addEventListener('DOMContentLoaded', function() {
                                 radiusLevel4, 
                                 width, 
                                 height, 
-                                ingredienteActivo
+                                ingredienteActivo,
+                                false // No hay nodos seleccionados, hover activado
                             );
                         }
-                    } else {
-                        // Volver a aplicar el resaltado para los nodos que quedan seleccionados
-                        resetHighlighting();
-                        applyMultipleHighlighting(selectedNodes);
-                        
-                        // Si queda un nodo de origen seleccionado, regenerar el anillo para él
-                        const selectedOrigin = selectedNodes.find(n => n.level === 2);
-                        if (selectedOrigin) {
-                            recalculateCategoryRingForOrigin(selectedOrigin);
-                        }
                     }
-                    
-                    // Actualizar etiquetas permanentes
-                    updatePermanentLabels();
                 } else {
                     // Si es un nuevo nodo, lo añadimos a la selección
                     selectedNodes.push(d);
                     
-                    // Si es el primer nodo seleccionado, reseteamos primero
-                    if (selectedNodes.length === 1) {
-                        resetHighlighting();
-                        
-                        // Si es un nodo de origen (nivel 2), recalcular el anillo para él
-                        if (d.level === 2) {
-                            recalculateCategoryRingForOrigin(d);
-                        }
-                    } else {
-                        // Si ya hay nodos seleccionados y agregamos un origen, priorizar el nuevo origen
-                        if (d.level === 2) {
-                            // Eliminar otros nodos de origen seleccionados previamente
-                            const origenesPrevios = selectedNodes.filter(n => n.id !== d.id && n.level === 2);
-                            origenesPrevios.forEach(origen => {
-                                const idx = selectedNodes.findIndex(n => n.id === origen.id);
-                                if (idx !== -1) selectedNodes.splice(idx, 1);
-                            });
-                            
-                            // Recalcular el anillo para el nuevo origen
-                            recalculateCategoryRingForOrigin(d);
-                        }
-                    }
-                    
-                    // Aplicar resaltado a todos los nodos seleccionados
+                    // Resetear y aplicar nuevo resaltado
+                    resetHighlighting();
                     applyMultipleHighlighting(selectedNodes);
                     
-                    // Actualizar etiquetas permanentes
-                    updatePermanentLabels();
+                    // Si es un nodo de origen, recalcular el anillo
+                    if (d.level === 2) {
+                        const selectedOrigins = selectedNodes.filter(n => n.level === 2);
+                        recalculateCategoryRingForMultipleOrigins(selectedOrigins);
+                    }
                 }
+                
+                // Actualizar etiquetas permanentes
+                updatePermanentLabels();
                 
                 // Función para aplicar resaltado a múltiples nodos
                 function applyMultipleHighlighting(nodes) {
@@ -1528,6 +1575,17 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             });
                         }
+                        
+                        // Para orígenes (nivel 2), asegurar que resaltamos todos sus platillos
+                        if (node.level === 2) {
+                            // Encontrar todos los platillos conectados a este origen
+                            linksFiltered.forEach(link => {
+                                if (link.type === 'origen-platillo' && link.source.id === node.id) {
+                                    connectedNodes.add(link.target.id);
+                                    connectedLinks.add(link.index);
+                                }
+                            });
+                        }
                     });
                     
                     // Aplicar estilo a los nodos
@@ -1541,8 +1599,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Establecer opacidad según selección, conexión y nivel
                         let opacity;
                         if (isSelected) {
-                            // Nodos seleccionados: siempre máxima opacidad
+                            // Nodos seleccionados: siempre máxima opacidad sin transparencia
                             opacity = 1;
+                            
+                            // Resaltar visualmente los nodos de origen seleccionados con un borde más llamativo
+                            if (n.level === 2) {
+                                nodeGroup.select('circle')
+                                    .attr('stroke', '#B8860B')  // Borde dorado
+                                    .attr('stroke-width', 3);   // Más grueso
+                            }
                         } else if (isConnected) {
                             // Nodos conectados: alta opacidad
                             opacity = 1;

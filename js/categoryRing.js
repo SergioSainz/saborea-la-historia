@@ -6,11 +6,16 @@
  * Usa colores tierra (marrones, ocres, terracota) para cada categoría
  * Permite interacción bidireccional (hover/click en categoría resalta nodos, selección de nodo resalta categorías)
  * Incluye leyendas a la derecha del grafo
+ * 
+ * Optimizado para la interacción con nodos - desactiva completamente todos los eventos de hover del anillo
+ * cuando hay nodos seleccionados para evitar interferencia con la selección/filtrado de nodos
  */
 
 // Función principal para crear el anillo de categorías
-function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width, height, ingredienteActivo) {
+function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width, height, ingredienteActivo, disableHover) {
     console.log('Inicializando anillo de categorías de platillos...');
+    
+    // El parámetro disableHover indica si se debe desactivar el hover (true cuando hay nodos seleccionados)
     
     // Eliminar anillo y leyenda previos si existen
     svg.selectAll('.type-ring, .category-legend').remove();
@@ -133,7 +138,7 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         .attr('stroke', '#fff')
         .attr('stroke-width', 0.5)
         .attr('opacity', 0) // Iniciar invisible
-        .attr('cursor', 'pointer')
+        .attr('cursor', disableHover ? 'default' : 'pointer') // Cambiar cursor según estado
         .attr('id', d => `segment-${d.id.replace(/\s+/g, '-').toLowerCase()}`);
         
     // Animar aparición de segmentos con un retraso secuencial
@@ -146,9 +151,13 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
     // Eliminamos las etiquetas en el arco completamente
     // No creamos ninguna etiqueta en los anillos como se solicitó
     
+    // Limpiar cualquier evento previo para evitar duplicados o comportamientos inesperados
+    // Esto es crítico cuando se recrean los anillos con diferentes configuraciones de disableHover
+    segments.on('mouseover', null).on('mouseout', null).on('click', null);
+    
     // Agregar leyenda, movida más a la izquierda y bajada un 30% desde la parte superior
     // Ajustamos la posición de la leyenda para ser coherente con el desplazamiento del grafo
-    const legendOffset = width * 0.12; // Aumentamos el desplazamiento horizontal de la leyenda
+    const legendOffset = width * 0.07; // Reducimos el desplazamiento horizontal de la leyenda (0.12 - 0.05)
     const legendGroup = svg.append('g')
         .attr('class', 'category-legend')
         .attr('transform', `translate(${width/2 - legendOffset}, ${-height/2 + (height * 0.3)})`) // Bajada 30% desde arriba
@@ -182,7 +191,7 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         .append('g')
         .attr('class', 'legend-item')
         .attr('transform', (d, i) => `translate(0, ${25 + i * 24})`) // Mayor espaciado vertical
-        .attr('cursor', 'pointer')
+        .attr('cursor', disableHover ? 'default' : 'pointer') // Cambiar cursor según estado
         .attr('opacity', 0); // Iniciar invisible
     
     // Animar aparición de elementos de leyenda con retraso secuencial
@@ -233,7 +242,10 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
     // --------- INTERACTIVIDAD ----------
     
     // 1. Interactividad de los segmentos del anillo
-    segments.on('mouseover', function(event, d) {
+    segments.on('mouseover.categoryRing', function(event, d) {
+        // Si el hover está desactivado porque hay nodos seleccionados, no hacer nada
+        if (disableHover) return;
+        
         // Destacar visualmente este segmento
         d3.select(this)
             .transition().duration(200)
@@ -329,7 +341,18 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         // Guardar referencia para poder eliminarla en mouseout
         d3.select(this).datum().tooltip = tipContainer;
     })
-    .on('mouseout', function(event, d) {
+    .on('mouseout.categoryRing', function(event, d) {
+        // Si el hover está desactivado porque hay nodos seleccionados, no hacer nada
+        if (disableHover) {
+            // Solo eliminar el tooltip si existe
+            if (d.tooltip) {
+                d.tooltip.transition().duration(200)
+                    .style('opacity', 0)
+                    .remove();
+            }
+            return;
+        }
+        
         // Comprobar si este segmento está seleccionado
         const isSelected = window.categoryRingSelection === d.id;
         
@@ -473,7 +496,10 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
     });
     
     // 2. Interactividad de la leyenda
-    legendItems.on('mouseover', function(event, d) {
+    legendItems.on('mouseover.categoryLegend', function(event, d) {
+        // Si el hover está desactivado porque hay nodos seleccionados, no hacer nada
+        if (disableHover) return;
+        
         // Destacar visualmente este ítem de leyenda
         d3.select(this).select('rect')
             .transition().duration(200)
@@ -536,7 +562,17 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
                 .attr('opacity', relatedToCategory ? 0.8 : 0.1);
         });
     })
-    .on('mouseout', function(event, d) {
+    .on('mouseout.categoryLegend', function(event, d) {
+        // Si el hover está desactivado porque hay nodos seleccionados, no hacer nada adicional
+        if (disableHover) {
+            // Restaurar solo la apariencia del ítem de leyenda
+            d3.select(this).select('rect')
+                .transition().duration(200)
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 0.5);
+            return;
+        }
+        
         // Restaurar apariencia del ítem de leyenda
         d3.select(this).select('rect')
             .transition().duration(200)

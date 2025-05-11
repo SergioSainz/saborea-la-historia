@@ -1,7 +1,7 @@
 /* Estilos para los gráficos radiales de barras */
 .chart-container-radial {
     width: 100%;
-    height: 1000px; /* Aumentamos aún más la altura para el gráfico radial */
+    height: 100px; /* Aumentamos aún más la altura para el gráfico radial */
     margin: 0 auto;
     margin-top: 30px; /* Más espacio superior */
     display: flex;

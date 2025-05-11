@@ -68,27 +68,30 @@ function createCulturalRadialChart() {
         .range([innerRadius, outerRadius]);
     
     // Función personalizada para asignar ángulos (con Maya a la 1:00)
+// Función personalizada para asignar ángulos (con Maya a las 12:00)
     function getAngle(cultura) {
-        // 1:00 en el reloj corresponde aproximadamente a 30 grados o Math.PI/6
-        if (cultura === "Maya") {
-            return Math.PI/6; // Posición de la 1:00
-        }
-        
-        // Calcular índice de la cultura en el array, excluyendo Maya
         const culturas = datosPrehistoricos.map(d => d.cultura);
-        const indexSinMaya = culturas.filter(c => c !== "Maya").indexOf(cultura);
-        
-        // Distribuir el resto de culturas uniformemente, dejando espacio para Maya
-        const anguloInicial = Math.PI/3; // Un poco después de Maya
-        const anguloTotal = 2 * Math.PI - Math.PI/6; // Total menos el espacio reservado para Maya
-        const totalCulturasSinMaya = culturas.length - 1;
-        
-        return anguloInicial + (anguloTotal / totalCulturasSinMaya) * indexSinMaya;
+
+        // Calcular índice de la cultura en el array
+        const index = culturas.indexOf(cultura);
+        const totalCulturas = culturas.length;
+
+        // Distribuir uniformemente, restando un pequeño margen para que no se sobrepongan
+        const anguloTotal = 2 * Math.PI - (2 * Math.PI / totalCulturas);
+
+        // Calcular el ángulo específico para cada uno
+        return (-Math.PI / 2) + ((anguloTotal / totalCulturas) * index);
     }
-    
+
     // Función para obtener ángulo para una cultura dada
     function getAngleForCultura(cultura) {
         return getAngle(cultura);
+    }
+
+
+// Función para obtener ángulo para una cultura dada
+function getAngleForCultura(cultura) {
+    return getAngle(cultura);
     }
     
     // Círculo central transparente
@@ -141,7 +144,7 @@ function createCulturalRadialChart() {
             return radiusScale(d.count) * Math.sin(angle);
         })
         .attr("r", d => Math.max(5, Math.min(30, d.count / 2))) // Tamaño proporcional
-        .attr("fill", "#C03E1D")
+        .attr("fill", "rgba(131, 87, 43, 0.9)")
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
         .style("cursor", "pointer");
@@ -172,10 +175,10 @@ function createCulturalRadialChart() {
             if (Math.sin(angle) < -0.1) return "baseline";
             return "middle";
         })
-        .text(d => `${d.cultura} (${d.count})`)
-        .style("font-size", "10px")
+        .text(d => `${d.cultura}`)
+        .style("font-size", "12px")
         .style("font-family", "'Libre Baskerville', serif")
-        .style("fill", "#999");
+        .style("fill", "#696969");
     
     // Crear tooltip con estilo consistente con otros tooltips
     const tooltip = d3.select("body").append("div")
@@ -200,7 +203,7 @@ function createCulturalRadialChart() {
             .transition()
             .duration(200)
             .style("font-weight", "bold")
-            .style("fill", "#C03E1D")
+            .style("fill", "rgba(131, 87, 43)")
             .style("font-size", "12px");
         
         // Mostrar tooltip con animación
@@ -246,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar el título
     const titleElement = document.querySelector("#cultural-radial-chart").previousElementSibling;
     if (titleElement && titleElement.classList.contains('radial-chart-title')) {
-        titleElement.innerHTML = "Culturas más representativas de la época prehispánica <span style='display:block; color:#999; font-size:0.7em; font-style:italic; margin-top:3px;'>(Toca los puntos para ver detalles)</span>";
+        titleElement.innerHTML = "¿Qué culturas dieron sabor a la mesa prehispánica? <span style='display:block; color:#999; font-size:0.7em; margin-top:3px;'>(Acerca el mouse a los puntos para ver detalles)</span>";
     }
     
     // Iniciar el gráfico

@@ -1,0 +1,2394 @@
+ /**
+        2   * Grafo circular en D3.js que muestra las relaciones entre:
+        3   * - Nivel 1 (centro): Épocas de platillos
+        4   * - Nivel 2 (medio): Orígenes de platillos
+        5   * - Nivel 3 (exterior): Nombres de platillos
+        6   *
+        7   * El grafo se filtra dinámicamente según el ingrediente en foco:
+        8   * - Maíz, Frijol, Chile, Calabaza o Cacao
+        9   */
+       10  // Esperamos a que el DOM esté completamente cargado
+       11  document.addEventListener('DOMContentLoaded', function() {
+       12      console.log('Inicializando grafo circular (versión mejorada)...');
+       13
+       14      // Función para asegurar que existe el contenedor
+       15      function ensureContainer() {
+       16          // Verificar si el contenedor existe
+       17          let networkContainer = document.getElementById('network');
+       18
+       19          // Si no existe, intentar encontrar o crear el contenedor
+       20          if (!networkContainer) {
+       21              console.log('Contenedor #network no encontrado, intentando crear uno...');
+          ;
+       22
+       23              // Buscar el contenedor .visualization-container
+       24              const vizContainer = document.querySelector('.visualization-container');
+       25
+       26              if (vizContainer) {
+       27                  console.log('Contenedor .visualization-container encontrado, creando
+     #network dentro');
+          #network dentro');
+       28                  networkContainer = document.createElement('div');
+       29                  networkContainer.id = 'network';
+       30                  networkContainer.style.width = '100%';
+       31                  networkContainer.style.height = '700px';
+       32                  networkContainer.style.backgroundColor = '#F6F0E4';
+       33                  vizContainer.innerHTML = ''; // Limpiar cualquier contenido previo
+       34                  vizContainer.appendChild(networkContainer);
+       35              } else {
+       36                  console.error('No se encontró .visualization-container, no se puede
+     crear el grafo');
+          rear el grafo');
+       37
+       38                  // Intentar buscar en .sticky-image-sankey
+       39                  const sankeyContainer =
+     document.querySelector('.sticky-image-sankey');
+          );
+       40                  if (sankeyContainer) {
+       41                      console.log('Contenedor .sticky-image-sankey encontrado, creando
+     .visualization-container y #network dentro');
+          .visualization-container y #network dentro');
+       42
+       43                      // Crear visualization-container
+       44                      const newVizContainer = document.createElement('div');
+       45                      newVizContainer.className = 'visualization-container';
+       46                      newVizContainer.style.width = '100%';
+       47                      newVizContainer.style.height = '700px';
+       48
+       49                      // Crear network dentro
+       50                      networkContainer = document.createElement('div');
+       51                      networkContainer.id = 'network';
+       52                      networkContainer.style.width = '100%';
+       53                      networkContainer.style.height = '700px';
+       54                      networkContainer.style.backgroundColor = '#F6F0E4';
+       55
+       56                      // Añadir al DOM
+       57                      newVizContainer.appendChild(networkContainer);
+       58                      sankeyContainer.innerHTML = '';
+       59                      sankeyContainer.appendChild(newVizContainer);
+       60                  }
+       61              }
+       62          } else {
+       63              console.log('Contenedor #network encontrado correctamente');
+       64          }
+       65
+       66          return !!document.getElementById('network');
+       67      }
+       68
+       69      // Función para verificar si el grafo ya existe y regenerarlo
+       70      function regenerateGraph() {
+       71          // Verificar y asegurar que el contenedor existe
+       72          if (ensureContainer()) {
+       73              console.log('Verificando estado del grafo y regenerando si es
+     necesario...');
+          .');
+       74
+       75              // Forzar recreación del grafo
+       76              const network = document.getElementById('network');
+       77              if (network) {
+       78                  // Limpiar el contenedor antes de recrear
+       79                  network.innerHTML = '';
+       80                  console.log('Contenedor limpiado, iniciando creación del grafo...');
+       81                  initGraph();
+       82              } else {
+       83                  console.error('No se encontró el contenedor #network después de
+     intentar crearlo');
+          tar crearlo');
+       84              }
+       85          } else {
+       86              console.error('No se pudo crear el contenedor para el grafo');
+       87          }
+       88      }
+       89
+       90      // Variable para debounce del resize
+       91      let resizeTimeout;
+       92
+       93      // Llamar a regenerar el grafo cuando la página cambie de tamaño, con debounce
+       94      window.addEventListener('resize', function() {
+       95          // Cancelar cualquier timeout existente
+       96          if (resizeTimeout) clearTimeout(resizeTimeout);
+       97
+       98          // Establecer un nuevo timeout
+       99          resizeTimeout = setTimeout(function() {
+      100              regenerateGraph();
+      101          }, 300); // 300ms debounce
+      102      });
+      103
+      104      // Asegurar contenedor inmediatamente
+      105      ensureContainer();
+      106
+      107      // Función principal de inicialización del grafo
+      108      function initGraph() {
+      109          // Asegurarse de que D3 está disponible
+      110          if (!window.d3) {
+      111              console.error('D3.js no está cargado. Por favor incluya la biblioteca D3
+     antes de este script.');
+          antes de este script.');
+      112              return;
+      113          }
+      114
+      115          // Verificar que el contenedor del grafo existe
+      116          const networkContainer = document.getElementById('network');
+      117          if (!networkContainer) {
+      118              console.error('Error: No se encontró el contenedor #network para el grafo
+     circular.');
+           circular.');
+      119              return; // No podemos continuar sin un contenedor
+      120          } else {
+      121              console.log('Contenedor #network encontrado correctamente');
+      122          }
+      123
+      124          // Ingredientes principales para filtrado
+      125          const INGREDIENTES_PRINCIPALES = [
+      126              'MAÍZ', 'FRIJOL', 'CHILE', 'CALABAZA', 'CACAO'
+      127          ];
+      128
+      129          // Variable global para el ingrediente actualmente seleccionado
+      130          let ingredienteActivo = null;
+      131
+      132          // Dimensiones y configuración - Adaptamos al contenedor y pantalla disponible
+          e
+      133          const container = document.getElementById('network');
+      134          // Usar getComputedStyle para evitar forzar layout con getBoundingClientRect
+      135          const computedStyle = window.getComputedStyle(container);
+      136          const containerWidth = parseInt(computedStyle.width) || window.innerWidth *
+     0.75;
+          .75;
+      137          const containerHeight = parseInt(computedStyle.height) || window.innerHeight *
+      0.8;
+          * 0.8;
+      138
+      139          // Utilizar todo el espacio disponible sin exceder el contenedor
+      140          const width = Math.floor(containerWidth - 40); // Margen para evitar cortes,
+     usando Math.floor para evitar decimales
+          usando Math.floor para evitar decimales
+      141          const height = Math.floor(containerHeight - 40); // Margen para evitar cortes,
+      usando Math.floor para evitar decimales
+          , usando Math.floor para evitar decimales
+      142
+      143          // Radio máximo del grafo para cálculos de posicionamiento
+      144          const graphRadius = Math.min(width, height) / 2 - 60;
+      145
+      146          console.log(`Creando grafo con dimensiones: ${width}x${height}`);
+      147
+      148          // Radio proporcional a la dimensión más pequeña
+      149          const radius = Math.min(width, height) / 2 - 60;
+      150
+      151          // Radios para cada nivel - ajustados para mejor distribución
+      152          const radiusLevel1 = radius * 0.18; // Centro más pequeño
+      153          const radiusLevel2 = radius * 0.40; // Nivel medio
+      154          const radiusLevel3 = radius * 0.65; // Exterior (platillos)
+      155          const radiusLevel4 = radius * 0.85; // Anillo de categorías
+      156
+      157          // Establecer dimensiones del contenedor
+      158          container.style.width = '100%';
+      159          container.style.height = '100%';
+      160
+      161          // Limpiar el contenedor antes de crear el SVG
+      162          d3.select('#network').html('');
+      163
+      164          console.log('Creando el SVG para el grafo circular...');
+      165
+      166          // Crear el contenedor SVG con funcionalidad de zoom - alineado a la izquierda
+          a
+      167          const zoomContainer = d3.select('#network')
+      168              .append('svg')
+      169              .attr('width', width)
+      170              .attr('height', height)
+      171              .attr('viewBox', `0 0 ${width} ${height}`) // Sin desplazamiento en
+     viewBox
+          ox
+      172              .attr('preserveAspectRatio', 'xMinYMid meet') // xMin para alineación
+     izquierda
+          uierda
+      173              .attr('style', 'max-width: 100%; height: auto; background-color: #F6F0E4;
+     border-radius: 8px;');
+           border-radius: 8px;');
+      174
+      175          // Añadir grupo principal que será afectado por el zoom - alineado más a la
+     izquierda
+          zquierda
+      176          // Reducimos el valor de x para mover el grafo más a la izquierda del borde
+      177          const margenIzquierdo = graphRadius * 0.4; // Solo 40% del radio, para moverlo
+      más a la izquierda
+          o más a la izquierda
+      178          const svg = zoomContainer.append('g')
+      179              .attr('transform', `translate(${margenIzquierdo}, ${Math.floor(height /
+     2)})`)
+          )})`)
+      180              .attr('class', 'main-group');
+      181
+      182          // Configurar el zoom
+      183          const zoom = d3.zoom()
+      184              .scaleExtent([0.5, 3])  // Limita el nivel de zoom entre 0.5x y 3x
+      185              .on("zoom", (event) => {
+      186                  svg.attr("transform", `translate(${width/2 + event.transform.x},
+     ${height/2 + event.transform.y}) scale(${event.transform.k})`);
+          ight/2 + event.transform.y}) scale(${event.transform.k})`);
+      187              });
+      188
+      189          // Activar el zoom en el SVG
+      190          zoomContainer.call(zoom);
+      191
+      192          // Establecer un zoom inicial moderado
+      193          zoomContainer.call(zoom.transform, d3.zoomIdentity.translate(0,
+     0).scale(1.2));
+          );
+      194
+      195          // Añadir instrucciones discretas para el zoom (se colocará más tarde después
+     de crear el elemento de información)
+           de crear el elemento de información)
+      196
+      197          // Crear círculos guía para los niveles
+      198          const guideCircles = svg.append('g').attr('class', 'guide-circles');
+      199
+      200          // Círculos guía con estilo suave
+      201          guideCircles.selectAll('.guide-circle')
+      202              .data([radiusLevel1, radiusLevel2, radiusLevel3, radiusLevel4])
+      203              .enter()
+      204              .append('circle')
+      205              .attr('class', 'guide-circle')
+      206              .attr('r', d => d)
+      207              .attr('fill', 'none')
+      208              .attr('stroke', '#ddd')
+      209              .attr('stroke-width', 1)
+      210              .attr('stroke-dasharray', '3,3')
+      211              .attr('opacity', 0.6);
+      212
+      213          // Crear grupos principales para los elementos visuales
+      214          const linkGroup = svg.append('g').attr('class', 'links');
+      215          const nodeGroup = svg.append('g').attr('class', 'nodes');
+      216          const labelGroup = svg.append('g').attr('class', 'labels');
+      217
+      218          // Variables globales
+      219          let simulation;
+      220          let nodes = [];
+      221          let links = [];
+      222          let nodesFiltered = [];
+      223          let linksFiltered = [];
+      224          let nodeElements, linkElements, labelElements;
+      225
+      226          // Función global para restaurar el estado basado en el ingrediente activo
+      227          function restoreIngredientHighlighting() {
+      228              // Verificar que los elementos necesarios existan
+      229              if (!linkElements || !nodeElements || !labelElements) return;
+      230
+      231              // Restaurar enlaces con opacidad según ingrediente activo
+      232              linkElements.attr('opacity', d => {
+      233                  if (ingredienteActivo) {
+      234                      return 0.6; // Opacidad 60% para todas las líneas
+      235                  }
+      236                  return 0.4;
+      237              });
+      238
+      239              // Restaurar nodos según relevancia del ingrediente activo
+      240              nodeElements.each(function(n) {
+      241                  const nodeGroup = d3.select(this);
+      242
+      243                  if (n.level === 1) { // Épocas (nivel 1)
+      244                      nodeGroup.selectAll('circle').each(function() {
+      245                          const circle = d3.select(this);
+      246                          const isBackground = circle.attr('fill') ===
+     colorPalette.epoca;
+          ca;
+      247                          const isPattern = circle.attr('fill') &&
+     circle.attr('fill').startsWith('url(#pattern');
+          startsWith('url(#pattern');
+      248
+      249                          if (isBackground) {
+      250                              circle.attr('opacity', 0.3);
+      251                          } else if (isPattern) {
+      252                              circle.attr('opacity', ingredienteActivo ? (n.isRelevant ?
+      1 : 0.3) : 0.9);
+          ? 1 : 0.3) : 0.9);
+      253                              circle.attr('stroke', '#fff')
+      254                                  .attr('stroke-width', 1.5)
+      255                                  .classed('selected-node', false);
+      256                          }
+      257                      });
+      258                  } else if (n.level === 2) { // Orígenes (nivel 2)
+      259                      const opacity = ingredienteActivo ? (n.isRelevant ? 1 : 0.2) :
+     0.85;
+          85;
+      260                      nodeGroup.select('circle')
+      261                          .attr('opacity', opacity)
+      262                          .attr('stroke', '#fff')
+      263                          .attr('stroke-width', 1)
+      264                          .classed('selected-node', false);
+      265                  } else if (n.level === 3) { // Platillos (nivel 3)
+      266                      const opacity = ingredienteActivo ? (n.isRelevant ? 1 : 0.2) :
+     0.85;
+          85;
+      267                      nodeGroup.select('circle')
+      268                          .attr('opacity', opacity)
+      269                          .attr('stroke', '#fff')
+      270                          .attr('stroke-width', 1)
+      271                          .attr('r', n.isRelevant ? 5 : 4)
+      272                          .classed('selected-node', false);
+      273                  }
+      274              });
+      275
+      276              // Restaurar etiquetas
+      277              labelElements
+      278                  .style('font-size', '9px')
+      279                  .attr('opacity', d => d.level === 2 ? 0.9 : 0);
+      280
+      281              // Quitar estilos de categorías seleccionadas para que no interfieran con
+     el estado actual
+           el estado actual
+      282              d3.selectAll('.category-segment')
+      283                  .attr('opacity', d => ingredienteActivo ?
+      284                      (d.data.isRelevant ? 0.9 : 0.3) : 0.8)
+      285                  .attr('stroke-width', 1);
+      286          }
+      287
+      288          // Función para actualizar el ingrediente activo (expuesta globalmente)
+      289          window.actualizarIngredienteGrafo = function(ingrediente) {
+      290              console.log('Filtrar grafo por ingrediente:', ingrediente);
+      291
+      292              // Si no hay ingrediente o está vacío, mostrar grafo completo
+      293              if (!ingrediente || ingrediente.trim() === '') {
+      294                  console.log('Ingrediente vacío o nulo, mostrando grafo completo');
+      295                  ingredienteActivo = null;
+      296              } else {
+      297                  // Normalizar nombre del ingrediente
+      298                  ingredienteActivo = ingrediente.trim().toUpperCase();
+      299
+      300                  // Manejar variaciones de nombres
+      301                  if (ingredienteActivo === 'MAIZ') ingredienteActivo = 'MAÍZ';
+      302                  if (ingredienteActivo === 'FRÍJOL') ingredienteActivo = 'FRIJOL';
+      303
+      304                  console.log('Ingrediente normalizado para búsqueda:',
+     ingredienteActivo);
+          vo);
+      305              }
+      306
+      307              if (window.grafoData && window.grafoInicializado) {
+      308                  // El grafo está inicializado, podemos filtrar
+      309
+      310                  // Si hay un ingrediente activo, filtrar específicamente por México
+     Prehispánico
+          rehispánico
+      311                  if (ingredienteActivo) {
+      312                      // Guardar el ingrediente para el filtrado
+      313                      filtrarPorIngrediente(ingredienteActivo, true); // true indica
+     filtrar por época prehispánica
+          ltrar por época prehispánica
+      314                  } else {
+      315                      // Si se pulsa "Ver todo", mostrar todas las épocas
+      316                      filtrarPorIngrediente(null); // Mostrar todas las épocas
+      317                  }
+      318
+      319                  actualizarVisualizacion();
+      320              } else {
+      321                  console.log('Esperando a que el grafo se inicialice para filtrar
+     por:', ingrediente);
+          ', ingrediente);
+      322                  // Intentar de nuevo después de un breve retraso
+      323                  if (window.grafoData && !window.grafoInicializado) {
+      324                      setTimeout(() => {
+      325                          if (window.grafoInicializado) {
+      326                              // Si hay un ingrediente activo, filtrar específicamente
+     por México Prehispánico
+          por México Prehispánico
+      327                              if (ingredienteActivo) {
+      328                                  filtrarPorIngrediente(ingredienteActivo, true);
+      329                              } else {
+      330                                  filtrarPorIngrediente(null);
+      331                              }
+      332                              actualizarVisualizacion();
+      333                          }
+      334                      }, 500);
+      335                  }
+      336              }
+      337          };
+      338
+      339          // Paleta de colores inspirada en colores mexicanos tradicionales
+      340          const colorPalette = {
+      341              epoca: '#9B2226',       // Rojo carmín (similar al usado en arte mexicano)
+          )
+      342              origen: '#BB4D00',      // Naranja-rojizo (color de barro)
+      343              platillo: '#073B4C',    // Azul oscuro (color usado en cerámica talavera)
+
+      344              link1: '#AE7C34',       // Dorado ocre (color maya)
+      345              link2: '#5F5F41',       // Verde oliva (color de jade)
+      346              background: '#F8F4E3'   // Beige claro (color de papel amate)
+      347          };
+      348
+      349          // Función para determinar colores de los nodos según el nivel
+      350          function getNodeColor(node) {
+      351              if (node.level === 1) return colorPalette.epoca;     // Época (centro)
+      352              if (node.level === 2) return colorPalette.origen;    // Origen (medio)
+      353              return colorPalette.platillo;                        // Platillos (nivel
+     3)
+          3)
+      354          }
+      355
+      356          // Función para determinar el tamaño de los nodos
+      357          function getNodeRadius(node) {
+      358              // Calcular el número de conexiones en el grafo filtrado actual
+      359              let connectionCount = 0;
+      360
+      361              // Contar las conexiones en los enlaces filtrados
+      362              linksFiltered.forEach(link => {
+      363                  const sourceId = typeof link.source === 'object' ? link.source.id :
+     link.source;
+          ink.source;
+      364                  const targetId = typeof link.target === 'object' ? link.target.id :
+     link.target;
+          ink.target;
+      365
+      366                  if (sourceId === node.id || targetId === node.id) {
+      367                      connectionCount++;
+      368                  }
+      369              });
+      370
+      371              // Aplicar escala según el nivel
+      372              if (node.level === 1) {
+      373                  // Épocas: tamaño proporcionalmente mayor
+      374                  return Math.max(15, Math.min(40, 16 + connectionCount * 0.9));
+      375              }
+      376              if (node.level === 2) {
+      377                  // Orígenes: tamaño medio con escala más drástica
+      378                  if (ingredienteActivo && node.isRelevant) {
+      379                      // Escala mucho más pronunciada para orígenes relevantes cuando
+     hay filtro
+          ay filtro
+      380                      return Math.max(8, Math.min(90, 8 + connectionCount * 1.5));
+      381                  } else {
+      382                      // Escala normal para cuando no hay filtro o no son relevantes
+      383                      return Math.max(8, Math.min(60, 8 + connectionCount * 0.3));
+      384                  }
+      385              }
+      386
+      387              // Platillos: tamaño uniforme pero ligeramente variable según relevancia
+      388              return node.isRelevant ? 5 : 4;
+      389          }
+      390
+      391          // Funciones para controlar el arrastre de nodos
+      392          function dragstarted(event, d) {
+      393              if (!event.active) simulation.alphaTarget(0.3).restart();
+      394              d.fx = d.x;
+      395              d.fy = d.y;
+      396          }
+      397
+      398          function dragged(event, d) {
+      399              d.fx = event.x;
+      400              d.fy = event.y;
+      401          }
+      402
+      403          function dragended(event, d) {
+      404              if (!event.active) simulation.alphaTarget(0);
+      405              // No resetear la posición para que quede fija donde el usuario la dejó
+      406          }
+      407
+      408          // Crear tooltip elegante
+      409          const tooltip = d3.select('body').append('div')
+      410              .attr('class', 'graph-tooltip-custom')
+      411              .style('position', 'absolute')
+      412              .style('background-color', 'rgba(255, 255, 255, 0.95)')
+      413              .style('border', '1px solid #ddd')
+      414              .style('border-radius', '6px')
+      415              .style('padding', '10px 15px')
+      416              .style('font-family', "'Cardo', serif")
+      417              .style('font-size', '13px')
+      418              .style('color', '#333')
+      419              .style('pointer-events', 'none')
+      420              .style('z-index', 1000)
+      421              .style('box-shadow', '0 2px 8px rgba(0,0,0,0.15)')
+      422              .style('max-width', '280px')
+      423              .style('opacity', 0)
+      424              .style('transition', 'opacity 0.2s ease');
+      425
+      426          // Función para filtrar por ingrediente y opcionalmente por época prehispánica
+          a
+      427          function filtrarPorIngrediente(ingrediente, soloEpocaPrehispanica = false) {
+      428              if (!window.grafoData) {
+      429                  console.warn('No hay datos de grafo disponibles para filtrar');
+      430                  return;
+      431              }
+      432
+      433              // Actualizamos el ingrediente activo
+      434              ingredienteActivo = ingrediente;
+      435
+      436              console.log(`Actualizando filtro - Ingrediente activo:
+     ${ingredienteActivo} - Solo época prehispánica: ${soloEpocaPrehispanica}`);
+          o} - Solo época prehispánica: ${soloEpocaPrehispanica}`);
+      437
+      438              // Si no hay ingrediente activo, mostrar todo el grafo
+      439              if (!ingredienteActivo) {
+      440                  console.log('Mostrando grafo completo sin filtros');
+      441                  nodesFiltered = [...nodes];
+      442                  linksFiltered = [...links];
+      443
+      444                  // Marcar todos los nodos como no relevantes para aplicar estilo
+     neutral
+          ral
+      445                  nodesFiltered.forEach(node => {
+      446                      node.isRelevant = false;
+      447                  });
+      448
+      449                  // Marcar todos los enlaces como no relevantes para aplicar estilo
+     neutral
+          utral
+      450                  linksFiltered.forEach(link => {
+      451                      link.isRelevant = false;
+      452                      link.opacity = 0.3; // Opacidad baja pero visible
+      453                  });
+      454
+      455                  return;
+      456              }
+      457
+      458              console.log(`Filtrando grafo por ingrediente: ${ingredienteActivo}`);
+      459
+      460              // Paso 1: Identificar platillos que contienen el ingrediente específico
+      461              const platillosConIngrediente = new Set();
+      462
+      463              // Buscar platillos (nivel 3) que contengan el ingrediente
+      464              nodes.forEach(node => {
+      465                  if (node.level === 3 && node.ingredientes && node.ingredientes.length
+     > 0) {
+           > 0) {
+      466                      // Buscar si alguno de los ingredientes contiene el texto buscado
+
+      467                      const tieneIngrediente = node.ingredientes.some(ing =>
+      468                          ing && typeof ing === 'string' &&
+     ing.includes(ingredienteActivo)
+          ivo)
+      469                      );
+      470
+      471                      if (tieneIngrediente) {
+      472                          platillosConIngrediente.add(node.id);
+      473                          node.isRelevant = true; // Marcar como relevante
+      474                      } else {
+      475                          node.isRelevant = false;
+      476                      }
+      477                  } else if (node.level === 3) {
+      478                      node.isRelevant = false;
+      479                  }
+      480              });
+      481
+      482              console.log(`Encontrados ${platillosConIngrediente.size} platillos con
+     ingrediente: ${ingredienteActivo}`);
+          grediente: ${ingredienteActivo}`);
+      483
+      484              // Paso 2: Identificar orígenes relacionados con estos platillos
+      485              const origenesRelacionados = new Set();
+      486              const enlacesOrigenPlatillo = [];
+      487
+      488              links.forEach(link => {
+      489                  // Verificar si es un enlace entre origen y platillo
+      490                  if (link.type === 'origen-platillo') {
+      491                      const targetId = typeof link.target === 'object' ? link.target.id
+     : link.target;
+           : link.target;
+      492                      if (platillosConIngrediente.has(targetId)) {
+      493                          const sourceId = typeof link.source === 'object' ?
+     link.source.id : link.source;
+          e.id : link.source;
+      494                          origenesRelacionados.add(sourceId);
+      495                          enlacesOrigenPlatillo.push(link); // Guardar este enlace
+      496                      }
+      497                  }
+      498              });
+      499
+      500              console.log(`Encontrados ${origenesRelacionados.size} orígenes
+     relacionados con ${ingredienteActivo}`);
+          os con ${ingredienteActivo}`);
+      501
+      502              // Marcar orígenes como relevantes
+      503              nodes.forEach(node => {
+      504                  if (node.level === 2) {
+      505                      node.isRelevant = origenesRelacionados.has(node.id);
+      506                  }
+      507              });
+      508
+      509              // Paso 3: Identificar épocas relacionadas con estos orígenes
+      510              const epocasRelacionadas = new Set();
+      511              const enlacesEpocaOrigen = [];
+      512
+      513              links.forEach(link => {
+      514                  if (link.type === 'epoca-origen') {
+      515                      const targetId = typeof link.target === 'object' ? link.target.id
+     : link.target;
+           : link.target;
+      516                      if (origenesRelacionados.has(targetId)) {
+      517                          const sourceId = typeof link.source === 'object' ?
+     link.source.id : link.source;
+          e.id : link.source;
+      518                          epocasRelacionadas.add(sourceId);
+      519                          enlacesEpocaOrigen.push(link); // Guardar este enlace
+      520                      }
+      521                  }
+      522              });
+      523
+      524              console.log(`Encontradas ${epocasRelacionadas.size} épocas relacionadas
+     con ${ingredienteActivo}`);
+          on ${ingredienteActivo}`);
+      525
+      526              // Marcar épocas como relevantes
+      527              nodes.forEach(node => {
+      528                  if (node.level === 1) {
+      529                      node.isRelevant = epocasRelacionadas.has(node.id);
+      530                  }
+      531              });
+      532
+      533              // Paso 4: Si solamente queremos mostrar época prehispánica (cuando hay
+     ingrediente activo)
+          ngrediente activo)
+      534              if (soloEpocaPrehispanica) {
+      535                  console.log("Filtrando específicamente por México Prehispánico");
+      536
+      537                  // ID de la época prehispánica (ajustar si es diferente)
+      538                  const epocaPrehispanicaId = 'México Prehispánico (Antes de 1521)';
+      539
+      540                  // Filtrar solo platillos de época prehispánica
+      541                  const platillosPrehispanicos = new Set();
+      542                  const origenesPrehispanicos = new Set();
+      543
+      544                  // Primero identificar los orígenes que pertenecen a la época
+     prehispánica
+          ánica
+      545                  links.forEach(link => {
+      546                      if (link.type === 'epoca-origen') {
+      547                          const sourceId = typeof link.source === 'object' ?
+     link.source.id : link.source;
+          e.id : link.source;
+      548                          const targetId = typeof link.target === 'object' ?
+     link.target.id : link.target;
+          t.id : link.target;
+      549
+      550                          if (sourceId === epocaPrehispanicaId) {
+      551                              // Este origen pertenece a la época prehispánica
+      552                              origenesPrehispanicos.add(targetId);
+      553                          }
+      554                      }
+      555                  });
+      556
+      557                  // Luego filtrar solo los platillos que pertenecen a orígenes
+     prehispánicos
+          ánicos
+      558                  // y que contienen el ingrediente
+      559                  platillosConIngrediente.forEach(platilloId => {
+      560                      const platillo = nodes.find(n => n.id === platilloId);
+      561                      if (platillo && origenesPrehispanicos.has(platillo.origen)) {
+      562                          platillosPrehispanicos.add(platilloId);
+      563                      }
+      564                  });
+      565
+      566                  // Ahora creamos la lista filtrada de nodos y enlaces
+      567                  nodesFiltered = nodes.filter(node => {
+      568                      if (node.level === 1) return node.id === epocaPrehispanicaId;
+      569                      if (node.level === 2) return origenesPrehispanicos.has(node.id) &&
+      origenesRelacionados.has(node.id);
+          & origenesRelacionados.has(node.id);
+      570                      if (node.level === 3) return platillosPrehispanicos.has(node.id);
+
+      571                      return false;
+      572                  });
+      573
+      574                  // Filtrar enlaces relevantes
+      575                  const enlacesEpocaOrigenFiltrados = enlacesEpocaOrigen.filter(link =>
+     {
+           {
+      576                      const sourceId = typeof link.source === 'object' ? link.source.id
+     : link.source;
+           : link.source;
+      577                      return sourceId === epocaPrehispanicaId;
+      578                  });
+      579
+      580                  const enlacesOrigenPlatilloFiltrados =
+     enlacesOrigenPlatillo.filter(link => {
+          ink => {
+      581                      const sourceId = typeof link.source === 'object' ? link.source.id
+     : link.source;
+           : link.source;
+      582                      const targetId = typeof link.target === 'object' ? link.target.id
+     : link.target;
+           : link.target;
+      583                      return origenesPrehispanicos.has(sourceId) &&
+     platillosPrehispanicos.has(targetId);
+          cos.has(targetId);
+      584                  });
+      585
+      586                  // Combinar los enlaces filtrados
+      587                  linksFiltered = [...enlacesEpocaOrigenFiltrados,
+     ...enlacesOrigenPlatilloFiltrados];
+          illoFiltrados];
+      588              } else {
+      589                  // Paso 4 (original): Crear la lista filtrada de nodos y enlaces
+      590
+      591                  // Enfoque estricto: Mostrar solo los nodos y enlaces relevantes
+      592                  nodesFiltered = nodes.filter(node => {
+      593                      if (node.level === 1) return epocasRelacionadas.has(node.id);
+      594                      if (node.level === 2) return origenesRelacionados.has(node.id);
+      595                      if (node.level === 3) return platillosConIngrediente.has(node.id);
+          ;
+      596                      return false;
+      597                  });
+      598
+      599                  // Combinar los enlaces relevantes
+      600                  linksFiltered = [...enlacesEpocaOrigen, ...enlacesOrigenPlatillo];
+      601              }
+      602
+      603              // Ajustar opacidad en los enlaces filtrados
+      604              linksFiltered.forEach(link => {
+      605                  link.isRelevant = true;
+      606                  link.opacity = 0.6; // Opacidad 60% para todos los enlaces
+      607              });
+      608
+      609              console.log(`Filtrado completado: ${nodesFiltered.length} nodos y
+     ${linksFiltered.length} enlaces relevantes`);
+          Filtered.length} enlaces relevantes`);
+      610
+      611              // Si no hay suficientes elementos para mostrar, usar enfoque visual
+     (mostrando todo pero con opacidad)
+          trando todo pero con opacidad)
+      612              if (nodesFiltered.length < 5 || linksFiltered.length < 4) {
+      613                  console.log('Muy pocos elementos para mostrar, usando filtrado
+     visual');
+          ');
+      614
+      615                  // Mostrar todos los nodos pero con opacidad diferencial
+      616                  nodesFiltered = [...nodes];
+      617                  linksFiltered = [...links];
+      618
+      619                  // Marcar enlaces como relevantes o no
+      620                  linksFiltered.forEach(link => {
+      621                      const sourceId = typeof link.source === 'object' ? link.source.id
+     : link.source;
+           : link.source;
+      622                      const targetId = typeof link.target === 'object' ? link.target.id
+     : link.target;
+           : link.target;
+      623
+      624                      if (link.type === 'epoca-origen') {
+      625                          // Enlace entre época y origen
+      626                          link.isRelevant = epocasRelacionadas.has(sourceId) &&
+     origenesRelacionados.has(targetId);
+          sRelacionados.has(targetId);
+      627                      } else if (link.type === 'origen-platillo') {
+      628                          // Enlace entre origen y platillo
+      629                          link.isRelevant = origenesRelacionados.has(sourceId) &&
+     platillosConIngrediente.has(targetId);
+          llosConIngrediente.has(targetId);
+      630                      } else {
+      631                          link.isRelevant = false;
+      632                      }
+      633
+      634                      // Opacidad del 60% para todas las líneas
+      635                      link.opacity = 0.6;
+      636                  });
+      637              }
+      638          }
+      639
+      640          // Función para actualizar la visualización
+      641          function actualizarVisualizacion(recentrar = true) {
+      642              // Remover cualquier anillo de categorías existente
+      643              svg.select('.category-ring').remove();
+      644              // Mostrar información sobre el filtro actual
+      645              let infoText = '';
+      646              if (ingredienteActivo) {
+      647                  // Contar platillos que tienen este ingrediente
+      648                  const platillosCount = nodesFiltered.filter(n =>
+      649                      n.level === 3 &&
+      650                      n.isRelevant
+      651                  ).length;
+      652
+      653                  // Crear texto informativo
+      654                  infoText = `Visualizando ${platillosCount} platillos con
+     ${ingredienteActivo.toLowerCase()}`;
+          eActivo.toLowerCase()}`;
+      655              }
+      656
+      657              // Actualizar o crear elemento de información
+      658              let infoElement = d3.select('#filter-info');
+      659              if (infoElement.empty()) {
+      660                  infoElement = d3.select('#network')
+      661                      .append('div')
+      662                      .attr('id', 'filter-info')
+      663                      .style('position', 'absolute')
+      664                      .style('top', '15px')
+      665                      .style('left', '15px')
+      666                      .style('background-color', 'rgba(255,255,255,0.5)')
+      667                      .style('padding', '8px 15px')
+      668                      .style('margin-bottom', '10px')
+      669                      .style('border-radius', '20px')
+      670                      .style('font-family', 'Cardo, serif')
+      671                      .style('font-size', '14px')
+      672                      .style('color', '#073B4C')
+      673                      .style('font-weight', 'bold')
+      674                      .style('text-align', 'left')
+      675                      .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
+      676                      .style('z-index', '100')
+      677                      .style('transition', 'opacity 0.3s ease');
+      678              }
+      679
+      680              // Actualizar texto con transición
+      681              infoElement
+      682                  .text(infoText)
+      683                  .style('opacity', infoText ? 1 : 0);
+      684
+      685              // Añadir o actualizar instrucciones de zoom debajo del texto informativo
+
+      686              let zoomInstructions = d3.select('#zoom-instructions');
+      687              if (zoomInstructions.empty()) {
+      688                  zoomInstructions = d3.select('#network')
+      689                      .append('div')
+      690                      .attr('id', 'zoom-instructions')
+      691                      .style('position', 'absolute')
+      692                      .style('top', '55px')  // Posición debajo del texto informativo
+     con más espacio
+          on más espacio
+      693                      .style('left', '15px')
+      694                      .style('font-family', 'Cardo, serif')
+      695                      .style('font-size', '11px')
+      696                      .style('color', '#666')
+      697                      .style('padding', '4px 0')
+      698                      .style('text-align', 'left')
+      699                      .style('z-index', '100')
+      700                      .text('Usa la rueda del ratón para zoom • Arrastra para mover');
+      701              }
+      702
+      703              // Limpiar visualizaciones previas
+      704              linkGroup.selectAll('*').remove();
+      705              nodeGroup.selectAll('*').remove();
+      706              labelGroup.selectAll('*').remove();
+      707
+      708              // Detener simulación anterior si existe
+      709              if (simulation) simulation.stop();
+      710
+      711              // Crear enlaces con estilo mejorado
+      712              linkElements = linkGroup.selectAll('line')
+      713                  .data(linksFiltered)
+      714                  .enter()
+      715                  .append('line')
+      716                  .attr('stroke', d => {
+      717                      // Color según el tipo de enlace
+      718                      if (d.type === 'epoca-origen') return colorPalette.link1;
+      719                      if (d.type === 'origen-platillo') return colorPalette.link2;
+      720                      return '#aaa';
+      721                  })
+      722                  .attr('opacity', d => {
+      723                      // Opacidad según relevancia
+      724                      if (ingredienteActivo) {
+      725                          return 0.6; // Opacidad 60% para todas las líneas
+      726                      }
+      727                      return 0.4; // Opacidad por defecto
+      728                  })
+      729                  .attr('stroke-width', d => {
+      730                      // Grosor según valor y relevancia
+      731                      const baseWidth = Math.max(1, Math.sqrt(d.value || 1) * 0.7);
+      732                      if (ingredienteActivo && d.isRelevant) {
+      733                          return baseWidth + 0.5;
+      734                      }
+      735                      return baseWidth;
+      736                  });
+      737
+      738              // Mapeo de épocas a imágenes
+      739              const epocaImageMap = {
+      740                  'México Prehispánico (Antes de 1521)':
+     'img/Xolin/Xolin_Aperitivo.png',
+          ',
+      741                  'Conquista y Virreinato (1521 – 1821)': 'img/Xolin/Xolin_Primer Plato
+     .png',
+           .png',
+      742                  'Influencia europea / Porfiriato (1821 - 1910)':
+     'img/Xolin/Xolin_Entremes.png',
+          remes.png',
+      743                  'Revolución Mexicana (1910 - 1940)':
+     'img/Xolin/Xolin_Segundo_Plato.png',
+          ng',
+      744                  'México Contemporáneo (1940 - Actualidad)':
+     'img/Xolin/Xolin_Postre.png',
+          ng',
+      745              };
+      746
+      747              // Crear nodos - grupos para poder añadir círculos o imágenes según el
+     tipo de nodo
+          po de nodo
+      748              nodeElements = nodeGroup.selectAll('.node')
+      749                  .data(nodesFiltered)
+      750                  .enter()
+      751                  .append('g')
+      752                  .attr('class', 'node')
+      753                  .call(d3.drag()
+      754                      .on('start', dragstarted)
+      755                      .on('drag', dragged)
+      756                      .on('end', dragended));
+      757
+      758              // Añadir círculos para nodos que no son épocas (nivel 2 y 3)
+      759              nodeElements.filter(d => d.level !== 1)
+      760                  .append('circle')
+      761                  .attr('r', getNodeRadius)
+      762                  .attr('fill', getNodeColor)
+      763                  .attr('stroke', '#fff')
+      764                  .attr('stroke-width', 1)
+      765                  .attr('opacity', d => {
+      766                      // Opacidad según relevancia
+      767                      if (ingredienteActivo) {
+      768                          return d.isRelevant ? 1 : 0.2;
+      769                      }
+      770                      return 0.85;
+      771                  });
+      772
+      773              // Crear definiciones para patrones de imagen
+      774              const defs = svg.append('defs');
+      775
+      776              // Añadir imágenes para nodos de épocas (nivel 1)
+      777              nodeElements.filter(d => d.level === 1)
+      778                  .each(function(d) {
+      779                      const node = d3.select(this);
+      780                      const radius = getNodeRadius(d);
+      781                      const imageUrl = epocaImageMap[d.name] ||
+     'img/Xolin/Xolin_Aperitivo.png';
+          ivo.png';
+      782
+      783                      // Generar ID único para este patrón
+      784                      const patternId = `pattern-${d.id.replace(/\s+/g,
+     '-').replace(/[()]/g, '').replace(/[\/]/g, '-')}`;
+          ()]/g, '').replace(/[\/]/g, '-')}`;
+      785
+      786                      // Crear patrón con ID único
+      787                      const pattern = defs.append('pattern')
+      788                          .attr('id', patternId)
+      789                          .attr('width', 1)
+      790                          .attr('height', 1)
+      791                          .attr('patternUnits', 'objectBoundingBox')
+      792                          .attr('patternContentUnits', 'objectBoundingBox');
+      793
+      794                      // Añadir imagen al patrón usando unidades relativas para mejor
+     centrado
+          entrado
+      795                      pattern.append('image')
+      796                          .attr('href', imageUrl)
+      797                          .attr('x', 0)
+      798                          .attr('y', 0)
+      799                          .attr('width', 1)
+      800                          .attr('height', 1)
+      801                          .attr('preserveAspectRatio', 'xMidYMid slice');
+      802
+      803                      // Añadir círculo de fondo
+      804                      node.append('circle')
+      805                          .attr('r', radius + 2)
+      806                          .attr('fill', colorPalette.epoca)
+      807                          .attr('opacity', 0.3);
+      808
+      809                      // Añadir círculo con la imagen
+      810                      node.append('circle')
+      811                          .attr('r', radius)
+      812                          .attr('fill', `url(#${patternId})`)
+      813                          .attr('stroke', '#fff')
+      814                          .attr('stroke-width', 1.5)
+      815                          .attr('opacity', d => {
+      816                              if (ingredienteActivo) {
+      817                                  return d.isRelevant ? 1 : 0.3;
+      818                              }
+      819                              return 0.9;
+      820                          });
+      821
+      822                      // Asegurar que el patrón esté bien centrado en el círculo
+      823                      pattern.attr('patternContentUnits', 'objectBoundingBox')
+      824                            .attr('preserveAspectRatio', 'xMidYMid slice');
+      825                  });
+      826
+      827              // Eliminamos etiquetas de orígenes cambiando el filtro para que no
+     incluya ningún nodo
+          ya ningún nodo
+      828              labelElements = labelGroup.selectAll('text')
+      829                  .data(nodesFiltered.filter(d => false)) // No mostrar ninguna etiqueta
+          a
+      830                  .enter()
+      831                  .append('text')
+      832                  .style('fill', d => d.level === 2 ? '#662200' : '#333')
+      833                  .style('font-family', 'Cardo, serif')
+      834                  .style('font-size', d => d.level === 2 ? '9px' : '7px')
+      835                  .style('font-weight', d => d.level === 2 ? 'bold' : 'normal')
+      836                  .style('pointer-events', 'none')
+      837                  .style('text-anchor', 'middle')
+      838                  .style('paint-order', 'stroke')
+      839                  .style('stroke', 'white')
+      840                  .style('stroke-width', '2px')
+      841                  .text(d => {
+      842                      // Truncar texto demasiado largo para evitar sobrecarga visual
+      843                      const maxLength = d.level === 2 ? 20 : 15;
+      844                      return d.name.length > maxLength ? d.name.substring(0, maxLength)
+     + '...' : d.name;
+           + '...' : d.name;
+      845                  })
+      846                  .attr('opacity', d => {
+      847                      // Solo mostrar etiquetas para orígenes (nivel 2)
+      848                      return d.level === 2 ? 0.9 : 0;
+      849                  });
+      850
+      851              // Crear nueva simulación con nodos filtrados
+      852              simulation = d3.forceSimulation(nodesFiltered)
+      853                  .force('link', d3.forceLink(linksFiltered).id(d => d.id).distance(d =>
+      {
+          > {
+      854                      // Distancias basadas en niveles
+      855                      const sourceLevel = typeof d.source === 'object' ? d.source.level
+     : 1;
+           : 1;
+      856                      const targetLevel = typeof d.target === 'object' ? d.target.level
+     : 3;
+           : 3;
+      857
+      858                      if (sourceLevel === 1 && targetLevel === 2) return radiusLevel2 -
+     radiusLevel1; // Entre épocas y orígenes
+           radiusLevel1; // Entre épocas y orígenes
+      859                      if (sourceLevel === 2 && targetLevel === 3) return radiusLevel3 -
+     radiusLevel2; // Entre orígenes y platillos
+           radiusLevel2; // Entre orígenes y platillos
+      860                      return 30; // Dentro del mismo nivel
+      861                  }))
+      862                  .force('charge', d3.forceManyBody().strength(d => {
+      863                      // Fuerza repulsiva según nivel y relevancia
+      864                      if (d.level === 1) return -50;
+      865                      if (d.level === 2) return -30;
+      866                      return d.isRelevant ? -20 : -10;
+      867                  }))
+      868                  .force('x', d3.forceX().strength(0.05)) // Fuerza centralizadora suave
+          e
+      869                  .force('y', d3.forceY().strength(0.05)) // Fuerza centralizadora suave
+          e
+      870                  .force('collide', d3.forceCollide().radius(d => getNodeRadius(d) +
+     2).strength(0.8))
+          .strength(0.8))
+      871                  .force('radial', d3.forceRadial(d => {
+      872                      // Radio según nivel - ajustado para dejar espacio para el anillo
+     de categorías
+           de categorías
+      873                      if (d.level === 1) return radiusLevel1;
+      874                      if (d.level === 2) return radiusLevel2;
+      875                      return radiusLevel3; // Nivel 3 (platillos) ahora más cerca del
+     centro
+          entro
+      876                  }).strength(1)) // Fuerza radial fuerte para estructura circular
+      877                  .alphaDecay(0.08) // Velocidad de convergencia moderada
+      878                  .velocityDecay(0.35); // Amortiguación de movimiento
+      879
+      880              // Actualizar en cada tick
+      881              simulation.on('tick', () => {
+      882                  linkElements
+      883                      .attr('x1', d => isFinite(d.source.x) ? d.source.x : 0)
+      884                      .attr('y1', d => isFinite(d.source.y) ? d.source.y : 0)
+      885                      .attr('x2', d => isFinite(d.target.x) ? d.target.x : 0)
+      886                      .attr('y2', d => isFinite(d.target.y) ? d.target.y : 0);
+      887
+      888                  // Actualizar posición de los nodos
+      889                  nodeElements
+      890                      .attr('transform', d => `translate(${isFinite(d.x) ? d.x : 0},
+     ${isFinite(d.y) ? d.y : 0})`);
+          isFinite(d.y) ? d.y : 0})`);
+      891
+      892                  // Actualizar posición de las etiquetas
+      893                  labelElements
+      894                      .attr('x', d => isFinite(d.x) ? d.x : 0)
+      895                      .attr('y', d => {
+      896                          const radius = getNodeRadius(d);
+      897                          return isFinite(d.y) ? d.y + radius + 8 : 0;
+      898                      });
+      899              });
+      900
+      901              // Configurar eventos interactivos
+      902              configurarEventosInteractivos();
+      903
+      904              // Asegurar que el SVG sea visible
+      905              svg.style('opacity', 1);
+      906
+      907              // Crear el anillo de categorías si hay datos disponibles
+      908              if (window.categoriasPlatillos && window.categoriasPlatillos.length > 0) {
+          {
+      909                  createCategoryRing(svg, radiusLevel4, window.categoriasPlatillos,
+     ingredienteActivo, nodesFiltered);
+          redienteActivo, nodesFiltered);
+      910              }
+      911
+      912              // Aplicar zoom y centrado si es necesario
+      913              if (recentrar) {
+      914                  setTimeout(() => {
+      915                      // No necesitamos desplazamiento adicional, solo el zoom
+      916                      zoomContainer.transition().duration(400)
+      917                          .call(zoom.transform, d3.zoomIdentity.translate(0,
+     0).scale(1.15));
+          .15));
+      918                  }, 200);
+      919              }
+      920          }
+      921
+      922          // Configurar eventos de interacción
+      923          function configurarEventosInteractivos() {
+      924              // Array para seguir los nodos seleccionados
+      925              let selectedNodes = [];
+      926
+      927              // Grupo para las etiquetas permanentes de nodos seleccionados
+      928              const permanentLabelGroup = svg.append('g')
+      929                  .attr('class', 'permanent-labels')
+      930                  .attr('pointer-events', 'none');
+      931
+      932              // Función para mostrar tooltip
+      933              function showTooltip(event, d) {
+      934                  // Construir contenido del tooltip
+      935                  let tooltipContent = `<div style="text-align: center;"><strong
+     style="color:${getNodeColor(d)}; font-size:15px">${d.name}</strong></div>`;
+          "color:${getNodeColor(d)}; font-size:15px">${d.name}</strong></div>`;
+      936
+      937                  // Añadir separador
+      938                  tooltipContent += `<div style="height: 1px; background-color: #eee;
+     margin: 8px 0;"></div>`;
+          argin: 8px 0;"></div>`;
+      939
+      940                  // Información específica según tipo de nodo
+      941                  if (d.level === 1) {
+      942                      // Información para época
+      943                      const origenesCount = linksFiltered.filter(l =>
+      944                          (typeof l.source === 'object' ? l.source.id : l.source) ===
+     d.id
+          .id
+      945                      ).length;
+      946
+      947                      tooltipContent += `<div><strong>Época histórica</strong></div>`;
+      948                      tooltipContent += `<div>Conectado a ${origenesCount} orígenes
+     culinarios</div>`;
+          inarios</div>`;
+      949                  } else if (d.level === 2) {
+      950                      // Información para origen
+      951                      const platillosCount = linksFiltered.filter(l =>
+      952                          l.type === 'origen-platillo' &&
+      953                          (typeof l.source === 'object' ? l.source.id : l.source) ===
+     d.id
+          .id
+      954                      ).length;
+      955
+      956                      tooltipContent += `<div><strong>Origen culinario</strong></div>`;
+
+      957                      tooltipContent += `<div>Conectado a ${platillosCount}
+     platillos</div>`;
+          div>`;
+      958
+      959                      // Buscar la época relacionada
+      960                      const epocaLink = linksFiltered.find(l =>
+      961                          l.type === 'epoca-origen' &&
+      962                          (typeof l.target === 'object' ? l.target.id : l.target) ===
+     d.id
+          .id
+      963                      );
+      964
+      965                      if (epocaLink) {
+      966                          const epocaId = typeof epocaLink.source === 'object' ?
+     epocaLink.source.id : epocaLink.source;
+          ink.source.id : epocaLink.source;
+      967                          const epoca = nodes.find(n => n.id === epocaId);
+      968                          if (epoca) {
+      969                              tooltipContent += `<div>Época: ${epoca.name}</div>`;
+      970                          }
+      971                      }
+      972                  } else if (d.level === 3) {
+      973                      // Información para platillo
+      974                      tooltipContent += `<div><strong>Platillo</strong></div>`;
+      975                      tooltipContent += `<div>Origen: ${d.origen}</div>`;
+      976                      tooltipContent += `<div>Época: ${d.epoca}</div>`;
+      977
+      978                      // Mostrar ingredientes principales si existen
+      979                      if (d.ingredientes && d.ingredientes.length > 0) {
+      980                          // Filtrar ingredientes principales
+      981                          const ingredientesPrincipales =
+     INGREDIENTES_PRINCIPALES.filter(
+          er(
+      982                              ing => d.ingredientes.some(i => i && i.includes(ing))
+      983                          );
+      984
+      985                          if (ingredientesPrincipales.length > 0) {
+      986                              tooltipContent += `<div style="margin-top:
+     8px;"><strong>Ingredientes principales:</strong></div>`;
+          Ingredientes principales:</strong></div>`;
+      987                              tooltipContent += `<div>${ingredientesPrincipales.join(',
+     ').toLowerCase()}</div>`;
+           ').toLowerCase()}</div>`;
+      988                          }
+      989                      }
+      990                  }
+      991
+      992                  // Mostrar tooltip con transición suave
+      993                  tooltip
+      994                      .html(tooltipContent)
+      995                      .style('left', (event.pageX + 10) + 'px')
+      996                      .style('top', (event.pageY - 10) + 'px')
+      997                      .transition()
+      998                      .duration(200)
+      999                      .style('opacity', 1);
+     1000              }
+     1001
+     1002              // Crear una variable global para controlar las interacciones entre
+     componentes si no existe
+          nentes si no existe
+     1003              window.isInteractingWithGraph = window.isInteractingWithGraph || {
+     1004                  category: false,
+     1005                  node: false
+     1006              };
+     1007
+     1008              nodeElements.on('mouseover', function(event, d) {
+     1009                  // Indicar que estamos interactuando con un nodo
+     1010                  window.isInteractingWithGraph.node = true;
+     1011
+     1012                  // Si el anillo de categorías tiene alguna selección activa, no
+     responder al hover
+          nder al hover
+     1013                  if (window.selectedCategoriesGlobal &&
+     window.selectedCategoriesGlobal.length > 0) {
+          l.length > 0) {
+     1014                      // Solo mostrar tooltip sin modificar el resaltado
+     1015                      showTooltip(event, d);
+     1016                      return;
+     1017                  }
+     1018
+     1019                  // Determinar si este nodo está entre los seleccionados
+     1020                  const isNodeSelected = selectedNodes.some(node => node.id === d.id);
+     1021
+     1022                  // Si hay nodos seleccionados, marcar el nodo seleccionado para
+     mantener el estado visual
+          ner el estado visual
+     1023                  if (selectedNodes.length > 0) {
+     1024                      // Solo mostrar tooltip y no modificar el resaltado
+     1025                      showTooltip(event, d);
+     1026
+     1027                      // Si este nodo está entre los seleccionados, podemos destacarlo
+     un poco más
+          un poco más
+     1028                      if (isNodeSelected) {
+     1029                          if (d.level !== 1) {
+     1030                              d3.select(this).select('circle')
+     1031                                  .attr('stroke-width', 3.5)
+     1032                                  .classed('selected-node', true);
+     1033                          } else {
+     1034                              d3.select(this).select('circle[fill^="url(#pattern"]')
+     1035                                  .attr('stroke-width', 3.5)
+     1036                                  .classed('selected-node', true);
+     1037                          }
+     1038                      }
+     1039
+     1040                      return;
+     1041                  }
+     1042
+     1043                  // Comportamiento normal de hover cuando no hay seleccionados
+     1044                  // Aplicar efecto de hover a este nodo
+     1045                  if (d.level !== 1) {
+     1046                      d3.select(this).select('circle')
+     1047                          .attr('stroke', getNodeColor(d))
+     1048                          .attr('stroke-width', 2);
+     1049                  } else {
+     1050                      d3.select(this).select('circle[fill^="url(#pattern"]')
+     1051                          .attr('stroke', '#B8860B')
+     1052                          .attr('stroke-width', 2.5);
+     1053
+     1054                      d3.select(this).select('circle[fill="' + colorPalette.epoca +
+     '"]')
+          ')
+     1055                          .attr('opacity', 0.6);
+     1056                  }
+     1057
+     1058                  // Mostrar enlaces conectados con mayor opacidad
+     1059                  linkElements.attr('opacity', l => {
+     1060                      if (l.source.id === d.id || l.target.id === d.id) {
+     1061                          return 0.8; // Mayor opacidad para enlaces conectados
+     1062                      } else {
+     1063                          return 0.1; // Baja opacidad para enlaces no relacionados
+     1064                      }
+     1065                  });
+     1066
+     1067                  // Resaltar nodos conectados con lógica especial para épocas
+     1068                  nodeElements.each(function(n) {
+     1069                      const nodeGroup = d3.select(this);
+     1070
+     1071                      // Verificar conexión directa
+     1072                      const isDirectlyConnected = linksFiltered.some(l =>
+     1073                          (l.source.id === d.id && l.target.id === n.id) ||
+     1074                          (l.target.id === d.id && l.source.id === n.id)
+     1075                      );
+     1076
+     1077                      // Para épocas (nivel 1), también resaltar los platillos (nivel 3)
+      relacionados
+          ) relacionados
+     1078                      // a través de los orígenes conectados a esta época
+     1079                      let isIndirectlyConnected = false;
+     1080                      if (d.level === 1 && n.level === 3) {
+     1081                          // Encuentra orígenes conectados a esta época
+     1082                          const origenesConectados = linksFiltered
+     1083                              .filter(l => l.source.id === d.id && l.type ===
+     'epoca-origen')
+          igen')
+     1084                              .map(l => l.target.id);
+     1085
+     1086                          // Verifica si este platillo está conectado a alguno de esos
+     orígenes
+          orígenes
+     1087                          isIndirectlyConnected = linksFiltered.some(l =>
+     1088                              l.type === 'origen-platillo' &&
+     1089                              origenesConectados.includes(l.source.id) &&
+     1090                              l.target.id === n.id
+     1091                          );
+     1092                      }
+     1093
+     1094                      // Aplicar opacidad según conexión
+     1095                      const opacity = n === d || isDirectlyConnected ||
+     isIndirectlyConnected ? 1 : 0.15;
+          nected ? 1 : 0.15;
+     1096                      nodeGroup.selectAll('circle').attr('opacity', opacity);
+     1097                  });
+     1098
+     1099                  // Mostrar etiquetas para nodos conectados
+     1100                  labelElements
+     1101                      .style('font-size', n => {
+     1102                          // Aumentar tamaño de la etiqueta del nodo actual
+     1103                          if (n.id === d.id) return '11px';
+     1104                          // Verificar si este nodo está conectado al nodo actual
+     1105                          const isConnected = linksFiltered.some(l =>
+     1106                              (l.source.id === d.id && l.target.id === n.id) ||
+     1107                              (l.target.id === d.id && l.source.id === n.id)
+     1108                          );
+     1109                          return isConnected ? '10px' : '9px';
+     1110                      })
+     1111                      .attr('opacity', n => {
+     1112                          // Verificar si este nodo está conectado al nodo actual
+     1113                          const isConnected = linksFiltered.some(l =>
+     1114                              (l.source.id === d.id && l.target.id === n.id) ||
+     1115                              (l.target.id === d.id && l.source.id === n.id)
+     1116                          );
+     1117
+     1118                          if (n.id === d.id) return 1; // Nodo actual visible
+     1119                          if (isConnected) return 0.9; // Nodos conectados visibles
+     1120                          return 0.1; // Resto muy transparentes
+     1121                      });
+     1122
+     1123                  // Mostrar tooltip
+     1124                  showTooltip(event, d);
+     1125              })
+     1126              .on('mouseout', function(event, d) {
+     1127                  // Indicar que ya no estamos interactuando con un nodo
+     1128                  window.isInteractingWithGraph.node = false;
+     1129
+     1130                  // Si hay categorías seleccionadas, no hacer nada más que ocultar el
+     tooltip
+          tooltip
+     1131                  if (window.selectedCategoriesGlobal &&
+     window.selectedCategoriesGlobal.length > 0) {
+          l.length > 0) {
+     1132                      tooltip.transition()
+     1133                          .duration(200)
+     1134                          .style('opacity', 0);
+     1135                      return;
+     1136                  }
+     1137
+     1138                  // Si hay nodos seleccionados, solo ocultar tooltip pero mantener
+     resaltado
+          altado
+     1139                  if (selectedNodes.length > 0) {
+     1140                      // Ocultar tooltip
+     1141                      tooltip.transition()
+     1142                          .duration(200)
+     1143                          .style('opacity', 0);
+     1144                      return;
+     1145                  }
+     1146
+     1147                  // Restaurar estilo normal para este nodo
+     1148                  if (d.level !== 1) {
+     1149                      d3.select(this).select('circle')
+     1150                          .attr('stroke', '#fff')
+     1151                          .attr('stroke-width', 1);
+     1152                  } else {
+     1153                      d3.select(this).select('circle[fill^="url(#pattern"]')
+     1154                          .attr('stroke', '#fff')
+     1155                          .attr('stroke-width', 1.5);
+     1156
+     1157                      d3.select(this).select('circle[fill="' + colorPalette.epoca +
+     '"]')
+          ')
+     1158                          .attr('opacity', 0.3);
+     1159                  }
+     1160
+     1161                  // Restaurar opacidad original de enlaces
+     1162                  linkElements.attr('opacity', d => {
+     1163                      if (ingredienteActivo) {
+     1164                          return 0.6; // Opacidad 60% para todas las líneas
+     1165                      }
+     1166                      return 0.4;
+     1167                  });
+     1168
+     1169                  // Restaurar opacidad original de nodos
+     1170                  nodeElements.each(function(n) {
+     1171                      const nodeGroup = d3.select(this);
+     1172
+     1173                      if (n.level === 1) {
+     1174                          // Para nodos de nivel 1 (épocas)
+     1175                          nodeGroup.selectAll('circle').each(function() {
+     1176                              const circle = d3.select(this);
+     1177                              const isBackground = circle.attr('fill') ===
+     colorPalette.epoca;
+          .epoca;
+     1178                              const isPattern = circle.attr('fill') &&
+     circle.attr('fill').startsWith('url(#pattern');
+          l').startsWith('url(#pattern');
+     1179
+     1180                              if (isBackground) {
+     1181                                  circle.attr('opacity', 0.3);
+     1182                              } else if (isPattern) {
+     1183                                  circle.attr('opacity', ingredienteActivo ?
+     (n.isRelevant ? 1 : 0.3) : 0.9);
+          ant ? 1 : 0.3) : 0.9);
+     1184                              }
+     1185                          });
+     1186                      } else {
+     1187                          // Para nodos de nivel 2 y 3
+     1188                          const opacity = ingredienteActivo ? (n.isRelevant ? 1 : 0.2) :
+      0.85;
+          : 0.85;
+     1189                          nodeGroup.selectAll('circle').attr('opacity', opacity);
+     1190                      }
+     1191                  });
+     1192
+     1193                  // Restaurar estado original de etiquetas
+     1194                  labelElements
+     1195                      .style('font-size', '9px')
+     1196                      .attr('opacity', d => {
+     1197                          // Solo mostrar etiquetas para orígenes (nivel 2)
+     1198                          return d.level === 2 ? 0.9 : 0;
+     1199                      });
+     1200
+     1201                  // Ocultar tooltip
+     1202                  tooltip.transition()
+     1203                      .duration(200)
+     1204                      .style('opacity', 0);
+     1205              })
+     1206              .on('click', function(event, d) {
+     1207                  // Función para aplicar resaltado a un nodo y sus conexiones
+     1208                  function highlightNode(node) {
+     1209                      // Resaltar el nodo seleccionado
+     1210                      if (node.level !== 1) {
+     1211                          d3.select(this).select('circle')
+     1212                              .attr('stroke', getNodeColor(node))
+     1213                              .attr('stroke-width', 3);
+     1214                      } else {
+     1215                          d3.select(this).select('circle[fill^="url(#pattern"]')
+     1216                              .attr('stroke', '#B8860B')
+     1217                              .attr('stroke-width', 3);
+     1218
+     1219                          d3.select(this).select('circle[fill="' + colorPalette.epoca +
+     '"]')
+           '"]')
+     1220                              .attr('opacity', 0.6);
+     1221                      }
+     1222
+     1223                      // Mostrar enlaces conectados con mayor opacidad
+     1224                      linkElements.attr('opacity', l => {
+     1225                          if (l.source.id === node.id || l.target.id === node.id) {
+     1226                              return 0.8; // Mayor opacidad para enlaces conectados
+     1227                          } else {
+     1228                              return 0.1; // Baja opacidad para enlaces no relacionados
+
+     1229                          }
+     1230                      });
+     1231
+     1232                      // Resaltar nodos conectados
+     1233                      nodeElements.each(function(n) {
+     1234                          const nodeGroup = d3.select(this);
+     1235
+     1236                          // Verificar conexión directa
+     1237                          const isDirectlyConnected = linksFiltered.some(l =>
+     1238                              (l.source.id === node.id && l.target.id === n.id) ||
+     1239                              (l.target.id === node.id && l.source.id === n.id)
+     1240                          );
+     1241
+     1242                          // Para épocas (nivel 1), también resaltar los platillos
+     (nivel 3) relacionados
+          el 3) relacionados
+     1243                          let isIndirectlyConnected = false;
+     1244                          if (node.level === 1 && n.level === 3) {
+     1245                              // Encuentra orígenes conectados a esta época
+     1246                              const origenesConectados = linksFiltered
+     1247                                  .filter(l => l.source.id === node.id && l.type ===
+     'epoca-origen')
+          poca-origen')
+     1248                                  .map(l => l.target.id);
+     1249
+     1250                              // Verifica si este platillo está conectado a alguno de
+     esos orígenes
+          sos orígenes
+     1251                              isIndirectlyConnected = linksFiltered.some(l =>
+     1252                                  l.type === 'origen-platillo' &&
+     1253                                  origenesConectados.includes(l.source.id) &&
+     1254                                  l.target.id === n.id
+     1255                              );
+     1256                          }
+     1257
+     1258                          // Aplicar opacidad según conexión
+     1259                          const opacity = n === node || isDirectlyConnected ||
+     isIndirectlyConnected ? 1 : 0.15;
+          ctlyConnected ? 1 : 0.15;
+     1260                          nodeGroup.selectAll('circle').attr('opacity', opacity);
+     1261                      });
+     1262
+     1263                      // No mostrar etiquetas permanentemente, solo en hover
+     1264                      // Las etiquetas se mostrarán solo durante el evento mouseover
+     1265                  }
+     1266
+     1267                  // Función para restaurar el estado normal (sin resaltado)
+     1268                  function resetHighlighting() {
+     1269                      // Restaurar opacidad original de enlaces
+     1270                      linkElements.attr('opacity', d => {
+     1271                          if (ingredienteActivo) {
+     1272                              return 0.6; // Opacidad 60% para todas las líneas
+     1273                          }
+     1274                          return 0.4;
+     1275                      });
+     1276
+     1277                      // Restaurar opacidad original de nodos
+     1278                      nodeElements.each(function(n) {
+     1279                          const nodeGroup = d3.select(this);
+     1280
+     1281                          if (n.level === 1) {
+     1282                              // Para nodos de nivel 1 (épocas)
+     1283                              nodeGroup.selectAll('circle').each(function() {
+     1284                                  const circle = d3.select(this);
+     1285                                  const isBackground = circle.attr('fill') ===
+     colorPalette.epoca;
+          ette.epoca;
+     1286                                  const isPattern = circle.attr('fill') &&
+     circle.attr('fill').startsWith('url(#pattern');
+          'fill').startsWith('url(#pattern');
+     1287
+     1288                                  if (isBackground) {
+     1289                                      circle.attr('opacity', 0.3);
+     1290                                  } else if (isPattern) {
+     1291                                      circle.attr('opacity', ingredienteActivo ?
+     (n.isRelevant ? 1 : 0.3) : 0.9);
+          elevant ? 1 : 0.3) : 0.9);
+     1292                                      // Quitar clase de seleccionado si no hay nodos
+     seleccionados
+          eleccionados
+     1293                                      if (selectedNodes.length === 0) {
+     1294                                          circle.classed('selected-node', false);
+     1295                                      }
+     1296                                  }
+     1297                              });
+     1298                          } else {
+     1299                              // Para nodos de nivel 2 y 3
+     1300                              const opacity = ingredienteActivo ? (n.isRelevant ? 1 :
+     0.2) : 0.85;
+          .2) : 0.85;
+     1301                              const circleSelection = nodeGroup.selectAll('circle');
+     1302                              circleSelection.attr('opacity', opacity);
+     1303
+     1304                              // Quitar clase de seleccionado si no hay nodos
+     seleccionados
+          ados
+     1305                              if (selectedNodes.length === 0) {
+     1306                                  circleSelection.classed('selected-node', false);
+     1307                              }
+     1308                          }
+     1309
+     1310                          // Restaurar estilo normal para todos los nodos
+     1311                          if (n.level !== 1) {
+     1312                              nodeGroup.select('circle')
+     1313                                  .attr('stroke', '#fff')
+     1314                                  .attr('stroke-width', 1);
+     1315                          } else {
+     1316                              nodeGroup.select('circle[fill^="url(#pattern"]')
+     1317                                  .attr('stroke', '#fff')
+     1318                                  .attr('stroke-width', 1.5);
+     1319                          }
+     1320                      });
+     1321
+     1322                      // Restaurar estado original de etiquetas
+     1323                      labelElements
+     1324                          .style('font-size', '9px')
+     1325                          .attr('opacity', d => {
+     1326                              // Solo mostrar etiquetas para orígenes (nivel 2)
+     1327                              return d.level === 2 ? 0.9 : 0;
+     1328                          });
+     1329
+     1330                      // Restaurar todas las categorías a su estado normal
+     1331                      d3.selectAll('.category-segment')
+     1332                          .attr('opacity', d => ingredienteActivo ?
+     1333                              (d.data.isRelevant ? 0.9 : 0.3) : 0.8)
+     1334                          .attr('stroke-width', 1);
+     1335
+     1336                      // Eliminar todas las etiquetas permanentes si no hay nodos selec
+          cionados
+     1337                      if (selectedNodes.length === 0) {
+     1338                          permanentLabelGroup.selectAll('text').remove();
+     1339                      }
+     1340                  }
+     1341
+     1342                  // Lógica principal del click con selección múltiple
+     1343                  // Verificar si el nodo ya está seleccionado
+     1344                  const nodeIndex = selectedNodes.findIndex(node => node.id === d.id);
+     1345
+     1346                  // Función para actualizar las etiquetas permanentes
+     1347                  function updatePermanentLabels() {
+     1348                      // Eliminar etiquetas existentes
+     1349                      permanentLabelGroup.selectAll('text').remove();
+     1350
+     1351                      // Si no hay nodos seleccionados, no hacer nada más
+     1352                      if (selectedNodes.length === 0) return;
+     1353
+     1354                      // Crear etiquetas para todos los nodos seleccionados
+     1355                      permanentLabelGroup.selectAll('text')
+     1356                          .data(selectedNodes)
+     1357                          .enter()
+     1358                          .append('text')
+     1359                          .attr('x', d => isFinite(d.x) ? d.x : 0)
+     1360                          .attr('y', d => {
+     1361                              const radius = getNodeRadius(d);
+     1362                              return isFinite(d.y) ? d.y - radius - 5 : 0;
+     1363                          })
+     1364                          .attr('text-anchor', 'middle')
+     1365                          .style('font-family', 'Cardo, serif')
+     1366                          .style('font-size', '10px')
+     1367                          .style('font-weight', 'bold')
+     1368                          .style('fill', '#333')
+     1369                          .style('paint-order', 'stroke')
+     1370                          .style('stroke', 'white')
+     1371                          .style('stroke-width', '2px')
+     1372                          .style('pointer-events', 'none')
+     1373                          .text(d => {
+     1374                              // Truncar texto demasiado largo
+     1375                              const maxLength = 20;
+     1376                              return d.name.length > maxLength
+     1377                                  ? d.name.substring(0, maxLength) + '...'
+     1378                                  : d.name;
+     1379                          });
+     1380
+     1381                      // Limpiar etiquetas antiguas antes de actualizarlas
+     1382                      permanentLabelGroup.selectAll('text').remove();
+     1383
+     1384                      // Modificar el handler de tick para actualizar las etiquetas
+     1385                      const originalTick = simulation.on('tick');
+     1386
+     1387                      simulation.on('tick', () => {
+     1388                          // Ejecutar el tick original primero
+     1389                          if (typeof originalTick === 'function') {
+     1390                              originalTick();
+     1391                          }
+     1392
+     1393                          // Luego actualizar las etiquetas permanentes si hay nodos se
+          leccionados
+     1394                          if (selectedNodes.length > 0) {
+     1395                              permanentLabelGroup.selectAll('text')
+     1396                                  .attr('x', d => isFinite(d.x) ? d.x : 0)
+     1397                                  .attr('y', d => {
+     1398                                      const radius = getNodeRadius(d);
+     1399                                      return isFinite(d.y) ? d.y - radius - 5 : 0;
+     1400                                  });
+     1401                          }
+     1402                      });
+     1403                  }
+     1404
+     1405                  // Agregamos la actualización de etiquetas a la función de tick exist
+          ente
+     1406                  // No creamos un nuevo tick handler
+     1407
+     1408                  if (nodeIndex !== -1) {
+     1409                      // Si el nodo ya está seleccionado, lo quitamos de la selección
+     1410                      selectedNodes.splice(nodeIndex, 1);
+     1411
+     1412                      // Si no quedan nodos seleccionados, restauramos el estado según
+          el ingrediente activo
+     1413                      if (selectedNodes.length === 0) {
+     1414                          // En lugar de usar resetHighlighting que hace un reset compl
+          eto,
+     1415                          // usamos la función global que mantiene el resaltado basado
+          en ingredienteActivo
+     1416                          restoreIngredientHighlighting();
+     1417                      } else {
+     1418                          // Volver a aplicar el resaltado para los nodos que quedan se
+          leccionados
+     1419                          // Primero restaurar estado basado en ingrediente, luego apli
+          car selección
+     1420                          restoreIngredientHighlighting();
+     1421                          applyMultipleHighlighting(selectedNodes);
+     1422                      }
+     1423
+     1424                      // Actualizar etiquetas permanentes
+     1425                      updatePermanentLabels();
+     1426                  } else {
+     1427                      // Si es un nuevo nodo, lo añadimos a la selección
+     1428                      selectedNodes.push(d);
+     1429
+     1430                      // Si es el primer nodo seleccionado, restauramos primero el esta
+          do basado en ingrediente
+     1431                      if (selectedNodes.length === 1) {
+     1432                          restoreIngredientHighlighting(); // Ahora es una función glob
+          al
+     1433                      }
+     1434
+     1435                      // Aplicar resaltado a todos los nodos seleccionados
+     1436                      applyMultipleHighlighting(selectedNodes);
+     1437
+     1438                      // Actualizar etiquetas permanentes
+     1439                      updatePermanentLabels();
+     1440                  }
+     1441
+     1442                  // Función para aplicar resaltado a múltiples nodos
+     1443                  function applyMultipleHighlighting(nodes) {
+     1444                      // Crear un mapa para almacenar qué nodos y enlaces deben resalta
+          rse
+     1445                      const connectedNodes = new Set();
+     1446                      const connectedLinks = new Set();
+     1447
+     1448                      // Para cada nodo seleccionado, encontrar sus conexiones
+     1449                      nodes.forEach(node => {
+     1450                          // Añadir el nodo a los conectados
+     1451                          connectedNodes.add(node.id);
+     1452
+     1453                          // Encontrar y marcar nodos conectados directamente
+     1454                          linksFiltered.forEach(link => {
+     1455                              if (link.source.id === node.id) {
+     1456                                  connectedNodes.add(link.target.id);
+     1457                                  connectedLinks.add(link.index);
+     1458                              } else if (link.target.id === node.id) {
+     1459                                  connectedNodes.add(link.source.id);
+     1460                                  connectedLinks.add(link.index);
+     1461                              }
+     1462                          });
+     1463
+     1464                          // Para épocas (nivel 1), también resaltar los platillos (niv
+          el 3) relacionados
+     1465                          if (node.level === 1) {
+     1466                              // Encuentra orígenes conectados a esta época
+     1467                              const origenesConectados = linksFiltered
+     1468                                  .filter(l => l.source.id === node.id && l.type === 'e
+          poca-origen')
+     1469                                  .map(l => l.target.id);
+     1470
+     1471                              // Añadir los orígenes
+     1472                              origenesConectados.forEach(id => connectedNodes.add(id));
+
+     1473
+     1474                              // Encontrar platillos conectados a estos orígenes
+     1475                              linksFiltered.forEach(link => {
+     1476                                  if (link.type === 'origen-platillo' &&
+     1477                                      origenesConectados.includes(link.source.id)) {
+     1478                                      connectedNodes.add(link.target.id);
+     1479                                      connectedLinks.add(link.index);
+     1480                                  }
+     1481                              });
+     1482                          }
+     1483                      });
+     1484
+     1485                      // Aplicar estilo a los nodos
+     1486                      nodeElements.each(function(n) {
+     1487                          const nodeGroup = d3.select(this);
+     1488                          const isConnected = connectedNodes.has(n.id);
+     1489
+     1490                          // Establecer opacidad según conexión
+     1491                          const opacity = isConnected ? 1 : 0.15;
+     1492                          nodeGroup.selectAll('circle').attr('opacity', opacity);
+     1493
+     1494                          // Añadir estilo a los nodos seleccionados
+     1495                          if (selectedNodes.some(node => node.id === n.id)) {
+     1496                              if (n.level !== 1) {
+     1497                                  nodeGroup.select('circle')
+     1498                                      .attr('stroke', getNodeColor(n))
+     1499                                      .attr('stroke-width', 3)
+     1500                                      .classed('selected-node', true); // Marcar como s
+          eleccionado para que el anillo de categorías lo respete
+     1501                              } else {
+     1502                                  nodeGroup.select('circle[fill^="url(#pattern"]')
+     1503                                      .attr('stroke', '#B8860B')
+     1504                                      .attr('stroke-width', 3)
+     1505                                      .classed('selected-node', true); // Marcar como s
+          eleccionado para que el anillo de categorías lo respete
+     1506
+     1507                                  nodeGroup.select('circle[fill="' + colorPalette.epoca
+           + '"]')
+     1508                                      .attr('opacity', 0.6);
+     1509                              }
+     1510                          } else {
+     1511                              // Remover la clase de seleccionado si no está en la list
+          a actual
+     1512                              if (n.level !== 1) {
+     1513                                  nodeGroup.select('circle').classed('selected-node', f
+          alse);
+     1514                              } else {
+     1515                                  nodeGroup.select('circle[fill^="url(#pattern"]').clas
+          sed('selected-node', false);
+     1516                              }
+     1517                          }
+     1518                      });
+     1519
+     1520                      // Aplicar estilo a los enlaces
+     1521                      linkElements.attr('opacity', l => {
+     1522                          return connectedLinks.has(l.index) ? 0.8 : 0.1;
+     1523                      });
+     1524
+     1525                      // Resaltar las categorías relacionadas con los platillos conecta
+          dos
+     1526                      highlightRelevantCategories(connectedNodes);
+     1527                  }
+     1528
+     1529                  // Función para resaltar categorías relacionadas con los platillos co
+          nectados
+     1530                  function highlightRelevantCategories(connectedNodeIds) {
+     1531                      // Extraer los platillos conectados (nivel 3)
+     1532                      const connectedPlatillos = nodesFiltered.filter(n =>
+     1533                          n.level === 3 &&
+     1534                          connectedNodeIds.has(n.id) &&
+     1535                          n.tipoPlatillo // Solo incluir platillos que tengan categoría
+
+     1536                      );
+     1537
+     1538                      // Crear un conjunto de categorías relevantes
+     1539                      const relevantCategories = new Set();
+     1540                      connectedPlatillos.forEach(platillo => {
+     1541                          if (platillo.tipoPlatillo) {
+     1542                              relevantCategories.add(platillo.tipoPlatillo);
+     1543                          }
+     1544                      });
+     1545
+     1546                      // Si no hay categorías relevantes, salir
+     1547                      if (relevantCategories.size === 0) return;
+     1548
+     1549                      // Aplicar resaltado a las categorías del anillo
+     1550                      d3.selectAll('.category-segment').each(function(d) {
+     1551                          const segment = d3.select(this);
+     1552                          const isRelevant = relevantCategories.has(d.data.name);
+     1553
+     1554                          // Resaltar u opacar según relevancia
+     1555                          if (isRelevant) {
+     1556                              segment
+     1557                                  .attr('opacity', 1)
+     1558                                  .attr('stroke-width', 2);
+     1559                          } else {
+     1560                              segment
+     1561                                  .attr('opacity', 0.3)
+     1562                                  .attr('stroke-width', 1);
+     1563                          }
+     1564                      });
+     1565                  }
+     1566
+     1567                  // Comportamiento original de fijar/desfijar el nodo al hacer clic
+     1568                  if (d.fx !== null || d.fy !== null) {
+     1569                      // Desfijar si ya estaba fijo
+     1570                      d.fx = null;
+     1571                      d.fy = null;
+     1572
+     1573                      // Restaurar apariencia normal si no está seleccionado
+     1574                      if (!selectedNodes.some(node => node.id === d.id)) {
+     1575                          if (d.level === 1) {
+     1576                              d3.select(this).select('circle[fill^="url(#pattern"]')
+     1577                                  .attr('stroke', '#fff')
+     1578                                  .attr('stroke-width', 1.5);
+     1579                          } else {
+     1580                              d3.select(this).select('circle').attr('stroke', '#fff');
+     1581                          }
+     1582                      }
+     1583                  } else {
+     1584                      // Fijar en su posición actual
+     1585                      d.fx = d.x;
+     1586                      d.fy = d.y;
+     1587
+     1588                      // Indicar visualmente que está fijo
+     1589                      if (d.level === 1) {
+     1590                          d3.select(this).select('circle[fill^="url(#pattern"]')
+     1591                              .attr('stroke', '#FFD700')
+     1592                              .attr('stroke-width', 2);
+     1593                      } else {
+     1594                          d3.select(this).select('circle')
+     1595                              .attr('stroke', '#FFD700')
+     1596                              .attr('stroke-width', 1.5);
+     1597                      }
+     1598                  }
+     1599              });
+     1600          }
+     1601
+     1602          // Añadir controles (leyenda y botones)
+     1603          const controlsContainer = d3.select('#network')
+     1604              .append('div')
+     1605              .attr('class', 'graph-controls')
+     1606              .style('position', 'absolute')
+     1607              .style('top', '15px')
+     1608              .style('right', '15px')
+     1609              .style('display', 'flex')
+     1610              .style('align-items', 'center')
+     1611              .style('gap', '15px')
+     1612              .style('background-color', 'rgba(255,255,255,0.5)')
+     1613              .style('padding', '6px 12px')
+     1614              .style('border-radius', '6px')
+     1615              .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
+     1616              .style('border', '1px solid rgba(174, 124, 52, 0.3)')
+     1617              .style('z-index', '100');
+     1618
+     1619          // Añadir leyenda
+     1620          const legendContainer = controlsContainer
+     1621              .append('div')
+     1622              .attr('class', 'graph-legend')
+     1623              .style('display', 'flex')
+     1624              .style('align-items', 'center')
+     1625              .style('gap', '8px');
+     1626
+     1627          // Categorías de nodos con colores
+     1628          const legendItems = [
+     1629              { label: 'Épocas', color: colorPalette.epoca },
+     1630              { label: 'Orígenes', color: colorPalette.origen },
+     1631              { label: 'Platillos', color: colorPalette.platillo }
+     1632          ];
+     1633
+     1634          // Crear cada elemento de la leyenda
+     1635          legendItems.forEach(item => {
+     1636              // Contenedor por ítem
+     1637              const itemContainer = legendContainer
+     1638                  .append('div')
+     1639                  .style('display', 'flex')
+     1640                  .style('align-items', 'center')
+     1641                  .style('margin-right', '8px');
+     1642
+     1643              // Círculo de color
+     1644              itemContainer.append('div')
+     1645                  .style('width', '10px')
+     1646                  .style('height', '10px')
+     1647                  .style('border-radius', '50%')
+     1648                  .style('background-color', item.color)
+     1649                  .style('margin-right', '4px');
+     1650
+     1651              // Texto de la etiqueta
+     1652              itemContainer.append('span')
+     1653                  .text(item.label)
+     1654                  .style('font-size', '11px')
+     1655                  .style('color', '#333')
+     1656                  .style('font-family', 'Cardo, serif');
+     1657          });
+     1658
+     1659          // Añadir botón para reiniciar filtros
+     1660          const resetButton = controlsContainer
+     1661              .append('button')
+     1662              .attr('class', 'reset-button')
+     1663              .text('Ver todo')
+     1664              .style('background-color', '#073B4C')
+     1665              .style('color', 'white')
+     1666              .style('border', 'none')
+     1667              .style('border-radius', '6px')
+     1668              .style('padding', '6px 10px')
+     1669              .style('margin-right', '6px')
+     1670              .style('cursor', 'pointer')
+     1671              .style('font-family', 'Cardo, serif')
+     1672              .style('font-size', '12px')
+     1673              .style('transition', 'background-color 0.2s')
+     1674              .on('mouseover', function() {
+     1675                  d3.select(this).style('background-color', '#0A4F66');
+     1676              })
+     1677              .on('mouseout', function() {
+     1678                  d3.select(this).style('background-color', '#073B4C');
+     1679              })
+     1680              .on('click', function() {
+     1681                  // Reiniciar grafo
+     1682                  nodesFiltered.forEach(node => {
+     1683                      node.fx = null;
+     1684                      node.fy = null;
+     1685                  });
+     1686
+     1687                  // Mostrar todas las épocas
+     1688                  ingredienteActivo = null;
+     1689                  filtrarPorIngrediente(null, false); // false indica mostrar todas las
+           épocas
+     1690                  actualizarVisualizacion(true); // Con recentrado
+     1691
+     1692                  simulation.alpha(1).restart();
+     1693
+     1694                  // También actualizar la visualización del anillo de categorías
+     1695                  if (window.selectedCategoriesGlobal) {
+     1696                      window.selectedCategoriesGlobal = [];
+     1697                  }
+     1698              });
+     1699
+     1700          // Añadir botón para reiniciar el zoom
+     1701          const resetZoomButton = controlsContainer
+     1702              .append('button')
+     1703              .attr('class', 'reset-zoom-button')
+     1704              .text('Zoom inicial')
+     1705              .style('background-color', '#9B2226')
+     1706              .style('color', 'white')
+     1707              .style('border', 'none')
+     1708              .style('border-radius', '6px')
+     1709              .style('padding', '6px 10px')
+     1710              .style('cursor', 'pointer')
+     1711              .style('font-family', 'Cardo, serif')
+     1712              .style('font-size', '12px')
+     1713              .style('transition', 'background-color 0.2s')
+     1714              .on('mouseover', function() {
+     1715                  d3.select(this).style('background-color', '#B42B30');
+     1716              })
+     1717              .on('mouseout', function() {
+     1718                  d3.select(this).style('background-color', '#9B2226');
+     1719              })
+     1720              .on('click', function() {
+     1721                  // Reiniciar el zoom a la escala inicial
+     1722                  zoomContainer.transition()
+     1723                      .duration(400)
+     1724                      .call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1.2))
+          ;
+     1725              });
+     1726
+     1727          // Cargar y procesar los datos
+     1728          d3.text('./json/platillos_expandido.csv')
+     1729              .catch(error => {
+     1730                  console.error("Error cargando CSV inicial:", error);
+     1731                  // Intentar ruta alternativa
+     1732                  return d3.text('./platillos_expandido.csv');
+     1733              })
+     1734              .then(function(data) {
+     1735                  // Parsear los datos CSV
+     1736                  const rows = data.split('\n').slice(1); // Omitir encabezado
+     1737
+     1738                  console.log('Iniciando procesamiento de datos del CSV...');
+     1739
+     1740                  // Procesar los datos para crear la estructura del grafo
+     1741                  const epocas = new Map(); // Nivel 1 (centro)
+     1742                  const origenes = new Map(); // Nivel 2 (medio)
+     1743                  const platillos = new Map(); // Nivel 3 (exterior)
+     1744
+     1745                  // Enlaces entre niveles
+     1746                  links = [];
+     1747
+     1748                  // Conjunto para mantener registro de enlaces únicos
+     1749                  const uniqueLinks = new Set();
+     1750
+     1751                  // Para el conteo de conexiones
+     1752                  const origenConnections = new Map();
+     1753                  const epocaConnections = new Map();
+     1754
+     1755                  // Mapa para almacenar la relación entre platillos e ingredientes
+     1756                  const platillosIngredientes = new Map();
+     1757
+     1758                  // Mapa para registrar las épocas asociadas a cada origen
+     1759                  const origenEpocas = new Map();
+     1760
+     1761                  rows.forEach(row => {
+     1762                      if (!row.trim()) return; // Saltar filas vacías
+     1763
+     1764                      const fields = row.split('|');
+     1765                      if (fields.length < 14) return; // Verificar que tenga suficiente
+          s campos
+     1766
+     1767                      const nombrePlatillo = fields[0].trim();
+     1768                      const origenPlatillo = fields[1].trim();
+     1769                      const tipoPlatillo = fields.length > 10 ? fields[10].trim() : '';
+
+     1770                      const epocaPlatillo = fields[11].trim();
+     1771                      const ingrediente = fields[13] ? fields[13].trim().toUpperCase()
+          : '';
+     1772
+     1773                      // Saltear si algún campo esencial está vacío
+     1774                      if (!nombrePlatillo || !origenPlatillo || !epocaPlatillo) return;
+
+     1775
+     1776                      // Registrar la relación entre platillo e ingrediente
+     1777                      const platilloKey = `${nombrePlatillo}-${origenPlatillo}`;
+     1778                      if (ingrediente) {
+     1779                          if (!platillosIngredientes.has(platilloKey)) {
+     1780                              platillosIngredientes.set(platilloKey, new Set());
+     1781                          }
+     1782                          platillosIngredientes.get(platilloKey).add(ingrediente);
+     1783                      }
+     1784
+     1785                      // 1. Añadir nodo de época si no existe
+     1786                      if (!epocas.has(epocaPlatillo)) {
+     1787                          epocas.set(epocaPlatillo, {
+     1788                              id: epocaPlatillo,
+     1789                              name: epocaPlatillo,
+     1790                              level: 1, // Nivel 1: épocas (centro)
+     1791                              connections: 0
+     1792                          });
+     1793                          epocaConnections.set(epocaPlatillo, 0);
+     1794                      }
+     1795
+     1796                      // 2. Añadir nodo de origen si no existe
+     1797                      if (!origenes.has(origenPlatillo)) {
+     1798                          origenes.set(origenPlatillo, {
+     1799                              id: origenPlatillo,
+     1800                              name: origenPlatillo,
+     1801                              level: 2, // Nivel 2: orígenes (medio)
+     1802                              connections: 0,
+     1803                              epocas: new Set() // Para registrar con qué épocas está r
+          elacionado
+     1804                          });
+     1805                          origenConnections.set(origenPlatillo, 0);
+     1806                      }
+     1807
+     1808                      // Registrar relación entre origen y época
+     1809                      origenes.get(origenPlatillo).epocas.add(epocaPlatillo);
+     1810
+     1811                      // Registrar época asociada a este origen para enlaces
+     1812                      if (!origenEpocas.has(origenPlatillo)) {
+     1813                          origenEpocas.set(origenPlatillo, new Set());
+     1814                      }
+     1815                      origenEpocas.get(origenPlatillo).add(epocaPlatillo);
+     1816
+     1817                      // 3. Añadir nodo de platillo si no existe
+     1818                      if (!platillos.has(platilloKey)) {
+     1819                          platillos.set(platilloKey, {
+     1820                              id: platilloKey,
+     1821                              name: nombrePlatillo,
+     1822                              origen: origenPlatillo,
+     1823                              epoca: epocaPlatillo,
+     1824                              tipoPlatillo: tipoPlatillo, // Añadir el tipo de platillo
+
+     1825                              level: 3, // Nivel 3: platillos (exterior)
+     1826                              ingredientes: [] // Se llenará después
+     1827                          });
+     1828
+     1829                          // Crear enlace entre origen y platillo
+     1830                          const linkKeyOtP = `${origenPlatillo}-${platilloKey}`;
+     1831                          if (!uniqueLinks.has(linkKeyOtP)) {
+     1832                              links.push({
+     1833                                  source: origenPlatillo,
+     1834                                  target: platilloKey,
+     1835                                  value: 1,
+     1836                                  type: 'origen-platillo'
+     1837                              });
+     1838                              uniqueLinks.add(linkKeyOtP);
+     1839
+     1840                              // Incrementar contador de conexiones para el origen
+     1841                              origenConnections.set(origenPlatillo,
+     1842                                  (origenConnections.get(origenPlatillo) || 0) + 1);
+     1843                          }
+     1844                      }
+     1845                  });
+     1846
+     1847                  // Crear enlaces entre épocas y orígenes
+     1848                  origenEpocas.forEach((epocasSet, origen) => {
+     1849                      epocasSet.forEach(epoca => {
+     1850                          const linkKeyEtO = `${epoca}-${origen}`;
+     1851                          if (!uniqueLinks.has(linkKeyEtO)) {
+     1852                              links.push({
+     1853                                  source: epoca,
+     1854                                  target: origen,
+     1855                                  value: 1,
+     1856                                  type: 'epoca-origen'
+     1857                              });
+     1858                              uniqueLinks.add(linkKeyEtO);
+     1859
+     1860                              // Incrementar conteo de conexiones para la época
+     1861                              epocaConnections.set(epoca,
+     1862                                  (epocaConnections.get(epoca) || 0) + 1);
+     1863                          }
+     1864                      });
+     1865                  });
+     1866
+     1867                  // Actualizar el conteo de conexiones para los nodos
+     1868                  epocas.forEach((node, key) => {
+     1869                      node.connections = epocaConnections.get(key) || 0;
+     1870                  });
+     1871
+     1872                  origenes.forEach((node, key) => {
+     1873                      node.connections = origenConnections.get(key) || 0;
+     1874                  });
+     1875
+     1876                  // Completar la información de ingredientes para cada platillo
+     1877                  platillos.forEach((platillo, key) => {
+     1878                      if (platillosIngredientes.has(key)) {
+     1879                          platillo.ingredientes = Array.from(platillosIngredientes.get(
+          key));
+     1880                      } else {
+     1881                          platillo.ingredientes = [];
+     1882                      }
+     1883                  });
+     1884
+     1885                  // Recopilar todas las categorías de platillos
+     1886                  const categorias = new Map();
+     1887
+     1888                  platillos.forEach((platillo) => {
+     1889                      if (platillo.tipoPlatillo) {
+     1890                          if (!categorias.has(platillo.tipoPlatillo)) {
+     1891                              categorias.set(platillo.tipoPlatillo, {
+     1892                                  id: platillo.tipoPlatillo,
+     1893                                  name: platillo.tipoPlatillo,
+     1894                                  level: 4, // Nivel 4: categorías (anillo exterior)
+     1895                                  count: 0,
+     1896                                  platillos: [] // Platillos relacionados con esta cate
+          goría
+     1897                              });
+     1898                          }
+     1899
+     1900                          const categoria = categorias.get(platillo.tipoPlatillo);
+     1901                          categoria.count++;
+     1902                          categoria.platillos.push(platillo.id);
+     1903                      }
+     1904                  });
+     1905
+     1906                  // Convertir maps a arrays para D3
+     1907                  nodes = [
+     1908                      ...Array.from(epocas.values()),
+     1909                      ...Array.from(origenes.values()),
+     1910                      ...Array.from(platillos.values())
+     1911                  ];
+     1912
+     1913                  // Guardar las categorías para usarlas en la visualización
+     1914                  window.categoriasPlatillos = Array.from(categorias.values());
+     1915
+     1916                  // Inicialmente, mostrar todos los nodos
+     1917                  nodesFiltered = [...nodes];
+     1918                  linksFiltered = [...links];
+     1919
+     1920                  // Guardar datos para acceso externo
+     1921                  window.grafoData = {
+     1922                      nodes,
+     1923                      links
+     1924                  };
+     1925
+     1926                  // Inicializar visualización
+     1927                  actualizarVisualizacion();
+     1928
+     1929                  // Notificar que el grafo está inicializado
+     1930                  setTimeout(() => {
+     1931                      window.grafoInicializado = true;
+     1932                      console.log('Grafo inicializado correctamente');
+     1933
+     1934                      // Aplicar un ligero zoom adicional para ajustar la vista
+     1935                      zoomContainer.transition().duration(500)
+     1936                          .call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1
+          .2));
+     1937
+     1938                      // Verificar si ya hay un ingrediente seleccionado
+     1939                      if (window.currentIngredient) {
+     1940                          console.log(`Usando ingrediente desde scrollama: ${window.cur
+          rentIngredient}`);
+     1941                          setTimeout(() => {
+     1942                              filtrarPorIngrediente(window.currentIngredient);
+     1943                              actualizarVisualizacion();
+     1944
+     1945                              // Asegurar zoom apropiado después de filtrar
+     1946                              setTimeout(() => {
+     1947                                  zoomContainer.transition().duration(300)
+     1948                                      .call(zoom.transform, d3.zoomIdentity.translate(0
+          , 0).scale(1.15));
+     1949                              }, 300);
+     1950                          }, 300);
+     1951                      } else {
+     1952                          // Iniciar con MAIZ como default
+     1953                          setTimeout(() => {
+     1954                              filtrarPorIngrediente('MAIZ');
+     1955                              actualizarVisualizacion();
+     1956
+     1957                              // Asegurar zoom apropiado después de filtrar
+     1958                              setTimeout(() => {
+     1959                                  zoomContainer.transition().duration(300)
+     1960                                      .call(zoom.transform, d3.zoomIdentity.translate(0
+          , 0).scale(1.15));
+     1961                              }, 300);
+     1962                          }, 500);
+     1963                      }
+     1964                  }, 300);
+     1965              })
+     1966              .catch(function(error) {
+     1967                  console.error('Error al cargar o procesar los datos:', error);
+     1968
+     1969                  // Crear datos estáticos para permitir visualización mínima
+     1970                  console.log('Usando datos estáticos de respaldo para recuperación');
+     1971
+     1972                  // Datos mínimos para mostrar
+     1973                  nodes = [
+     1974                      {id: 'Prehispánica', name: 'México Prehispánico (Antes de 1521)',
+           level: 1, connections: 5},
+     1975                      {id: 'Azteca', name: 'Azteca', level: 2, connections: 3},
+     1976                      {id: 'Maya', name: 'Maya', level: 2, connections: 2},
+     1977                      {id: 'Zapoteca', name: 'Zapoteca', level: 2, connections: 2},
+     1978                      {id: 'Enchiladas', name: 'Enchiladas', level: 3, origen: 'Azteca'
+          , epoca: 'Prehispánica', ingredientes: ['MAÍZ', 'CHILE']},
+     1979                      {id: 'Tamales', name: 'Tamales', level: 3, origen: 'Azteca', epoc
+          a: 'Prehispánica', ingredientes: ['MAÍZ', 'FRIJOL']},
+     1980                      {id: 'Atole', name: 'Atole', level: 3, origen: 'Maya', epoca: 'Pr
+          ehispánica', ingredientes: ['MAÍZ']},
+     1981                      {id: 'Pozole', name: 'Pozole', level: 3, origen: 'Zapoteca', epoc
+          a: 'Prehispánica', ingredientes: ['MAÍZ']}
+     1982                  ];
+     1983
+     1984                  links = [
+     1985                      {source: 'Prehispánica', target: 'Azteca', value: 2, type: 'epoca
+          -origen'},
+     1986                      {source: 'Prehispánica', target: 'Maya', value: 2, type: 'epoca-o
+          rigen'},
+     1987                      {source: 'Prehispánica', target: 'Zapoteca', value: 2, type: 'epo
+          ca-origen'},
+     1988                      {source: 'Azteca', target: 'Enchiladas', value: 1, type: 'origen-
+          platillo'},
+     1989                      {source: 'Azteca', target: 'Tamales', value: 1, type: 'origen-pla
+          tillo'},
+     1990                      {source: 'Maya', target: 'Atole', value: 1, type: 'origen-platill
+          o'},
+     1991                      {source: 'Zapoteca', target: 'Pozole', value: 1, type: 'origen-pl
+          atillo'}
+     1992                  ];
+     1993
+     1994                  // Inicialmente, mostrar todos los nodos
+     1995                  nodesFiltered = [...nodes];
+     1996                  linksFiltered = [...links];
+     1997
+     1998                  // Guardar datos para acceso externo
+     1999                  window.grafoData = {
+     2000                      nodes,
+     2001                      links
+     2002                  };
+     2003
+     2004                  // Mostrar mensaje de error discreto
+     2005                  d3.select('#network')
+     2006                      .append('div')
+     2007                      .attr('class', 'error-message')
+     2008                      .style('position', 'absolute')
+     2009                      .style('top', '50%')
+     2010                      .style('left', '50%')
+     2011                      .style('transform', 'translate(-50%, -50%)')
+     2012                      .style('background-color', 'rgba(246, 240, 228, 0.9)')
+     2013                      .style('padding', '15px 20px')
+     2014                      .style('border-radius', '8px')
+     2015                      .style('border-left', '4px solid #9B2226')
+     2016                      .style('box-shadow', '0 2px 10px rgba(0,0,0,0.1)')
+     2017                      .style('max-width', '90%')
+     2018                      .style('width', '320px')
+     2019                      .style('text-align', 'center')
+     2020                      .style('z-index', '100')
+     2021                      .style('font-family', 'Cardo, serif')
+     2022                      .style('color', '#333')
+     2023                      .html('<strong style="color:#9B2226">Datos de demostración</stron
+          g><br>No se pudieron cargar los datos completos.');
+     2024
+     2025                  // Inicializar visualización con datos de respaldo
+     2026                  actualizarVisualizacion();
+     2027
+     2028                  // Notificar que el grafo está inicializado
+     2029                  setTimeout(() => {
+     2030                      window.grafoInicializado = true;
+     2031                      console.log('Grafo inicializado con datos de respaldo');
+     2032
+     2033                      // Aplicar un zoom adecuado para los datos de respaldo
+     2034                      zoomContainer.transition().duration(500)
+     2035                          .call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1
+          .2));
+     2036                  }, 300);
+     2037              });
+     2038
+     2039          // Añadir integración con el sistema de filtrado
+     2040          window.filtrarGrafoPorIngrediente = function(ingrediente) {
+     2041              // Verificar si el contenedor del grafo existe antes de filtrar
+     2042              if (!document.getElementById('network')) {
+     2043                  console.error('Error: Contenedor del grafo no encontrado (#network)')
+          ;
+     2044                  // Intentar regenerar el grafo
+     2045                  regenerateGraph();
+     2046                  return;
+     2047              }
+     2048
+     2049              // Filtrar con manejo de errores
+     2050              try {
+     2051                  window.actualizarIngredienteGrafo(ingrediente);
+     2052              } catch (error) {
+     2053                  console.error('Error al filtrar el grafo:', error);
+     2054              }
+     2055          };
+     2056      } // Fin de la función initGraph
+     2057
+     2058      // Iniciar la creación del grafo
+     2059      initGraph();
+     2060
+     2061      // También regenerar después de 1 segundo para asegurar que el DOM está listo
+     2062      setTimeout(regenerateGraph, 1000);

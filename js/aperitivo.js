@@ -121,15 +121,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 // mostrar el grafo completo sin filtros
                 const ingredientBlocks = document.querySelectorAll('.content-block.ingredient-block');
                 if (index === ingredientBlocks.length - 1 && direction === 'down') {
-                    console.log('Saliendo del último ingrediente, mostrando grafo completo');
+                    console.log('Saliendo del último ingrediente, mostrando solo época prehispánica');
                     if (window.filtrarGrafoPorIngrediente) {
-                        window.filtrarGrafoPorIngrediente(null); // null indica mostrar todo
+                        // null ahora filtra solo por época prehispánica
+                        window.filtrarGrafoPorIngrediente(null);
                         window.currentIngredient = null;
                     }
                 } else if (direction === 'up' && index === 0) {
                     // Si estamos saliendo del primer ingrediente hacia arriba
-                    console.log('Saliendo del primer ingrediente hacia arriba');
+                    console.log('Saliendo del primer ingrediente hacia arriba, mostrando solo época prehispánica');
                     if (window.filtrarGrafoPorIngrediente) {
+                        // null ahora filtra solo por época prehispánica
                         window.filtrarGrafoPorIngrediente(null);
                         window.currentIngredient = null;
                     }

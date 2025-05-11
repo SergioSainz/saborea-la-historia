@@ -88,19 +88,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Verificar si el grafo está inicializado
                     if (window.grafoInicializado) {
-                        console.log(`Grafo inicializado, filtrando por: ${ingrediente}`);
-                        window.filtrarGrafoPorIngrediente(ingrediente);
-                        // Almacenar el ingrediente actual globalmente
-                        window.currentIngredient = ingrediente;
+                        // Si el título contiene "Prehispánico", mostrar todos los ingredientes sin filtrar
+                        if (ingrediente.includes("PREHISPÁNICO")) {
+                            console.log(`Título contiene 'Prehispánico', mostrando todos los ingredientes`);
+                            window.filtrarGrafoPorIngrediente(null);
+                            window.currentIngredient = null;
+                        } else {
+                            console.log(`Grafo inicializado, filtrando por: ${ingrediente}`);
+                            window.filtrarGrafoPorIngrediente(ingrediente);
+                            // Almacenar el ingrediente actual globalmente
+                            window.currentIngredient = ingrediente;
+                        }
                     } else {
                         // Si no está inicializado, esperar un poco e intentar de nuevo
                         console.log('Esperando a que el grafo se inicialice para filtrar');
                         setTimeout(() => {
                             if (window.filtrarGrafoPorIngrediente) {
-                                console.log(`Reintentando filtrar por: ${ingrediente}`);
-                                window.filtrarGrafoPorIngrediente(ingrediente);
-                                // Almacenar el ingrediente actual globalmente
-                                window.currentIngredient = ingrediente;
+                                // Si el título contiene "Prehispánico", mostrar todos los ingredientes sin filtrar
+                                if (ingrediente.includes("PREHISPÁNICO")) {
+                                    console.log(`Título contiene 'Prehispánico', mostrando todos los ingredientes`);
+                                    window.filtrarGrafoPorIngrediente(null);
+                                    window.currentIngredient = null;
+                                } else {
+                                    console.log(`Reintentando filtrar por: ${ingrediente}`);
+                                    window.filtrarGrafoPorIngrediente(ingrediente);
+                                    // Almacenar el ingrediente actual globalmente
+                                    window.currentIngredient = ingrediente;
+                                }
                             }
                         }, 800);
                     }

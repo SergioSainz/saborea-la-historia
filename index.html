@@ -698,9 +698,10 @@
                         document.addEventListener('DOMContentLoaded', function() {
                             new TypeIt("#poema-revolucion", {
                                 strings: ['"En fogones de campaña,<br>el maíz hervía al calor,<br>las Adelitas servían fuerza,<br>en tortilla y en frijol.<br><br>Mientras el Porfiriato brindaba,<br>con pasteles y champán,<br>el pueblo luchaba en barro,<br>con un taco en la mano y pan.<br><br>Porque la revolución ardió,<br>no en salones dorados y finos,<br>sino en el Tlecuilli encendido,<br>y en fogones campesinos."'],
-                                speed: 50,
+                                speed: 20, // Velocidad aumentada - número más bajo es más rápido
                                 waitUntilVisible: true,
-                                cursor: true
+                                cursor: true,
+                                lifeLike: false // Desactiva la simulación de escritura humana para hacerlo más rápido
                             }).go();
                         });
                     </script>
@@ -721,10 +722,13 @@
             <div class="epoca-container mb-5">
                 <!-- Influencia Europea / Porfiriato -->
                 <div class="row align-items-center mb-4">
-                    <div class=" text-center">
+                    <div class=" text-right">
                         <h3 class="libre-baskerville-bold main-subtitle">Influencia Europea</h3>
                     </div>
-                    
+                       <div class=" mb-6 text-center ">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #AF8756;"><span class="animated-number" data-value="35">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingredientes nuevos</p>
+                    </div>
                     <div class="">
                         <p class="cardo-regular">
                             Durante el Porfiriato, la influencia francesa incorporó técnicas de alta cocina, pastelería fina y salsas. 
@@ -732,19 +736,20 @@
                             las mesas de la élite mexicana con platillos sofisticados que mezclaban lo mexicano con lo europeo.
                         </p>
                     </div>
-                    <div class=" text-center">
-                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #AF8756;"><span class="animated-number" data-value="35">0</span></h2>
-                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingredientes nuevos</p>
-                    </div>
+                 
                 </div>
                 
                 <!-- Revolución Mexicana -->
                 <div class="row align-items-center">
-                    <div class=" text-center">
+                    <div class=" text-right">
                         <h3 class="libre-baskerville-bold main-subtitle">Revolución Mexicana</h3>
                     </div>
                   
                     <div class="">
+                                  <div class=" text-center">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #C67D3B;"><span class="animated-number" data-value="1">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingrediente nuevo</p>
+                    </div> 
                         <p class="cardo-regular">
                             Durante la Revolución, las soldaderas adaptaron las comidas según los recursos disponibles. 
                             A pesar de agregar <strong>solo un ingrediente nuevo</strong> al recetario nacional, surgió una cocina improvisada 
@@ -752,10 +757,7 @@
                             afrancesadas con productos locales y dando lugar a platillos que hoy son emblemáticos.
                         </p>
                     </div>
-                      <div class=" text-center">
-                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #C67D3B;"><span class="animated-number" data-value="1">0</span></h2>
-                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingrediente nuevo</p>
-                    </div>  
+             
                 </div>
             </div>
             
@@ -795,12 +797,58 @@
     <!-- Visualización de datos -->
         <div class="flourish-embed flourish-survey" data-src="visualisation/23166252" data-height="600px"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23166252/thumbnail" width="100%" height="1500px" alt="survey visualization" /></noscript></div>
     </div>
-
  </div>
 
+<!--###########################################################################################################################-->
+<!-- Inicio de Postre -->
+<!--###########################################################################################################################-->
 
+<h2 class="text-center main-title" style="margin-top:3rem;">Postre:</h2>
+<h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">México Contemporáneo</h3>
 
-    
+<div class="content-block initial-block">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Texto del postre -->
+                <div class="p-4 text-center">
+                    <p class="cardo-regular">El <span class="underline-animation">México Contemporáneo</span> es nuestro dulce postre: una fusión de tradición e innovación. La cocina mexicana actual retoma sus raíces ancestrales pero las reinterpreta con técnicas modernas y diálogos globales. Los chefs mexicanos han llevado nuestros sabores a la cima de la gastronomía mundial, mientras la <span class="underline-animation">cocina de autor</span> explora nuevos territorios sin perder la esencia.</p>
+                    
+                    <p class="cardo-regular mt-3">El <span class="underline-animation">reconocimiento de la UNESCO</span> como Patrimonio Cultural Inmaterial de la Humanidad en 2010 fue un hito que celebra no solo recetas, sino un sistema cultural completo: desde la milpa hasta el plato. Este postre nos recuerda que nuestra gastronomía es un <span class="underline-animation">organismo vivo</span> que sigue transformándose mientras honra su pasado.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="28">0</span></h3>
+                                <p class="text-center mb-0">nuevos ingredientes globales</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="32">0</span></h3>
+                                <p class="text-center mb-0">restaurantes mexicanos premiados internacionalmente</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="10">0</span></h3>
+                                <p class="text-center mb-0">técnicas de vanguardia integradas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="img/Xolin/Xolin_Postre.png" 
+                     class="img-fluid" 
+                     alt="Xolin Postre"
+                     style="max-height: 350px; width: auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <!--###########################################################################################################################-->

@@ -619,85 +619,190 @@
     </div>
 
 
- <h2 class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
+    <h2 class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
     <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;"> La Conquista y el Virreinato</h3>
+
+    <div class="content-block initial-block">
+        <div class="container-fluid mb-5">
+            <div class="row">
+                <!-- Primera columna (8): Imagen + Texto -->
+                <div class="col-md-4">
+                    <!-- Fila superior: Imagen de Xolín -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="p-3 text-center">
+                                <p class="cardo-regular">Con la llegada de los <span class="underline-animation">españoles</span>, los sabores de dos mundos se encontraron. El maíz abrazó al <span class="underline-animation">trigo</span>, <span class="underline-animation">las especias de Europa se mezclaron con los chiles</span> de México, y nacieron maravillas como el mole poblano. En esta etapa, la cocina dejó de ser solo un sustento y se convirtió en un arte que unía culturas. Es el momento donde lo tradicional y lo nuevo se dieron la mano para crear algo completamente único</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <img src="img\Xolin\Xolin_Primer_Plato.png" 
+                                class="img-fluid" 
+                                alt="Xolin Aperitivo"
+                                style="max-height: 350px; width: auto;">
+                        </div>
+                    </div>
+                </div>
+                <!-- Segunda columna (4): Gráfico -->
+                <div class="col-md-8">
+                    <div class="d-flex flex-column h-200 justify-content-center">
+                        <div class="flourish-embed flourish-globe" data-src="visualisation/20535694"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20535694/thumbnail" width="100%" alt="globe visualization" /></noscript></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        
+<!-- ###############################################                        ###############################################-->
+<!-- ############################################### Camara de diputados    ###############################################-->
+<!-- ###############################################                        ###############################################-->
+     
+    <h2 class="text-center main-title" style="margin-top:-1rem;">Segundo Plato:</h2>
+    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;"> La influencia francesa y Revolucion mexicana</h3>
     <div class="content-block initial-block">
     <div class="container-fluid mb-5">
         <div class="row">
             <!-- Primera columna (8): Imagen + Texto -->
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <!-- Fila superior: Imagen de Xolín -->
-                   <div class="row">
-                    <div class="col-12">
+                <div class="row">
+                    <div class="col-8">
+                        <!-- Imagen y texto en columna de 8 -->
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center align-items-center">
+                                <img src="img\Xolin\Xolin_Segundo_Plato.png" 
+                                     class="img-fluid" 
+                                     alt="Xolin Aperitivo"
+                                     style="max-height: 350px; width: auto;">
+                            </div>
+                        </div>
                         <div class="p-3 text-center">
-                            <p class="cardo-regular">Con la llegada de los <span class="underline-animation">españoles</span>, los sabores de dos mundos se encontraron. El maíz abrazó al <span class="underline-animation">trigo</span>, <span class="underline-animation">las especias de Europa se mezclaron con los chiles</span> de México, y nacieron maravillas como el mole poblano. En esta etapa, la cocina dejó de ser solo un sustento y se convirtió en un arte que unía culturas. Es el momento donde lo tradicional y lo nuevo se dieron la mano para crear algo completamente único</p>
-                            
+                            <p class="cardo-regular"><span class="underline-animation">Bienvenido al 'Segundo Plato'</span>, un recorrido por los sabores que llegaron de Europa y evolucionaron en la Revolución Mexicana. Las técnicas francesas, los ingredientes italianos y los sabores libaneses encontraron su lugar en los fogones mexicanos, creando platillos únicos que hoy son parte de nuestra identidad.</p>
+
+                            <p class="cardo-regular mt-3">Las panaderías introdujeron <span class="underline-animation">el bolillo y el pan de muerto</span>, mientras que la influencia inglesa trajo los <span class="underline-animation">pastes de Hidalgo</span>. Estos ingredientes y técnicas no solo enriquecieron el recetario mexicano, sino que se popularizaron durante la Revolución, donde las <span class="underline-animation">Adelitas</span> llevaron estas recetas por todo el país, creando nuevas combinaciones y consolidando la comida popular.</p>
                         </div>
                     </div>
+                    
+                    <!-- Poema en columna de 4 -->
+                    <div class="col-4 d-flex flex-column justify-content-center">
+                        <blockquote class="cardo-regular typing-poem" style="font-style: italic; margin: 20px; padding: 15px; border-left: 3px solid #6c757d; font-size: 1.25rem; line-height: 1.6;">
+                            <span id="poema-revolucion"></span>
+                            <footer class="blockquote-footer mt-2 text-end">Xolin</footer>
+                        </blockquote>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            new TypeIt("#poema-revolucion", {
+                                strings: ['"En fogones de campaña,<br>el maíz hervía al calor,<br>las Adelitas servían fuerza,<br>en tortilla y en frijol.<br><br>Mientras el Porfiriato brindaba,<br>con pasteles y champán,<br>el pueblo luchaba en barro,<br>con un taco en la mano y pan.<br><br>Porque la revolución ardió,<br>no en salones dorados y finos,<br>sino en el Tlecuilli encendido,<br>y en fogones campesinos."'],
+                                speed: 50,
+                                waitUntilVisible: true,
+                                cursor: true
+                            }).go();
+                        });
+                    </script>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-12 d-flex justify-content-center align-items-center">
-                        <img src="img\Xolin\Xolin_Primer_Plato.png" 
-                             class="img-fluid" 
-                             alt="Xolin Aperitivo"
-                             style="max-height: 350px; width: auto;">
+            </div>
+            
+        </div>
+    </div>
+
+
+
+<div class="row">
+    <div class="col-4">
+        <div class="m-4 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+            <h2 class="text-center libre-baskerville-bold main-title mb-4">Evolución Gastronómica</h2>
+            
+            <!-- Datos de Época en renglones -->
+            <div class="epoca-container mb-5">
+                <!-- Influencia Europea / Porfiriato -->
+                <div class="row align-items-center mb-4">
+                    <div class=" text-center">
+                        <h3 class="libre-baskerville-bold main-subtitle">Influencia Europea</h3>
+                    </div>
+                    
+                    <div class="">
+                        <p class="cardo-regular">
+                            Durante el Porfiriato, la influencia francesa incorporó técnicas de alta cocina, pastelería fina y salsas. 
+                            Estos <strong>35 ingredientes europeos</strong> como el foie gras, las trufas y los quesos especiales transformaron 
+                            las mesas de la élite mexicana con platillos sofisticados que mezclaban lo mexicano con lo europeo.
+                        </p>
+                    </div>
+                    <div class=" text-center">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #AF8756;"><span class="animated-number" data-value="35">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingredientes nuevos</p>
                     </div>
                 </div>
                 
-                <!-- Fila inferior: Texto completo centrado -->
-              
-            </div>
-            
-            <!-- Segunda columna (4): Gráfico -->
-            <div class="col-md-7">
-                <div class="d-flex flex-column h-200 justify-content-center">
-                    <div class="flourish-embed flourish-globe" data-src="visualisation/20535694"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20535694/thumbnail" width="100%" alt="globe visualization" /></noscript></div>
+                <!-- Revolución Mexicana -->
+                <div class="row align-items-center">
+                    <div class=" text-center">
+                        <h3 class="libre-baskerville-bold main-subtitle">Revolución Mexicana</h3>
+                    </div>
+                  
+                    <div class="">
+                        <p class="cardo-regular">
+                            Durante la Revolución, las soldaderas adaptaron las comidas según los recursos disponibles. 
+                            A pesar de agregar <strong>solo un ingrediente nuevo</strong> al recetario nacional, surgió una cocina improvisada 
+                            en los campamentos que democratizó recetas antes exclusivas de las clases altas, fusionando técnicas 
+                            afrancesadas con productos locales y dando lugar a platillos que hoy son emblemáticos.
+                        </p>
+                    </div>
+                      <div class=" text-center">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #C67D3B;"><span class="animated-number" data-value="1">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingrediente nuevo</p>
+                    </div>  
                 </div>
             </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Animar los números al cargar la página
+                    const numberElements = document.querySelectorAll('.animated-number');
+                    
+                    numberElements.forEach(numberElement => {
+                        const finalValue = parseInt(numberElement.getAttribute('data-value'));
+                        
+                        // Reiniciar a cero
+                        numberElement.textContent = '0';
+                        
+                        // Animar hasta el valor final
+                        let currentValue = 0;
+                        const duration = 2000; // 2 segundos
+                        const interval = 50; // actualizar cada 50ms
+                        const steps = duration / interval;
+                        const increment = finalValue / steps;
+                        
+                        const timer = setInterval(function() {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                clearInterval(timer);
+                                numberElement.textContent = finalValue;
+                            } else {
+                                numberElement.textContent = Math.floor(currentValue);
+                            }
+                        }, interval);
+                    });
+                });
+            </script>
         </div>
+    </div>        
+    <div class="col-8">
+    <!-- Visualización de datos -->
+        <div class="flourish-embed flourish-survey" data-src="visualisation/23166252" data-height="600px"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23166252/thumbnail" width="100%" height="1500px" alt="survey visualization" /></noscript></div>
     </div>
+
+ </div>
+
 
 
     
-  <!-- Replace the content after the first course title -->
-<div class="timeline-container">
-    <div class="timeline-message">
-        <h3 class="main-subtitle">Próximas actualizaciones</h3>
-        <p class="cardo-regular">¡Estoy trabajando en completar el resto del viaje gastronómico!</p>
-    </div>
-    <div class="timeline">
-        <div class="timeline-point completed" style="left: 0%" data-title="Aperitivo"></div>
-        <div class="timeline-point active" style="left: 25%" data-title="Primer Plato"></div>
-        <div class="timeline-point" style="left: 50%" data-title="Entremes"></div>
-        <div class="timeline-point" style="left: 75%" data-title="Segundo Plato"></div>
-        <div class="timeline-point" style="left: 100%" data-title="Postre"></div>
-    </div>
-    
-  
 
-    <div class="timeline-preview">
-        <div class="preview-card">
-            <img src="img/Xolin/Xolin_Primer Plato .png" alt="Entremes Preview">
-            <h4>Entremes</h4>
-            <p>Próximamente</p>
-        </div>
-        <div class="preview-card">
-            <img src="img/Xolin/Xolin_Entremes.png" alt="Entremes Preview">
-            <h4>Primer Plato</h4>
-            <p>Próximamente</p>
-        </div>
-        <div class="preview-card">
-            <img src="img/Xolin/Xolin_Segundo_Plato.png" alt="Segundo Plato Preview">
-            <h4>Segundo Plato</h4>
-            <p>Próximamente</p>
-        </div>
-        <div class="preview-card">
-            <img src="img/Xolin/Xolin_Postre.png" alt="Postre Preview">
-            <h4>Postre</h4>
-            <p>Próximamente</p>
-        </div>
-    </div>
-</div>
+
 <!--###########################################################################################################################-->
 <!--footer-->
 <!--###########################################################################################################################-->
@@ -799,5 +904,6 @@
     <script src="js/ingredientAnimation.js"></script>
     <script src="js/custom-cursor.js"></script>
     <script src="js/fullNetworkGraph.js"></script>
+    <script src="js/primerPlato.js"></script>
 </body>
 </html>

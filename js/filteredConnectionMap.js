@@ -229,16 +229,38 @@ class FilteredConnectionMap {
         this.markers.forEach(marker => marker.remove());
         this.markers = [];
 
-        // Notas curiosas por ubicación
+        // Notas curiosas por ubicación - época virreinal
         const notes = {
-            'México': 'Cuna del chocolate y la vainilla',
-            'España': 'Trajo el cerdo, transformó el mole',
-            'China': 'Introdujo el arroz en tierras aztecas',
-            'India': 'Las especias que revolucionaron los guisos',
-            'Italia': 'Los quesos que conquistaron México',
-            'CDMX': 'Capital gastronómica, fusión de sabores',
-            'Puebla': 'Hogar del mole y chiles en nogada',
-            'Veracruz': 'Puerto de entrada de sabores europeos'
+            'México': 'Capital del virreinato, mestizaje culinario',
+            'España': 'Cerdo y especias transformaron la cocina',
+            'China': 'Arroz llegó por el Galeón de Manila',
+            'India': 'Canela y pimienta para nuevos guisos',
+            'Italia': 'Pasta y quesos en conventos novohispanos',
+            'CDMX': 'Mercados virreinales, sabores del mundo',
+            'Puebla': 'Conventos crearon el mole poblano',
+            'Veracruz': 'Primera puerta de sabores ultramarinos',
+            'Oaxaca': 'Mezcal y chocolate en manos indígenas',
+            'Michoacán': 'Dulces conventuales con frutos locales',
+            'Jalisco': 'Tequila nació en haciendas virreinales',
+            'Yucatán': 'Cochinita pibil fusionó dos mundos',
+            'Francia': 'Repostería llegó con los Borbones',
+            'Portugal': 'Dulces de yema en conventos mexicanos',
+            'Filipinas': 'Coco y especias vía Acapulco',
+            'Alemania': 'Cerveza llegó con colonos del siglo XVI',
+            'Perú': 'Papa y quinoa en intercambio virreinal',
+            'Cuba': 'Azúcar y ron transformaron bebidas',
+            'Argentina': 'Carnes saladas para largos viajes',
+            'Guatemala': 'Cacao criollo para chocolate real',
+            'Holanda': 'Quesos llegaron con comerciantes',
+            'Inglaterra': 'Té y galletas en casas virreinales',
+            'Turquía': 'Café llegó por rutas mediterráneas',
+            'Líbano': 'Tacos árabes nacieron del shawarma',
+            'Grecia': 'Aceite de oliva en cocinas conventuales',
+            'Japón': 'Sake llegó tardíamente por el Pacífico',
+            'Brasil': 'Cachaça y frutas tropicales',
+            'Chile': 'Vinos llegaron con misioneros',
+            'Colombia': 'Café y cacao en rutas comerciales',
+            'Egipto': 'Especias y técnicas de conservación'
         };
 
         // Contar ingredientes por ubicación
@@ -252,7 +274,7 @@ class FilteredConnectionMap {
                     name: d.origen,
                     coords: [d.longitud_origen, d.latitud_origen],
                     ingredientes: 0,
-                    note: notes[d.origen] || 'Centro de intercambio culinario'
+                    note: notes[d.origen] || 'Puerto comercial del virreinato'
                 };
             }
             nodeCounts[origenKey].ingredientes += d.ingredientes;
@@ -264,7 +286,7 @@ class FilteredConnectionMap {
                     name: d.destino,
                     coords: [d.longitud_destino, d.latitud_destino],
                     ingredientes: 0,
-                    note: notes[d.destino] || 'Centro de intercambio culinario'
+                    note: notes[d.destino] || 'Destino de rutas virreinales'
                 };
             }
             nodeCounts[destinoKey].ingredientes += d.ingredientes;

@@ -20,6 +20,7 @@
         <!-- Mapas -->
         <script src="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
         <link href="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css" rel="stylesheet">
+        <link href="css/filtered-map.css" rel="stylesheet">
         
         <!-- Estilo para cursor personalizado usando overlay -->
         <style>
@@ -56,6 +57,33 @@
         <!-- Estilos propios -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/debug.css">
+        
+        <!-- Override select option hover color -->
+        <style>
+            #category-filter option:hover,
+            #category-filter option:focus,
+            #category-filter option:checked,
+            #category-filter option:active {
+                background-color: rgba(113, 57, 1, 0.2) !important;
+                color: #713901 !important;
+                box-shadow: none !important;
+            }
+            
+            /* For Firefox */
+            #category-filter option:checked {
+                background: rgba(113, 57, 1, 0.2) !important;
+                color: #713901 !important;
+            }
+            
+            /* For webkit browsers */
+            #category-filter {
+                background-image: none;
+            }
+            
+            #category-filter:focus option:checked {
+                background: rgba(113, 57, 1, 0.2) !important;
+            }
+        </style>
         <link rel="stylesheet" href="css/visualizations/radialBarChart.css">
         <link rel="stylesheet" href="css/visualizations/circularGraph.css">
         <link rel="stylesheet" href="css/animations/falling-ingredients.css">
@@ -620,35 +648,52 @@
 
 
     <h2 class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
-    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;"> La Conquista y el Virreinato</h3>
-
-    <div class="content-block initial-block">
+    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">La Conquista y el Virreinato</h3>
+     <div class="text-center mb-4">
+        <img src="img\Xolin\Xolin_Primer_Plato.png" 
+            class="img-fluid" 
+            alt="Xolin Aperitivo"
+            style="max-height: 250px; width: auto;">
+    </div>
+    <div class=" content-block">
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Recuerdo bien cuando <span style="font-style: italic;">el humo de los fogones cambió su aroma</span>. Con la llegada de los barcos, los <span class="underline-animation">españoles trajeron el trigo</span>, que pronto se volvió pan en los hornos de los conventos. Los <span class="underline-animation">cerdos</span>, animales desconocidos para nosotros, empezaron a llenar las mesas con <span style="font-style: italic;">carnitas y chicharrones</span>, platillos que ahora parecen tan nuestros.
+        </p>
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Las <span class="underline-animation">monjas novohispanas</span> se convirtieron en maestras de los nuevos ingredientes; inventaron el <span style="font-weight: bold;">mole poblano</span> en los conventos, un platillo que mezclaba <span style="font-style: italic;">chocolate, chiles y especias traídas de ultramar</span>. En las cocinas señoriales, surgieron los primeros mestizajes: el arroz se cocinaba con tomate y se acompañaba con guisados de carne; los tamales se hicieron con manteca y se rellenaron de carnes europeas.
+        </p>
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Y no solo era la comida. En las grandes celebraciones, <span style="font-style: italic;">el vino y el mezcal se servían juntos</span>, como símbolo de <span class="underline-animation">dos mundos que chocaron y se fundieron en uno solo</span>. La comida dejó de ser solo un sustento, se convirtió en un <span style="font-weight: bold;">símbolo de poder, de mestizaje y de resistencia</span>. Así fue como el fogón indígena se mezcló con el hierro europeo, y juntos forjaron lo que hoy conocemos como <span class="underline-animation">cocina mexicana</span>.
+        </p> 
+    </div>
+   
+    <div >
         <div class="container-fluid mb-5">
             <div class="row">
-                <!-- Primera columna (8): Imagen + Texto -->
-                <div class="col-md-4">
-                    <!-- Fila superior: Imagen de Xolín -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="p-3 text-center">
-                                <p class="cardo-regular">Con la llegada de los <span class="underline-animation">españoles</span>, los sabores de dos mundos se encontraron. El maíz abrazó al <span class="underline-animation">trigo</span>, <span class="underline-animation">las especias de Europa se mezclaron con los chiles</span> de México, y nacieron maravillas como el mole poblano. En esta etapa, la cocina dejó de ser solo un sustento y se convirtió en un arte que unía culturas. Es el momento donde lo tradicional y lo nuevo se dieron la mano para crear algo completamente único</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-12 d-flex justify-content-center align-items-center">
-                            <img src="img\Xolin\Xolin_Primer_Plato.png" 
-                                class="img-fluid" 
-                                alt="Xolin Aperitivo"
-                                style="max-height: 350px; width: auto;">
-                        </div>
+                <!-- Primera columna (8): Mapa -->
+                <div class="col-md-8">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h4 class="text-center libre-baskerville-bold mb-3" style="color: #713901;">¿Cómo los ingredientes viajaron por mares y tierras para encontrarse en nuestra mesa?</h4>
+                        <div id="filtered-connection-map" style="width: 100%; height: 600px; position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div>
                     </div>
                 </div>
-                <!-- Segunda columna (4): Gráfico -->
-                <div class="col-md-8">
-                    <div class="d-flex flex-column h-200 justify-content-center">
-                        <div class="flourish-embed flourish-globe" data-src="visualisation/20535694"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20535694/thumbnail" width="100%" alt="globe visualization" /></noscript></div>
+                <!-- Segunda columna (4): Controles e Info -->
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <!-- Panel de control del mapa -->
+                        <div style="padding: 20px;">
+                            <h4 class="libre-baskerville-bold" style="color: #713901;">Filtrar por Categoría</h4>
+                            <select id="category-filter" class="form-control mb-4" style="background-color: #F6F0E4;">
+                                <!-- Opciones se llenarán dinámicamente -->
+                            </select>
+                            <div class="mb-4" id="top-routes">
+                                <h5 class="libre-baskerville-bold mb-3" style="color: #713901;">Top 5 Rutas</h5>
+                                <div id="routes-list" style="min-height: 500px;">
+                                    <!-- Lista se llenará dinámicamente -->
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -953,5 +998,28 @@
     <script src="js/custom-cursor.js"></script>
     <script src="js/fullNetworkGraph.js"></script>
     <script src="js/primerPlato.js"></script>
+    <script src="js/filteredConnectionMap.js"></script>
+    <script>
+        // Inicializar el mapa de conexiones filtradas
+        let filteredMapInstance;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapContainer = document.getElementById('filtered-connection-map');
+            if (mapContainer) {
+                filteredMapInstance = new FilteredConnectionMap('filtered-connection-map');
+                filteredMapInstance.initialize();
+            }
+        });
+        
+        // Función global para mostrar el tutorial nuevamente
+        function resetMapTutorial() {
+            window.forceShowTutorial = true;
+            const mapContainer = document.getElementById('filtered-connection-map');
+            if (mapContainer) {
+                const event = new Event('mouseenter');
+                mapContainer.dispatchEvent(event);
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,219 @@
+/* filtered-map.css */
+
+/* Map container styling with border radius */
+#filtered-connection-map {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Style for select dropdown */
+#category-filter {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #713901;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: rgba(246, 240, 228, 0.9);
+    color: #713901;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23713901' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 45px;
+}
+
+#category-filter:hover {
+    background-color: rgba(210, 180, 140, 0.2);
+    border-color: #713901;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#category-filter:focus {
+    border-color: #713901;
+    outline: none;
+    background-color: rgba(210, 180, 140, 0.2);
+}
+
+/* Style for dropdown options */
+#category-filter option {
+    background-color: #F6F0E4;
+    color: #713901;
+    padding: 8px;
+}
+
+#category-filter option:hover,
+#category-filter option:focus,
+#category-filter option:checked {
+    background-color: rgba(113, 57, 1, 0.2) !important;
+    color: #713901;
+}
+
+/* Override browser's default select option hover styles */
+select#category-filter option:hover {
+    background-color: rgba(113, 57, 1, 0.2) !important;
+    color: #713901 !important;
+}
+
+/* For webkit browsers (Chrome, Safari) */
+#category-filter::-webkit-scrollbar {
+    width: 10px;
+}
+
+#category-filter::-webkit-scrollbar-track {
+    background: #F6F0E4;
+}
+
+#category-filter::-webkit-scrollbar-thumb {
+    background: rgba(113, 57, 1, 0.3);
+    border-radius: 5px;
+}
+
+#category-filter::-webkit-scrollbar-thumb:hover {
+    background: rgba(113, 57, 1, 0.5);
+}
+
+.map-control-panel h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 18px;
+}
+
+.map-control-panel h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+.map-control-panel select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Node marker animations */
+.node-marker {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.node-marker:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(113, 57, 1, 0.4);
+}
+
+/* MapLibre popup styling */
+.maplibregl-popup-content {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.maplibregl-popup-content h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.maplibregl-popup-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Top routes list styling */
+#routes-list {
+    max-height: 300px;
+    overflow-y: auto;
+    transition: opacity 0.3s ease;
+}
+
+#routes-list > div {
+    margin: 8px 0;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#routes-list > div:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(113, 57, 1, 0.1);
+}
+
+/* Category-specific colors */
+.category-verduras {
+    color: #228B22;
+}
+
+.category-condimentos {
+    color: #DAA520;
+}
+
+.category-carnes {
+    color: #DC143C;
+}
+
+.category-lacteos {
+    color: #87CEEB;
+}
+
+/* Tutorial animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}

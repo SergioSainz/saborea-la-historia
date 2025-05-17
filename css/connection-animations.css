@@ -1,0 +1,161 @@
+/* connection-animations.css */
+
+/* Animated lines with gradient effect */
+.connection-line {
+    stroke-dasharray: 10, 5;
+    animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -15;
+    }
+}
+
+/* Pulse animation for markers */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Glow effect for connections */
+@keyframes glow {
+    0%, 100% {
+        filter: blur(2px) brightness(1.2);
+        opacity: 0.8;
+    }
+    50% {
+        filter: blur(4px) brightness(1.5);
+        opacity: 1;
+    }
+}
+
+/* Marker styles */
+.connection-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #9B2226;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 10px rgba(155, 34, 38, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.connection-marker:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(155, 34, 38, 0.8);
+}
+
+/* Animated dot styles */
+.animated-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #BB4D00;
+    box-shadow: 0 0 10px rgba(187, 77, 0, 0.8);
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Trail effect for moving dots */
+.dot-trail {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(187, 77, 0, 0.3);
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* Popup styles */
+.connection-popup {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.connection-popup h4 {
+    margin: 0 0 8px 0;
+    color: #9B2226;
+    font-size: 16px;
+}
+
+.connection-popup p {
+    margin: 4px 0;
+    color: #333;
+}
+
+/* Map overlay info */
+.map-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+}
+
+.map-info h3 {
+    margin-top: 0;
+    color: #9B2226;
+    font-size: 18px;
+}
+
+.map-info p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.legend-color {
+    width: 20px;
+    height: 3px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+.legend-text {
+    font-size: 14px;
+    color: #555;
+}

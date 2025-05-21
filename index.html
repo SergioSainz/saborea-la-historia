@@ -256,7 +256,7 @@
 <!-- Inicio de Aperitivo -->
 <!--###########################################################################################################################-->    
 
-    <h2 class="text-center main-title" style="margin-top:-1rem;">Aperitivo:</h2>
+    <h2 id="aperitivo" class="text-center main-title" style="margin-top:-1rem;">Aperitivo:</h2>
     <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">Los Sabores del Origen</h3>
     <div class="content-block initial-block">
     <div class="container-fluid mb-5">
@@ -647,7 +647,7 @@
     </div>
 
 
-    <h2 class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
+    <h2 id="primer-plato" class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
     <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">La Conquista y el Virreinato</h3>
      <div class="text-center mb-4">
         <img src="img\Xolin\Xolin_Primer_Plato.png" 
@@ -682,10 +682,40 @@
                     <div class="p-3">
                         <!-- Panel de control del mapa -->
                         <div style="padding: 20px;">
-                            <h4 class="libre-baskerville-bold" style="color: #713901;">Filtrar por Categoría</h4>
+                            
+                            <!-- Leyenda del mapa coroplético -->
+                            <div class="">
+                                <h5 class="libre-baskerville-bold mb-3" style="color: #713901;">Leyenda del Mapa</h5>
+                                <div style="display: flex; flex-direction: column; gap: 5px;color:#8B6F47;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(135, 206, 235, 0.5); margin-right: 10px ; border-radius: 4px; "></div>
+                                        <span class="legend-item-value">1-5 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(70, 130, 180, 0.6); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">6-10 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(160, 82, 45, 0.65); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">11-20 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(139, 0, 0, 0.85); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">Más de 20 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #8B4513; border: 2px solid #DAA520; margin-right: 10px;"></div>
+                                        <span>Destinos internacionales</span>
+                                    </div>
+                                </div>
+                                  <h4 class="libre-baskerville-bold mt-3" style="color: #713901;">Filtrar por Categoría</h4>
                             <select id="category-filter" class="form-control mb-4" style="background-color: #F6F0E4;">
                                 <!-- Opciones se llenarán dinámicamente -->
                             </select>
+                                
+                                <!-- Se ha eliminado el control de opacidad -->
+                            </div>
+                            
                             <div class="mb-4" id="top-routes">
                                 <h5 class="libre-baskerville-bold mb-3" style="color: #713901;">Top 5 Rutas</h5>
                                 <div id="routes-list" style="min-height: 500px;">
@@ -706,7 +736,7 @@
 <!-- ############################################### Camara de diputados    ###############################################-->
 <!-- ###############################################                        ###############################################-->
      
-    <h2 class="text-center main-title" style="margin-top:-1rem;">Segundo Plato:</h2>
+    <h2 id="segundo-plato" class="text-center main-title" style="margin-top:-1rem;">Segundo Plato:</h2>
     <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;"> La influencia francesa y Revolucion mexicana</h3>
     <div class="content-block initial-block">
     <div class="container-fluid mb-5">
@@ -848,7 +878,7 @@
 <!-- Inicio de Postre -->
 <!--###########################################################################################################################-->
 
-<h2 class="text-center main-title" style="margin-top:3rem;">Postre:</h2>
+<h2 id="postre" class="text-center main-title" style="margin-top:3rem;">Postre:</h2>
 <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">México Contemporáneo</h3>
 
 <div class="content-block initial-block">
@@ -899,6 +929,14 @@
 <!--###########################################################################################################################-->
 <!--footer-->
 <!--###########################################################################################################################-->
+
+    <!-- Navegación móvil -->
+    <div class="mobile-nav" style="display: none;">
+        <a href="#aperitivo">Aperitivo</a>
+        <a href="#primer-plato">1er Plato</a>
+        <a href="#segundo-plato">2do Plato</a>
+        <a href="#postre">Postre</a>
+    </div>
 
     <footer class="footer mt-5">
         <div class="container mt-1">
@@ -999,6 +1037,7 @@
     <script src="js/fullNetworkGraph.js"></script>
     <script src="js/primerPlato.js"></script>
     <script src="js/filteredConnectionMap.js"></script>
+    <script src="js/mobile-nav.js"></script>
     <script>
         // Inicializar el mapa de conexiones filtradas
         let filteredMapInstance;

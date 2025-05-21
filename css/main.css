@@ -27,4 +27,7 @@
 
 @import './components/timeline.css';
 
+/* Responsive Design */
+@import './responsive.css';
+
 

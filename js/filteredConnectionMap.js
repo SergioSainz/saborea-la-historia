@@ -131,11 +131,57 @@ class FilteredConnectionMap {
             'source': 'animated-dots',
             'paint': {
                 'circle-radius': 6,
-                'circle-color': '#D2691E',
+                'circle-color': '#8B4513', /* Marrón (SaddleBrown) */
                 'circle-opacity': 0.9,
                 'circle-stroke-width': 2,
-                'circle-stroke-color': '#FAEBD7'
+                'circle-stroke-color': '#DAA520' /* Dorado fuerte (GoldenRod) */
             }
+        });
+        
+        // Fuente para los estados de México (mapa coroplético)
+        this.map.addSource('mexico-states', {
+            'type': 'geojson',
+            'data': '/json/estados-poligonos.geojson'
+        });
+        
+        // Agregar una capa de contorno muy suave para los estados
+        this.map.addLayer({
+            'id': 'mexico-states-outline',
+            'type': 'line',
+            'source': 'mexico-states',
+            'layout': {},
+            'paint': {
+                'line-color': 'rgba(255, 255, 255, 0.2)',
+                'line-width': 0.5,
+                'line-opacity': 0.4,
+                // Suavizar los bordes y reducir el detalle
+                'line-blur': 3,
+                // Simplificar la geometría para reducir detalles
+                'line-simplify': 0.8
+            }
+        });
+        
+        // Capa para el relleno coroplético de los estados
+        this.map.addLayer({
+            'id': 'mexico-states-fill',
+            'type': 'fill',
+            'source': 'mexico-states',
+            'layout': {},
+            'paint': {
+                'fill-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'ingredientes_count'],
+                    0, 'rgba(255, 255, 255, 0.1)',
+                    1, 'rgba(135, 206, 235, 0.5)',  /* Azul cielo (SkyBlue) */
+                    5, 'rgba(70, 130, 180, 0.6)',   /* Azul acero (SteelBlue) */
+                    10, 'rgba(160, 82, 45, 0.65)',  /* Café (Sienna) */
+                    20, 'rgba(178, 34, 34, 0.75)',  /* Rojo ladrillo medio (Firebrick) */
+                    50, 'rgba(139, 0, 0, 0.85)'     /* Rojo ladrillo oscuro (DarkRed) */
+                ],
+                'fill-opacity': 0.5
+            },
+            'filter': ['==', 'ingredientes_count', 0] // Inicialmente no mostrar ninguno
         });
     }
 
@@ -152,6 +198,8 @@ class FilteredConnectionMap {
                 this.filterByCategory(e.target.value);
             });
         }
+        
+        // Se ha eliminado el control de opacidad
         
         // Configurar tutorial de primera vez
         this.setupTutorial();
@@ -262,9 +310,42 @@ class FilteredConnectionMap {
             'Colombia': 'Café y cacao en rutas comerciales',
             'Egipto': 'Especias y técnicas de conservación'
         };
+        
+        // Lista de estados mexicanos para identificar destinos nacionales
+        const estadosMexicanos = [
+            'Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Chiapas', 
+            'Chihuahua', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 
+            'Jalisco', 'México', 'Michoacán', 'Morelos', 'Nayarit', 'Nuevo León', 'Oaxaca', 
+            'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 'Sinaloa', 'Sonora', 
+            'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas', 'CDMX',
+            'Ciudad de México', 'Distrito Federal'
+        ];
 
         // Contar ingredientes por ubicación
         const nodeCounts = {};
+        const estadosData = {};
+        const puntosDestino = [];
+        
+        // Preparamos una solicitud al mapa para obtener feature bajo un punto
+        // Esto permitirá identificar en qué estado cae una coordenada
+        const getEstadoPorCoordenada = async (longitud, latitud) => {
+            try {
+                // Usar el método queryRenderedFeatures para obtener los features en un punto
+                const features = this.map.queryRenderedFeatures(
+                    this.map.project([longitud, latitud]),
+                    { layers: ['mexico-states-fill'] }
+                );
+                
+                if (features && features.length > 0) {
+                    return features[0].properties.nom_edo;
+                }
+                
+                return null;
+            } catch (error) {
+                console.error('Error al identificar estado por coordenada:', error);
+                return null;
+            }
+        };
         
         data.forEach(d => {
             // Procesar origen
@@ -274,7 +355,8 @@ class FilteredConnectionMap {
                     name: d.origen,
                     coords: [d.longitud_origen, d.latitud_origen],
                     ingredientes: 0,
-                    note: notes[d.origen] || 'Puerto comercial del virreinato'
+                    note: notes[d.origen] || 'Puerto comercial del virreinato',
+                    esMexicano: estadosMexicanos.includes(d.origen)
                 };
             }
             nodeCounts[origenKey].ingredientes += d.ingredientes;
@@ -286,14 +368,70 @@ class FilteredConnectionMap {
                     name: d.destino,
                     coords: [d.longitud_destino, d.latitud_destino],
                     ingredientes: 0,
-                    note: notes[d.destino] || 'Destino de rutas virreinales'
+                    note: notes[d.destino] || 'Destino de rutas virreinales',
+                    esMexicano: estadosMexicanos.includes(d.destino)
                 };
             }
             nodeCounts[destinoKey].ingredientes += d.ingredientes;
+            
+            // Si es un estado mexicano, actualizar datos para el mapa coroplético
+            if (estadosMexicanos.includes(d.destino)) {
+                if (!estadosData[d.destino]) {
+                    estadosData[d.destino] = 0;
+                }
+                estadosData[d.destino] += d.ingredientes;
+            }
+            
+            // Guardar todos los puntos de destino para determinar en qué estado caen
+            puntosDestino.push({
+                coords: [d.longitud_destino, d.latitud_destino],
+                ingredientes: d.ingredientes,
+                nombre: d.destino
+            });
         });
+        
+        // Si el mapa ya está cargado, procesamos los puntos para asignarlos a estados
+        if (this.map.loaded()) {
+            // Primero actualizamos con los estados explícitos
+            this.actualizarMapaCoropletico(estadosData);
+            
+            // Luego, para cada punto, intentamos determinar en qué estado cae
+            setTimeout(() => {
+                const estadosDataActualizado = {...estadosData};
+                
+                puntosDestino.forEach(punto => {
+                    // Verificar si la coordenada cae dentro de algún polígono de estado
+                    const features = this.map.queryRenderedFeatures(
+                        this.map.project(punto.coords),
+                        { layers: ['mexico-states-fill'] }
+                    );
+                    
+                    if (features && features.length > 0) {
+                        // Si encontramos un estado, sumamos los ingredientes a ese estado
+                        const estadoNombre = features[0].properties.nom_edo;
+                        if (!estadosDataActualizado[estadoNombre]) {
+                            estadosDataActualizado[estadoNombre] = 0;
+                        }
+                        estadosDataActualizado[estadoNombre] += punto.ingredientes;
+                        console.log(`Punto ${punto.nombre} cae en estado ${estadoNombre}, añadiendo ${punto.ingredientes} ingredientes`);
+                    }
+                });
+                
+                // Actualizamos de nuevo con los datos enriquecidos
+                this.actualizarMapaCoropletico(estadosDataActualizado);
+            }, 1000); // Esperamos a que el mapa termine de renderizar
+        } else {
+            // Si el mapa no está listo, solo actualizamos con los datos iniciales
+            this.actualizarMapaCoropletico(estadosData);
+        }
 
-        // Crear marcadores
+        // Crear marcadores solo para destinos internacionales
         Object.entries(nodeCounts).forEach(([key, node]) => {
+            // Saltear estados mexicanos (se mostrarán como mapa coroplético)
+            if (node.esMexicano) {
+                return;
+            }
+            
             // Calcular tamaño
             const minSize = 20;
             const maxSize = 60;
@@ -356,6 +494,224 @@ class FilteredConnectionMap {
 
             this.markers.push(marker);
         });
+    }
+    
+    // Método para actualizar el mapa coroplético
+    actualizarMapaCoropletico(estadosData) {
+        // Obtener la fuente GeoJSON y actualizar las propiedades
+        fetch('/json/estados-poligonos.geojson')
+            .then(response => response.json())
+            .then(geojson => {
+                // Calcular el máximo de ingredientes para normalizar 
+                const maxIngredientes = Object.values(estadosData).reduce((max, count) => 
+                    Math.max(max, count), 0);
+                
+                console.log(`Máximo ingredientes: ${maxIngredientes}`);
+                
+                // Actualizar las propiedades con los conteos de ingredientes
+                geojson.features.forEach(feature => {
+                    // En este GeoJSON, la propiedad es "nom_edo" en lugar de "nombre"
+                    const estadoNombre = feature.properties.nom_edo;
+                    
+                    // Asignar conteo de ingredientes
+                    feature.properties.ingredientes_count = estadosData[estadoNombre] || 0;
+                    
+                    // Añadir valor normalizado para tooltip y estilizado
+                    feature.properties.ingredientes_porcentaje = maxIngredientes > 0 
+                        ? Math.round((feature.properties.ingredientes_count / maxIngredientes) * 100) 
+                        : 0;
+                });
+                
+                // Actualizar la fuente de datos
+                this.map.getSource('mexico-states').setData(geojson);
+                
+                // Quitar el filtro para mostrar todos los estados
+                this.map.setFilter('mexico-states-fill', null);
+                this.map.setFilter('mexico-states-outline', null);
+                
+                // Añadir popups interactivos para los estados
+                this.setupEstadosInteraction();
+                
+                // Mostrar leyenda con valores reales
+                this.updateLegend(maxIngredientes);
+            })
+            .catch(error => {
+                console.error('Error al actualizar mapa coroplético:', error);
+            });
+    }
+    
+    // Método para actualizar la leyenda del mapa con valores reales
+    updateLegend(maxValue) {
+        // Buscar elementos de la leyenda
+        const legendItems = document.querySelectorAll('.legend-item-value');
+        if (legendItems.length === 0) return;
+        
+        // Valores para las 4 categorías de la leyenda (5%, 20%, 40%, 80%)
+        const threshold1 = Math.round(maxValue * 0.05);
+        const threshold2 = Math.round(maxValue * 0.20);
+        const threshold3 = Math.round(maxValue * 0.40);
+        const threshold4 = Math.round(maxValue * 0.80);
+        
+        // Actualizar texto de los elementos
+        legendItems[0].textContent = `1-${threshold1} ingredientes`;
+        legendItems[1].textContent = `${threshold1+1}-${threshold2} ingredientes`;
+        legendItems[2].textContent = `${threshold2+1}-${threshold3} ingredientes`;
+        legendItems[3].textContent = `${threshold3+1}+ ingredientes`;
+    }
+    
+    // Configurar interacciones para el mapa coroplético
+    setupEstadosInteraction() {
+        // Variable para mantener el popup y el ID del estado con hover
+        let estadoPopup = null;
+        let hoveredStateId = null;
+        
+        // Interacción al hacer hover sobre un estado
+        this.map.on('mouseenter', 'mexico-states-fill', (e) => {
+            this.map.getCanvas().style.cursor = 'pointer';
+            
+            // Obtener propiedades del estado
+            const properties = e.features[0].properties;
+            const estadoId = properties.cvegeo; // En este geojson usamos cvegeo como id
+            const estadoNombre = properties.nom_edo; // Nombre del estado en el nuevo GeoJSON
+            const ingredientesCount = properties.ingredientes_count || 0;
+            const nota = this.getEstadoNota(estadoNombre);
+            
+            // Actualizar el estado hover para efectos visuales
+            if (hoveredStateId) {
+                this.map.setFeatureState(
+                    { source: 'mexico-states', id: hoveredStateId },
+                    { hover: false }
+                );
+            }
+            hoveredStateId = estadoId;
+            this.map.setFeatureState(
+                { source: 'mexico-states', id: estadoId },
+                { hover: true }
+            );
+            
+            // Determinar color basado en la cantidad de ingredientes
+            let colorClass = 'color-scale-0';
+            if (ingredientesCount > 0) {
+                if (ingredientesCount <= 5) colorClass = 'color-scale-1';
+                else if (ingredientesCount <= 10) colorClass = 'color-scale-2';
+                else if (ingredientesCount <= 20) colorClass = 'color-scale-3';
+                else colorClass = 'color-scale-4';
+            }
+            
+            // Crear contenido del popup con mejor formato
+            const popupContent = `
+                <div style="font-family: 'Cardo', serif; padding: 10px; max-width: 250px;">
+                    <h4 style="margin: 0 0 8px 0; font-family: 'Libre Baskerville', serif; color: ${this.getCategoryColor(this.currentCategory)}; border-bottom: 2px solid rgba(113, 57, 1, 0.2); padding-bottom: 5px;">
+                        ${estadoNombre}
+                    </h4>
+                    <p style="margin: 0 0 8px 0; color: #8B6F47; font-style: italic; font-size: 14px;">
+                        "${nota}"
+                    </p>
+                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                        <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${this.getCategoryColor(this.currentCategory)}; margin-right: 8px;"></div>
+                        <p style="margin: 0; color: #666; font-weight: bold;">
+                            ${ingredientesCount} ingredientes
+                        </p>
+                    </div>
+                    ${estadoNombre ? 
+                        `<div style="margin-top: 8px; font-size: 13px; color: #666;">
+                            <span style="font-style: italic;">Población adulta:</span> 
+                            ${properties.pob18ymas?.toLocaleString()} habitantes
+                        </div>` 
+                        : ''}
+                </div>
+            `;
+            
+            // Calcular coordenadas para el popup usando el centro del evento
+            // En este GeoJSON no hay centroides predefinidos, así que usamos el punto donde el mouse está
+            const coordinates = e.lngLat;
+            
+            // Crear el popup y añadirlo al mapa
+            estadoPopup = new maplibregl.Popup({
+                closeButton: false,
+                closeOnClick: false,
+                maxWidth: '300px',
+                className: 'custom-popup'
+            })
+            .setLngLat(coordinates)
+            .setHTML(popupContent)
+            .addTo(this.map);
+        });
+        
+        // Quitar el popup al salir del estado
+        this.map.on('mouseleave', 'mexico-states-fill', () => {
+            this.map.getCanvas().style.cursor = '';
+            
+            // Quitar estado hover
+            if (hoveredStateId) {
+                this.map.setFeatureState(
+                    { source: 'mexico-states', id: hoveredStateId },
+                    { hover: false }
+                );
+            }
+            hoveredStateId = null;
+            
+            // Quitar popup
+            if (estadoPopup) {
+                estadoPopup.remove();
+                estadoPopup = null;
+            }
+        });
+        
+        // Hacer zoom en el estado al hacer clic
+        this.map.on('click', 'mexico-states-fill', (e) => {
+            const properties = e.features[0].properties;
+            const estadoNombre = properties.nom_edo;
+            
+            // Usar la ubicación del clic como centro
+            this.map.flyTo({
+                center: e.lngLat,
+                zoom: 5.5,
+                duration: 1000
+            });
+        });
+    }
+    
+    // Obtener una nota para un estado mexicano
+    getEstadoNota(estado) {
+        const notasEstados = {
+            'Aguascalientes': 'Tradicional por sus vinos y guisos de chile',
+            'Baja California': 'Fusión contemporánea con tradición vitivinícola',
+            'Baja California Sur': 'Cocina peninsular con influencia marina',
+            'Campeche': 'Cocina costeña con influencia maya',
+            'Chiapas': 'Rica tradición de maíz, chile y hierba santa',
+            'Chihuahua': 'Carnes norteñas y quesos artesanales',
+            'Coahuila': 'Cabritos, dulces de leche y vinos regionales',
+            'Colima': 'Recetas con coco y pescados locales',
+            'Durango': 'Caldillos de res y platillos de venado',
+            'Guanajuato': 'Guisos mineros y dulces típicos',
+            'Guerrero': 'Sabores intensos con pozole y pescado a la talla',
+            'Hidalgo': 'Barbacoa y platillos prehispánicos',
+            'Jalisco': 'Cuna de la birria, tequila y pozole rojo',
+            'México': 'Corazón de la gastronomía nacional',
+            'Michoacán': 'Carnitas, uchepos y atápakuas tradicionales',
+            'Morelos': 'Cecina de Yecapixtla y moles regionales',
+            'Nayarit': 'Pescados zarandeados y camarones en coco',
+            'Nuevo León': 'Cabrito, machaca y carne asada',
+            'Oaxaca': 'Siete moles, tlayudas y chapulines',
+            'Puebla': 'Cuna del mole poblano y los chiles en nogada',
+            'Querétaro': 'Enchiladas queretanas y nopales regionales',
+            'Quintana Roo': 'Pescados caribeños con sazón maya',
+            'San Luis Potosí': 'Enchiladas potosinas y zacahuil monumental',
+            'Sinaloa': 'Chilorio, aguachile y mariscos frescos',
+            'Sonora': 'Carne asada, machaca y tortillas sobaqueras',
+            'Tabasco': 'Pejelagarto y chocolate de origen',
+            'Tamaulipas': 'Mariscos, carne seca y cabrito al pastor',
+            'Tlaxcala': 'Mixiotes y mole prieto tradicional',
+            'Veracruz': 'Huachinango a la veracruzana y acamayas',
+            'Yucatán': 'Cochinita pibil y recados yucatecos',
+            'Zacatecas': 'Asado de boda y mezcal artesanal',
+            'CDMX': 'Mercados virreinales, sabores del mundo',
+            'Ciudad de México': 'Crisol de sabores de todo el país',
+            'Distrito Federal': 'Centro histórico de la gastronomía mexicana'
+        };
+        
+        return notasEstados[estado] || 'Destino de rutas virreinales';
     }
 
     updateTopRoutes(data) {

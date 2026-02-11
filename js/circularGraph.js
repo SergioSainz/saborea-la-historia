@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ).length;
                 
                 // Crear HTML informativo: número 2x más grande, ingrediente en negrita
-                infoText = `Visualizando <span style="font-size:2em;font-weight:bold">${platillosCount}</span> platillos con <b>${ingredienteActivo.toLowerCase()}</b>`;
+                infoText = `<span style="color:#7B95AB">Visualizando</span> <span style="font-size:2em;font-weight:bold">${platillosCount}</span> <span style="color:#7B95AB">platillos con</span> <b>${ingredienteActivo.toLowerCase()}</b>`;
             }
             
             // Actualizar o crear elemento de información

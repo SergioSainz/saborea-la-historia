@@ -171,7 +171,7 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         .attr('font-size', '16px') // Aumentado de 14px a 16px
         .attr('font-weight', 'bold')
         .attr('font-family', 'Cardo, serif')
-        .attr('fill', '#121212') // Gris más oscuro, casi negro
+        .attr('fill', '#5a3e28') // Gris más oscuro, casi negro
         .attr('opacity', 0) // Iniciar invisible
         .text('Categorías de Platillos')
         .transition()
@@ -211,15 +211,23 @@ function createCategoryRing(svg, nodes, links, radiusLevel3, radiusLevel4, width
         .attr('stroke', '#fff')
         .attr('stroke-width', 0.5);
     
-    // Etiquetas de texto (conteo primero, luego tipo) - más grandes y con gris más fuerte
-    legendItems.append('text')
-        .attr('x', 22) // Aumentado de 20 a 22 para más separación con el rectángulo
-        .attr('y', 11) // Ajustado para alinear verticalmente con los rectángulos más grandes
+    // Etiquetas de texto: número grande en azul, texto en gris azulado
+    const legendTexts = legendItems.append('text')
+        .attr('x', 22)
+        .attr('y', 11)
+        .attr('font-family', 'Cardo, serif');
+
+    legendTexts.append('tspan')
+        .attr('fill', '#5a3e28')
+        .attr('font-size', '16px')
+        .attr('font-weight', 'bold')
+        .text(d => categoryCounts[d.id]);
+
+    legendTexts.append('tspan')
+        .attr('fill', 'rgba(90, 62, 40, 0.8)')
         .attr('font-size', '13px')
-        .attr('font-family', 'Cardo, serif')
-        .attr('fill', '#1a1a1a') // Gris más oscuro (casi negro) para mejor contraste
-        .attr('font-weight', '500') // Ligeramente más negrita que normal
-        .text(d => `${categoryCounts[d.id]} ${d.id}`);
+        .attr('font-weight', 'normal')
+        .text(d => ` ${d.id}`);
     
     // Contador de categorías con animación - con posición corregida
     legendGroup.append('text')

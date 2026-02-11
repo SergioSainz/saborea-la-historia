@@ -66,12 +66,12 @@ function createRadialBarChart(containerId, data, ingrediente) {
     // Eliminar gráfico anterior si existe
     d3.select(`#${containerId}`).selectAll("*").remove();
     
-    // Dimensiones del SVG - aumentar para que ocupe todo el espacio
-    const width = 1000;  // Aumento de tamaño 
-    const height = 1400; // Aumentado aún más para mostrar mayor altura
-    const innerRadius = 120; // Círculo central más grande para la imagen
-    const outerRadius = Math.min(width, height) / 2 - 120; // Reducir un poco para dar más espacio a las etiquetas
-    
+    // Dimensiones del SVG - 30% menos alto para reducir espacio en blanco
+    const width = 1000;
+    const height = 980;
+    const innerRadius = 120;
+    const outerRadius = Math.min(width, height) / 2 - 120;
+
     // Crear el SVG con tamaño relativo para que se adapte al contenedor
     const svg = d3.select(`#${containerId}`)
         .append("svg")
@@ -80,7 +80,7 @@ function createRadialBarChart(containerId, data, ingrediente) {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
-        .attr("transform", `translate(${width/2}, ${height/2+150})`);
+        .attr("transform", `translate(${width/2}, ${height/2})`);
     
     // Escala para el radio
     const maxCount = d3.max(data, d => d.count);

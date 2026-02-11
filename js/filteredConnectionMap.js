@@ -167,15 +167,13 @@ class FilteredConnectionMap {
             'layout': {},
             'paint': {
                 'fill-color': [
-                    'interpolate',
-                    ['linear'],
+                    'step',
                     ['get', 'ingredientes_count'],
-                    0, 'rgba(255, 255, 255, 0.1)',
-                    1, 'rgba(135, 206, 235, 0.5)',  /* Azul cielo (SkyBlue) */
-                    5, 'rgba(70, 130, 180, 0.6)',   /* Azul acero (SteelBlue) */
-                    10, 'rgba(160, 82, 45, 0.65)',  /* Café (Sienna) */
-                    20, 'rgba(178, 34, 34, 0.75)',  /* Rojo ladrillo medio (Firebrick) */
-                    50, 'rgba(139, 0, 0, 0.85)'     /* Rojo ladrillo oscuro (DarkRed) */
+                    'rgba(255, 255, 255, 0.1)',      /* 0: transparente */
+                    1, 'rgba(135, 206, 235, 0.5)',   /* 1-2: Azul cielo */
+                    3, 'rgba(70, 130, 180, 0.6)',    /* 3-6: Azul acero */
+                    7, 'rgba(160, 82, 45, 0.65)',    /* 7-13: Café (Sienna) */
+                    14, 'rgba(139, 0, 0, 0.85)'      /* 14+: Rojo oscuro */
                 ],
                 'fill-opacity': 0.5
             },
@@ -543,18 +541,12 @@ class FilteredConnectionMap {
         // Buscar elementos de la leyenda
         const legendItems = document.querySelectorAll('.legend-item-value');
         if (legendItems.length === 0) return;
-        
-        // Valores para las 4 categorías de la leyenda (5%, 20%, 40%, 80%)
-        const threshold1 = Math.round(maxValue * 0.05);
-        const threshold2 = Math.round(maxValue * 0.20);
-        const threshold3 = Math.round(maxValue * 0.40);
-        const threshold4 = Math.round(maxValue * 0.80);
-        
-        // Actualizar texto de los elementos
-        legendItems[0].textContent = `1-${threshold1} ingredientes`;
-        legendItems[1].textContent = `${threshold1+1}-${threshold2} ingredientes`;
-        legendItems[2].textContent = `${threshold2+1}-${threshold3} ingredientes`;
-        legendItems[3].textContent = `${threshold3+1}+ ingredientes`;
+
+        // Rangos fijos que coinciden con los steps del fill-color
+        legendItems[0].textContent = `1-2 ingredientes`;
+        legendItems[1].textContent = `3-6 ingredientes`;
+        legendItems[2].textContent = `7-13 ingredientes`;
+        legendItems[3].textContent = `14+ ingredientes`;
     }
     
     // Configurar interacciones para el mapa coroplético

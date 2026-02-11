@@ -85,10 +85,12 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-#category-filter:focus {
+#category-filter:focus,
+#category-filter:focus-visible {
     border-color: #713901;
     outline: none;
     background-color: rgba(210, 180, 140, 0.2);
+    box-shadow: 0 0 0 3px rgba(196, 154, 108, 0.4);
 }
 
 /* Style for dropdown options */

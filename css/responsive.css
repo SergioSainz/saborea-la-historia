@@ -226,6 +226,19 @@ img {
     margin-bottom: 1rem;
 }
 
+/* KPI cards in ingredient blocks */
+.ingredient-block .card-title {
+    font-size: 1.2rem;
+}
+
+.ingredient-block .animated-number {
+    font-size: 1.5rem;
+}
+
+.ingredient-block .card-body {
+    padding: 0.5rem;
+}
+
 /* Section dividers */
 h2.text-center.main-title {
     padding-top: 2rem;
@@ -496,6 +509,19 @@ body::after {
     .ingredient-block {
         margin: 2rem 1.25rem;
         padding: inherit;
+    }
+
+    /* KPI cards restore size */
+    .ingredient-block .card-title {
+        font-size: 1.8rem;
+    }
+
+    .ingredient-block .animated-number {
+        font-size: 2rem;
+    }
+
+    .ingredient-block .card-body {
+        padding: 1rem;
     }
 
     .typing-text {

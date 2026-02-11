@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .style('position', 'absolute')
                     .style('top', '15px')
                     .style('left', '15px')
-                    .style('background-color', 'rgba(255,255,255,0.5)')
+                    .style('background-color', 'transparent')
                     .style('padding', '8px 15px')
                     .style('margin-bottom', '10px')
                     .style('border-radius', '20px')
@@ -598,7 +598,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     .style('color', '#073B4C')
                     .style('font-weight', 'bold')
                     .style('text-align', 'left')
-                    .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
+                    .style('box-shadow', 'none')
+                    .style('border', '1px solid rgb(196, 154, 108)')
                     .style('z-index', '100')
                     .style('transition', 'opacity 0.3s ease');
             }
@@ -1688,11 +1689,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('display', 'flex')
             .style('align-items', 'center')
             .style('gap', '15px')
-            .style('background-color', 'rgba(255,255,255,0.5)')
+            .style('background-color', 'transparent')
             .style('padding', '6px 12px')
             .style('border-radius', '6px')
-            .style('box-shadow', '0 1px 4px rgba(0,0,0,0.1)')
-            .style('border', '1px solid rgba(174, 124, 52, 0.3)')
+            .style('box-shadow', 'none')
+            .style('border', '1px solid rgb(196, 154, 108)')
             .style('z-index', '100');
             
         // Añadir título para mostrar la época filtrada

@@ -6,6 +6,27 @@
     color: #8B6F47;
 }
 
+/* Horizontal variant — sits above the map */
+.map-legend--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    font-family: 'Cardo', serif;
+    font-size: 0.85rem;
+}
+
+.map-legend--horizontal .map-legend__item {
+    gap: 4px;
+}
+
+.map-legend--horizontal .map-legend__swatch {
+    width: 14px;
+    height: 14px;
+    margin-right: 0;
+}
+
 .map-legend__item {
     display: flex;
     align-items: center;
@@ -19,19 +40,19 @@
     flex-shrink: 0;
 }
 
-.map-legend__swatch--1-5 {
+.map-legend__swatch--1-2 {
     background-color: rgba(135, 206, 235, 0.5);
 }
 
-.map-legend__swatch--6-10 {
+.map-legend__swatch--3-6 {
     background-color: rgba(70, 130, 180, 0.6);
 }
 
-.map-legend__swatch--11-20 {
+.map-legend__swatch--7-13 {
     background-color: rgba(160, 82, 45, 0.65);
 }
 
-.map-legend__swatch--20plus {
+.map-legend__swatch--14plus {
     background-color: rgba(139, 0, 0, 0.85);
 }
 

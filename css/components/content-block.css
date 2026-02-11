@@ -47,11 +47,12 @@
   line-height: 1.6;
 }
 
-.content-block.active {
+.content-block.active,
+.content-block.initial-block {
   opacity: 1;
   transform: translateY(0);
 }
 
-.content-block:last-child {
+.sticky-section .content-block:last-child {
   margin-bottom: 40vh;
 }

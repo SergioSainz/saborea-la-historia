@@ -141,7 +141,7 @@ class FilteredConnectionMap {
         // Fuente para los estados de México (mapa coroplético)
         this.map.addSource('mexico-states', {
             'type': 'geojson',
-            'data': '/json/estados-poligonos.geojson'
+            'data': 'json/estados-poligonos.geojson'
         });
         
         // Agregar una capa de contorno muy suave para los estados
@@ -497,7 +497,7 @@ class FilteredConnectionMap {
     // Método para actualizar el mapa coroplético
     actualizarMapaCoropletico(estadosData) {
         // Obtener la fuente GeoJSON y actualizar las propiedades
-        fetch('/json/estados-poligonos.geojson')
+        fetch('json/estados-poligonos.geojson')
             .then(response => response.json())
             .then(geojson => {
                 // Calcular el máximo de ingredientes para normalizar 

@@ -42,13 +42,13 @@
   transform: translateY(0);
 }
 
-/* Ajustes específicos para el primer y último bloque */
-.content-block:first-child {
+/* Ajustes específicos para bloques dentro de sticky sections (scrollytelling) */
+.sticky-section .content-block:first-child {
   min-height: 100vh;
   margin-bottom: 40vh;
 }
 
-.content-block:last-child {
+.sticky-section .content-block:last-child {
   min-height: 100vh;
   margin-top: 40vh;
   margin-bottom: 40vh;

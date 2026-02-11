@@ -576,37 +576,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     n.isRelevant
                 ).length;
                 
-                // Crear texto informativo
-                infoText = `Visualizando ${platillosCount} platillos con ${ingredienteActivo.toLowerCase()}`;
+                // Crear HTML informativo: número 2x más grande, ingrediente en negrita
+                infoText = `Visualizando <span style="font-size:2em;font-weight:bold">${platillosCount}</span> platillos con <b>${ingredienteActivo.toLowerCase()}</b>`;
             }
             
             // Actualizar o crear elemento de información
             let infoElement = d3.select('#filter-info');
             if (infoElement.empty()) {
-                infoElement = d3.select('#network')
-                    .append('div')
-                    .attr('id', 'filter-info')
-                    .style('position', 'absolute')
-                    .style('top', '15px')
-                    .style('left', '15px')
-                    .style('background-color', 'transparent')
-                    .style('padding', '8px 15px')
-                    .style('margin-bottom', '10px')
-                    .style('border-radius', '20px')
-                    .style('font-family', 'Cardo, serif')
-                    .style('font-size', '14px')
-                    .style('color', '#073B4C')
-                    .style('font-weight', 'bold')
-                    .style('text-align', 'left')
-                    .style('box-shadow', 'none')
-                    .style('border', '1px solid rgb(196, 154, 108)')
-                    .style('z-index', '100')
-                    .style('transition', 'opacity 0.3s ease');
+                // Se creará dentro de graph-controls, debajo de la fila de botones
+                const controlsEl = d3.select('.graph-controls');
+                if (!controlsEl.empty()) {
+                    infoElement = controlsEl
+                        .append('div')
+                        .attr('id', 'filter-info')
+                        .style('font-family', 'Cardo, serif')
+                        .style('font-size', '20px')
+                        .style('color', '#013971')
+                        .style('font-weight', 'normal')
+                        .style('text-align', 'right')
+                        .style('transition', 'opacity 0.3s ease');
+                }
             }
             
             // Actualizar texto con transición
             infoElement
-                .text(infoText)
+                .html(infoText)
                 .style('opacity', infoText ? 1 : 0);
                 
             // Añadir o actualizar instrucciones de zoom debajo del texto informativo
@@ -1684,20 +1678,29 @@ document.addEventListener('DOMContentLoaded', function() {
             .append('div')
             .attr('class', 'graph-controls')
             .style('position', 'absolute')
-            .style('top', '15px') // Volver a la parte superior
+            .style('top', '15px')
             .style('right', '80px')
+            .style('display', 'flex')
+            .style('flex-direction', 'column')
+            .style('align-items', 'flex-end')
+            .style('gap', '6px')
+            .style('background-color', 'transparent')
+            .style('padding', '0')
+            .style('border', 'none')
+            .style('box-shadow', 'none')
+            .style('z-index', '100');
+
+        // Fila superior: leyenda + botones
+        const controlsRow = controlsContainer.append('div')
             .style('display', 'flex')
             .style('align-items', 'center')
             .style('gap', '15px')
-            .style('background-color', 'transparent')
             .style('padding', '6px 12px')
             .style('border-radius', '6px')
-            .style('box-shadow', 'none')
-            .style('border', '1px solid rgb(196, 154, 108)')
-            .style('z-index', '100');
+            .style('border', 'none');
             
         // Añadir título para mostrar la época filtrada
-        controlsContainer.append('div')
+        controlsRow.append('div')
             .attr('class', 'filter-title')
             .style('font-family', 'Cardo, serif')
             .style('font-size', '14px')
@@ -1705,9 +1708,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .style('color', '#9B2226')
             .style('margin-right', '10px')
             .text('México Prehispánico');
-        
+
         // Añadir leyenda
-        const legendContainer = controlsContainer
+        const legendContainer = controlsRow
             .append('div')
             .attr('class', 'graph-legend')
             .style('display', 'flex')
@@ -1747,7 +1750,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Añadir botón para reiniciar filtros (ahora solo vuelve a filtrar por época)
-        const resetButton = controlsContainer
+        const resetButton = controlsRow
             .append('button')
             .attr('class', 'reset-button')
             .text('Reiniciar vista')
@@ -1848,7 +1851,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
         // Añadir botón para reiniciar el zoom
-        const resetZoomButton = controlsContainer
+        const resetZoomButton = controlsRow
             .append('button')
             .attr('class', 'reset-zoom-button')
             .text('Zoom inicial')

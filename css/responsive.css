@@ -513,11 +513,11 @@ body::after {
 
     /* KPI cards restore size */
     .ingredient-block .card-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     .ingredient-block .animated-number {
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
 
     .ingredient-block .card-body {

@@ -8,8 +8,12 @@
 @import './components/speech-bubble.css';
 @import './components/menu.css';
 @import './components/content-block.css';
-@import './components/footer.css';  /* Añadido */
-@import './components/mapa.css';  /* Añadido */
+@import './components/footer.css';
+@import './components/mapa.css';
+@import './components/kpi.css';
+@import './components/ingredient-card.css';
+@import './components/map-legend.css';
+@import './components/explanation-view.css';
 
 /* Layouts */
 @import './layouts/grid.css';
@@ -24,6 +28,7 @@
 @import './visualizations/d3Sankey.css';
 @import './visualizations/ingredientCharts.css';
 @import './visualizations/tooltips.css'; /* Tooltips prehispánicos */
+@import './visualizations/particleChart.css'; /* Gráfico de partículas p5.js */
 
 @import './components/timeline.css';
 

@@ -1,65 +1,127 @@
-.scroll-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
-  padding: 1rem 2rem;
-  color: #013971;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards;
+/* ==========================================================
+   Placa de scroll — estilo cantera colonial / San Ángel
+   ----------------------------------------------------------
+   Placa narrativa de piedra envejecida, no un botón UI.
+   Funciona como señal de lectura ("scroll cue"), no CTA.
+   Puro CSS, sin imágenes.
+   ========================================================== */
+
+.scroll-plaque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.2rem auto 0.5rem;
+    padding: 1rem 2.8rem 0.8rem;
+    cursor: pointer;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+
+    /* --- Fondo: piedra cálida / papel envejecido --- */
+    background-color: #e8dcc8;
+    background-image:
+        /* Grano fino — poros de cantera */
+        radial-gradient(ellipse 1px 1px at 30% 40%,
+            rgba(120,80,40,0.08) 50%, transparent 50%),
+        radial-gradient(ellipse 0.8px 1px at 70% 25%,
+            rgba(100,60,20,0.06) 50%, transparent 50%),
+        /* Manchas tonales — pigmentación desigual de la piedra */
+        radial-gradient(ellipse 80px 50px at 20% 60%,
+            rgba(180,150,110,0.12), transparent),
+        radial-gradient(ellipse 60px 70px at 75% 35%,
+            rgba(140,110,70,0.08), transparent),
+        /* Micro-ruido */
+        radial-gradient(ellipse 0.6px 0.6px at 50% 50%,
+            rgba(80,50,20,0.05) 50%, transparent 50%);
+    background-size:
+        5px 6px,
+        7px 5px,
+        100% 100%,
+        100% 100%,
+        3px 3px;
+
+    /* --- Esquinas orgánicas — piedra tallada a mano --- */
+    border-radius: 6px 8px 7px 6px;
+
+    /* --- Borde desgastado — cantera erosionada ---
+       Opacidad baja y color tierra para efecto gastado */
+    border: 1.5px solid rgba(160,120,70,0.45);
+
+    /* --- Sombras mate ---
+       inset: hundimiento sutil de piedra labrada
+       outer: profundidad sin brillo                      */
+    box-shadow:
+        inset 0  1px  4px rgba(255,245,230,0.30),
+        inset 0 -1px  3px rgba(100,70,30,0.12),
+        0 2px  6px rgba(0,0,0,0.10),
+        0 1px  2px rgba(0,0,0,0.06);
 }
 
-.scroll-button.clicked {
-  pointer-events: none;
+/* --- Costura interior / reborde labrado --- */
+.scroll-plaque::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 4px 5px 4px 4px;
+    border: 1px solid rgba(160,130,90,0.20);
+    pointer-events: none;
+    box-shadow: inset 0 0 0 0.5px rgba(80,50,20,0.06);
 }
 
-.arrow-down {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: solid #013971;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-  margin: 10px auto 0;
-  animation: bounce 2s infinite;
-  transition: opacity 0.3s ease;
+/* --- Hover: muy sutil, no "app-like" ---
+   Solo un leve cambio de sombra, sin lift ni scale */
+.scroll-plaque:hover {
+    box-shadow:
+        inset 0  1px  4px rgba(255,245,230,0.30),
+        inset 0 -1px  3px rgba(100,70,30,0.12),
+        0 3px  8px rgba(0,0,0,0.13),
+        0 1px  2px rgba(0,0,0,0.06);
 }
 
-.chile-icon {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background-image: url('../../img/inicio/chile.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0;
-  transition: all 0.3s ease;
+/* ==========================================================
+   Tipografía de la placa
+   ========================================================== */
+.plaque-text {
+    font-family: 'Cardo', 'Libre Baskerville', 'Georgia', serif;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: #5a3e28;
+    line-height: 1.4;
+    /* Sin text-shadow agresivo — legibilidad de museo */
+    text-shadow: 0 0.5px 0 rgba(255,250,240,0.3);
 }
 
-.scroll-button.clicked .chile-icon {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+/* ==========================================================
+   Flecha descendente — discreta, no animada agresivamente
+   ========================================================== */
+.plaque-arrow {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: solid #8b7355;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+    margin: 6px auto 0;
+    opacity: 0.5;
+    animation: plaqueNod 3s ease-in-out infinite;
 }
 
-.scroll-button.clicked .arrow-down,
-.scroll-button.clicked .button-text {
-  opacity: 0;
+/* Movimiento muy sutil — un "asentir" lento, no un bounce */
+@keyframes plaqueNod {
+    0%, 100% { transform: rotate(45deg) translateY(0);  }
+    50%      { transform: rotate(45deg) translateY(3px); }
 }
 
-.scroll-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* ==========================================================
+   Estado "clicked" — transición al chile (compatibilidad)
+   ========================================================== */
+.scroll-plaque.clicked {
+    pointer-events: none;
+}
+
+.scroll-plaque.clicked .plaque-arrow,
+.scroll-plaque.clicked .plaque-text {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }

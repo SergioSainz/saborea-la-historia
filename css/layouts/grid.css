@@ -5,38 +5,89 @@
     padding-left: var(--spacing-sm);
     margin-right: auto;
     margin-left: auto;
-  }
-  
-  /* Estilo para la sección de altura completa */
-  .fullscreen-section {
+}
+
+/* Estilo para la sección de altura completa */
+.fullscreen-section {
     min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     backdrop-filter: blur(50%);
-  }
-  
-  /* Ajustes para el contenido interno */
-  .content-wrapper {
+}
+
+/* Ajustes para el contenido interno */
+.content-wrapper {
     width: 100%;
-  }
-  
-  /* Contenedor de contenido */
-  .content-box {
+}
+
+/* Contenedor de contenido */
+.content-box {
     background-color: var(--color-background);
     border-radius: var(--border-radius-lg);
     backdrop-filter: blur(5px);
-  }
-  
-  /* Ajustes para imágenes laterales */
-  .side-image-container {
+}
+
+/* Ajustes para imágenes laterales */
+.side-image-container {
     height: 100vh;
     position: fixed;
     display: flex;
     align-items: center;
-  }
-  
-  .side-image-container img {
+}
+
+.side-image-container img {
     height: 100%;
     object-fit: cover;
-  }
+}
+
+/* ========================================
+   CSS Grid Layout System (Mobile-First)
+   ======================================== */
+
+/* Mobile: single column */
+.layout-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+
+.layout-sidebar--wide-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+
+.layout-sidebar--wide-viz {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+
+.layout-thirds {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+
+/* Tablet: thirds become 3 columns */
+@media (min-width: 768px) {
+    .layout-thirds {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* Desktop: asymmetric sidebar layouts */
+@media (min-width: 992px) {
+    .layout-sidebar {
+        grid-template-columns: 7fr 5fr;
+    }
+
+    .layout-sidebar--wide-content {
+        grid-template-columns: 8fr 4fr;
+    }
+
+    .layout-sidebar--wide-viz {
+        grid-template-columns: 4fr 8fr;
+    }
+}

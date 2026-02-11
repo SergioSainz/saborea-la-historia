@@ -155,9 +155,7 @@ class FilteredConnectionMap {
                 'line-width': 0.5,
                 'line-opacity': 0.4,
                 // Suavizar los bordes y reducir el detalle
-                'line-blur': 3,
-                // Simplificar la geometría para reducir detalles
-                'line-simplify': 0.8
+                'line-blur': 3
             }
         });
         

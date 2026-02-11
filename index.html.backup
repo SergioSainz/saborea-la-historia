@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Título y favicon -->
+        <title>Saborea la Historia</title>
+        <link rel="icon" type="image/x-icon" href="img/icono/chile.ico">
+        
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        
+        <!-- Dependencias externas -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        
+        <!-- Mapas -->
+        <script src="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
+        <link href="//unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css" rel="stylesheet">
+        <link href="css/filtered-map.css" rel="stylesheet">
+        
+        <!-- Estilo para cursor personalizado usando overlay -->
+        <style>
+            #custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 60px;
+                height: 60px;
+                background-image: url('img/Xolin/cara.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.1s ease;
+            }
+            
+            /* Ocultar el cursor original en toda la página y elementos */
+            *, *::before, *::after,
+            html, body, a, button, input, select, textarea,
+            div, span, p, h1, h2, h3, h4, h5, h6,
+            section, header, footer, main, nav, article, aside, 
+            ul, ol, li, table, tr, td, th {
+                cursor: none !important;
+            }
+            
+            /* Asegurarse de que los campos de entrada de texto sigan siendo utilizables */
+            input[type="text"]:focus, textarea:focus, [contenteditable="true"]:focus {
+                caret-color: auto; /* Mantener el cursor de texto visible */
+            }
+        </style>
+        
+        <!-- Estilos propios -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/debug.css">
+        
+        <!-- Override select option hover color -->
+        <style>
+            #category-filter option:hover,
+            #category-filter option:focus,
+            #category-filter option:checked,
+            #category-filter option:active {
+                background-color: rgba(113, 57, 1, 0.2) !important;
+                color: #713901 !important;
+                box-shadow: none !important;
+            }
+            
+            /* For Firefox */
+            #category-filter option:checked {
+                background: rgba(113, 57, 1, 0.2) !important;
+                color: #713901 !important;
+            }
+            
+            /* For webkit browsers */
+            #category-filter {
+                background-image: none;
+            }
+            
+            #category-filter:focus option:checked {
+                background: rgba(113, 57, 1, 0.2) !important;
+            }
+        </style>
+        <link rel="stylesheet" href="css/visualizations/radialBarChart.css">
+        <link rel="stylesheet" href="css/visualizations/circularGraph.css">
+        <link rel="stylesheet" href="css/animations/falling-ingredients.css">
+        <link rel="stylesheet" href="css/custom-cursor.css">
+    </head>
+<body style="background-color: #F6F0E4; cursor: none !important;">
+    <!-- Primera sección con TypeIt -->
+    <div class="container-fluid fullscreen-section" style="background-image: url('img/principal/inicio.png');">
+        <div class="row min-vh-100">
+            <div class="col-md-8 mx-auto d-flex align-items-center">
+                <div style="background-color: rgba(255, 255, 255, 0.5);" class=" d-flex flex-column justify-content-center align-items-center content-box p-4 w-100">
+                    <img class="m-5 ps-5 pe-5" src="img/titulo-2.png"
+                    style="width: 100%;">
+
+                    
+                    <div class="dialog-container mt-3">
+                        <div class="dialog-image">
+                            <img src="img\Xolin\cara-1.png" 
+                                alt="Imagen Xolin">
+                        </div>
+                        <div class="dialog-text">
+                            <div class="speech-bubble">
+                                <p id="typing-text" class="typing-text cardo-regular"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="scroll-down-btn" class="scroll-button" style="opacity: 0; transform: translateY(20px);">
+                        <span class="button-text">Descubrir las historias</span>
+                        <div class="arrow-down"></div>
+                        <div class="chile-icon"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid sticky-section">
+        <div class="row">
+            <!-- Columna de contenido a la izquierda (7/12) -->
+            <div class="mt-15 col-7">
+                <div class="mt-15 mb-5 content-block">
+                    <p class="cardo-regular text-grey">En algún rincón del México profundo, donde los aromas de maíz, cacao y chiles secos flotan en el aire como ecos de un pasado ancestral, vive Xolín, <span class="underline-animation">un xoloitzcuintle guardián de los sabores e historias de nuestra tierra.</span> Según las leyendas, Xolín fue guía hacia  <span class="underline-animation">el Mictlán, el inframundo.</span> <span class="underline-animation" style="font-style: italic;">Pero hoy su misión es diferente:</span> llevarnos en un viaje al corazón de la gastronomía mexicana, revelando cómo cada platillo guarda historias ocultas en <span class="underline-animation">cada ingrediente.</span></p>
+                    <img src="img/inicio/chile.png" 
+                        class="img-fluid mx-auto d-block"   
+                        style="max-width: 50px; transform: rotate(30deg);" 
+                        alt="Imagen Central">
+                        <p class="cardo-regular text-grey">Cada sabor es un testimonio de la mezcla de culturas que forjaron nuestra <span class="underline-animation">identidad gastronomica de México.</span> Desde los fogones prehispánicos hasta los hornos coloniales, los ingredientes <span class="underline-animation">se fusionaron</span>, creando una gastronomía que hoy es símbolo de orgullo y <span class="underline-animation">Patrimonio Cultural Inmaterial de la Humanidad</span>. Este banquete de cuatro tiempos <span class="underline-animation">celebra esa herencia y rinde homenaje</span> a quienes, con sus manos y su legado, preservaron estos sabores hasta nuestros días.</p>
+ 
+                </div>
+                <!-- Menu -->
+                <div class="row "> <!-- mt-4 para dar espacio después del título -->
+              
+                    <div class=" content-block">
+                        <div class="d-flex">
+                            <div class="col-3 text-center"> <!-- col-6 divide en dos columnas iguales -->
+                                <img    src="img\inicio\flor_menu.png"
+                                        style=" transform: rotate(308deg);" 
+                                        class="img-fluid" 
+                                        alt="Menú Imagen 1">
+                            </div>
+                            <div class="col-6 text-center">
+        
+                            </div>
+                            <div class="col-3 text-center">
+                                <img    src="img\inicio\flor_menu.png" 
+                                        style="transform: rotate(174deg);" 
+                                        class="img-fluid" 
+                                        alt="Menú Imagen 2">
+                            </div>
+                        </div>
+                        
+                        <h2 class="text-center main-title" style=" margin-top:-1rem;">Menú del día</h2>
+                        
+                        <!-- Aperitivo -->
+                        <div class="row  align-items-center justify-content-center">
+                            <!-- Imagen izquierda -->
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);"  class="img-fluid" alt="Detalle Superior">-->
+                            </div>
+                            
+                            <!-- Título en el centro -->
+                            <div class="col-8 text-center">
+                                <h5 class="libre-baskerville-bold main-subtitle">Aperitivo</h5>
+                            </div>
+                            
+                            <!-- Imagen derecha -->
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
+                            </div>
+                            
+                            <!-- Descripción debajo de las 3 columnas -->
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Comenzaremos con el <span class="underline-animation">México Prehispánico</span>, explorando las raíces de la cocina ancestral
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Primer Plato -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">-->
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Primer Plato</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
+                            </div>
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Pasaremos al mestizaje culinario en <span class="underline-animation">la Conquista</span> y el <span class="underline-animation">Virreinato</span>, donde la fusión de culturas dio lugar a nuevos sabores.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Entremes -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">-->
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Segundo Plato</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
+                            </div>
+                            <div class="col-9 text-center ">
+                                <p class="cardo-regular">
+                                    Seguido de la <span class="underline-animation">influencia europea</span>, con platillos que mezclan técnicas y tradiciones que continuarán en <span class="underline-animation">la Revolución Mexicana</span>.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Segundo Plato -->
+                        <div class="row  align-items-center justify-content-center">
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_izq_tal.png"  style="transform: rotate(324deg);" class="img-fluid" alt="Detalle Superior">-->
+                            </div>
+                            <div class="col-8 text-center">
+                                <h3 class="libre-baskerville-bold main-subtitle">Postre</h3>
+                            </div>
+                            <div class="col-2 text-center">
+                                <!--<img src="img\inicio\menu_detalle_der_tal.png" style="transform: rotate(396deg);" class="img-fluid" alt="Detalle Inferior">-->
+                            </div>
+                            <div class="col-9 text-center ">
+                                  <p class="cardo-regular">
+                                    Finalmente, el <span class="underline-animation">México Contemporáneo</span> y su creatividad gastronómica, que nos conecta con el mundo
+                                </p>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    </div>
+            
+            </div>
+
+            <!-- Columna sticky con imagen a la derecha (5/12) -->
+            <div class="col-5 ">
+               <!-- Para la imagen de Xolin -->
+               <div class="sticky-image sticky-image-xolin">
+                <img src="img/inicio/plato-2.png" alt="Imagen Sticky" 
+                     style="max-width: 90%; max-height: 90vh; width: auto; height: auto; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--###########################################################################################################################-->
+<!-- Inicio de Aperitivo -->
+<!--###########################################################################################################################-->    
+
+    <h2 id="aperitivo" class="text-center main-title" style="margin-top:-1rem;">Aperitivo:</h2>
+    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">Los Sabores del Origen</h3>
+    <div class="content-block initial-block">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <!-- Primera columna (8): Imagen + Texto -->
+            <div class="col-md-9">
+                <!-- Fila superior: Imagen de Xolín -->
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <img src="img\Xolin\Xolin_Aperitivo.png" 
+                             class="img-fluid" 
+                             alt="Xolin Aperitivo"
+                             style="max-height: 350px; width: auto;">
+                    </div>
+                </div>
+                
+                <!-- Fila inferior: Texto completo centrado -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-3 text-center">
+                            <p class="cardo-regular"><span class="underline-animation">Bienvenido al 'Aperitivo'</span>, un primer bocado de historia servido con los ingredientes que dieron forma al <span class="underline-animation">México prehispánico</span>. Este platillo está preparado con <span class="underline-animation">maíz</span>,  <span  style="font-style: italic;">el alma de nuestra tierra</span>; <span class="underline-animation">cacao</span>, <span  style="font-style: italic;">el regalo divino de los dioses</span>; <span class="underline-animation">chile</span>, <span  style="font-style: italic;">el fuego que enciende nuestra cultura</span>; <span class="underline-animation">frijol</span>, <span  style="font-style: italic;">el eterno compañero</span>, <span class="underline-animation">y calabaza</span>,   <span  style="font-style: italic;">la joya versátil de la cocina ancestral.</span></p>
+                            <p class="cardo-regular mt-3">Cada uno de estos ingredientes es un puente al pasado, un reflejo de la <span class="underline-animation">conexión sagrada entre el hombre y la tierra.</span> Las culturas prehispánicas como la  <span class="underline-animation">Mexica, Maya y Zapoteca</span>, no solo los cultivaron, sino que los transformaron en pilares de una <span  style="font-style: italic;">gastronomía milenaria</span>. Entre <span class="underline-animation">comales, metates</span> y el calor del <span class="underline-animation">Tlecuilli</span>, <span  style="font-style: italic;">el fogón ancestral</span>, crearon técnicas que todavía hoy, siglos después, siguen dando vida a nuestra mesa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Segunda columna (4): Gráfico -->
+            <div class="col-md-3">
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <h5 class="radial-chart-title mb-2">¿Qué culturas dieron sabor a la mesa prehispánica?</h5>
+                    <div id="cultural-radial-chart" class="chart-container-radial" style="height: 900%; min-height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    <div class="sticky-section">
+        <div class="row">
+            <div class="col-4 ">
+                
+                <!-- Bloque del Maíz -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Maíz</h3>
+                    
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El maíz no solo era alimento, era vida misma. Para <span class="underline-animation">los Mayas</span>, el hombre fue creado del maíz,
+                        según el <em>Popol Vuh</em>.  
+                    </p>
+                    <p class="cardo-regular mb-3">La tortila es el principar derivado del maís y el gran secreto de la tortilla esta en mezclar el maíz con cal (<span class="underline-animation">La nixtamalización</span>) que transforma el maíz en nutrición.</p>
+                  
+                    
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        +<span class="animated-number" data-value="9000">0</span>
+                                        <p>años de cultivo</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="60">0</span>%
+                                        <p>de la dieta mesoamericana</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Maíz por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="maiz-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="maiz-nota"></div>
+                </div>
+
+                <!-- Bloque del FRIJOL -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Frijol</h3>
+                
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El frijol era el fiel compañero del maíz, juntos formaban la base nutricional perfecta conocida como la tríada mesoamericana. Considerado un alimento fundamental en la dieta prehispánica, aportaba las proteínas necesarias para complementar los carbohidratos del maíz.
+                    </p>
+                
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="50">0</span>% 
+                                        <p>de las proteínas diarias</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        +<span class="animated-number" data-value="8000">0</span>
+                                        <p>años de cultivo</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Frijol por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="frijol-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="frijol-nota"></div>
+                </div>
+                
+
+                <!-- Bloque del CHILE -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Chile</h3>
+                    
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        Ah, el chile, un fuego que alimenta el alma. Este tesoro ardiente era más que un condimento: era medicina, era ritual, era vida. Los mexicas lo utilizaban en casi todos sus platillos, y su cultivo era tan importante como el del maíz. Su sabor distintivo marcó para siempre la identidad de la cocina mexicana.
+                    </p>
+                
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        +<span class="animated-number" data-value="40">0</span>
+                                        <p>variedades de chile</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="20">0</span>g
+                                        <p>consumo diario por persona</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Chile por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="chile-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="chile-nota"></div>
+                </div>
+
+                <!-- Bloque del CALABAZA -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Calabaza</h3>
+                    
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        La calabaza era un ingrediente versátil y nutritivo en la dieta prehispánica. Se usaba para hacer atoles, tamales y guisos. Sus semillas tostadas (pepitas) eran un aperitivo popular y una importante fuente de grasas saludables. En la milpa, la calabaza se cultivaba junto al maíz y frijol, creando un sistema agrícola sustentable que combinaba estos tres alimentos básicos.
+                    </p>
+                  
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="30">0</span>%
+                                        <p>de almacenes aztecas</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="7">0</span>
+                                        <p>especies nativas</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Calabaza por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="calabaza-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+                    <div id="calabaza-nota"></div>
+                </div>
+
+                <!-- Bloque del CACAO -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Cacao</h3>
+                      
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                        El cacao era literalmente el "alimento de los dioses" (Theobroma cacao). Reservado para ceremonias y la élite, se consumía como una bebida espumosa y amarga, muy diferente del chocolate actual. Los mayas y aztecas lo consideraban sagrado, y sus semillas fungían como moneda en toda Mesoamérica. Su valor era tan alto que estaba bajo protección militar durante su comercio.
+                    </p>
+                    
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="100">0</span>
+                                        <p>semillas por capa</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-6">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="200">0</span>
+                                        <p>semillas por esclavo</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador decorativo -->
+                    <div class="my-4 text-center">
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                        <span style="display: inline-block; margin: 0 10px; color: #999;">⬥</span>
+                        <span style="display: inline-block; width: 50px; height: 1px; background-color: #ccc; vertical-align: middle;"></span>
+                    </div>
+                    
+                    <!-- Título del gráfico radial -->
+                    <h5 class="radial-chart-title">Platillos con Cacao por Estado</h5>
+                    
+                    <!-- Gráfico radial -->
+                    <div id="cacao-estados-radial-chart" class="chart-container-radial"></div>
+                    
+                    <!-- Nota cultural -->
+
+
+                    <div id="cacao-nota"></div>
+                </div>
+                
+                <!-- Bloque del conclusion Prehispanica -->
+                <div class="m-5 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+                    <h3 class="text-center libre-baskerville-bold main-subtitle mt-3">Prehispánico</h3>
+                    
+                    <!-- Texto del ingrediente -->
+                    <p class="cardo-regular mb-3">
+                       En el México prehispánico, la cocina se enriquecía con una amplia variedad de ingredientes y técnicas:
+                    </p>
+                    
+                    <!-- KPIs en tarjetas -->
+                    <div class="row g-3 mb-4">
+                        <!-- KPI 1 -->
+                        <div class="col-4">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number"  data-value="46">0</span>  
+                                        <p style="font-size: 14px;" >especialidades regionales</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KPI 2 -->
+                        <div class="col-4">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="38">0</span>
+                                        <p>variedades de tamales</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                          <!-- KPI 2 -->
+                        <div class="col-4">
+                            <div class="card h-100 border-0 bg-transparent">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title libre-baskerville-bold">
+                                        <span class="animated-number" data-value="31">0</span>
+                                        <p>tipos de sopas</p>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    <p class="cardo-regular mb-3">
+                       Los Mexicas, Mayas y Purépechas desarrollaron un entendimiento profundo de su entorno, aprovechando cada recurso disponible con técnicas como la <span class="underline-animation">nixtamalización</span>, que mejoraba la calidad del maíz y permitía la creación de tamales y tortillas.
+
+                    </p>
+                    <p class="cardo-regular mb-3">
+                    Nuestro viaje continúa en <span class="underline-animation">El Entremés</span>, donde la llegada de los españoles transformó nuestra cocina. Ingredientes como el trigo y la carne de cerdo dieron origen a una gastronomía mestiza. <span class="underline-animation">¿Listo para descubrirlo?</span>
+                    </p>
+                    
+                    </div><!-- Texto del ingrediente -->
+                    
+                </div>
+
+            </div>
+
+            <!-- Bloque VISUALIZACIÓN INTERACTIVA-->
+            <div class="col-8">
+                <div class="sticky-image sticky-image-sankey">
+                    <!-- Contenedores para visualizaciones -->
+                    <div class="visualization-container">
+                        <h3 style="text-align: center; margin-bottom: 20px; color: #243360; font-family: 'Libre Baskerville', serif;">
+                            Conexiones entre estados, platillos y tipos de platillo
+                        </h3>
+                        <div class="flourish-embed flourish-globe" data-src="visualisation/20535694"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20535694/thumbnail" width="100%" alt="globe visualization" /></noscript></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h2 id="primer-plato" class="text-center main-title" style="margin-top:-1rem;">Primer Plato:</h2>
+    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">La Conquista y el Virreinato</h3>
+     <div class="text-center mb-4">
+        <img src="img\Xolin\Xolin_Primer_Plato.png" 
+            class="img-fluid" 
+            alt="Xolin Aperitivo"
+            style="max-height: 250px; width: auto;">
+    </div>
+    <div class=" content-block">
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Recuerdo bien cuando <span style="font-style: italic;">el humo de los fogones cambió su aroma</span>. Con la llegada de los barcos, los <span class="underline-animation">españoles trajeron el trigo</span>, que pronto se volvió pan en los hornos de los conventos. Los <span class="underline-animation">cerdos</span>, animales desconocidos para nosotros, empezaron a llenar las mesas con <span style="font-style: italic;">carnitas y chicharrones</span>, platillos que ahora parecen tan nuestros.
+        </p>
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Las <span class="underline-animation">monjas novohispanas</span> se convirtieron en maestras de los nuevos ingredientes; inventaron el <span style="font-weight: bold;">mole poblano</span> en los conventos, un platillo que mezclaba <span style="font-style: italic;">chocolate, chiles y especias traídas de ultramar</span>. En las cocinas señoriales, surgieron los primeros mestizajes: el arroz se cocinaba con tomate y se acompañaba con guisados de carne; los tamales se hicieron con manteca y se rellenaron de carnes europeas.
+        </p>
+        <p class="cardo-regular text-center" style="font-size: 1.1rem;">
+            Y no solo era la comida. En las grandes celebraciones, <span style="font-style: italic;">el vino y el mezcal se servían juntos</span>, como símbolo de <span class="underline-animation">dos mundos que chocaron y se fundieron en uno solo</span>. La comida dejó de ser solo un sustento, se convirtió en un <span style="font-weight: bold;">símbolo de poder, de mestizaje y de resistencia</span>. Así fue como el fogón indígena se mezcló con el hierro europeo, y juntos forjaron lo que hoy conocemos como <span class="underline-animation">cocina mexicana</span>.
+        </p> 
+    </div>
+   
+    <div >
+        <div class="container-fluid mb-5">
+            <div class="row">
+                <!-- Primera columna (8): Mapa -->
+                <div class="col-md-8">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h4 class="text-center libre-baskerville-bold mb-3" style="color: #713901;">¿Cómo los ingredientes viajaron por mares y tierras para encontrarse en nuestra mesa?</h4>
+                        <div id="filtered-connection-map" style="width: 100%; height: 650px; position: relative; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 16px rgba(113, 57, 1, 0.3); border: 4px solid #713901; background: radial-gradient(ellipse at center, #f5f5dc 0%, #e6d7c3 100%);"></div>
+                    </div>
+                </div>
+                <!-- Segunda columna (4): Controles e Info -->
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <!-- Panel de control del mapa -->
+                        <div style="padding: 20px;">
+                            
+                            <!-- Leyenda del mapa coroplético -->
+                            <div class="">
+                                <h5 class="libre-baskerville-bold mb-3" style="color: #713901;">Leyenda del Mapa</h5>
+                                <div style="display: flex; flex-direction: column; gap: 5px;color:#8B6F47;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(135, 206, 235, 0.5); margin-right: 10px ; border-radius: 4px; "></div>
+                                        <span class="legend-item-value">1-5 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(70, 130, 180, 0.6); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">6-10 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(160, 82, 45, 0.65); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">11-20 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: rgba(139, 0, 0, 0.85); margin-right: 10px; border-radius: 4px;"></div>
+                                        <span class="legend-item-value">Más de 20 ingredientes</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #8B4513; border: 2px solid #DAA520; margin-right: 10px;"></div>
+                                        <span>Destinos internacionales</span>
+                                    </div>
+                                </div>
+                                  <h4 class="libre-baskerville-bold mt-3" style="color: #713901;">Filtrar por Categoría</h4>
+                            <select id="category-filter" class="form-control mb-4" style="background-color: #F6F0E4;">
+                                <!-- Opciones se llenarán dinámicamente -->
+                            </select>
+                                
+                                <!-- Se ha eliminado el control de opacidad -->
+                            </div>
+                            
+                            <div class="mb-4" id="top-routes">
+                                <h5 class="libre-baskerville-bold mb-3" style="color: #713901;">Top 5 Rutas</h5>
+                                <div id="routes-list" style="min-height: 500px;">
+                                    <!-- Lista se llenará dinámicamente -->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        
+<!-- ###############################################                        ###############################################-->
+<!-- ############################################### Camara de diputados    ###############################################-->
+<!-- ###############################################                        ###############################################-->
+     
+    <h2 id="segundo-plato" class="text-center main-title" style="margin-top:-1rem;">Segundo Plato:</h2>
+    <h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;"> La influencia francesa y Revolucion mexicana</h3>
+    <div class="content-block initial-block">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <!-- Primera columna (8): Imagen + Texto -->
+            <div class="col-md-12">
+                <!-- Fila superior: Imagen de Xolín -->
+                <div class="row">
+                    <div class="col-8">
+                        <!-- Imagen y texto en columna de 8 -->
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center align-items-center">
+                                <img src="img\Xolin\Xolin_Segundo_Plato.png" 
+                                     class="img-fluid" 
+                                     alt="Xolin Aperitivo"
+                                     style="max-height: 350px; width: auto;">
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <p class="cardo-regular"><span class="underline-animation">Bienvenido al 'Segundo Plato'</span>, un recorrido por los sabores que llegaron de Europa y evolucionaron en la Revolución Mexicana. Las técnicas francesas, los ingredientes italianos y los sabores libaneses encontraron su lugar en los fogones mexicanos, creando platillos únicos que hoy son parte de nuestra identidad.</p>
+
+                            <p class="cardo-regular mt-3">Las panaderías introdujeron <span class="underline-animation">el bolillo y el pan de muerto</span>, mientras que la influencia inglesa trajo los <span class="underline-animation">pastes de Hidalgo</span>. Estos ingredientes y técnicas no solo enriquecieron el recetario mexicano, sino que se popularizaron durante la Revolución, donde las <span class="underline-animation">Adelitas</span> llevaron estas recetas por todo el país, creando nuevas combinaciones y consolidando la comida popular.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Poema en columna de 4 -->
+                    <div class="col-4 d-flex flex-column justify-content-center">
+                        <blockquote class="cardo-regular typing-poem" style="font-style: italic; margin: 20px; padding: 15px; border-left: 3px solid #6c757d; font-size: 1.25rem; line-height: 1.6;">
+                            <span id="poema-revolucion"></span>
+                            <footer class="blockquote-footer mt-2 text-end">Xolin</footer>
+                        </blockquote>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            new TypeIt("#poema-revolucion", {
+                                strings: ['"En fogones de campaña,<br>el maíz hervía al calor,<br>las Adelitas servían fuerza,<br>en tortilla y en frijol.<br><br>Mientras el Porfiriato brindaba,<br>con pasteles y champán,<br>el pueblo luchaba en barro,<br>con un taco en la mano y pan.<br><br>Porque la revolución ardió,<br>no en salones dorados y finos,<br>sino en el Tlecuilli encendido,<br>y en fogones campesinos."'],
+                                speed: 20, // Velocidad aumentada - número más bajo es más rápido
+                                waitUntilVisible: true,
+                                cursor: true,
+                                lifeLike: false // Desactiva la simulación de escritura humana para hacerlo más rápido
+                            }).go();
+                        });
+                    </script>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+<div class="row">
+    <div class="col-4">
+        <div class="m-4 content-block ingredient-block" style="background: rgba(255,255,255,0.5); box-shadow: none; border-radius: 16px;">
+            <h2 class="text-center libre-baskerville-bold main-title mb-4">Evolución Gastronómica</h2>
+            
+            <!-- Datos de Época en renglones -->
+            <div class="epoca-container mb-5">
+                <!-- Influencia Europea / Porfiriato -->
+                <div class="row align-items-center mb-4">
+                    <div class=" text-right">
+                        <h3 class="libre-baskerville-bold main-subtitle">Influencia Europea</h3>
+                    </div>
+                       <div class=" mb-6 text-center ">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #AF8756;"><span class="animated-number" data-value="35">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingredientes nuevos</p>
+                    </div>
+                    <div class="">
+                        <p class="cardo-regular">
+                            Durante el Porfiriato, la influencia francesa incorporó técnicas de alta cocina, pastelería fina y salsas. 
+                            Estos <strong>35 ingredientes europeos</strong> como el foie gras, las trufas y los quesos especiales transformaron 
+                            las mesas de la élite mexicana con platillos sofisticados que mezclaban lo mexicano con lo europeo.
+                        </p>
+                    </div>
+                 
+                </div>
+                
+                <!-- Revolución Mexicana -->
+                <div class="row align-items-center">
+                    <div class=" text-right">
+                        <h3 class="libre-baskerville-bold main-subtitle">Revolución Mexicana</h3>
+                    </div>
+                  
+                    <div class="">
+                                  <div class=" text-center">
+                        <h2 class="display-4 fw-bold" style="font-size: 3.5rem; color: #C67D3B;"><span class="animated-number" data-value="1">0</span></h2>
+                        <p class="mt-0 mb-0" style="font-size: 1.1rem;">ingrediente nuevo</p>
+                    </div> 
+                        <p class="cardo-regular">
+                            Durante la Revolución, las soldaderas adaptaron las comidas según los recursos disponibles. 
+                            A pesar de agregar <strong>solo un ingrediente nuevo</strong> al recetario nacional, surgió una cocina improvisada 
+                            en los campamentos que democratizó recetas antes exclusivas de las clases altas, fusionando técnicas 
+                            afrancesadas con productos locales y dando lugar a platillos que hoy son emblemáticos.
+                        </p>
+                    </div>
+             
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Animar los números al cargar la página
+                    const numberElements = document.querySelectorAll('.animated-number');
+                    
+                    numberElements.forEach(numberElement => {
+                        const finalValue = parseInt(numberElement.getAttribute('data-value'));
+                        
+                        // Reiniciar a cero
+                        numberElement.textContent = '0';
+                        
+                        // Animar hasta el valor final
+                        let currentValue = 0;
+                        const duration = 2000; // 2 segundos
+                        const interval = 50; // actualizar cada 50ms
+                        const steps = duration / interval;
+                        const increment = finalValue / steps;
+                        
+                        const timer = setInterval(function() {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                clearInterval(timer);
+                                numberElement.textContent = finalValue;
+                            } else {
+                                numberElement.textContent = Math.floor(currentValue);
+                            }
+                        }, interval);
+                    });
+                });
+            </script>
+        </div>
+    </div>        
+    <div class="col-8">
+    <!-- Visualización de datos -->
+        <div class="flourish-embed flourish-survey" data-src="visualisation/23166252" data-height="600px"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23166252/thumbnail" width="100%" height="1500px" alt="survey visualization" /></noscript></div>
+    </div>
+ </div>
+
+<!--###########################################################################################################################-->
+<!-- Inicio de Postre -->
+<!--###########################################################################################################################-->
+
+<h2 id="postre" class="text-center main-title" style="margin-top:3rem;">Postre:</h2>
+<h3 class="text-center main-title" style="font-size: 1.5rem; margin-top: 0.5rem;">México Contemporáneo</h3>
+
+<div class="content-block initial-block">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Texto del postre -->
+                <div class="p-4 text-center">
+                    <p class="cardo-regular">El <span class="underline-animation">México Contemporáneo</span> es nuestro dulce postre: una fusión de tradición e innovación. La cocina mexicana actual retoma sus raíces ancestrales pero las reinterpreta con técnicas modernas y diálogos globales. Los chefs mexicanos han llevado nuestros sabores a la cima de la gastronomía mundial, mientras la <span class="underline-animation">cocina de autor</span> explora nuevos territorios sin perder la esencia.</p>
+                    
+                    <p class="cardo-regular mt-3">El <span class="underline-animation">reconocimiento de la UNESCO</span> como Patrimonio Cultural Inmaterial de la Humanidad en 2010 fue un hito que celebra no solo recetas, sino un sistema cultural completo: desde la milpa hasta el plato. Este postre nos recuerda que nuestra gastronomía es un <span class="underline-animation">organismo vivo</span> que sigue transformándose mientras honra su pasado.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="28">0</span></h3>
+                                <p class="text-center mb-0">nuevos ingredientes globales</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="32">0</span></h3>
+                                <p class="text-center mb-0">restaurantes mexicanos premiados internacionalmente</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="kpi-box p-3 mb-3" style="background-color: rgba(154, 99, 36, 0.1); border-radius: 10px;">
+                                <h3 class="text-center" style="color: #9A6324;"><span class="animated-number" data-value="10">0</span></h3>
+                                <p class="text-center mb-0">técnicas de vanguardia integradas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="img/Xolin/Xolin_Postre.png" 
+                     class="img-fluid" 
+                     alt="Xolin Postre"
+                     style="max-height: 350px; width: auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--###########################################################################################################################-->
+<!--footer-->
+<!--###########################################################################################################################-->
+
+    <!-- Navegación móvil -->
+    <div class="mobile-nav" style="display: none;">
+        <a href="#aperitivo">Aperitivo</a>
+        <a href="#primer-plato">1er Plato</a>
+        <a href="#segundo-plato">2do Plato</a>
+        <a href="#postre">Postre</a>
+    </div>
+
+    <footer class="footer mt-5">
+        <div class="container mt-1">
+            <div class="row mt-1 row-eq-height">
+                <!-- Logo CENTRO y descripción -->
+                <div class="col-md-4 mt-3  flex-column">
+                    <div>
+                        <img src="https://centro.edu.mx/wp-content/uploads/2024/05/30Flag_xx_loop.gif" 
+                             alt="CENTRO Logo" 
+                             class="footer-logo mb-3"
+                             style ="max-width:30%;">
+                        <p class="text-muted cardo-regular">
+                            Proyecto de Visualización de Datos
+                            <br>
+                            Especialidad en Visualización de Datos
+                            <br>
+                            CENTRO Diseño, Cine y Televisión
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- Información del Proyecto -->
+                <div class="col-md-4 mt-3 d-flex flex-column">
+                    <div>
+                        <h5 class="libre-baskerville-bold mb-3">Acerca del Proyecto</h5>
+                        <p class="cardo-regular">
+                            Un recorrido visual por la historia gastronómica de México, 
+                            desde la época prehispánica hasta la actualidad.
+                        </p>
+                        <p class="cardo-regular mt-2">
+                            Desarrollado por:
+                            <br>
+                            <strong>Sergio Abraham González Sainz</strong>
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- Créditos y tecnologías -->
+                <div class="col-md-4 mt-3 d-flex flex-column">
+                    <div>
+                        <h5 class="libre-baskerville-bold mb-3">Tecnologías Utilizadas</h5>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">D3.js</li>
+                            <li class="mb-2">ECharts</li>
+                            <li class="mb-2">HTML5 & CSS3</li>
+                            <li class="mb-2">JavaScript</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="https://github.com/SergioSainz/saborea-la-historia" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               title="Ver código en GitHub">
+                                <i class="bi bi-github"></i>
+                                <span class="ms-2">Ver código fuente</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row   pt-3">
+                <div class="col-12 mb-2 text-center">
+                    <p class="text-muted mb-0">
+                        © 2024 Proyecto académico de la Especialidad en Visualización de Datos - CENTRO
+                    </p>
+                </div>
+            </div>
+           
+        </div>
+        <!-- Imagen rotada en la esquina inferior derecha -->
+        
+    </footer>
+
+    <!------------------- Scripts ------------------->
+    <!-- mapas -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- scrollama -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/8.7.1/index.umd.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- mis scrips -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/animations.js" ></script>
+    <script src="js/aperitivo.js"></script>
+    <script src="js/prehispanicTooltips.js"></script>
+    <script src="js/animacion-num.js" ></script>
+    <script src="js/primerPlatoMap.js"></script>
+    <script src="js/categoryRing.js"></script>
+    <script src="js/circularGraph.js"></script>
+    <script src="js/ingredientCharts.js"></script>
+    <script src="js/displayIngredientNotes.js"></script>
+    <script src="js/radialBarChart.js"></script>
+    <script src="js/culturalRadialChart.js"></script>
+    <script src="js/ingredientAnimation.js"></script>
+    <script src="js/custom-cursor.js"></script>
+    <script src="js/fullNetworkGraph.js"></script>
+    <script src="js/primerPlato.js"></script>
+    <script src="js/filteredConnectionMap.js"></script>
+    <script src="js/mobile-nav.js"></script>
+    <script>
+        // Inicializar el mapa de conexiones filtradas
+        let filteredMapInstance;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapContainer = document.getElementById('filtered-connection-map');
+            if (mapContainer) {
+                filteredMapInstance = new FilteredConnectionMap('filtered-connection-map');
+                filteredMapInstance.initialize();
+            }
+        });
+        
+        // Función global para mostrar el tutorial nuevamente
+        function resetMapTutorial() {
+            window.forceShowTutorial = true;
+            const mapContainer = document.getElementById('filtered-connection-map');
+            if (mapContainer) {
+                const event = new Event('mouseenter');
+                mapContainer.dispatchEvent(event);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -59,7 +59,7 @@
 }
 
 /* Animación para el botón de scroll down */
-.scroll-button {
+.scroll-plaque {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
@@ -68,6 +68,21 @@
 /* Transición suave para la burbuja de diálogo */
 .speech-bubble {
   transition: min-height 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+/* Transición suave para cambio de imagen sticky */
+.sticky-image img {
+  transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.sticky-image img.img-fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.sticky-image img.img-fade-in {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .ingredient-block .cardo-regular {

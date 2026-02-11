@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Mapeo de épocas a imágenes
             const epocaImageMap = {
                 'México Prehispánico (Antes de 1521)': 'img/Xolin/Xolin_Aperitivo.png',
-                'Conquista y Virreinato (1521 – 1821)': 'img/Xolin/Xolin_Primer Plato .png',
+                'Conquista y Virreinato (1521 – 1821)': 'img/Xolin/Xolin_Primer_Plato.png',
                 'Influencia europea / Porfiriato (1821 - 1910)': 'img/Xolin/Xolin_Entremes.png',
                 'Revolución Mexicana (1910 - 1940)': 'img/Xolin/Xolin_Segundo_Plato.png',
                 'México Contemporáneo (1940 - Actualidad)': 'img/Xolin/Xolin_Postre.png',

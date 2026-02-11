@@ -1,0 +1,42 @@
+/* Map Legend Styles */
+.map-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #8B6F47;
+}
+
+.map-legend__item {
+    display: flex;
+    align-items: center;
+}
+
+.map-legend__swatch {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.map-legend__swatch--1-5 {
+    background-color: rgba(135, 206, 235, 0.5);
+}
+
+.map-legend__swatch--6-10 {
+    background-color: rgba(70, 130, 180, 0.6);
+}
+
+.map-legend__swatch--11-20 {
+    background-color: rgba(160, 82, 45, 0.65);
+}
+
+.map-legend__swatch--20plus {
+    background-color: rgba(139, 0, 0, 0.85);
+}
+
+.map-legend__swatch--international {
+    border-radius: 50%;
+    background-color: #8B4513;
+    border: 2px solid #DAA520;
+}

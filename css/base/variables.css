@@ -6,27 +6,51 @@
     --color-text: #000;
     --color-grey: #555454;
     --color-white: #F6F0E4;
-    --color-background: #F6F0E4/*rgba(255, 255, 255, 0.9)*/;
-    
+    --color-background: #F6F0E4;
+
+    /* Colores de sección */
+    --color-brown: #713901;
+    --color-gold-europea: #AF8756;
+    --color-gold-revolucion: #C67D3B;
+    --color-gold-postre: #9A6324;
+
     /* Sombras */
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
     --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
-    
+
     /* Bordes */
     --border-radius-sm: 8px;
     --border-radius-lg: 30px;
     --border-radius-full: 100px;
-    
+
     /* Espaciado */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
-  
+
     /* Tamaños de fuente */
     --font-size-sm: 1rem;
     --font-size-md: 1.2rem;
     --font-size-lg: 1.4rem;
     --font-size-xl: 1.5rem;
     --font-size-xxl: 2.5rem;
-  }
+
+    /* Responsive */
+    --gutter: 1rem;
+    --section-padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --gutter: 2rem;
+        --section-padding: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --gutter: 2.5rem;
+        --section-padding: 4rem;
+    }
+}

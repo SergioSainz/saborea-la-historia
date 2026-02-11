@@ -11,7 +11,7 @@
 // Esperamos a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Inicializando grafo circular (versión mejorada)...');
-    
+
     // Función para asegurar que existe el contenedor
     function ensureContainer() {
         // Verificar si el contenedor existe
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 vizContainer.innerHTML = ''; // Limpiar cualquier contenido previo
                 vizContainer.appendChild(networkContainer);
             } else {
-                console.error('No se encontró .visualization-container, no se puede crear el grafo');
+                console.log('Esperando .visualization-container (section-loader en curso)...');
                 
                 // Intentar buscar en .sticky-image-sankey
                 const sankeyContainer = document.querySelector('.sticky-image-sankey');
@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Mapeo de épocas a imágenes
             const epocaImageMap = {
                 'México Prehispánico (Antes de 1521)': 'img/Xolin/Xolin_Aperitivo.png',
-                'Conquista y Virreinato (1521 – 1821)': 'img/Xolin/Xolin_Primer Plato .png',
+                'Conquista y Virreinato (1521 – 1821)': 'img/Xolin/Xolin_Primer_Plato.png',
                 'Influencia europea / Porfiriato (1821 - 1910)': 'img/Xolin/Xolin_Entremes.png',
                 'Revolución Mexicana (1910 - 1940)': 'img/Xolin/Xolin_Segundo_Plato.png',
                 'México Contemporáneo (1940 - Actualidad)': 'img/Xolin/Xolin_Postre.png',
@@ -2396,7 +2396,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Iniciar la creación del grafo
     initGraph();
-    
-    // También regenerar después de 1 segundo para asegurar que el DOM está listo
-    setTimeout(regenerateGraph, 1000);
+
+    // Reintentar hasta encontrar el contenedor (section-loader puede tardar)
+    var _retryCount = 0;
+    var _retryMax = 30; // 30 intentos × 500ms = 15 segundos máximo
+    var _retryInterval = setInterval(function() {
+        _retryCount++;
+        if (document.getElementById('network') && document.querySelector('#network svg')) {
+            clearInterval(_retryInterval);
+            return;
+        }
+        if (_retryCount >= _retryMax) {
+            clearInterval(_retryInterval);
+            console.warn('circularGraph: contenedor no encontrado tras ' + _retryMax + ' intentos');
+            return;
+        }
+        regenerateGraph();
+    }, 500);
 });

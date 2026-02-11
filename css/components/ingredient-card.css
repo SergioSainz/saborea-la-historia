@@ -1,0 +1,55 @@
+/* Ingredient Card Styles */
+.ingredient-card {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+    border-radius: 16px;
+}
+
+/* Decorative Separator (replaces 3 inline spans) */
+.decorative-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.decorative-separator::before,
+.decorative-separator::after {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.decorative-separator::before {
+    order: -1;
+}
+
+.decorative-separator::after {
+    order: 1;
+}
+
+/* Section title flush (margin-top: -1rem) */
+.section-title--flush {
+    margin-top: -1rem;
+}
+
+/* Section subtitle */
+.section-subtitle {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Xolin images */
+.xolin-img {
+    max-height: 350px;
+    width: auto;
+}
+
+.xolin-img--sm {
+    max-height: 250px;
+    width: auto;
+}

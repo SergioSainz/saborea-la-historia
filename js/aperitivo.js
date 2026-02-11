@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Entering ingredient section:', ingrediente, 'index:', index, 'direction:', direction);
                 
                 // Resaltar visualmente este bloque
-                element.style.border = '2px solid #013971';
                 element.style.transform = 'scale(1.02)';
                 
                 // Filtrar el grafo circular por el ingrediente actual

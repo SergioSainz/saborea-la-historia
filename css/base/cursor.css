@@ -16,7 +16,7 @@
 
 /* Cursor personalizado para enlaces y elementos clicables */
 a, button, .btn, [role="button"], [type="button"], [type="submit"], 
-.nav-link, .culture-dot, .scroll-button, .interactive, .clickable,
+.nav-link, .culture-dot, .scroll-plaque, .interactive, .clickable,
 [onclick], [data-toggle], [data-target], [href]:not([href=""]) {
     cursor: url('../../img/Xolin/cara.png') 16 16, 
            url('../../img/icono/chile.ico') 16 16, 

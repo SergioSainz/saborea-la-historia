@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     // Resaltar el bloque actual
-                    entry.target.style.border = '2px solid #013971';
                     entry.target.style.transform = 'scale(1.02)';
                     entry.target.style.transition = 'all 0.3s ease';
                     

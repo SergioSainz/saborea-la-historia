@@ -1,473 +1,562 @@
-/* Responsive CSS para Saborea la Historia */
+/* ========================================
+   Responsive CSS - Mobile-First
+   Saborea la Historia
+   ======================================== */
 
-/* Variables de puntos de quiebre */
-:root {
-    --breakpoint-sm: 576px;  /* Teléfonos pequeños */
-    --breakpoint-md: 768px;  /* Tablets/teléfonos grandes */
-    --breakpoint-lg: 992px;  /* Desktops pequeños */
-    --breakpoint-xl: 1200px; /* Desktops grandes */
+/* ========================================
+   Base (0 - 575px): Mobile phones
+   Single column, no sticky, no custom cursor
+   ======================================== */
+
+/* Typography */
+.main-title {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-/* ==== Media Queries Generales ==== */
+.main-subtitle {
+    font-size: 1.2rem;
+}
 
-/* Dispositivos Pequeños (teléfonos, menos de 576px) */
-@media (max-width: 576px) {
-    /* Ajustes de tipografía para móviles */
+p.cardo-regular {
+    font-size: 0.9rem;
+}
+
+/* Hide custom cursor on mobile */
+#custom-cursor {
+    display: none;
+}
+
+/* Restore default cursor on mobile */
+*,
+*::before,
+*::after {
+    cursor: auto;
+}
+
+/* Sticky becomes relative on mobile */
+.sticky-section .sticky-image {
+    position: relative;
+    top: auto;
+    margin-bottom: 2rem;
+}
+
+/* Hero section */
+.fullscreen-section .content-box {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Dialog layout */
+.dialog-container {
+    flex-direction: column;
+    width: 100%;
+}
+
+.dialog-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 0.5rem auto;
+}
+
+.speech-bubble {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    margin-left: 0;
+    border-radius: 12px;
+    min-height: auto;
+}
+
+.speech-bubble:after {
+    left: 50%;
+    top: -12px;
+    border: 12px solid transparent;
+    border-bottom-color: var(--color-accent);
+    border-top: 0;
+    border-right-color: transparent;
+    margin-left: -12px;
+    margin-top: 0;
+}
+
+.typing-text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Scroll button */
+#scroll-down-btn {
+    margin: 1rem auto;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    width: 90%;
+    max-width: 250px;
+}
+
+/* Buttons */
+button, .btn, .scroll-plaque {
+    padding: 0.75rem 1rem;
+    min-width: 120px;
+}
+
+/* Visualizations - small size */
+.chart-container-radial,
+#filtered-connection-map,
+.visualization-container {
+    height: 300px;
+    min-height: 300px;
+    width: 100%;
+    margin: 0 auto 1.5rem auto;
+}
+
+#cultural-radial-chart {
+    height: 300px;
+    min-height: 300px;
+    margin-bottom: 2rem;
+}
+
+#maiz-estados-radial-chart,
+#frijol-estados-radial-chart,
+#chile-estados-radial-chart,
+#calabaza-estados-radial-chart,
+#cacao-estados-radial-chart {
+    height: 250px;
+    width: 100%;
+    margin: 0 auto 1rem auto;
+}
+
+#filtered-connection-map {
+    border-radius: 12px;
+    height: 300px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.flourish-embed {
+    height: 350px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Ingredient blocks */
+.ingredient-block {
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+/* Xolin images */
+.xolin-img,
+.xolin-img--sm {
+    max-height: 200px;
+    margin: 1rem auto;
+    display: block;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-box img {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Background images */
+.fullscreen-section {
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Chart controls */
+.chart-controls,
+.chart-legends,
+.chart-tooltips {
+    font-size: 0.8rem;
+}
+
+/* Visualization titles */
+.visualization-container h3 {
+    font-size: 1rem;
+}
+
+/* SVG charts */
+.chart-container-radial svg,
+.chart-container-sankey svg,
+.flourish-embed iframe {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+}
+
+/* Map controls */
+#top-routes {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#category-filter {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+/* Typing poem */
+.typing-poem {
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+/* Epoca container */
+.epoca-container .row {
+    flex-direction: column;
+}
+
+.epoca-container .animated-number {
+    font-size: 2.5rem;
+}
+
+/* KPI boxes */
+.kpi-box {
+    margin-bottom: 1rem;
+}
+
+/* Section dividers */
+h2.text-center.main-title {
+    padding-top: 2rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(113, 57, 1, 0.2);
+}
+
+/* Menu readability */
+.row.align-items-center.justify-content-center {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h5.libre-baskerville-bold,
+h3.libre-baskerville-bold {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* Decorative images */
+img[src*="flor"],
+img[src*="linea"],
+img[src*="menu_detalle"] {
+    max-width: 60px;
+    margin: 0.5rem auto;
+    display: block;
+}
+
+/* Footer mobile */
+.footer .row-eq-height > div {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Spacer for fixed mobile nav */
+body::after {
+    content: '';
+    display: block;
+    height: 60px;
+}
+
+/* Mobile nav */
+.mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(246, 240, 228, 0.95);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.mobile-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #713901;
+    font-size: 0.7rem;
+    padding: 5px;
+    width: 25%;
+    text-align: center;
+}
+
+.mobile-nav a::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.mobile-nav a:nth-child(1)::before {
+    background-image: url('../img/aperitivo/maiz.png');
+}
+
+.mobile-nav a:nth-child(2)::before {
+    background-image: url('../img/aperitivo/chile.png');
+}
+
+.mobile-nav a:nth-child(3)::before {
+    background-image: url('../img/aperitivo/frijoles.png');
+}
+
+.mobile-nav a:nth-child(4)::before {
+    background-image: url('../img/aperitivo/cacao.png');
+}
+
+.mobile-nav a.active {
+    color: #B54322;
+    font-weight: bold;
+}
+
+/* ========================================
+   576px+: Larger phones
+   ======================================== */
+@media (min-width: 576px) {
+    .chart-container-radial {
+        min-height: 350px;
+    }
+
+    #filtered-connection-map {
+        height: 450px;
+    }
+
+    .flourish-embed {
+        height: 400px;
+    }
+}
+
+/* ========================================
+   768px+: Tablets
+   Sticky re-enabled, custom cursor visible, mobile nav hidden
+   ======================================== */
+@media (min-width: 768px) {
+    /* Typography scales up */
     .main-title {
-        font-size: 1.5rem !important;
+        font-size: 2rem;
     }
+
     .main-subtitle {
-        font-size: 1.2rem !important;
+        font-size: 1.4rem;
     }
+
     p.cardo-regular {
-        font-size: 0.9rem !important;
+        font-size: 1rem;
     }
-    
-    /* Estructura de columnas */
-    .row [class^="col-"] {
-        width: 100% !important;
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
-    }
-    
-    /* Aumento general de tamaño para botones en móviles */
-    button, .btn, .scroll-button {
-        padding: 0.75rem 1rem !important;
-        min-width: 120px !important;
-    }
-    
-    /* Ocultar el cursor personalizado en dispositivos móviles */
+
+    /* Show custom cursor */
     #custom-cursor {
-        display: none !important;
+        display: block;
     }
-    
-    /* Restaurar cursor normal en dispositivos móviles */
-    *, *::before, *::after,
-    html, body, a, button, input, select, textarea,
-    div, span, p, h1, h2, h3, h4, h5, h6,
-    section, header, footer, main, nav, article, aside, 
-    ul, ol, li, table, tr, td, th {
-        cursor: auto !important;
+
+    *,
+    *::before,
+    *::after {
+        cursor: none;
     }
-    
-    /* Ajustes para la primera sección */
-    .fullscreen-section .content-box {
-        width: 95% !important;
-        margin: 0 auto !important;
-        padding: 1rem !important;
+
+    input[type="text"]:focus,
+    textarea:focus,
+    [contenteditable="true"]:focus {
+        caret-color: auto;
     }
-    
-    .dialog-container {
-        flex-direction: column !important;
-    }
-    
-    .dialog-image {
-        width: 120px !important;
-        height: 120px !important;
-        margin: 0 auto 1rem auto !important;
-    }
-    
-    /* Ajuste para sección sticky */
+
+    /* Re-enable sticky */
     .sticky-section .sticky-image {
-        position: relative !important;
-        top: auto !important;
-        margin-bottom: 2rem !important;
+        position: sticky;
+        top: 2rem;
     }
-    
-    /* Ajustar las visualizaciones de datos */
-    .chart-container-radial, 
-    #filtered-connection-map,
-    .visualization-container {
-        height: 300px !important;
-        min-height: 300px !important;
-        width: 100% !important;
-        margin: 0 auto 1.5rem auto !important;
+
+    /* Dialog horizontal */
+    .dialog-container {
+        flex-direction: row;
     }
-    
-    /* Ajustes a bloques de ingredientes */
-    .ingredient-block {
-        margin: 1rem 0 !important;
-        padding: 1rem !important;
+
+    .dialog-image {
+        width: 250px;
+        height: 250px;
+        margin: 0;
+        margin-right: -20px;
     }
-    
+
+    .speech-bubble {
+        min-height: 150px;
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+    }
+
+    .speech-bubble:after {
+        left: -15px;
+        top: 50%;
+        border: 15px solid transparent;
+        border-right-color: var(--color-accent);
+        border-left: 0;
+        border-bottom-color: transparent;
+        margin-top: -15px;
+        margin-left: 0;
+    }
+
+    /* Xolin images full size */
+    .xolin-img {
+        max-height: 350px;
+    }
+
+    .xolin-img--sm {
+        max-height: 250px;
+    }
+
+    /* Map circular */
+    #filtered-connection-map {
+        height: 650px;
+        border-radius: 50%;
+        max-width: none;
+    }
+
+    /* Hide mobile nav */
+    .mobile-nav {
+        display: none;
+    }
+
+    /* Remove body spacer */
+    body::after {
+        display: none;
+    }
+
+    /* Buttons */
+    button, .btn, .scroll-plaque {
+        padding: 0.5rem 1.5rem;
+        min-width: auto;
+    }
+
+    /* Typing poem */
+    .typing-poem {
+        font-size: 1.25rem;
+        margin: 20px;
+    }
+
+    /* Epoca numbers */
+    .epoca-container .animated-number {
+        font-size: 3.5rem;
+    }
+
+    .epoca-container .row {
+        flex-direction: row;
+    }
+
     /* Footer */
     .footer .row-eq-height > div {
-        text-align: center !important;
-        margin-bottom: 1.5rem !important;
+        text-align: left;
+        margin-bottom: 0;
     }
-}
 
-/* Tablets y teléfonos grandes (entre 576px y 768px) */
-@media (min-width: 577px) and (max-width: 768px) {
-    /* Columnas adaptables */
-    .col-7, .col-8, .col-9 {
-        width: 100% !important;
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
-    }
-    
-    .col-3, .col-4, .col-5 {
-        width: 100% !important;
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
-    }
-    
-    /* Sticky para tablets */
-    .sticky-section .sticky-image {
-        position: relative !important;
-        top: auto !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* Ajustes para visualizaciones */
-    .chart-container-radial {
-        min-height: 350px !important;
-    }
-    
-    #filtered-connection-map {
-        height: 450px !important;
-    }
-}
-
-/* Escritorios pequeños (entre 768px y 992px) */
-@media (min-width: 769px) and (max-width: 992px) {
-    /* Ajustes para la disposición de columnas */
-    .col-md-8 {
-        width: 65% !important;
-    }
-    
-    .col-md-4 {
-        width: 35% !important;
-    }
-}
-
-/* ==== Ajustes Específicos por Sección ==== */
-
-/* Sección de Aperitivo (Prehispánico) */
-@media (max-width: 768px) {
-    .content-block.initial-block .row {
-        flex-direction: column-reverse !important;
-    }
-    
-    #cultural-radial-chart {
-        height: 300px !important;
-        min-height: 300px !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* Ajustar tamaño de las imágenes de Xolin */
-    img[src*="Xolin"] {
-        max-height: 200px !important;
-        margin: 1rem auto !important;
-    }
-}
-
-/* Sección del Primer Plato (Conquista y Virreinato) */
-@media (max-width: 768px) {
-    /* Convertir el mapa en circular para móviles es complicado, así que mejor usamos uno rectangular */
-    #filtered-connection-map {
-        border-radius: 10px !important; /* Cambiar de circular a rectangular con bordes redondeados */
-        height: 350px !important;
-    }
-    
-    #top-routes {
-        max-height: 200px !important;
-        overflow-y: auto !important;
-    }
-}
-
-/* Sección del Segundo Plato (Influencia francesa y Revolución) */
-@media (max-width: 768px) {
-    .typing-poem {
-        font-size: 1rem !important;
-        margin: 1rem 0 !important;
-    }
-    
-    .epoca-container .row {
-        flex-direction: column !important;
-    }
-    
-    .epoca-container .animated-number {
-        font-size: 2.5rem !important;
-    }
-}
-
-/* Sección de Postre (México Contemporáneo) */
-@media (max-width: 768px) {
-    .content-block.initial-block .kpi-box {
-        margin-bottom: 1rem !important;
-    }
-    
-    .content-block.initial-block .row {
-        flex-direction: column-reverse !important;
-    }
-}
-
-/* ==== Ajustes específicos para elementos ==== */
-
-/* Ajustar las imágenes para que sean responsivas */
-@media (max-width: 768px) {
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-    
-    /* Para imágenes en la sección principal */
-    .content-box img {
-        width: 80% !important;
-        margin: 0 auto !important;
-        display: block !important;
-    }
-    
-    /* Ajustes para las imágenes de Xolin */
-    img[src*="Xolin"] {
-        max-height: 200px !important;
-        width: auto !important;
-        display: block !important;
-        margin: 1rem auto !important;
-    }
-    
-    /* Imágenes de ingredientes */
-    img[src*="aperitivo"],
-    img[src*="chile"],
-    img[src*="maiz"],
-    img[src*="frijol"],
-    img[src*="cacao"],
-    img[src*="calabaza"] {
-        max-width: 70px !important;
-        margin: 0.5rem auto !important;
-        display: block !important;
-    }
-    
-    /* Imágenes decorativas */
-    img[src*="flor"], 
+    /* Decorative images - larger on desktop */
+    img[src*="flor"],
     img[src*="linea"],
     img[src*="menu_detalle"] {
-        max-width: 60px !important;
-        margin: 0.5rem auto !important;
-        display: block !important;
+        max-width: 140px;
     }
-    
-    /* Optimización para retina display */
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        /* Usar versiones 2x cuando estén disponibles */
-        img[src*="grande"] {
-            content: attr(src);
-        }
-    }
-    
-    /* Ajustar imágenes de fondo */
-    .fullscreen-section {
-        background-size: cover !important;
-        background-position: center center !important;
-    }
-    
-    /* Lazy loading para imágenes en móviles */
-    img:not([src*="Xolin"]):not(.footer-logo) {
-        loading: lazy !important;
-    }
-    
-    .flourish-embed {
-        height: 350px !important;
-    }
-}
 
-/* Optimización para visualizaciones interactivas */
-@media (max-width: 768px) {
-    .visualization-container h3 {
-        font-size: 1rem !important;
+    /* Section dividers */
+    h2.text-center.main-title {
+        border-top: none;
+        padding-top: 0;
     }
-    
-    /* Ajustes específicos para visualizaciones D3.js */
-    .chart-container-radial svg,
-    .chart-container-sankey svg,
-    .flourish-embed iframe {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 350px !important;
+
+    h5.libre-baskerville-bold,
+    h3.libre-baskerville-bold {
+        font-size: inherit;
+        margin: inherit;
     }
-    
-    /* Ajustes para gráficos circulares */
+
+    /* Hero content */
+    .fullscreen-section .content-box {
+        width: auto;
+        padding: 2rem;
+    }
+
+    /* Ingredient blocks */
+    .ingredient-block {
+        margin: 2rem 1.25rem;
+        padding: inherit;
+    }
+
+    .typing-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .speech-bubble {
+        padding: inherit;
+    }
+
+    /* Charts */
+    #cultural-radial-chart {
+        height: 400px;
+        min-height: 400px;
+    }
+
     #maiz-estados-radial-chart,
     #frijol-estados-radial-chart,
     #chile-estados-radial-chart,
     #calabaza-estados-radial-chart,
-    #cacao-estados-radial-chart,
-    #cultural-radial-chart {
-        height: 250px !important;
-        width: 100% !important;
-        margin: 0 auto 1rem auto !important;
+    #cacao-estados-radial-chart {
+        height: auto;
     }
-    
-    /* Ajuste para mapas específicos */
-    #filtered-connection-map {
-        height: 300px !important;
-        width: 100% !important;
-        border-radius: 12px !important; /* Hacer el mapa más rectangular */
-        max-width: 400px !important;
-        margin: 0 auto !important;
+
+    .chart-container-radial svg,
+    .chart-container-sankey svg,
+    .flourish-embed iframe {
+        max-height: none;
     }
-    
-    /* Ajustes para gráficos de Flourish */
-    .flourish-embed {
-        height: 400px !important;
-        width: 100% !important;
-        overflow: hidden !important;
-    }
-    
-    /* Reducir el tamaño de los controles de los gráficos */
-    .chart-controls, 
-    .chart-legends,
-    .chart-tooltips {
-        font-size: 0.8rem !important;
-    }
-    
-    /* Ocultar elementos no esenciales en móviles */
-    .chart-details,
-    .chart-extras {
-        display: none !important;
+
+    #top-routes {
+        max-height: none;
+        overflow-y: visible;
     }
 }
 
-/* Menú principal y navegación ajustados para móviles */
-@media (max-width: 768px) {
-    /* Botón de scroll down */
-    #scroll-down-btn {
-        margin: 1rem auto !important;
-        font-size: 0.9rem !important;
-        padding: 0.5rem 1rem !important;
-        width: 90% !important;
-        max-width: 250px !important;
-    }
-    
-    /* Optimizar la sección de menú del día */
+/* ========================================
+   992px+: Desktops
+   Full-size charts, all layouts active
+   ======================================== */
+@media (min-width: 992px) {
     .main-title {
-        margin-top: 1.5rem !important;
-        margin-bottom: 1rem !important;
-        font-size: 1.3rem !important;
+        font-size: 2.5rem;
     }
-    
-    /* Mejorar legibilidad del menú en móviles */
-    .row.align-items-center.justify-content-center {
-        text-align: center !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    /* Asegurar que los títulos del menú sean legibles */
-    h5.libre-baskerville-bold, 
-    h3.libre-baskerville-bold {
-        font-size: 1.1rem !important;
-        margin: 0.5rem 0 !important;
-    }
-    
-    /* Optimizar el burbuja de diálogo */
-    .dialog-container {
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-    
-    .dialog-image {
-        width: 80px !important;
-        height: 80px !important;
-        margin: 0 auto 0.5rem auto !important;
-    }
-    
-    .speech-bubble {
-        width: 100% !important;
-        padding: 0.75rem !important;
-        margin-left: 0 !important;
-    }
-    
-    .typing-text {
-        font-size: 0.85rem !important;
-        line-height: 1.4 !important;
-    }
-    
-    /* Ajustes para selección de categorías */
-    #category-filter {
-        font-size: 0.9rem !important;
-        padding: 0.5rem !important;
-        margin-bottom: 1rem !important;
-        width: 100% !important;
-    }
-    
-    /* Modificar la navegación entre secciones */
-    h2.text-center.main-title {
-        padding-top: 2rem !important;
-        margin-top: 1rem !important;
-        border-top: 1px solid rgba(113, 57, 1, 0.2) !important;
-    }
-    
-    /* Añadir un menú fijo inferior para navegación rápida */
-    body::after {
-        content: '';
-        display: block;
-        height: 60px; /* Espacio para el menú fijo */
-    }
-    
-    .mobile-nav {
-        display: flex !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-        background-color: rgba(246, 240, 228, 0.95);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        justify-content: space-around;
-        align-items: center;
-        padding: 5px 0;
-    }
-    
-    .mobile-nav a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: #713901;
-        font-size: 0.7rem;
-        padding: 5px;
-        width: 25%;
-        text-align: center;
-    }
-    
-    .mobile-nav a::before {
-        content: '';
-        display: block;
-        width: 20px;
-        height: 20px;
-        margin-bottom: 3px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    
-    .mobile-nav a:nth-child(1)::before {
-        background-image: url('../img/aperitivo/maiz.png');
-    }
-    
-    .mobile-nav a:nth-child(2)::before {
-        background-image: url('../img/aperitivo/chile.png');
-    }
-    
-    .mobile-nav a:nth-child(3)::before {
-        background-image: url('../img/aperitivo/frijoles.png');
-    }
-    
-    .mobile-nav a:nth-child(4)::before {
-        background-image: url('../img/aperitivo/cacao.png');
-    }
-    
-    .mobile-nav a.active {
-        color: #B54322;
-        font-weight: bold;
-    }
-}
 
-/* Ocultar el menú de navegación móvil en desktop */
-@media (min-width: 769px) {
-    .mobile-nav {
-        display: none !important;
+    p.cardo-regular {
+        font-size: 1.1rem;
+    }
+
+    .flourish-embed {
+        height: 600px;
+    }
+
+    .visualization-container {
+        height: auto;
+        min-height: auto;
+    }
+
+    #cultural-radial-chart {
+        height: 480px;
+        min-height: 400px;
     }
 }

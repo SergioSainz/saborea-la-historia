@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicialización de TypeIt con una pausa ligeramente más natural
     new TypeIt("#typing-text", {
-        strings: "¡Hola! Soy Xolin, tu guía en un viaje por los sabores que han dado vida a México. ¿Te imaginas qué historias guarda cada platillo?",
-        speed: 40, // Velocidad ligeramente más lenta para mejor legibilidad
+        strings: "¡Hola! Soy Xolin.<br>Te guiaré por los sabores que han dado vida a México.<br>¿Te imaginas qué historias guarda cada platillo?",
+        html: true,
+        speed: 20,
         waitUntilVisible: true,
-        startDelay: 800, // Pequeña pausa antes de empezar a escribir
+        startDelay: 500,
         cursor: true,
         cursorChar: "|",
         afterComplete: function() {
@@ -60,19 +61,28 @@ document.addEventListener('DOMContentLoaded', function() {
             element.classList.add('active');
             console.log('Entering content block:', index, direction);
 
-            // Cambiar imagen según la sección con manejo de errores
+            // Cambiar imagen según la sección con animación suave
             try {
                 const xolinImage = document.querySelector('.sticky-image img');
                 if (xolinImage) {
-                    // Determinar qué imagen mostrar según el índice
                     const imageUrls = {
                         0: 'img/Xolin/cara.png',
                         1: 'img/inicio/plato-2.png',
                     };
 
-                    if (imageUrls[index]) {
-                        xolinImage.src = imageUrls[index];
-                        xolinImage.classList.add('fade-in');
+                    if (imageUrls[index] && xolinImage.src.indexOf(imageUrls[index]) === -1) {
+                        // Fade out
+                        xolinImage.classList.add('img-fade-out');
+                        xolinImage.classList.remove('img-fade-in');
+
+                        setTimeout(() => {
+                            xolinImage.src = imageUrls[index];
+                            // Fade in cuando la imagen cargue
+                            xolinImage.onload = () => {
+                                xolinImage.classList.remove('img-fade-out');
+                                xolinImage.classList.add('img-fade-in');
+                            };
+                        }, 400);
                     }
                 }
             } catch (error) {
